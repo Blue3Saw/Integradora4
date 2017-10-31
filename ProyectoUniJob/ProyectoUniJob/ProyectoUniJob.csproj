@@ -90,6 +90,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Views\BackEnd\Recursos\css\animate.min.css" />
+    <Content Include="Views\BackEnd\Recursos\css\bootstrap.min.css" />
+    <Content Include="Views\BackEnd\Recursos\css\demo.css" />
+    <Content Include="Views\BackEnd\Recursos\css\paper-dashboard.css" />
+    <Content Include="Views\BackEnd\Recursos\css\themify-icons.css" />
+    <Content Include="Views\BackEnd\Recursos\fonts\themify.svg" />
+    <Content Include="Views\BackEnd\Recursos\img\apple-icon.png" />
+    <Content Include="Views\BackEnd\Recursos\img\background.jpg" />
+    <Content Include="Views\BackEnd\Recursos\img\faces\face-0.jpg" />
+    <Content Include="Views\BackEnd\Recursos\img\faces\face-1.jpg" />
+    <Content Include="Views\BackEnd\Recursos\img\faces\face-2.jpg" />
+    <Content Include="Views\BackEnd\Recursos\img\faces\face-3.jpg" />
+    <Content Include="Views\BackEnd\Recursos\img\favicon.png" />
+    <Content Include="Views\BackEnd\Recursos\img\new_logo.png" />
+    <Content Include="Views\BackEnd\Recursos\img\tim_80x80.png" />
+    <Content Include="Views\BackEnd\Recursos\js\bootstrap-checkbox-radio.js" />
+    <Content Include="Views\BackEnd\Recursos\js\bootstrap-notify.js" />
+    <Content Include="Views\BackEnd\Recursos\js\bootstrap.min.js" />
+    <Content Include="Views\BackEnd\Recursos\js\chartist.min.js" />
+    <Content Include="Views\BackEnd\Recursos\js\demo.js" />
+    <Content Include="Views\BackEnd\Recursos\js\jquery-1.10.2.js" />
+    <Content Include="Views\BackEnd\Recursos\js\paper-dashboard.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +124,39 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
+    <Content Include="Views\BackEnd\Recursos\fonts\themify.eot" />
+    <Content Include="Views\BackEnd\Recursos\fonts\themify.ttf" />
+    <Content Include="Views\BackEnd\Recursos\fonts\themify.woff" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\mixins\_buttons.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\mixins\_cards.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\mixins\_chartist.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\mixins\_icons.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\mixins\_inputs.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\mixins\_labels.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\mixins\_navbars.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\mixins\_sidebar.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\mixins\_tabs.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\mixins\_transparency.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\mixins\_vendor-prefixes.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\_alerts.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\_buttons.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\_cards.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\_chartist.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\_checkbox-radio.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\_dropdown.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\_footers.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\_inputs.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\_misc.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\_mixins.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\_navbars.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\_responsive.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\_sidebar-and-main-panel.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\_tables.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\_typography.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper\_variables.scss" />
+    <Content Include="Views\BackEnd\Recursos\sass\paper-dashboard.scss" />
+    <Content Include="Views\BackEnd\MasterPage\_layoutBackEnd.cshtml" />
+    <Content Include="Views\BackEnd\AdminPrincipal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -113,6 +168,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\FrontEnd\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
