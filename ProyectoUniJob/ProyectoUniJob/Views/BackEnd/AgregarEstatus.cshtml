@@ -1,0 +1,26 @@
+﻿@model BO.EstatusBO
+@{
+    ViewBag.Title = "AgregarEstatus";
+    Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
+}
+
+<h2>AgregarEstatus</h2>
+
+<div class="card">
+    <div class="header">
+        <h4>Persona</h4>
+    </div>
+    <div class="content">
+        <div class="row">
+            <div class="col-md-8">
+                @using (Html.BeginForm("AgregarEstatus", "Estatus", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label>Nombre completo</label>
+                        @Html.TextBoxFor(x => x.Estatus)
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
