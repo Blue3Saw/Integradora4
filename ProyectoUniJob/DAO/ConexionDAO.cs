@@ -15,7 +15,6 @@ namespace DAO
         DataSet DataSetAdaptador;
         SqlConnection con;
 
-
         public SqlConnection ConectarBD()
         {
             string cad_con = "Data Source = LAPTOP-80619S9J; Initial Catalog = 4Cuatrimestre; Integrated Security = True";
@@ -91,7 +90,6 @@ namespace DAO
             adaptador.Fill(DataSetAdaptador);
             this.CerrarConexion();
             return DataSetAdaptador;
-
         }
     }
 }

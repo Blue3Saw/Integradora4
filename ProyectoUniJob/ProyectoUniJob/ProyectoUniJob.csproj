@@ -112,11 +112,61 @@
     <Content Include="Recursos\BackEnd\js\demo.js" />
     <Content Include="Recursos\BackEnd\js\jquery-1.10.2.js" />
     <Content Include="Recursos\BackEnd\js\paper-dashboard.js" />
+    <Content Include="Recursos\FontEnd\css\bootstrap-select.css" />
+    <Content Include="Recursos\FontEnd\css\bootstrap.css" />
+    <Content Include="Recursos\FontEnd\css\creditly.css" />
+    <Content Include="Recursos\FontEnd\css\easy-responsive-tabs.css" />
+    <Content Include="Recursos\FontEnd\css\font-awesome.css" />
+    <Content Include="Recursos\FontEnd\css\jquery-ui.css" />
+    <Content Include="Recursos\FontEnd\css\jquery.seat-charts.css" />
+    <Content Include="Recursos\FontEnd\css\style.css" />
+    <Content Include="Recursos\FontEnd\fonts\fontawesome-webfont.svg" />
+    <Content Include="Recursos\FontEnd\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Recursos\FontEnd\images\1.jpg" />
+    <Content Include="Recursos\FontEnd\images\2.jpg" />
+    <Content Include="Recursos\FontEnd\images\4.jpg" />
+    <Content Include="Recursos\FontEnd\images\5.jpg" />
+    <Content Include="Recursos\FontEnd\images\buttonA_off.jpg" />
+    <Content Include="Recursos\FontEnd\images\buttonA_on.jpg" />
+    <Content Include="Recursos\FontEnd\images\cal.png" />
+    <Content Include="Recursos\FontEnd\images\cus.jpg" />
+    <Content Include="Recursos\FontEnd\images\lg.png" />
+    <Content Include="Recursos\FontEnd\images\lg1.png" />
+    <Content Include="Recursos\FontEnd\images\lg2.png" />
+    <Content Include="Recursos\FontEnd\images\lg3.png" />
+    <Content Include="Recursos\FontEnd\images\lg4.png" />
+    <Content Include="Recursos\FontEnd\images\lg5.png" />
+    <Content Include="Recursos\FontEnd\images\lg6.png" />
+    <Content Include="Recursos\FontEnd\images\lg7.png" />
+    <Content Include="Recursos\FontEnd\images\lg8.png" />
+    <Content Include="Recursos\FontEnd\images\lg9.png" />
+    <Content Include="Recursos\FontEnd\images\m1.jpg" />
+    <Content Include="Recursos\FontEnd\images\mobile.png" />
+    <Content Include="Recursos\FontEnd\images\movie-poster.jpg" />
+    <Content Include="Recursos\FontEnd\images\movie-show.jpg" />
+    <Content Include="Recursos\FontEnd\images\offer-bg.jpg" />
+    <Content Include="Recursos\FontEnd\images\paypal.png" />
+    <Content Include="Recursos\FontEnd\images\ph1.png" />
+    <Content Include="Recursos\FontEnd\images\seat2.jpg" />
+    <Content Include="Recursos\FontEnd\images\top-arrow.png" />
+    <Content Include="Recursos\FontEnd\js\bootstrap-select.js" />
+    <Content Include="Recursos\FontEnd\js\bootstrap.js" />
+    <Content Include="Recursos\FontEnd\js\contact_me.js" />
+    <Content Include="Recursos\FontEnd\js\creditly.js" />
+    <Content Include="Recursos\FontEnd\js\easing.js" />
+    <Content Include="Recursos\FontEnd\js\easyResponsiveTabs.js" />
+    <Content Include="Recursos\FontEnd\js\jqBootstrapValidation.js" />
+    <Content Include="Recursos\FontEnd\js\jquery-2.2.3.min.js" />
+    <Content Include="Recursos\FontEnd\js\jquery-ui.js" />
+    <Content Include="Recursos\FontEnd\js\jquery.seat-charts.js" />
+    <Content Include="Recursos\FontEnd\js\move-top.js" />
+    <Content Include="Recursos\FontEnd\js\responsiveslides.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EstatusController.cs" />
+    <Compile Include="Controllers\FrontEnd\PrincipalFEController.cs" />
     <Compile Include="Controllers\PruebaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -162,6 +212,20 @@
     <Content Include="Views\Prueba\Index.cshtml" />
     <Content Include="Views\BackEnd\TablaEstatus.cshtml" />
     <Content Include="Views\BackEnd\AgregarEstatus.cshtml" />
+    <Content Include="Views\FrontEnd\MasterPage\_layoutFrontEnd.cshtml" />
+    <Content Include="Recursos\FontEnd\fonts\fontawesome-webfont.eot" />
+    <Content Include="Recursos\FontEnd\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Recursos\FontEnd\fonts\fontawesome-webfont.woff" />
+    <Content Include="Recursos\FontEnd\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Recursos\FontEnd\fonts\FontAwesome.otf" />
+    <Content Include="Recursos\FontEnd\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Recursos\FontEnd\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Recursos\FontEnd\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Recursos\FontEnd\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Recursos\FontEnd\fonts\Montserrat-Regular.ttf" />
+    <Content Include="Recursos\FontEnd\fonts\OpenSans-Regular.ttf" />
+    <Content Include="Recursos\FontEnd\fonts\Oxygen-Regular.ttf" />
+    <Content Include="Views\PrincipalFE\PrincipalFE.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -171,8 +235,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\BackEnd\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\FrontEnd\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BO\BO.csproj">

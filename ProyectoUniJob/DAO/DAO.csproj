@@ -40,10 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalificacionesDAO.cs" />
+    <Compile Include="ClasificacionTareaDAO.cs" />
     <Compile Include="ConexionDAO.cs" />
     <Compile Include="EstatusDAO.cs" />
+    <Compile Include="FotosDAO.cs" />
+    <Compile Include="MensajesDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PruebaDAO.cs" />
+    <Compile Include="TareasDAO.cs" />
+    <Compile Include="TipoUsuarioDAO.cs" />
+    <Compile Include="UsuariosDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BO\BO.csproj">
