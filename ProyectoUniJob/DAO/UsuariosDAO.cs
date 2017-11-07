@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace DAO
 {
-    class UsuariosDAO
+    public class UsuariosDAO
     {
         ConexionDAO Conex = new ConexionDAO();
         string sentencia;
@@ -79,34 +79,34 @@ namespace DAO
         }
 
         //Logins para usuarios
-        public DataSet LoginAdministrador(object ObjU)
+        public int LoginAdministrador(object ObjU)
         {
             UsuarioBO Datos = (UsuarioBO)ObjU;
             SqlCommand Com = new SqlCommand("SELECT * FROM Usuarios WHERE Email = @Email AND Contraseña = @Contraseña AND TipoUs = 1");
             Com.Parameters.Add("@Email", SqlDbType.VarChar).Value = Datos.Email;
             Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Contraseña;
             Com.CommandType = CommandType.Text;
-            return Conex.EjecutarSentencia(Com);
+            return Conex.EjecutarComando(Com);
         }
 
-        public DataSet LoginEstudiante(object ObjU)
+        public int LoginEstudiante(object ObjU)
         {
             UsuarioBO Datos = (UsuarioBO)ObjU;
             SqlCommand Com = new SqlCommand("SELECT * FROM Usuarios WHERE Email = @Email AND Contraseña = @Contraseña AND TipoUs = 3");
             Com.Parameters.Add("@Email", SqlDbType.VarChar).Value = Datos.Email;
             Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Contraseña;
             Com.CommandType = CommandType.Text;
-            return Conex.EjecutarSentencia(Com);
+            return Conex.EjecutarComando(Com);
         }
 
-        public DataSet LoginEmpleador(object ObjU)
+        public int LoginEmpleador(object ObjU)
         {
             UsuarioBO Datos = (UsuarioBO)ObjU;
             SqlCommand Com = new SqlCommand("SELECT * FROM Usuarios WHERE Email = @Email AND Contraseña = @Contraseña AND TipoUs = 2");
             Com.Parameters.Add("@Email", SqlDbType.VarChar).Value = Datos.Email;
             Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Contraseña;
             Com.CommandType = CommandType.Text;
-            return Conex.EjecutarSentencia(Com);
+            return Conex.EjecutarComando(Com);
         }
     }
 }

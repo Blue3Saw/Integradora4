@@ -167,6 +167,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EstatusController.cs" />
     <Compile Include="Controllers\FrontEnd\PrincipalFEController.cs" />
+    <Compile Include="Controllers\FrontEnd\UsuarioController.cs" />
     <Compile Include="Controllers\PruebaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -237,6 +238,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\BackEnd\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BO\BO.csproj">

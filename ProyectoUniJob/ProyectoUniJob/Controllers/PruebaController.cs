@@ -10,12 +10,12 @@ namespace ProyectoUniJob.Controllers
 {
     public class PruebaController : Controller
     {
-        PruebaDAO ObjPersona = new PruebaDAO();
+        EstatusDAO ObjPersona = new EstatusDAO();
         // GET: Prueba
 
         public ActionResult Index()
         {
-            return View(ObjPersona.VerTabla());
+            return View(ObjPersona.VerEstatus());
         }
     }
 }

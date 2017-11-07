@@ -11,30 +11,17 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Clave</th>
-            <th>Nombre(s)</th>
-            <th>Apellidos</th>
-            <th>Dirección</th>
-            <th>Número</th>
-            <th>Email</th>
-            <th>Fecha nacimiento</th>
-            <th>Ruta imagen</th>
+            <th>Codigo</th>
+            <th>Estatus</th>
         </tr>
     </thead>
     <tbody>
         @foreach (DataRow row in Model.Rows)
         {
-            <tr id="fila_@row["Clave"]">
-                <td>@row["Clave"]</td>
-                <td>@row["Nombres"]</td>
-                <td>@row["Apellidos"]</td>
-                <td>@row["Direccion"]</td>
-                <td>@row["Numero"]</td>
-                <td>@row["Email"]</td>
-                <td>@row["FechaNac"]</td>
-                <td>@row["RutaImagen"]</td>
+            <tr id="fila_@row["Codigo"]">
+                <td>@row["Codigo"]</td>
+                <td>@row["Estatus"]</td>
             </tr>
-
         }
     </tbody>
 </table>
