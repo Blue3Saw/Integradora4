@@ -227,6 +227,8 @@
     <Content Include="Recursos\FontEnd\fonts\OpenSans-Regular.ttf" />
     <Content Include="Recursos\FontEnd\fonts\Oxygen-Regular.ttf" />
     <Content Include="Views\PrincipalFE\PrincipalFE.cshtml" />
+    <Content Include="Views\FrontEnd\MasterPage\_layoutUsuarios.cshtml" />
+    <Content Include="Views\Prueba\Index2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

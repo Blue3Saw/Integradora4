@@ -32,5 +32,14 @@ namespace DAO
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
         }
+
+        public DataTable VerTipoUs()
+        {
+            sentencia = "SELECT * FROM TipoUsuario";
+            SqlDataAdapter Mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable TablaVirtual = new DataTable();
+            Mostar.Fill(TablaVirtual);
+            return TablaVirtual;
+        }
     }
 }

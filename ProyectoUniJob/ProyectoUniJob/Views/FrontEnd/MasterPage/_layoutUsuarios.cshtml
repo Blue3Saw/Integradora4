@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<!-- html -->
+<html>
+<!-- head -->
+<head>
+    <title>CollgeJob</title>
+    <link href="~/Recursos/FontEnd/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" /><!-- bootstrap-CSS -->
+    <link href="~/Recursos/FontEnd/css/font-awesome.css" rel="stylesheet" type="text/css" media="all" /><!-- Fontawesome-CSS -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type='text/javascript' src='~/Recursos/FontEnd/js/jquery-2.2.3.min.js'></script>
+    <!-- Custom Theme files -->
+    <!--theme-style-->
+    <link href="~/Recursos/FontEnd/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!--//theme-style-->
+    <!-- metatags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Online Recharge Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- /metatags -->
+    <!-- online fonts -->
+    <link href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext,vietnamese" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Oxygen:300,400,700&amp;subset=latin-ext" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+    <!-- /online fonts -->
+
+</head>
+<!-- /head -->
+<!-- body -->
+<body>
+    <!--header-->
+    <header>
+        <div class="container">
+            <!--logo-->
+            <div class="logo">
+                <h1><a href="index.html">CollgeJob</a></h1>
+            </div>
+            <!--//logo-->
+            <div class="clearfix"></div>
+        </div>
+    </header>
+    <!-- //header -->
+    <!-- innerbanner -->
+    <div class="agileits-inner-banner">
+
+    </div>
+    <!-- //innerbanner -->
+    <!-- breadcrumbs -->
+    <div class="w3layouts-breadcrumbs text-center">
+        <div class="container">
+            <span class="agile-breadcrumbs"><a href="index.html"><i class="fa fa-home home_1"></i></a> / <span>Estudiante</span></span>
+        </div>
+    </div>
+    <!-- //breadcrumbs -->
+    <!-- Pay -->
+    <div class="agile-pay w3layouts-content">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </div>
+
+    <!--Plug-in Initialisation-->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //Horizontal Tab
+        $('#parentHorizontalTab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion
+            width: 'auto', //auto or any width like 600px
+            fit: true, // 100% fit in a container
+            tabidentify: 'hor_1', // The tab groups identifier
+            activate: function(event) { // Callback function if tab is switched
+                var $tab = $(this);
+                var $info = $('#nested-tabInfo');
+                var $name = $('span', $info);
+                $name.text($tab.text());
+                $info.show();
+            }
+        });
+    });
+    </script>
+    <!-- // Pay -->
+    <!-- subscribe -->
+    <div class="w3-subscribe agileits-w3layouts">
+        <div class="container">
+            <div class="col-md-6 social-icons w3-agile-icons">
+                <h4>Join Us</h4>
+                <ul>
+                    <li><a href="#" class="fa fa-facebook sicon facebook"> </a></li>
+                    <li><a href="#" class="fa fa-twitter sicon twitter"> </a></li>
+                    <li><a href="#" class="fa fa-google-plus sicon googleplus"> </a></li>
+                    <li><a href="#" class="fa fa-dribbble sicon dribbble"> </a></li>
+                    <li><a href="#" class="fa fa-rss sicon rss"> </a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 w3-agile-subscribe-right">
+                <h3 class="w3ls-title">Subscribe to Our <br><span>Newsletter</span></h3>
+                <form action="#" method="post">
+                    <input type="email" name="email" placeholder="Enter your Email..." required="">
+                    <input type="submit" value="Subscribe">
+                    <div class="clearfix"> </div>
+                </form>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <!-- //subscribe -->
+    <!--footer-->
+    <footer>
+        <div class="w3l-footer-bottom">
+            <div class="container-fluid">
+                <div class="col-md-4 w3-footer-logo">
+                    <h2><a href="index.html">CollegeJob</a></h2>
+                </div>
+                <div class="col-md-8 agileits-footer-class">
+                    <p>© 2017 CollegeJob. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </footer>
+    <!--//footer-->
+    <!-- for bootstrap working -->
+    <script src="~/Recursos/FontEnd/js/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- easy-responsive-tabs -->
+    <link rel="stylesheet" type="text/css" href="~/Recursos/FontEnd/css/easy-responsive-tabs.css " />
+    <script src="~/Recursos/FontEnd/js/easyResponsiveTabs.js"></script>
+    <!-- //easy-responsive-tabs -->
+    <!-- here stars scrolling icon -->
+    <script type="text/javascript">
+				$(document).ready(function() {
+					/*
+						var defaults = {
+						containerID: 'toTop', // fading element id
+						containerHoverID: 'toTopHover', // fading element hover id
+						scrollSpeed: 1200,
+						easingType: 'linear'
+						};
+					*/
+
+					$().UItoTop({ easingType: 'easeOutQuart' });
+
+					});
+    </script>
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="~/Recursos/FontEnd/js/move-top.js"></script>
+    <script type="text/javascript" src="~/Recursos/FontEnd/js/easing.js"></script>
+    <script type="text/javascript">
+				jQuery(document).ready(function($) {
+					$(".scroll").click(function(event){
+						event.preventDefault();
+						$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+					});
+				});
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- //here ends scrolling icon -->
+</body>
+<!-- /body -->
+</html>
