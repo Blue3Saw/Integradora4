@@ -114,6 +114,7 @@
     <Content Include="Recursos\BackEnd\js\chartist.min.js" />
     <Content Include="Recursos\BackEnd\js\demo.js" />
     <Content Include="Recursos\BackEnd\js\jquery-1.10.2.js" />
+    <Content Include="Recursos\BackEnd\js\jquery-2.0.3.min.js" />
     <Content Include="Recursos\BackEnd\js\paper-dashboard.js" />
     <Content Include="Recursos\FontEnd\css\bootstrap-select.css" />
     <Content Include="Recursos\FontEnd\css\bootstrap.css" />
@@ -232,7 +233,8 @@
     <Content Include="Recursos\FontEnd\fonts\Oxygen-Regular.ttf" />
     <Content Include="Views\PrincipalFE\PrincipalFE.cshtml" />
     <Content Include="Views\AgregarEstudiante\Index.cshtml" />
-    <Content Include="Views\AgregarEstudiante\actulizarDatos_Admin.cshtml" />
+    <Content Include="Views\Usuario\Redireccionar.cshtml" />
+    <Content Include="Views\AgregarEstudiante\mostartabla.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -243,7 +245,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BO\BO.csproj">

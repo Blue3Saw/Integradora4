@@ -13,17 +13,17 @@
     @Html.AntiForgeryToken()
 
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-md-3">
                 <label class="control-label">
                     ID:
                 </label>
                 <div>
-                    <input type="text" class="form-control" name="ID" placeholder="ID" />
+                    <input type="text" class="form-control" name="ID" placeholder="ID" value="" />
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-md-3">
                 <label  class="control-label">
                     Nombre:
                 </label>
@@ -31,7 +31,7 @@
                     <input type="text" class="form-control" name="Nombre" placeholder="Nombre" required="required" />
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-md-3">
                 <label class="control-label">
                     Apellidos:
                 </label>
@@ -39,7 +39,7 @@
                     <input type="text" class="form-control" name="Apellidos" placeholder="Apellidos" required="required" />
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-md-3">
                 <label class="control-label">
                     Fecha de Nacimiento:
                 </label>
@@ -50,7 +50,7 @@
         </div>
         <div class="row">
             <div>
-                <div class="col-lg-3">
+                <div class="col-md-3">
                     <label class="control-label">
                         Email:
                     </label>
@@ -58,7 +58,7 @@
                         <input type="email" class="form-control" name="Email" placeholder="Email" required="required" />
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-md-3">
                     <label class="control-label">
                         Contraseña:
                     </label>
@@ -66,7 +66,7 @@
                         <input type="text" class="form-control" name="Contraseña" placeholder="Contraseña" required="required" />
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-md-3">
                     <label class="control-label">
                         Imagen:
                     </label>
@@ -78,7 +78,7 @@
         </div>
         <div class="row">
             <div>
-                <div class="col-lg-3">
+                <div class="col-md-3">
                     <label class="control-label">
                         Estado:
                     </label>
@@ -90,7 +90,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-md-3">
                     <label class="control-label">
                         Dirreccion:
                     </label>
@@ -98,12 +98,12 @@
                         <input type="text" class="form-control" name="dirreccion" placeholder="Contraseña" required="required" />
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-md-3">
                     <label class="control-label">
                         Telefono:
                     </label>
                     <div>
-                        <input type="tel" pattern="[0-9]{10}" class="form-control" name="Telefono" placeholder="Telefono" required="required" />
+                        <input type="tel" pattern="[0-9]{10}" class="form-control" name="Telefono" placeholder="Telefono" required="required" onkeypress="return valida(event)" maxlength="10" value="9"/>
                     </div>
                 </div>
             </div>
@@ -115,18 +115,18 @@
         </div>
         <div class="row">
             <div>
-                <div class="col-lg-3">
+                <div class="col-md-3">
                     <div>
                         <button type="submit" class="btn btn-success" name="agregar" value="1" onclick="alerta()">AGREGAR</button>
                        
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-md-3">
                     <div>
                         <button type="submit" class="btn btn-info" name="actualizar" value="2">ACTUALIZAR</button>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-md-3">
                     <div>
                         <button type="submit" class="btn btn-danger" name="eliminar" value="3">Eliminar</button>
                     </div>
@@ -134,7 +134,41 @@
             </div>
         </div>
 }
+        <div class="row">
+            <div class="col-lg-12">
+                <div>
+                    <input type="button" id="btn1" value="tabla"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="Tablausuarios"></div>
+            </div>
+        </div>
         @ViewBag.Script
     </div>
 </div>
+<script src="@Url.Content("~/Recursos/BackEnd/js/jquery-2.0.3.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btn1').click(function () {
+            $('#Tablausuarios').load('/AgregarEstudiante/mostartabla');
+        })
+    })
+</script>
+<script>
+function valida(e){
+    tecla = (document.all) ? e.keyCode : e.which;
 
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla==8){
+        return true;
+    }
+
+    // Patron de entrada, en este caso solo acepta numeros
+    patron =/[0-9]/;
+    tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
+}
+</script>

@@ -29,14 +29,17 @@ namespace ProyectoUniJob.Controllers.BackEnd
             int e = Convert.ToInt32(eliminar);
             //datos BO de Alumno
             BO.Nombre = Nombre;
-            BO.Codigo = int.Parse(ID);
+            if(ID != "")
+            {
+                BO.Codigo = int.Parse(ID);
+            }
             BO.Apellidos = Apellidos;
             BO.FechaNac = Convert.ToDateTime(cumpleanios);
             BO.Email = Email;
             BO.Contraseña = Contraseña;
             BO.Imagen = Imagen;
             BO.TipoUsuario = int.Parse(Tipo);
-            BO.Telefono = int.Parse(Telefono);
+            BO.Telefono = long.Parse(Telefono);
             BO.Estatus = "Activo";
 
             if (w > 0)
@@ -49,17 +52,21 @@ namespace ProyectoUniJob.Controllers.BackEnd
                 ObjUsuario.ActualizarUsuario(BO);
                 ViewBag.Script ="SE HA ACTULIZADO LOS DATOS DEL USUARIO CORRECTAMENTE" ;
             }
-            else if (e > 0)
-            {
-                ObjUsuario.EliminarUsuario(BO);
-                ViewBag.Script = "SE HA ELIMINADO EL USUARIO";
-            }
 
             return View("Index");
         }
         
-        public ActionResult actulizarDatos_Admin()
+        public ActionResult mostartabla()
         {
+            return View(ObjUsuario.TablaUsuarios());
+        }
+
+        public ActionResult Eliminar(string id)
+        {
+            UsuarioBO BO = new UsuarioBO();
+            BO.Codigo = int.Parse(id);
+            ObjUsuario.EliminarUsuario(BO);
+
             return View("Index");
         }
     }

@@ -108,5 +108,15 @@ namespace DAO
             Com.CommandType = CommandType.Text;
             return Conex.EjecutarComando(Com);
         }
+
+
+        public DataTable TablaUsuarios()
+        {
+            sentencia = "SELECT * FROM Usuarios";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
+        }
     }
 }
