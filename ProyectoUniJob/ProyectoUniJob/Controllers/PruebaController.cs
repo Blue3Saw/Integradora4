@@ -23,5 +23,10 @@ namespace ProyectoUniJob.Controllers
         {
             return View(ObjTipo.VerTipoUs());
         }
+
+        public ActionResult Index3()
+        {
+            return View(ObjTipo.VerTipoUs());
+        }
     }
 }

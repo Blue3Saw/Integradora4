@@ -42,5 +42,10 @@ namespace ProyectoUniJob.Controllers.FrontEnd
                 return RedirectToAction("Index", "Prueba");
             }
         }
+
+        public ActionResult RedireccionarAgregar()
+        {
+            return RedirectToAction("Redireccionar", "PrincipalFE");
+        }
     }
 }
