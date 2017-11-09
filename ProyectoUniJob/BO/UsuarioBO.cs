@@ -18,7 +18,7 @@ namespace BO
         public string Email { get; set; }
         public string Contraseña { get; set; }
         public int TipoUsuario { get; set; }
-        public int Estatus { get; set; }
+        public string Estatus { get; set; }
         public string Imagen { get; set; }
     }
 }

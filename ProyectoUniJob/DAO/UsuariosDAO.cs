@@ -54,7 +54,7 @@ namespace DAO
         public int EliminarUsuario(object ObjU)
         {
             UsuarioBO Dato = (UsuarioBO)ObjU;
-            SqlCommand SentenciaSQL = new SqlCommand("UPDATE Usuarios SET Estatus = 'Inactivo' WHERE Codigo = @Codigo");
+            SqlCommand SentenciaSQL = new SqlCommand("Delete from Usuarios WHERE Codigo = @Codigo");
             SentenciaSQL.Parameters.Add("@Codigo", SqlDbType.Int).Value = Dato.Codigo;
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);

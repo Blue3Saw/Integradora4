@@ -90,6 +90,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Recursos\BackEnd\css\alertify.core.css" />
+    <Content Include="Recursos\BackEnd\css\alertify.default.css" />
     <Content Include="Recursos\BackEnd\css\animate.min.css" />
     <Content Include="Recursos\BackEnd\css\bootstrap.min.css" />
     <Content Include="Recursos\BackEnd\css\demo.css" />
@@ -105,6 +107,7 @@
     <Content Include="Recursos\BackEnd\img\favicon.png" />
     <Content Include="Recursos\BackEnd\img\new_logo.png" />
     <Content Include="Recursos\BackEnd\img\tim_80x80.png" />
+    <Content Include="Recursos\BackEnd\js\alertify.js" />
     <Content Include="Recursos\BackEnd\js\bootstrap-checkbox-radio.js" />
     <Content Include="Recursos\BackEnd\js\bootstrap-notify.js" />
     <Content Include="Recursos\BackEnd\js\bootstrap.min.js" />
@@ -165,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BackEnd\AgregarEstudianteController.cs" />
     <Compile Include="Controllers\EstatusController.cs" />
     <Compile Include="Controllers\FrontEnd\PrincipalFEController.cs" />
     <Compile Include="Controllers\FrontEnd\UsuarioController.cs" />
@@ -227,6 +231,8 @@
     <Content Include="Recursos\FontEnd\fonts\OpenSans-Regular.ttf" />
     <Content Include="Recursos\FontEnd\fonts\Oxygen-Regular.ttf" />
     <Content Include="Views\PrincipalFE\PrincipalFE.cshtml" />
+    <Content Include="Views\AgregarEstudiante\Index.cshtml" />
+    <Content Include="Views\AgregarEstudiante\actulizarDatos_Admin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -236,7 +242,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\BackEnd\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Usuario\" />
   </ItemGroup>
