@@ -9,7 +9,7 @@
 
 <html>
 <head>
-    <title>UniJob</title>
+    <title>CollegeJob</title>
     <link href="~/Recursos/FontEnd/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" /><!-- bootstrap-CSS -->
     <link rel="stylesheet" href="~/Recursos/FontEnd/css/bootstrap-select.css"><!-- bootstrap-select-CSS -->
     <link href="~/Recursos/FontEnd/css/font-awesome.css" rel="stylesheet" type="text/css" media="all" /><!-- Fontawesome-CSS -->
@@ -39,11 +39,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <!--logo-->
             <div class="logo">
-                <h1><a href="index.html">UniJob</a></h1>
+                <h1><a href="index.html">CollegeJob</a></h1>
             </div>
             <!--//logo-->
             <div class="w3layouts-login">
-                <a data-toggle="modal" data-target="#myModal" href="#"><i class="glyphicon glyphicon-user"> </i>Login/Registrarse</a>
+                <a data-toggle="modal" data-target="#myModal" href="#"><i class="glyphicon glyphicon-user"> </i>Login</a>
+            </div>
+            <div class="w3layouts-login">
+                <a href=@Url.Action("Redireccionar", "Usuario")><i class="glyphicon glyphicon-plus"></i> Registrarme</a>
             </div>
             <div class="clearfix"></div>
             <!--Login modal-->
@@ -56,15 +59,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 &times;
                             </button>
                             <h4 class="modal-title" id="myModalLabel">
-                                Online Recharge
+                                CollegeJob
                             </h4>
                         </div>
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-md-8 extra-w3layouts" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
+                                <div class="col-md-12 extra-w3layouts" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
+                                        <li class="active"><a href="#Login" data-toggle="tab">Iniciar sesión</a></li>
                                     </ul>
                                     <!-- Tab panes -->
                                     <div class="tab-content">
@@ -83,7 +86,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="exampleInputPassword1" class="col-sm-2 control-label">
-                                                            Password
+                                                            Contraseña
                                                         </label>
                                                         <div class="col-sm-10">
                                                             <input type="password" class="form-control" name="Contraseña" placeholder="password" required="required" />
@@ -94,31 +97,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                         </div>
                                                         <div class="col-sm-10">
                                                             <button type="submit" class="submit btn btn-primary btn-sm">
-                                                                Submit
+                                                                Ingresar
                                                             </button>
                                                             <a href="javascript:;" class="agileits-forgot">Forgot your password?</a>
+                                                            <a href="#" class="agileits-forgot">Registrarme</a>
                                                         </div>
                                                     </div>
                                                 }
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="OR">
-                                        OR
-                                    </div>
-                                </div>
-                                <div class="col-md-4 extra-agileits">
-                                    <div class="row text-center sign-with">
-                                        <div class="col-md-12">
-                                            <h3 class="other-nw">
-                                                Sign in with
-                                            </h3>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="btn-group btn-group-justified">
-                                                <a href="#" class="btn btn-primary">Facebook</a> <a href="#" class="btn btn-danger">
-                                                    Google +
-                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -878,7 +863,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="w3l-footer-bottom">
             <div class="container-fluid">
                 <div class="col-md-4 w3-footer-logo">
-                    <h2><a href="index.html">UniJob</a></h2>
+                    <h2><a href="index.html">CollegeJob</a></h2>
                 </div>
                 <div class="col-md-8 agileits-footer-class">
                     <p>© 2017 Online Recharge. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>

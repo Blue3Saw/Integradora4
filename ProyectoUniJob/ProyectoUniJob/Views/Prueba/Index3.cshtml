@@ -1,0 +1,26 @@
+﻿@using System.Data;
+
+@{
+    ViewBag.Title = "Index3";
+    Layout = "~/Views/FrontEnd/MasterPage/_layoutUsuarios.cshtml";
+}
+
+<h2>Prueba</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Estatus</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DataRow row in Model.Rows)
+        {
+            <tr id="fila_@row["Codigo"]">
+                <td>@row["Codigo"]</td>
+                <td>@row["Tipo"]</td>
+            </tr>
+        }
+    </tbody>
+</table>
