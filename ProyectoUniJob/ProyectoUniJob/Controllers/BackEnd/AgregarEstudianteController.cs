@@ -29,14 +29,17 @@ namespace ProyectoUniJob.Controllers.BackEnd
             int e = Convert.ToInt32(eliminar);
             //datos BO de Alumno
             BO.Nombre = Nombre;
-            BO.Codigo = int.Parse(ID);
+            if(ID != "")
+            {
+                BO.Codigo = int.Parse(ID);
+            }
             BO.Apellidos = Apellidos;
             BO.FechaNac = Convert.ToDateTime(cumpleanios);
             BO.Email = Email;
             BO.Contraseña = Contraseña;
             BO.Imagen = Imagen;
             BO.TipoUsuario = int.Parse(Tipo);
-            BO.Telefono = int.Parse(Telefono);
+            BO.Telefono = long.Parse(Telefono);
             BO.Estatus = "Activo";
 
             if (w > 0)

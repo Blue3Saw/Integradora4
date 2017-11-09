@@ -5,10 +5,10 @@
 }
 
 <h2>Registro</h2>
-
+<div class="col-md-2"></div>
 @using (Ajax.BeginForm("AgregarEmp", "Usuario", new AjaxOptions() { HttpMethod = "POST" }))
 {
-    <div class="col-md-9 bann-info">
+    <div class="col-md-8 bann-info">
         <div class="book-a-ticket">
             <div class=" bann-info">
                 <div class="ban-top">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="bnr-left">
                     <label class="inputLabel">Teléfono:</label>
-                    <input name="Telefono" class="form-control" type="text" placeholder="Teléfono">
+                    <input name="Telefono" class="form-control" type="tel" placeholder="Teléfono" required="required" pattern="[0-9]{10}">
                 </div>
                 <div class="bnr-left">
                     <label class="inputLabel">Email:</label>
@@ -60,3 +60,4 @@
 
     </div>
 }
+<div class="col-md-2"></div>
