@@ -31,11 +31,11 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             }
             else if (ObjUsuario.LoginEmpleador(Datos) > 0)
             {
-                return RedirectToAction("Index2", "Prueba");
+                return RedirectToAction("IndexEmpleador", "Usuario");
             }
             else if (ObjUsuario.LoginEstudiante(Datos) > 0)
             {
-                return RedirectToAction("Index2", "Prueba");
+                return RedirectToAction("IndexEstudiante", "Usuario");
             }
             else
             {

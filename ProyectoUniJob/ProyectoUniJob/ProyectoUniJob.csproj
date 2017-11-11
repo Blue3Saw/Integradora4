@@ -171,6 +171,7 @@
     <Compile Include="Controllers\BackEnd\AgregarEstudianteController.cs" />
     <Compile Include="Controllers\EstatusController.cs" />
     <Compile Include="Controllers\FrontEnd\PrincipalFEController.cs" />
+    <Compile Include="Controllers\FrontEnd\TareasController.cs" />
     <Compile Include="Controllers\FrontEnd\UsuarioController.cs" />
     <Compile Include="Controllers\PruebaController.cs" />
     <Compile Include="Global.asax.cs">
@@ -234,6 +235,9 @@
     <Content Include="Views\AgregarEstudiante\Index.cshtml" />
     <Content Include="Views\AgregarEstudiante\actulizarDatos_Admin.cshtml" />
     <Content Include="Views\Usuario\Redireccionar.cshtml" />
+    <Content Include="Views\FrontEnd\MasterPage\_layoutUsuarios.cshtml" />
+    <Content Include="Views\Usuario\IndexEmpleador.cshtml" />
+    <Content Include="Views\Usuario\IndexEstudiante.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -244,6 +248,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Tareas\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BO\BO.csproj">

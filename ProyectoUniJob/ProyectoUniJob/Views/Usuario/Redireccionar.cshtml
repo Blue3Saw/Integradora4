@@ -1,69 +1,85 @@
-﻿
+﻿@model BO.MensajesBO
 @{
     ViewBag.Title = "Redireccionar";
     Layout = "~/Views/FrontEnd/MasterPage/_layoutUsuarios.cshtml";
 }
 
-<h2>Registro</h2>
-<div class="col-md-2"></div>
-@using (Ajax.BeginForm("AgregarEmp", "Usuario", new AjaxOptions() { HttpMethod = "POST" }))
-{
-    <div class="col-md-8 bann-info">
-        <div class="book-a-ticket">
-            <div class=" bann-info">
-                <div class="ban-top">
-                    <div class="bnr-left">
-                        <label class="inputLabel">Nombre:</label>
-                        <input name="Nombre" class="form-control" type="text" placeholder="Nombre" required="required" />
-                    </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    <div class="w3layouts-breadcrumbs text-center">
+        <div class="container">
+            <span class="agile-breadcrumbs"><a href="index.html"><i class="fa fa-home home_1"></i></a> / <span>Estudiante</span></span>
+        </div>
+    </div>
 
-                    <div class="bnr-left">
-                        <label class="inputLabel">Apellidos:</label>
-                        <input name="Apellidos" class="form-control" type="text" placeholder="Apellidos" required="required" />
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="ban-bottom">
-                    <div class="bnr-right">
-                        <label class="inputLabel">Fecha de nacimiento:</label>
-                        <input name="FechaNac" class="date form-control" id="datepicker" type="text" placeholder="dd-mm-yyyy" required="required" />
-                    </div>
-                    <div class="clearfix"></div>
-                    <!-- start-date-piker -->
-                    <link rel="stylesheet" href="~/Recursos/FontEnd/css/jquery-ui.css">
-                    <script src="~/Recursos/FontEnd/js/jquery-ui.js"></script>
-                    <script>
+    <div class="agile-pay w3layouts-content">
+        <div class="container">
+            <h2>Registro</h2>
+            <div class="col-md-2"></div>
+            @using (Ajax.BeginForm("AgregarEmp", "Usuario", new AjaxOptions() { HttpMethod = "POST" }))
+            {
+                <div class="col-md-8 bann-info">
+                    <div class="book-a-ticket">
+                        <div class=" bann-info">
+                            <div class="ban-top">
+                                <div class="bnr-left">
+                                    <label class="inputLabel">Nombre:</label>
+                                    <input name="Nombre" class="form-control" type="text" placeholder="Nombre" required="required" />
+                                </div>
+
+                                <div class="bnr-left">
+                                    <label class="inputLabel">Apellidos:</label>
+                                    <input name="Apellidos" class="form-control" type="text" placeholder="Apellidos" required="required" />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="ban-bottom">
+                                <div class="bnr-right">
+                                    <label class="inputLabel">Fecha de nacimiento:</label>
+                                    <input name="FechaNac" class="date form-control" id="datepicker" type="text" placeholder="dd-mm-yyyy" required="required" />
+                                </div>
+                                <div class="clearfix"></div>
+                                <!-- start-date-piker -->
+                                <link rel="stylesheet" href="~/Recursos/FontEnd/css/jquery-ui.css">
+                                <script src="~/Recursos/FontEnd/js/jquery-ui.js"></script>
+                                <script>
 														$(function() {
 														$( "#datepicker,#datepicker1" ).datepicker();
 														});
-                    </script>
-                    <!-- /End-date-piker -->
-                </div>
-                <div class="bnr-left">
-                    <label class="inputLabel">Teléfono:</label>
-                    <input name="Telefono" maxlength="10" placeholder="Teléfono" class="form-control" type="text" inputmode="numeric"onkeypress="return valida(event)" pattern="[0-9]{10}">
-                </div>
-                <div class="bnr-left">
-                    <label class="inputLabel">Email:</label>
-                    <input name="Email" class="form-control" type="text" placeholder="Correo electrónico" required="required" />
-                </div>
-                <div class="bnr-left">
-                    <label class="inputLabel">Contraseña:</label>
-                    <input name="Contraseña" class="form-control" type="password" placeholder="Contraseña" required="required" />
-                </div>
-                <div class="search">
-                    <input type="submit" class="submit" value="Registrarme">
+                                </script>
+                                <!-- /End-date-piker -->
+                            </div>
+                            <div class="bnr-left">
+                                <label class="inputLabel">Teléfono:</label>
+                                <input name="Telefono" maxlength="10" placeholder="Teléfono" class="form-control" type="text" inputmode="numeric" onkeypress="return valida(event)" pattern="[0-9]{10}">
+                            </div>
+                            <div class="bnr-left">
+                                <label class="inputLabel">Email:</label>
+                                <input name="Email" class="form-control" type="text" placeholder="Correo electrónico" required="required" />
+                            </div>
+                            <div class="bnr-left">
+                                <label class="inputLabel">Contraseña:</label>
+                                <input name="Contraseña" class="form-control" type="password" placeholder="Contraseña" required="required" />
+                            </div>
+                            <div class="search">
+                                <input type="submit" class="submit" value="Registrarme" onclick="alert();">
+
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
-            </div>
+
+            }
+            <div class="col-md-2"></div>
         </div>
-
     </div>
 
-}
-<div class="col-md-2"></div>
-
-<script>
+    <script>
 function valida(e){
     tecla = (document.all) ? e.keyCode : e.which;
 
@@ -71,10 +87,24 @@ function valida(e){
     if (tecla==8){
         return true;
     }
-        
+
     // Patron de entrada, en este caso solo acepta numeros
     patron =/[0-9]/;
     tecla_final = String.fromCharCode(tecla);
     return patron.test(tecla_final);
-}
-</script>
+    }
+    </script>
+    <script type="text/javascript">
+        function alert() {
+            if ($("#Mensaje").val() == null)
+            {
+                swal("Felicidades", "Te haz registrado", "success");
+            }
+            else
+            {
+                swal("Error", "Error", "error")
+            }
+        }
+    </script>
+</body>
+</html>

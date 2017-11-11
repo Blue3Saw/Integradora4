@@ -13,9 +13,14 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         UsuariosDAO ObjUsuario = new UsuariosDAO();
 
         // GET: Usuario
-        public ActionResult Index()
+        public ActionResult IndexEmpleador()
         {
-            return View();
+            return View("IndexEmpleador");
+        }
+
+        public ActionResult IndexEstudiante()
+        {
+            return View("IndexEstudiante");
         }
 
         public ActionResult Redireccionar()
