@@ -28,22 +28,23 @@
                         <label class="inputLabel">Fecha de la tarea a realizar:</label>
                         <input name="FechaTarea" class="date form-control" id="datepicker" type="text" placeholder="dd-mm-yyyy" required="required" />
                     </div>
+                    <label class="inputLabel">Hora de inicio de la tarea a realizar:</label>
                     <div class="input-group clockpicker" data-autoclose="true">
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-time"></span>
                         </span>
-                        <label class="inputLabel">Hora de inicio de la tarea a realizar:</label>
                         <input name="HoraInicioTarea" class="form-control" id="clockpicker" type="text" value="09:30" required="required" />
                     </div>                    
+                    <label class="inputLabel">Hora de termino de la tarea a realizar:</label>
                     <div class="input-group clockpicker" data-autoclose="true" >
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-time"></span>
                         </span>
-                        <label class="inputLabel">Hora de termino de la tarea a realizar:</label>
                         <input name="HoraFinTarea" class="form-control" id="clockpicker" type="text" value="09:30" required="required" />
                     </div>
                     <div class="clearfix"></div>
                     <!-- start-date-piker -->
+                    <script src="~/Recursos/FontEnd/js/clockpicker.js"></script>
                     <link rel="stylesheet" href="~/Recursos/FontEnd/css/jquery-ui.css">
                     <script src="~/Recursos/FontEnd/js/jquery-ui.js"></script>
                     <script>
