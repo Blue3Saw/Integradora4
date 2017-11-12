@@ -59,5 +59,11 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         {
             return View(ObjDAO.TodasTareas());
         }
+
+        public ActionResult TareasAcepUsuario()
+        {
+            UsuarioBO Datos = new UsuarioBO();
+            return View(ObjDAO.TareasAcepUsuario(Datos));
+        }
     }
 }

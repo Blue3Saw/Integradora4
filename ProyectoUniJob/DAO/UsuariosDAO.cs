@@ -109,6 +109,17 @@ namespace DAO
             return Conex.EjecutarComando(Com);
         }
 
+        //------------------------------------------------------------------------------------------------------
+
+
+        public DataSet VerPerfil(int Codigo)
+        {
+            UsuarioBO Datos = new UsuarioBO();
+            SqlCommand Com = new SqlCommand("SELECT * FROM Usuarios WHERE Codigo = @Codigo");
+            Com.Parameters.Add("@Codigo", SqlDbType.VarChar).Value = Codigo;
+            Com.CommandType = CommandType.Text;
+            return Conex.EjecutarSentencia(Com);
+        }
 
         public DataTable TablaUsuarios()
         {

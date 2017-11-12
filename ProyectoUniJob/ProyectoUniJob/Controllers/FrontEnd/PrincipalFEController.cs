@@ -27,19 +27,22 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             Datos.Contraseña = Contraseña;
             if (ObjUsuario.LoginAdministrador(Datos) > 0)
             {
+                Session["Codigo"] = ObjUsuario.LoginAdministrador(Datos);
                 return RedirectToAction("Index", "Prueba");
             }
             else if (ObjUsuario.LoginEmpleador(Datos) > 0)
             {
+                Session["Codigo"] = ObjUsuario.LoginAdministrador(Datos);
                 return RedirectToAction("IndexEmpleador", "Usuario");
             }
             else if (ObjUsuario.LoginEstudiante(Datos) > 0)
             {
+                Session["Codigo"] = ObjUsuario.LoginAdministrador(Datos);
                 return RedirectToAction("IndexEstudiante", "Usuario");
             }
             else
             {
-                return RedirectToAction("Index", "Prueba");
+                return RedirectToAction("Index", "PrincipalFE");
             }
         }
 

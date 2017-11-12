@@ -244,6 +244,8 @@
     <Content Include="Views\Usuario\IndexEstudiante.cshtml" />
     <Content Include="Views\FrontEnd\MasterPage\_layoutUsuarios.cshtml" />
     <Content Include="Views\Tareas\TodasTareas.cshtml" />
+    <Content Include="Views\Usuario\VerPerfil.cshtml" />
+    <Content Include="Views\Tareas\TareasAcepUsuario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
