@@ -12,7 +12,7 @@ namespace DAO
     public class TareasDAO
     {
         ConexionDAO Conex = new ConexionDAO();
-        string sentencia;
+        //string sentencia;
 
         public int AgregarTarea(object ObjT)
         {

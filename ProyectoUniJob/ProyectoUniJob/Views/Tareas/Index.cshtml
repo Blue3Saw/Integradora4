@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/FrontEnd/MasterPage/_layoutUsuarios.cshtml";
+}
+
+<h2>Agregar una tarea</h2>
+<div class="col-md-2"></div>
+@using (Ajax.BeginForm("AgregarTarea", "Tareas", new AjaxOptions() { HttpMethod = "POST" }))
+{
+    <div class="col-md-8 bann-info">
+        <div class="book-a-ticket">
+            <div class="bann-info">
+                <div class="ban-top">
+                    <div class="bnr-left">
+                        <label class="inputLabel">ID:</label>
+                        <input name="IdTarea" class="form-control" type="text"  value="" />
+                    </div>                    
+                    <div class="clearfix"></div>
+                    <div class="bnr-left">
+                        <label class="inputLabel">Nombre Usuario:</label>
+                        <input name="NombreUsu" class="form-control" type="text"  required="required" />
+                    </div>                    
+                    <div class="clearfix"></div>
+                </div>
+                <div class="ban-bottom">
+                    <div class="bnr-right">
+                        <label class="inputLabel">Fecha de la tarea a realizar:</label>
+                        <input name="FechaTarea" class="date form-control" id="datepicker" type="text" placeholder="dd-mm-yyyy" required="required" />
+                    </div>
+                    <div class="input-group clockpicker" data-autoclose="true">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </span>
+                        <label class="inputLabel">Hora de inicio de la tarea a realizar:</label>
+                        <input name="HoraInicioTarea" class="form-control" id="clockpicker" type="text" value="09:30" required="required" />
+                    </div>                    
+                    <div class="input-group clockpicker" data-autoclose="true" >
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </span>
+                        <label class="inputLabel">Hora de termino de la tarea a realizar:</label>
+                        <input name="HoraFinTarea" class="form-control" id="clockpicker" type="text" value="09:30" required="required" />
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- start-date-piker -->
+                    <link rel="stylesheet" href="~/Recursos/FontEnd/css/jquery-ui.css">
+                    <script src="~/Recursos/FontEnd/js/jquery-ui.js"></script>
+                    <script>
+														$(function() {
+														    $("#datepicker,#datepicker1").datepicker();														   
+														});
+
+                    </script>
+                    <script>
+														$(function() {														   
+														    $('.clockpicker').clockpicker();
+														});
+
+                    </script>
+                    <!-- /End-date-piker -->
+                </div>
+               <div class="bnr-left">
+                   <label class="control-label">Tipo de tarea:</label>
+                   <div>
+                       <select name="TipoTarea" class="form-control">
+                           <option value="1">Hogar</option>
+                           <option value="2">Diligencías</option>
+                       </select>
+                   </div>
+               </div>
+                <div class="bnr-left">
+                    <label class="inputLabel">Descripción:</label>
+                    <input name="Descripcion" class="form-control" type="text"  required="required" />
+                </div>
+                <div class="bnr-left">
+                    <label class="inputLabel">Estátus:</label>
+                    <div>
+                        <select name="TipoTarea" class="form-control">
+                            <option value="1">Publicada</option>
+                            <option value="2">En Espera</option>
+                            <option value="3">Rechazada</option>
+                            <option value="4">En proceso</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <div class="col-md-3">
+                            <div>
+                                <button type="submit" class="btn btn-success" name="agregar" value="1" onclick="alerta()">AGREGAR</button>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div>
+                                <button type="submit" class="btn btn-info" name="actualizar" value="2">ACTUALIZAR</button>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div>
+                                <button type="submit" class="btn btn-danger" name="eliminar" value="3">ELIMINAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+<script>
+function valida(e){
+    tecla = (document.all) ? e.keyCode : e.which;
+
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla==8){
+        return true;
+    }
+
+    // Patron de entrada, en este caso solo acepta numeros
+    patron =/[0-9]/;
+    tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
+}
+</script>
+

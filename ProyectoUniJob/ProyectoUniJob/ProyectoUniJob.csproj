@@ -118,11 +118,13 @@
     <Content Include="Recursos\BackEnd\js\paper-dashboard.js" />
     <Content Include="Recursos\FontEnd\css\bootstrap-select.css" />
     <Content Include="Recursos\FontEnd\css\bootstrap.css" />
+    <Content Include="Recursos\FontEnd\css\clockpicker.css" />
     <Content Include="Recursos\FontEnd\css\creditly.css" />
     <Content Include="Recursos\FontEnd\css\easy-responsive-tabs.css" />
     <Content Include="Recursos\FontEnd\css\font-awesome.css" />
     <Content Include="Recursos\FontEnd\css\jquery-ui.css" />
     <Content Include="Recursos\FontEnd\css\jquery.seat-charts.css" />
+    <Content Include="Recursos\FontEnd\css\standalone.css" />
     <Content Include="Recursos\FontEnd\css\style.css" />
     <Content Include="Recursos\FontEnd\fonts\fontawesome-webfont.svg" />
     <Content Include="Recursos\FontEnd\fonts\glyphicons-halflings-regular.svg" />
@@ -155,6 +157,7 @@
     <Content Include="Recursos\FontEnd\images\top-arrow.png" />
     <Content Include="Recursos\FontEnd\js\bootstrap-select.js" />
     <Content Include="Recursos\FontEnd\js\bootstrap.js" />
+    <Content Include="Recursos\FontEnd\js\clockpicker.js" />
     <Content Include="Recursos\FontEnd\js\contact_me.js" />
     <Content Include="Recursos\FontEnd\js\creditly.js" />
     <Content Include="Recursos\FontEnd\js\easing.js" />
@@ -172,6 +175,7 @@
     <Compile Include="Controllers\BackEnd\AgregarEstudianteController.cs" />
     <Compile Include="Controllers\EstatusController.cs" />
     <Compile Include="Controllers\FrontEnd\PrincipalFEController.cs" />
+    <Compile Include="Controllers\FrontEnd\TareasController.cs" />
     <Compile Include="Controllers\FrontEnd\UsuarioController.cs" />
     <Compile Include="Controllers\PruebaController.cs" />
     <Compile Include="Global.asax.cs">
@@ -235,6 +239,10 @@
     <Content Include="Views\AgregarEstudiante\Index.cshtml" />
     <Content Include="Views\Usuario\Redireccionar.cshtml" />
     <Content Include="Views\AgregarEstudiante\mostartabla.cshtml" />
+    <Content Include="Views\Tareas\Index.cshtml" />
+    <Content Include="Views\Usuario\IndexEmpleador.cshtml" />
+    <Content Include="Views\Usuario\IndexEstudiante.cshtml" />
+    <Content Include="Views\FrontEnd\MasterPage\_layoutUsuarios.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -245,6 +253,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\TipoUsuario\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BO\BO.csproj">
