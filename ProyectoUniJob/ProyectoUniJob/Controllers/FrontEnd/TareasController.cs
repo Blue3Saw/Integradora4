@@ -53,7 +53,11 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             ObjDAO.EliminarTarea(objBO);
             return View("Index");
         }
+        
 
-
+        public ActionResult TodasTareas()
+        {
+            return View(ObjDAO.TodasTareas());
+        }
     }
 }

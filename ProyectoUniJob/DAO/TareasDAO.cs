@@ -12,7 +12,7 @@ namespace DAO
     public class TareasDAO
     {
         ConexionDAO Conex = new ConexionDAO();
-        //string sentencia;
+        string Sentencia;
 
         public int AgregarTarea(object ObjT)
         {
@@ -62,6 +62,15 @@ namespace DAO
             SentenciaSQL.Parameters.Add("@Estatus", SqlDbType.Int).Value = Dato.CodigoEstatus;
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
+        }
+
+        public DataTable TodasTareas()
+        {
+            Sentencia = "SELECT T.Codigo, T.Descripcion, T.Fecha, T.HoraInicio, T.HoraFinal, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion FROM Tareas T INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo WHERE T.Estatus = 1";
+            SqlDataAdapter mostar = new SqlDataAdapter(Sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
         }
     }
 }

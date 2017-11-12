@@ -16,63 +16,20 @@
         <!--Horizontal Tab-->
         <div id="parentHorizontalTab">
             <ul class="resp-tabs-list hor_1">
-                <li>Tareas disponibles</li>
+                <li>Inicio</li>
+                <li id="tdispo">Tareas disponibles</li>
                 <li>Mis tareas</li>
                 <li>Mensajes</li>
                 <li>Perfil</li>
             </ul>
             <div class="resp-tabs-container hor_1">
+                <div>
+
+                </div>
 
                 <!--Todas las tareas-->
-                <div>
-                    <div class="creditly-card-form agileinfo_form">
-                        <section class="creditly-wrapper wthree, w3_agileits_wrapper">
-                            <div class="credit-card-wrapper">
-                                <div class="first-row form-group">
-
-                                    <!--Poner un "repeater"-->
-                                    <div class="col-md-12 movie-preview">
-                                        <div class="m-movie-title">
-                                            <a class="m-movie-link" href="select-show.html">Baahubali 2: The Conclusion</a>
-                                            <div class="clearfix"></div>
-                                            <div class="m-r-date">
-                                                <p><i class="fa fa-calendar-o"></i>Date here</p>
-                                                <a href="select-show.html">book now</a>
-                                            </div>
-                                            <div class="m-r-like">
-                                                <a href="#">Ver más</a>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
-                                    <!--Fin repeater-->
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                    <!-- credit-card -->
-                    <script type="text/javascript" src="~/Recursos/FontEnd/js/creditly.js"></script>
-                    <link rel="stylesheet" href="~/Recursos/FontEnd/css/creditly.css" type="text/css" media="all" />
-
-                    <script type="text/javascript">
-			$(function() {
-			  var creditly = Creditly.initialize(
-				  '.creditly-wrapper .expiration-month-and-year',
-				  '.creditly-wrapper .credit-card-number',
-				  '.creditly-wrapper .security-code',
-				  '.creditly-wrapper .card-type');
-
-			  $(".creditly-card-form .submit").click(function(e) {
-				e.preventDefault();
-				var output = creditly.validate();
-				if (output) {
-				  // Your validated credit card output
-				  console.log(output);
-				}
-			  });
-			});
-                    </script>
-                    <!-- //credit-card -->
+                <div id="alltareas">
+                    
 
                 </div>
                 <!--Fin Tareas-->
@@ -156,6 +113,16 @@
         </div>
     </div>
 </div>
+
+
+<script src="@Url.Content("~/Recursos/BackEnd/js/jquery-2.0.3.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tdispo').click(function () {
+            $('#alltareas').load('/Tareas/TodasTareas');
+        })
+    })
+</script>
 
 <!--Plug-in Initialisation-->
 <script type="text/javascript">
