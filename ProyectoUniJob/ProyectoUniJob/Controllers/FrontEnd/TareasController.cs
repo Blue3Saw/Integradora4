@@ -15,6 +15,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         // GET: Tareas
         public ActionResult Index()
         {
+       
             return View();
         }
         public ActionResult AgregarTarea(string agregar,string modificar,string eliminar, string id, string idUsu, string fecha, string horaI, string horaF, string tipo,string descrip, string estatus)
@@ -62,8 +63,9 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult TareasAcepUsuario()
         {
-            UsuarioBO Datos = new UsuarioBO();
-            return View(ObjDAO.TareasAcepUsuario(Datos));
+            UsuarioBO dato = new UsuarioBO();
+            dato.Codigo = 3;
+            return View(ObjDAO.TareasAcepUsuario(dato.Codigo));
         }
     }
 }
