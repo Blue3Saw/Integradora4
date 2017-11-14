@@ -47,7 +47,9 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult VerPerfil()
         {
-            return View(ObjUsuario.VerPerfil(2));
+            UsuarioBO Dato = new UsuarioBO();
+            Dato.Codigo = 2;
+            return View(ObjUsuario.VerPerfil(Dato.Codigo));
         }
 
         public ActionResult ActualizarPerfil(UsuarioBO Obj)

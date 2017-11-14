@@ -112,26 +112,13 @@ namespace DAO
         //------------------------------------------------------------------------------------------------------
 
 
-        public UsuarioBO VerPerfil(int Codigo)
+        public DataTable VerPerfil(int Codigo)
         {
             UsuarioBO Datos = new UsuarioBO();
             SqlCommand Com = new SqlCommand("SELECT * FROM Usuarios WHERE Codigo = @Codigo");
             Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
             Com.CommandType = CommandType.Text;
-
-            var _fila = Conex.EjecutarSentencia(Com).Tables[0].Rows[0];
-            {
-                Datos.Codigo = int.Parse(_fila.ItemArray[0].ToString());
-                Datos.Nombre = _fila.ItemArray[1].ToString();
-                Datos.Apellidos = _fila.ItemArray[2].ToString();
-                Datos.FechaNac = DateTime.Parse(_fila.ItemArray[4].ToString());
-                Datos.Telefono = long.Parse(_fila.ItemArray[5].ToString());
-                Datos.Email = _fila.ItemArray[6].ToString();
-                Datos.Contraseña = _fila.ItemArray[7].ToString();
-                Datos.Imagen = _fila.ItemArray[8].ToString();
-            }
-
-            return Datos;
+            return Conex.EjecutarSentencia(Com).Tables[0];
         }
 
         public DataTable TablaUsuarios()

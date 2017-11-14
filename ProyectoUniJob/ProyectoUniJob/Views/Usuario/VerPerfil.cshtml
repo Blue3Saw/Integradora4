@@ -1,6 +1,4 @@
-﻿@using BO;
-@model UsuarioBO
-
+﻿@using System.Data;
 
 @{
     Layout = null;
@@ -8,55 +6,57 @@
 
 @using (Html.BeginForm("ActualizarPerfil", "Usuario", FormMethod.Post))
 {
-    <div class="col-md-8 bann-info">
-        <div class="book-a-ticket">
-            <div class="bann-info ">
-                <div class="ban-top">
-                    <div class="bnr-left">
-                        <label class="inputLabel">Nombre:</label>
-                        @Html.TextBoxFor(x => x.Nombre, new { Class="form-control", PlaceHolder="Nombre" })
-                        <input name="Nombre" class="form-control" type="text" placeholder="Nombre" required="required" />
-                    </div>
+    foreach (DataRow row in Model.Rows)
+    {
+        <div class="col-md-8 bann-info">
+            <div class="book-a-ticket">
+                <div class="bann-info ">
+                    <div class="ban-top">
+                        <div class="bnr-left">
+                            <label class="inputLabel">Nombre:</label>
+                            <input name="Nombre" value="@row["Nombre"]" class="form-control" type="text" placeholder="Nombre" required="required" />
+                        </div>
 
-                    <div class="bnr-left">
-                        <label class="inputLabel">Apellidos:</label>
-                        <input name="Apellidos" class="form-control" type="text" placeholder="Apellidos" required="required" />
+                        <div class="bnr-left">
+                            <label class="inputLabel">Apellidos:</label>
+                            <input name="Apellidos" class="form-control" type="text" placeholder="Apellidos" required="required" />
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="ban-bottom">
-                    <div class="bnr-right">
-                        <label class="inputLabel">Fecha de nacimiento:</label>
-                        <input name="FechaNac" class="date form-control" id="datepicker" type="text" placeholder="dd-mm-yyyy" required="required" />
-                    </div>
-                    <div class="clearfix"></div>
-                    <!-- start-date-piker -->
-                    <link rel="stylesheet" href="~/Recursos/FontEnd/css/jquery-ui.css">
-                    <script src="~/Recursos/FontEnd/js/jquery-ui.js"></script>
-                    <script>
+                    <div class="ban-bottom">
+                        <div class="bnr-right">
+                            <label class="inputLabel">Fecha de nacimiento:</label>
+                            <input name="FechaNac" class="date form-control" id="datepicker" type="text" placeholder="dd-mm-yyyy" required="required" />
+                        </div>
+                        <div class="clearfix"></div>
+                        <!-- start-date-piker -->
+                        <link rel="stylesheet" href="~/Recursos/FontEnd/css/jquery-ui.css">
+                        <script src="~/Recursos/FontEnd/js/jquery-ui.js"></script>
+                        <script>
 														$(function() {
 														$( "#datepicker,#datepicker1" ).datepicker();
 														});
-                    </script>
-                    <!-- /End-date-piker -->
-                </div>
-                <div class="bnr-left">
-                    <label class="inputLabel">Teléfono:</label>
-                    <input name="Telefono" onkeypress="return valida(event)" maxlength="10" class="form-control" type="tel" placeholder="Teléfono" required="required" pattern="[0-9]{10}">
-                </div>
-                <div class="bnr-left">
-                    <label class="inputLabel">Email:</label>
-                    <input name="Email" class="form-control" type="text" placeholder="Correo electrónico" required="required" />
-                </div>
-                <div class="bnr-left">
-                    <label class="inputLabel">Contraseña:</label>
-                    <input name="Contraseña" class="form-control" type="password" placeholder="Contraseña" required="required" />
-                </div>
-                <div class="search">
-                    <input type="submit" class="submit" value="Registrarme">
+                        </script>
+                        <!-- /End-date-piker -->
+                    </div>
+                    <div class="bnr-left">
+                        <label class="inputLabel">Teléfono:</label>
+                        <input name="Telefono" onkeypress="return valida(event)" maxlength="10" class="form-control" type="tel" placeholder="Teléfono" required="required" pattern="[0-9]{10}">
+                    </div>
+                    <div class="bnr-left">
+                        <label class="inputLabel">Email:</label>
+                        <input name="Email" class="form-control" type="text" placeholder="Correo electrónico" required="required" />
+                    </div>
+                    <div class="bnr-left">
+                        <label class="inputLabel">Contraseña:</label>
+                        <input name="Contraseña" class="form-control" type="password" placeholder="Contraseña" required="required" />
+                    </div>
+                    <div class="search">
+                        <input type="submit" class="submit" value="Registrarme">
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
+    }
 }
