@@ -20,7 +20,14 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult IndexEstudiante()
         {
-            return View("IndexEstudiante");
+            if(Session["Codigo"].ToString() != null)
+            {
+                return View("IndexEstudiante");
+            }
+            else
+            {
+                return View("PrincipalFE");
+            }
         }
 
         public ActionResult Redireccionar()
@@ -47,20 +54,8 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult VerPerfil()
         {
-            UsuarioBO Datos = new UsuarioBO();
-            var _fila = ObjUsuario.VerPerfil(2).Tables[0].Rows[0];
-            {
-                Datos.Codigo = int.Parse(_fila.ItemArray[0].ToString());
-                Datos.Nombre = _fila.ItemArray[1].ToString();
-                Datos.Apellidos = _fila.ItemArray[2].ToString();
-                Datos.FechaNac = DateTime.Parse(_fila.ItemArray[4].ToString());
-                Datos.Telefono = long.Parse(_fila.ItemArray[5].ToString());
-                Datos.Email = _fila.ItemArray[6].ToString();
-                Datos.Contraseña = _fila.ItemArray[7].ToString();
-                Datos.Imagen = _fila.ItemArray[8].ToString();
-            }
-            
-            return View(ObjUsuario.VerPerfil(2));
+            int Codigo = 2;
+            return View(ObjUsuario.PerfilUsuario(Codigo));
         }
 
         public ActionResult ActualizarPerfil(UsuarioBO Obj)
@@ -68,6 +63,5 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             ObjUsuario.ActualizarUsuario(Obj);
             return View("IndexEstudiante");
         }
-        
     }
 }

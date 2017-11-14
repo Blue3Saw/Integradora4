@@ -110,17 +110,7 @@ namespace DAO
         }
 
         //------------------------------------------------------------------------------------------------------
-
-
-        public DataSet VerPerfil(int Codigo)
-        {
-            UsuarioBO Datos = new UsuarioBO();
-            SqlCommand Com = new SqlCommand("SELECT * FROM Usuarios WHERE Codigo = @Codigo");
-            Com.Parameters.Add("@Codigo", SqlDbType.VarChar).Value = Codigo;
-            Com.CommandType = CommandType.Text;
-            return Conex.EjecutarSentencia(Com);
-        }
-
+        
         public DataTable TablaUsuarios()
         {
             sentencia = "SELECT * FROM Usuarios";
@@ -128,6 +118,26 @@ namespace DAO
             DataTable tablavirtual = new DataTable();
             mostar.Fill(tablavirtual);
             return tablavirtual;
+        }
+        
+        public UsuarioBO PerfilUsuario(int Codigo)
+        {
+            UsuarioBO Datos = new UsuarioBO();
+            SqlCommand Com = new SqlCommand("SELECT * FROM Usuarios U WHERE U.Codigo = @Codigo");
+            Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
+            Com.CommandType = CommandType.Text;
+            DataTable Tabla = new DataTable();
+            Tabla = Conex.EjecutarSentencia(Com).Tables[0];
+
+            var _fila = Tabla.Rows[0];
+            {
+                Datos.Nombre = _fila.ItemArray[1].ToString();
+                Datos.Apellidos = _fila.ItemArray[2].ToString();
+                Datos.FechaNac = DateTime.Parse(_fila.ItemArray[4].ToString());
+                Datos.Telefono = long.Parse(_fila.ItemArray[5].ToString());
+                Datos.Email = _fila.ItemArray[6].ToString();
+            }
+            return Datos;
         }
     }
 }

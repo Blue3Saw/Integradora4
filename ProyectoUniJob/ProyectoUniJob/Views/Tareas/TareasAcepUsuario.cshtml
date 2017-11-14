@@ -1,5 +1,4 @@
 ﻿@using System.Data;
-@model DataTable
 
 @{
     Layout = null;
@@ -17,6 +16,7 @@
                             <h5 class="m-movie-link" style="color:black;">@row["Titulo"]</h5>
                             <div class="clearfix"></div>
                             <div class="m-r-date">
+                                <p>@row["Codigo"]</p>
                                 <p>@row["Descripcion"]</p>
                                 <p>@row["Empleador"]</p>
                             </div>

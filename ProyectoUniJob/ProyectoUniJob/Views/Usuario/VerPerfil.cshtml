@@ -1,12 +1,11 @@
 ﻿@using BO;
 @model UsuarioBO
 
-
 @{
     Layout = null;
 }
 
-@using (Html.BeginForm("ActualizarPelicula", "Peliculas", FormMethod.Post))
+@using (Html.BeginForm("ActualizarPerfil", "Usuario", FormMethod.Post))
 {
     <div class="col-md-8 bann-info">
         <div class="book-a-ticket">
@@ -14,6 +13,7 @@
                 <div class="ban-top">
                     <div class="bnr-left">
                         <label class="inputLabel">Nombre:</label>
+                        @Html.TextBoxFor(x => x.Nombre)
                         <input name="Nombre" class="form-control" type="text" placeholder="Nombre" required="required" />
                     </div>
 
@@ -52,8 +52,7 @@
                     <input name="Contraseña" class="form-control" type="password" placeholder="Contraseña" required="required" />
                 </div>
                 <div class="search">
-                    <input type="submit" class="submit" value="Registrarme">
-
+                    <button type="submit" class="submit btn btn-primary btn-sm">Actualizar datos</button>
                 </div>
             </div>
         </div>
