@@ -16,5 +16,6 @@ namespace BO
         public int TipoTarea { get; set; }
         public string Descripcion { get; set; }
         public int CodigoEstatus { get; set; }
+
     }
 }

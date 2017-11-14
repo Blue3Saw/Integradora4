@@ -246,6 +246,7 @@
     <Content Include="Views\Tareas\TodasTareas.cshtml" />
     <Content Include="Views\Usuario\VerPerfil.cshtml" />
     <Content Include="Views\Tareas\TareasAcepUsuario.cshtml" />
+    <Content Include="Views\Tareas\ListarTipoTarea.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -32,5 +32,21 @@ namespace DAO
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
         }
+
+        public List<ClasificacionTareaBO>ListaTipo()
+        {
+            string Sentencia = ("select Codigo,Clasificacion from ClasificacionTarea");
+            var Result = Conex.EjecutarSentencia(Sentencia);
+            List<ClasificacionTareaBO> ListaT = new List<ClasificacionTareaBO>();
+            foreach(DataRow Tipo in Result.Tables[0].Rows)
+            {
+                var TipoBO = new ClasificacionTareaBO();
+                TipoBO.Codigo = Convert.ToInt32(Tipo[0].ToString());
+                TipoBO.Clasificacion = Tipo[1].ToString();
+                ListaT.Add(TipoBO);
+            }
+            return ListaT;
+
+        }
     }
 }

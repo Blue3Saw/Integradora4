@@ -10,5 +10,7 @@ namespace BO
     {
         public int Codigo { get; set; }
         public string Clasificacion { get; set; }
+
+        public List<ClasificacionTareaBO> TipoTarea { get; set; }
     }
 }
