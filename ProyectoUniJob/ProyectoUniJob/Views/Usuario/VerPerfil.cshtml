@@ -7,55 +7,39 @@
 
 @using (Html.BeginForm("ActualizarPerfil", "Usuario", FormMethod.Post))
 {
-    <div class="col-md-8 bann-info">
-        <div class="book-a-ticket">
-            <div class="bann-info ">
-                <div class="ban-top">
-                    <div class="bnr-left">
-                        <label class="inputLabel">Nombre:</label>
-                        @Html.TextBoxFor(x => x.Nombre)
-                        <input name="Nombre" class="form-control" type="text" placeholder="Nombre" required="required" />
+    <div class="creditly-card-form agileinfo_form">
+        <section class="creditly-wrapper wthree, w3_agileits_wrapper">
+            <div class="credit-card-wrapper">
+                <div class="first-row form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="control-label">Nombre</label>
+                            @Html.TextBoxFor(x => x.Nombre, new { Class = "form-control", PlaceHolder = "Nombre" })
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="control-label">Apellidos</label>
+                            @Html.TextBoxFor(x => x.Apellidos, new { Class = "form-control", PlaceHolder = "Apellidos" })
+                        </div>
                     </div>
-
-                    <div class="bnr-left">
-                        <label class="inputLabel">Apellidos:</label>
-                        <input name="Apellidos" class="form-control" type="text" placeholder="Apellidos" required="required" />
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="control-label">Fecha de nacimiento</label>
+                            @Html.TextBoxFor(x => x.FechaNac, new { Class = "form-control", Type = "date" })
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="control-label">Teléfono</label>
+                            @Html.TextBoxFor(x => x.Telefono, new { Class = "form-control", PlaceHolder = "Teléfono" })
+                        </div>
                     </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="ban-bottom">
-                    <div class="bnr-right">
-                        <label class="inputLabel">Fecha de nacimiento:</label>
-                        <input name="FechaNac" class="date form-control" id="datepicker" type="text" placeholder="dd-mm-yyyy" required="required" />
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="control-label">Dirección</label>
+                            @Html.TextBoxFor(x => x.Direccion, new { Class = "form-control", PlaceHolder = "Dirección"})
+                        </div>
+                        <div></div>
                     </div>
-                    <div class="clearfix"></div>
-                    <!-- start-date-piker -->
-                    <link rel="stylesheet" href="~/Recursos/FontEnd/css/jquery-ui.css">
-                    <script src="~/Recursos/FontEnd/js/jquery-ui.js"></script>
-                    <script>
-														$(function() {
-														$( "#datepicker,#datepicker1" ).datepicker();
-														});
-                    </script>
-                    <!-- /End-date-piker -->
-                </div>
-                <div class="bnr-left">
-                    <label class="inputLabel">Teléfono:</label>
-                    <input name="Telefono" onkeypress="return valida(event)" maxlength="10" class="form-control" type="tel" placeholder="Teléfono" required="required" pattern="[0-9]{10}">
-                </div>
-                <div class="bnr-left">
-                    <label class="inputLabel">Email:</label>
-                    <input name="Email" class="form-control" type="text" placeholder="Correo electrónico" required="required" />
-                </div>
-                <div class="bnr-left">
-                    <label class="inputLabel">Contraseña:</label>
-                    <input name="Contraseña" class="form-control" type="password" placeholder="Contraseña" required="required" />
-                </div>
-                <div class="search">
-                    <button type="submit" class="submit btn btn-primary btn-sm">Actualizar datos</button>
                 </div>
             </div>
-        </div>
-
+        </section>
     </div>
 }

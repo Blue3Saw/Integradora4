@@ -11,9 +11,8 @@ namespace BO
         public int Codigo { get; set; }
         public string Nombre { get; set; }
         public string Apellidos { get; set; }
-        public float Longitud { get; set; }
-        public float Latitud { get; set; }
         public DateTime FechaNac { get; set; }
+        public string Direccion { get; set; }
         public long Telefono { get; set; }
         public string Email { get; set; }
         public string Contraseña { get; set; }

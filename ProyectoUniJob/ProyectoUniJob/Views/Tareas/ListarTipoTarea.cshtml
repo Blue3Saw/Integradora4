@@ -1,0 +1,9 @@
+﻿@using BO
+@model List<ClasificacionTareaBO>
+
+<select class="form-control">
+    @foreach(var item in Model)
+    {
+        <option value="@item.Codigo">@item.Clasificacion</option>
+    }
+</select>

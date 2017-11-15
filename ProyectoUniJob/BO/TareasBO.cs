@@ -17,5 +17,8 @@ namespace BO
         public int TipoTarea { get; set; }
         public string Descripcion { get; set; }
         public int CodigoEstatus { get; set; }
+        public float Longitud { get; set; }
+        public float Latitud { get; set; }
+        public string Direccion { get; set; }
     }
 }

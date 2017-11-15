@@ -183,6 +183,7 @@
     <Compile Include="Controllers\BackEnd\AprobarTareaController.cs" />
     <Compile Include="Controllers\BackEnd\PerfilAdminController.cs" />
     <Compile Include="Controllers\EstatusController.cs" />
+    <Compile Include="Controllers\FrontEnd\DateTable.cs" />
     <Compile Include="Controllers\FrontEnd\PrincipalFEController.cs" />
     <Compile Include="Controllers\FrontEnd\TareasController.cs" />
     <Compile Include="Controllers\FrontEnd\UsuarioController.cs" />
@@ -254,6 +255,7 @@
     <Content Include="Views\Tareas\TodasTareas.cshtml" />
     <Content Include="Views\Usuario\VerPerfil.cshtml" />
     <Content Include="Views\Tareas\TareasAcepUsuario.cshtml" />
+<<<<<<< HEAD
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -263,6 +265,9 @@
     <Content Include="Views\AgregarEstudiante\EditarDatos.cshtml" />
     <Content Include="Views\AprobarTarea\Index.cshtml" />
     <Content Include="Views\AprobarTarea\DatosTarea.cshtml" />
+=======
+    <Content Include="Views\Tareas\ListarTipoTarea.cshtml" />
+>>>>>>> 2e1c98ea28edfe73aeec6a85a5617768cce0765b
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
