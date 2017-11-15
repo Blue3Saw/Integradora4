@@ -8,6 +8,7 @@
 <h2>Agregar Usuarios</h2>
 <div class="container-fluid">
     <div class="container card">
+        
 @using (Ajax.BeginForm("AgregarUsuario", "AgregarEstudiante", new AjaxOptions() { HttpMethod = "POST" }))
 {
     @Html.AntiForgeryToken()
