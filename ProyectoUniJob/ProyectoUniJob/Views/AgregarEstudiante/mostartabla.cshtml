@@ -1,58 +1,57 @@
 ﻿@using System.Data;
 @model DataTable
 
-
 @{
     ViewBag.Title = "mostartabla";
+    //Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
 }
 
-<div class="container-fluid">
-    <div class="container card">
-        <div class="col-md-12">
-            <div class="content table-responsive table-full-width">
-                <table class="table table-striped col-md-12">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <th>Ubicacio</th>
-                            <th>Fecha</th>
-                            <th>Telefono</th>
-                            <th>Email</th>
-                            <th>Contraseña</th>
-                            <th>TipoUs</th>
-                            <th>Estatus</th>
-                            <th>Imagen</th>
-                            <th>Aciones</th>
+@*<div class="content">
+    <div class="container-fluid card">*@
+        <div class="content table-responsive table-full-width col-lg-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Ubicacio</th>
+                        <th>Fecha</th>
+                        <th>Telefono</th>
+                        <th>Email</th>
+                        <th>Contraseña</th>
+                        <th>TipoUs</th>
+                        <th>Estatus</th>
+                        <th>Imagen</th>
+                        <th>Aciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (DataRow row in Model.Rows)
+                    {
+                        int count = 0;
+                        <tr id="fila_@row["Codigo"]">
+                            <td>@row["Codigo"]</td>
+                            <td>@row["Nombre"]</td>
+                            <td>@row["Apellidos"]</td>
+                            <td>@row["Ubicacion"]</td>
+                            <td>@row["FechaNac"]</td>
+                            <td>@row["Telefono"]</td>
+                            <td>@row["Email"]</td>
+                            <td>@row["Contraseña"]</td>
+                            <td>@row["TipoUs"]</td>
+                            <td>@row["Estatus"]</td>
+                            <td>@row["Imagen"]</td>
+                            <td>
+                                @Html.ActionLink("Eliminar", "Eliminar", "AgregarEstudiante", new { id = @row["Codigo"] }, null)
+                                <input type="button" id="btn1" value="tabla" onclick="datos(), ocultar()" />
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (DataRow row in Model.Rows)
-            {
-                            <tr id="fila_@row["Codigo"]">
-                                <td>@row["Codigo"]</td>
-                                <td>@row["Nombre"]</td>
-                                <td>@row["Apellidos"]</td>
-                                <td>@row["Ubicacion"]</td>
-                                <td>@row["FechaNac"]</td>
-                                <td>@row["Telefono"]</td>
-                                <td>@row["Email"]</td>
-                                <td>@row["Contraseña"]</td>
-                                <td>@row["TipoUs"]</td>
-                                <td>@row["Estatus"]</td>
-                                <td>@row["Imagen"]</td>
-
-
-                                <td>
-                                    @Html.ActionLink("Eliminar", "Eliminar", "AgregarEstudiante", new { id = @row["Codigo"] }, null)
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+                    }
+                </tbody>
+            </table>
         </div>
+    @*</div>
+</div>*@
 
-    </div>
-</div>
+

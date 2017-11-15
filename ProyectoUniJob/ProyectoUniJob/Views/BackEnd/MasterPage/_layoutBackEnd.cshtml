@@ -41,21 +41,17 @@
                 </div>
                 <ul class="nav">
                     <li>
-                        <a href="dashboard.html">
                             <i class="ti-panel"></i>
-                            <p>Agregar Usuario</p>
-                        </a>
+                            <p>@Html.ActionLink("Usuarios", "Index", "AgregarEstudiante")</p>
                     </li>
                     <li>
-                        <a href="user.html">
                             <i class="ti-user"></i>
-                            <p>Perfil del Usuario</p>
-                        </a>
+                            <p>@Html.ActionLink("Perfil ADM", "DatosPerfil", "PerfilAdmin")</p>
                     </li>
                     <li>
                         <a href="table.html">
                             <i class="ti-view-list-alt"></i>
-                            <p>Table List</p>
+                            <p>@Html.ActionLink("Aprobar Tareas", "Index", "AprobarTarea")</p>
                         </a>
                     </li>
                     <li>

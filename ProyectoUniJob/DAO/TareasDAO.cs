@@ -73,6 +73,15 @@ namespace DAO
             return tablavirtual;
         }
 
+        public DataTable TodasTareas2()
+        {
+            Sentencia = "SELECT T.Codigo, T.Titulo, T.Descripcion, T.Fecha, T.HoraInicio, T.HoraFinal, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion FROM Tareas T INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo WHERE T.Estatus = 1";
+            SqlDataAdapter mostar = new SqlDataAdapter(Sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
+        }
+
         public DataTable TareasAcepUsuario(int Codigo)
         {
             UsuarioBO Datos = new UsuarioBO();
@@ -80,6 +89,30 @@ namespace DAO
             Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
             Com.CommandType = CommandType.Text;
             return Conex.EjecutarSentencia(Com).Tables[0];
+        }
+
+        public TareasBO DatosTareaAceptar(int Codigo)
+        {
+            TareasBO Datos = new TareasBO();
+            SqlCommand Com = new SqlCommand("SELECT * FROM Tareas t WHERE t.Codigo = @Codigo");
+            Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
+            Com.CommandType = CommandType.Text;
+            DataTable Tabla = new DataTable();
+            Tabla = Conex.EjecutarSentencia(Com).Tables[0];
+
+            var _fila = Tabla.Rows[0];
+            {
+                Datos.Codigo = int.Parse(_fila.ItemArray[0].ToString());
+                Datos.CodigoEmpleador = int.Parse(_fila.ItemArray[1].ToString());
+                Datos.Titulo = _fila.ItemArray[2].ToString();
+                Datos.Fecha= Convert.ToDateTime(_fila.ItemArray[3].ToString());
+                Datos.HoraInicio = DateTime.Parse(_fila.ItemArray[4].ToString());
+                Datos.HoraFin = DateTime.Parse(_fila.ItemArray[5].ToString());
+                Datos.TipoTarea = int.Parse(_fila.ItemArray[6].ToString());
+                Datos.Descripcion = _fila.ItemArray[7].ToString();
+                Datos.CodigoEstatus= int.Parse(_fila.ItemArray[8].ToString());
+            }
+            return Datos;
         }
     }
 }

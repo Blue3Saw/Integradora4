@@ -1,0 +1,22 @@
+﻿@using BO;
+@model TareasBO
+
+
+@{
+    ViewBag.Title = "DatosTarea";
+    Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
+}
+
+<h2>DatosTarea</h2>
+<div>
+    <div>
+        @Html.TextBoxFor(x => x.Codigo, new { @type = "text", @name = "ID", @class = "form-control" })
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x.Titulo, new { @type = "text", @name = "ID", @class = "form-control" })
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x.Descripcion, new { @type = "text", @name = "ID", @class = "form-control" })
+    </div>
+</div>
+

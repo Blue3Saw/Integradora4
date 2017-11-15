@@ -119,7 +119,30 @@ namespace DAO
             mostar.Fill(tablavirtual);
             return tablavirtual;
         }
-        
+        public DataTable TablaUsuarios2(string email)
+        {
+            UsuarioBO Datos = new UsuarioBO();
+            Datos.Email = email;
+            sentencia = "SELECT * FROM Usuarios where Email='"+Datos.Email+"'";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
+        }
+        public int BuscarId(string email)
+        {
+            UsuarioBO Datos = new UsuarioBO();
+            Datos.Email = email;
+            sentencia = "SELECT Codigo FROM Usuarios where Email='" + Datos.Email + "'";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            DataRow lol = tablavirtual.Rows[0];
+            int valor = int.Parse(lol["Codigo"].ToString());
+
+            return valor;
+        }
+
         public UsuarioBO PerfilUsuario(int Codigo)
         {
             UsuarioBO Datos = new UsuarioBO();
@@ -136,6 +159,33 @@ namespace DAO
                 Datos.FechaNac = DateTime.Parse(_fila.ItemArray[4].ToString());
                 Datos.Telefono = long.Parse(_fila.ItemArray[5].ToString());
                 Datos.Email = _fila.ItemArray[6].ToString();
+            }
+            return Datos;
+        }
+
+
+        public UsuarioBO PerfilUsuario2(int Codigo)
+        {
+            UsuarioBO Datos = new UsuarioBO();
+            SqlCommand Com = new SqlCommand("SELECT * FROM Usuarios U WHERE U.Codigo = @Codigo");
+            Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
+            Com.CommandType = CommandType.Text;
+            DataTable Tabla = new DataTable();
+            Tabla = Conex.EjecutarSentencia(Com).Tables[0];
+
+            var _fila = Tabla.Rows[0];
+            {
+                Datos.Codigo = int.Parse(_fila.ItemArray[0].ToString());
+                Datos.Nombre = _fila.ItemArray[1].ToString();
+                Datos.Apellidos = _fila.ItemArray[2].ToString();
+                Datos.FechaNac = DateTime.Parse(_fila.ItemArray[4].ToString());
+                Datos.Telefono = long.Parse(_fila.ItemArray[5].ToString());
+                Datos.Email = _fila.ItemArray[6].ToString();
+                Datos.Contraseña= _fila.ItemArray[7].ToString();
+                Datos.TipoUsuario = int.Parse(_fila.ItemArray[8].ToString());
+                Datos.Estatus = _fila.ItemArray[9].ToString();
+                Datos.Imagen= _fila.ItemArray[10].ToString();
+                
             }
             return Datos;
         }
