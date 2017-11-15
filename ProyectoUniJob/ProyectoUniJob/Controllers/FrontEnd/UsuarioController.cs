@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data;
 using BO;
 using DAO;
+using System.Data.SqlClient;
 
 namespace ProyectoUniJob.Controllers.FrontEnd
 {
@@ -20,14 +22,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult IndexEstudiante()
         {
-            if(Session["Codigo"].ToString() != null)
-            {
-                return View("IndexEstudiante");
-            }
-            else
-            {
-                return View("PrincipalFE");
-            }
+            return View("IndexEstudiante");
         }
 
         public ActionResult Redireccionar()
@@ -45,8 +40,6 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             Datos.Email = Email;
             Datos.Contraseña = Contraseña;
             Datos.TipoUsuario = 2;
-            Datos.Latitud = 2;
-            Datos.Longitud = 2;
             Datos.Imagen = "Hola.jpg";
             ObjUsuario.AgregarUsuario(Datos);
             return RedirectToAction("Index3", "Prueba");
@@ -54,8 +47,9 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult VerPerfil()
         {
-            int Codigo = 2;
-            return View(ObjUsuario.PerfilUsuario(Codigo));
+            Session["Codigo"] = 2;
+            return View(ObjUsuario.PerfilUsuario(int.Parse(Session["Codigo"].ToString())));
+
         }
 
         public ActionResult ActualizarPerfil(UsuarioBO Obj)

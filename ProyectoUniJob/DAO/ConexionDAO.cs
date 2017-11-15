@@ -91,5 +91,13 @@ namespace DAO
             this.CerrarConexion();
             return DataSetAdaptador;
         }
+
+        public DataTable MetodoSantiago()
+        {
+            adaptador = new SqlDataAdapter("SELECT * FROM Usuarios", ConectarBD());
+            DataTable Tabla = new DataTable();
+            adaptador.Fill(Tabla);
+            return Tabla;
+        }
     }
 }

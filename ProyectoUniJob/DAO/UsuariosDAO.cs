@@ -17,11 +17,10 @@ namespace DAO
         public int AgregarUsuario(object ObjU)
         {
             UsuarioBO Dato = (UsuarioBO)ObjU;
-            SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO Usuarios (Nombre, Apellidos, Ubicacion, FechaNac, Telefono, Email, Contraseña, TipoUs, Estatus, Imagen) VALUES (@Nombre, @Apellidos, Geography::Point(@Latitud, @Longitud, 4326), @FechaNac, @Telefono, @Email, @Contraseña, @TipoUs, 'En revisión', @Imagen)");
+            SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO Usuarios (Nombre, Apellidos, Direccion, FechaNac, Telefono, Email, Contraseña, TipoUs, Estatus, Imagen) VALUES (@Nombre, @Apellidos, @Direccion, @FechaNac, @Telefono, @Email, @Contraseña, @TipoUs, 'En revisión', @Imagen)");
             SentenciaSQL.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Dato.Nombre;
             SentenciaSQL.Parameters.Add("@Apellidos", SqlDbType.VarChar).Value = Dato.Apellidos;
-            SentenciaSQL.Parameters.Add("@Longitud", SqlDbType.Float).Value = Dato.Longitud;
-            SentenciaSQL.Parameters.Add("@Latitud", SqlDbType.Float).Value = Dato.Latitud;
+            SentenciaSQL.Parameters.Add("@Direccion", SqlDbType.VarChar).Value = Dato.Direccion;
             SentenciaSQL.Parameters.Add("@FechaNac", SqlDbType.Date).Value = Dato.FechaNac;
             SentenciaSQL.Parameters.Add("@Telefono", SqlDbType.BigInt).Value = Dato.Telefono;
             SentenciaSQL.Parameters.Add("@Email", SqlDbType.VarChar).Value = Dato.Email;
@@ -35,12 +34,11 @@ namespace DAO
         public int ActualizarUsuario(object ObjU)
         {
             UsuarioBO Dato = (UsuarioBO)ObjU;
-            SqlCommand SentenciaSQL = new SqlCommand("UPDATE Usuarios SET Nombre = @Nombre, Apellidos = @Apellidos, Ubicacion = Geography::Point(@Latitud, @Longitud, 4326), FechaNac = @FechaNac, Telefono = @Telefono, Email = @Email, Contraseña = @Contraseña, TipoUs = @TipoUs, Estatus = 'En revisión', Imagen = @Imagen WHERE Codigo = @Codigo");
+            SqlCommand SentenciaSQL = new SqlCommand("UPDATE Usuarios SET Nombre = @Nombre, Apellidos = @Apellidos, Direccion = @Direccion, FechaNac = @FechaNac, Telefono = @Telefono, Email = @Email, Contraseña = @Contraseña, TipoUs = @TipoUs, Estatus = 'En revisión', Imagen = @Imagen WHERE Codigo = @Codigo");
             SentenciaSQL.Parameters.Add("@Codigo", SqlDbType.Int).Value = Dato.Codigo;
             SentenciaSQL.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Dato.Nombre;
             SentenciaSQL.Parameters.Add("@Apellidos", SqlDbType.VarChar).Value = Dato.Apellidos;
-            SentenciaSQL.Parameters.Add("@Longitud", SqlDbType.Float).Value = Dato.Longitud;
-            SentenciaSQL.Parameters.Add("@Latitud", SqlDbType.Float).Value = Dato.Latitud;
+            SentenciaSQL.Parameters.Add("@Direccion", SqlDbType.VarChar).Value = Dato.Direccion;
             SentenciaSQL.Parameters.Add("@FechaNac", SqlDbType.Date).Value = Dato.FechaNac;
             SentenciaSQL.Parameters.Add("@Telefono", SqlDbType.BigInt).Value = Dato.Telefono;
             SentenciaSQL.Parameters.Add("@Email", SqlDbType.VarChar).Value = Dato.Email;
@@ -126,16 +124,13 @@ namespace DAO
             SqlCommand Com = new SqlCommand("SELECT * FROM Usuarios U WHERE U.Codigo = @Codigo");
             Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
             Com.CommandType = CommandType.Text;
-            DataTable Tabla = new DataTable();
-            Tabla = Conex.EjecutarSentencia(Com).Tables[0];
 
-            var _fila = Tabla.Rows[0];
+            var _fila = Conex.EjecutarSentencia(Com).Tables[0].Rows[0];
             {
                 Datos.Nombre = _fila.ItemArray[1].ToString();
                 Datos.Apellidos = _fila.ItemArray[2].ToString();
-                Datos.FechaNac = DateTime.Parse(_fila.ItemArray[4].ToString());
+                Datos.FechaNac = DateTime.Parse(_fila.ItemArray[3].ToString());
                 Datos.Telefono = long.Parse(_fila.ItemArray[5].ToString());
-                Datos.Email = _fila.ItemArray[6].ToString();
             }
             return Datos;
         }
