@@ -18,6 +18,9 @@ namespace ProyectoUniJob.Controllers.FrontEnd
        
             return View();
         }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
         public ActionResult AgregarTarea(string agregar,string modificar,string eliminar, string id, string idUsu, string fecha, string horaI, string horaF, string tipo,string descrip, string estatus)
         {
             TareasBO obj = new TareasBO();

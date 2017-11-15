@@ -17,8 +17,9 @@ namespace DAO
         public int AgregarClasificación(object ObjC)
         {
             ClasificacionTareaBO Dato = (ClasificacionTareaBO)ObjC;
-            SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO ClasificacionTarea (Clasificacion) VALUES (@Clasificacion)");
+            SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO ClasificacionTarea (Clasificacion) VALUES (@Clasificacion/*,@Direccion*/)");
             SentenciaSQL.Parameters.Add("@Clasificacion", SqlDbType.VarChar).Value = Dato.Clasificacion;
+            SentenciaSQL.Parameters.Add("@Direccion", SqlDbType.VarChar).Value = Dato.Direccion;
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
         }
@@ -26,9 +27,10 @@ namespace DAO
         public int ActualizarClasificaion(object ObjC)
         {
             ClasificacionTareaBO Dato = (ClasificacionTareaBO)ObjC;
-            SqlCommand SentenciaSQL = new SqlCommand("UPDATE TipoUsuario SET Clasificacion = @Clasificacion WHERE Codigo = @Codigo");
+            SqlCommand SentenciaSQL = new SqlCommand("UPDATE TipoUsuario SET Clasificacion = @Clasificacion/*,x = @Direccion*/ WHERE Codigo = @Codigo");
             SentenciaSQL.Parameters.Add("@Codigo", SqlDbType.Int).Value = Dato.Codigo;
             SentenciaSQL.Parameters.Add("@Clasificacion", SqlDbType.VarChar).Value = Dato.Clasificacion;
+            SentenciaSQL.Parameters.Add("@Direccion", SqlDbType.VarChar).Value = Dato.Direccion;
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
         }
