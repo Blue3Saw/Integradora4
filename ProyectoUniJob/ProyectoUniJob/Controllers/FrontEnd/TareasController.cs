@@ -14,13 +14,11 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         // GET: Tareas
         public ActionResult Index()
-        {
-       
+        {      
             return View();
         }
-
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult AgregarTarea(string agregar,string modificar,string eliminar, string id, string idUsu, string fecha, string horaI, string horaF, string tipo,string descrip, string estatus)
         {
             TareasBO obj = new TareasBO();
