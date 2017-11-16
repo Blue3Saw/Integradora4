@@ -72,5 +72,11 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             dato.Codigo = 3;
             return View(ObjDAO.TareasAcepUsuario(dato.Codigo));
         }
+
+        public ActionResult TareaSeleccionada(string Codigo)
+        {
+            int Clave = int.Parse(Codigo);
+            return View(ObjDAO.TareaSeleccionada(Clave));
+        }
     }
 }

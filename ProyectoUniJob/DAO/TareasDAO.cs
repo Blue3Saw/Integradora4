@@ -85,6 +85,15 @@ namespace DAO
             return tablavirtual;
         }
 
+        public DataTable TareaSeleccionada(int Codigo)
+        {
+            TareasBO Datos = new TareasBO();
+            SqlCommand Com = new SqlCommand("SELECT * FROM Tareas T WHERE T.Codigo = @Codigo");
+            Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
+            Com.CommandType = CommandType.Text;
+            return Conex.EjecutarSentencia(Com).Tables[0];
+        }
+
         public DataTable TareasAcepUsuario(int Codigo)
         {
             UsuarioBO Datos = new UsuarioBO();
