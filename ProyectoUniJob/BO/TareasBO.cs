@@ -9,6 +9,7 @@ namespace BO
     public class TareasBO
     {
         public int Codigo { get; set; }
+        public string Titulo { get; set; }
         public int CodigoEmpleador { get; set; }
         public DateTime Fecha { get; set; }
         public DateTime HoraInicio { get; set; }

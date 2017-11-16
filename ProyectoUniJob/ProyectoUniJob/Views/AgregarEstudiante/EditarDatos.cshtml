@@ -1,0 +1,129 @@
+﻿@using BO;
+@model UsuarioBO
+
+@{
+    ViewBag.Title = "EditarDatos";
+}
+
+    <div class="container-fluid card">
+        @using (Html.BeginForm("Actualizar", "AgregarEstudiante", FormMethod.Post))
+        {
+            <h2>Editar Usuarios</h2>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="control-label">
+                        ID:
+                    </label>
+                    <div>
+                        @Html.TextBoxFor(x => x.Codigo, new { @type = "text", @name = "ID", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="control-label">
+                        Nombre:
+                    </label>
+                    <div>
+                        @Html.TextBoxFor(x => x.Nombre, new { @type = "text", @name = "Nombre", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label class="control-label">
+                        Apellidos:
+                    </label>
+                    <div>
+                        @Html.TextBoxFor(x => x.Apellidos, new { @type = "text", @name = "Apellidos", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label class="control-label">
+                        Fecha de Nacimiento:
+                    </label>
+                    <div>
+
+                        @Html.TextBoxFor(x => x.FechaNac, new { @type = "text", @name = "FechaNac", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <div class="col-md-3">
+                        <label class="control-label">
+                            Email:
+                        </label>
+                        <div>
+                            @Html.TextBoxFor(x => x.Email, new { @type = "email", @name = "Email", @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">
+                            Contraseña:
+                        </label>
+                        <div>
+                            @Html.TextBoxFor(x => x.Contraseña, new { @type = "text", @name = "Contraseña", @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">
+                            Imagen:
+                        </label>
+                        <div>
+                            @Html.TextBoxFor(x => x.Imagen, new { @type = "text", @name = "Imagen", @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <div class="col-md-3">
+                        <label class="control-label">
+                            Estado:
+                        </label>
+                        <div>
+                            <select name="Tipo" class="form-control">
+                                <option value="1">Administrador</option>
+                                <option value="2">Empleador</option>
+                                <option value="3">Estudiante</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">
+                            Dirreccion:
+                        </label>
+                        <div>
+                            <input type="text" class="form-control" name="dirreccion" placeholder="Dirreccion" required="required" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">
+                            Telefono:
+                        </label>
+                        <div>
+                            @Html.TextBoxFor(x => x.Telefono, new { @type = "text", @name = "Telefono", @class = "form-control", @onkeypress = "return valida(event)", @maxlength = "10", @pattern = "[0-9]{10}" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <button class="btn btn-info" name="actualizar" value="2">ACTUALIZAR</button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                </div>
+            </div>
+        }
+    </div>

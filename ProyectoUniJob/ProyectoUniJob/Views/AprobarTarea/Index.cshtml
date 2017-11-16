@@ -1,0 +1,38 @@
+﻿@using System.Data;
+@model DataTable
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
+}
+
+<h2>Index</h2>
+<div class="content">
+    <div class="container-fluid">
+@using (Ajax.BeginForm("DatosTarea", "AprobarTarea", new AjaxOptions() { HttpMethod = "POST" }))
+{
+    @Html.AntiForgeryToken()
+
+        <div class="row">
+            @foreach (DataRow row in Model.Rows)
+            {
+                <div class="col-md-4">
+                    <div class="thumbnails">
+                        <div class="span4">
+                            <div class="thumbnail">
+                                <img class="img-thumbnail" />
+                                <div class="caption">
+                                    <h3>@row["Titulo"]</h3>
+                                    <p>@row["Descripcion"]</p>
+                                    @*<a id="@row["Codigo"]" class="btn btn-primary" name="@row["Codigo"]" onclick="@row["Codigo"]" href="" >REVISAR</a>*@
+                                    <button type="submit" class="btn btn-success" name="boton" value="@row["Codigo"]">AGREGAR</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+}
+    </div>
+</div>

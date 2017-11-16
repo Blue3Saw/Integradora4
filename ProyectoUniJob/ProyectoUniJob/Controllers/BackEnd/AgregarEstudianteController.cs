@@ -47,18 +47,40 @@ namespace ProyectoUniJob.Controllers.BackEnd
                 ObjUsuario.AgregarUsuario(BO);
                 ViewBag.Script = "SE AGREGO CORRECTAMENTE EL USUARIO";
             }
-            else if (r > 0)
-            {
-                ObjUsuario.ActualizarUsuario(BO);
-                ViewBag.Script ="SE HA ACTULIZADO LOS DATOS DEL USUARIO CORRECTAMENTE" ;
-            }
+            //else if (r > 0)
+            //{
+            //    ObjUsuario.ActualizarUsuario(BO);
+            //    ViewBag.Script ="SE HA ACTULIZADO LOS DATOS DEL USUARIO CORRECTAMENTE" ;
+            //}
 
+            return View("Index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult datostabla(string Buscar)
+        {
+            Session["Email"] = Buscar;
+            Session["IdEditar"]=ObjUsuario.BuscarId(Buscar);
             return View("Index");
         }
         
         public ActionResult mostartabla()
         {
-            return View(ObjUsuario.TablaUsuarios());
+            return View(ObjUsuario.TablaUsuarios2(Session["Email"].ToString()));
+        }
+
+        public ActionResult EditarDatos()
+        {
+            return View(ObjUsuario.PerfilUsuario2(int.Parse(Session["IdEditar"].ToString())));
+        }
+
+
+        public ActionResult Actualizar(UsuarioBO BO)
+        {
+            ObjUsuario.ActualizarUsuario(BO);
+            Index();
+            return View("Index");
         }
 
         public ActionResult Eliminar(string id)
