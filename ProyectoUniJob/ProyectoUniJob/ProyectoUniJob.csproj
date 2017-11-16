@@ -245,7 +245,6 @@
     <Content Include="Recursos\FontEnd\fonts\Montserrat-Regular.ttf" />
     <Content Include="Recursos\FontEnd\fonts\OpenSans-Regular.ttf" />
     <Content Include="Recursos\FontEnd\fonts\Oxygen-Regular.ttf" />
-    <Content Include="Views\PrincipalFE\PrincipalFE.cshtml" />
     <Content Include="Views\AgregarEstudiante\Index.cshtml" />
     <Content Include="Views\Usuario\Redireccionar.cshtml" />
     <Content Include="Views\Tareas\Index.cshtml" />
@@ -265,7 +264,8 @@
     <Content Include="Views\AprobarTarea\Index.cshtml" />
     <Content Include="Views\AprobarTarea\DatosTarea.cshtml" />
     <Content Include="Views\Tareas\ListarTipoTarea.cshtml" />
-    <Content Include="Views\Tareas\TareaSeleccionada.cshtml" />
+    <Content Include="Views\Tareas\TareaAceptSeleccionada.cshtml" />
+    <Content Include="Views\PrincipalFE\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

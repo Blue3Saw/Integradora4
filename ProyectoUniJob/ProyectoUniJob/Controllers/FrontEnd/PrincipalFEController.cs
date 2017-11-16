@@ -15,7 +15,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         // GET: PrincipalFE
         public ActionResult Index()
         {
-            return View("PrincipalFE");
+            return View("Index");
         }
 
         [HttpPost]
