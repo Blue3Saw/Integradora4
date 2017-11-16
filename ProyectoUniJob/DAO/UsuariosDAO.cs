@@ -44,7 +44,7 @@ namespace DAO
             SentenciaSQL.Parameters.Add("@Email", SqlDbType.VarChar).Value = Dato.Email;
             SentenciaSQL.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Dato.Contraseña;
             SentenciaSQL.Parameters.Add("@TipoUs", SqlDbType.Int).Value = Dato.TipoUsuario;
-            SentenciaSQL.Parameters.Add("@Imagen", SqlDbType.VarChar).Value = Dato.Imagen;
+            SentenciaSQL.Parameters.Add("@Imagen", SqlDbType.VarChar).Value = "Hola.jpg";
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
         }
@@ -127,10 +127,14 @@ namespace DAO
 
             var _fila = Conex.EjecutarSentencia(Com).Tables[0].Rows[0];
             {
+                Datos.Codigo = int.Parse(_fila.ItemArray[0].ToString());
                 Datos.Nombre = _fila.ItemArray[1].ToString();
                 Datos.Apellidos = _fila.ItemArray[2].ToString();
                 Datos.FechaNac = DateTime.Parse(_fila.ItemArray[3].ToString());
+                Datos.Direccion = _fila.ItemArray[4].ToString();
                 Datos.Telefono = long.Parse(_fila.ItemArray[5].ToString());
+                Datos.Email = _fila.ItemArray[6].ToString();
+                Datos.Contraseña = _fila.ItemArray[7].ToString();
             }
             return Datos;
         }
