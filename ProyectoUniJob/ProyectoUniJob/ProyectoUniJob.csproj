@@ -263,12 +263,12 @@
     <Content Include="Views\AprobarTarea\Index.cshtml" />
     <Content Include="Views\AprobarTarea\DatosTarea.cshtml" />
     <Content Include="Views\Tareas\ListarTipoTarea.cshtml" />
-<<<<<<< HEAD
+
     <Content Include="Views\Tareas\Index.cshtml" />
-=======
+
     <Content Include="Views\Tareas\TareaAceptSeleccionada.cshtml" />
     <Content Include="Views\PrincipalFE\Index.cshtml" />
->>>>>>> origin/master
+
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
