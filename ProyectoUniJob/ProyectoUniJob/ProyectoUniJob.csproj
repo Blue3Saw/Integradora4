@@ -248,14 +248,12 @@
     <Content Include="Views\PrincipalFE\PrincipalFE.cshtml" />
     <Content Include="Views\AgregarEstudiante\Index.cshtml" />
     <Content Include="Views\Usuario\Redireccionar.cshtml" />
-    <Content Include="Views\Tareas\Index.cshtml" />
     <Content Include="Views\Usuario\IndexEmpleador.cshtml" />
     <Content Include="Views\Usuario\IndexEstudiante.cshtml" />
     <Content Include="Views\FrontEnd\MasterPage\_layoutUsuarios.cshtml" />
     <Content Include="Views\Tareas\TodasTareas.cshtml" />
     <Content Include="Views\Usuario\VerPerfil.cshtml" />
     <Content Include="Views\Tareas\TareasAcepUsuario.cshtml" />
-
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -265,9 +263,8 @@
     <Content Include="Views\AgregarEstudiante\EditarDatos.cshtml" />
     <Content Include="Views\AprobarTarea\Index.cshtml" />
     <Content Include="Views\AprobarTarea\DatosTarea.cshtml" />
-
     <Content Include="Views\Tareas\ListarTipoTarea.cshtml" />
-
+    <Content Include="Views\Tareas\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
