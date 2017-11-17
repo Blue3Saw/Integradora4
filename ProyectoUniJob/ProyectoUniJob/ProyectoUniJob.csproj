@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -167,6 +168,7 @@
     <Content Include="Recursos\FontEnd\js\jquery-2.2.3.min.js" />
     <Content Include="Recursos\FontEnd\js\jquery-ui.js" />
     <Content Include="Recursos\FontEnd\js\jquery.seat-charts.js" />
+    <Content Include="Recursos\FontEnd\js\locationpicker.jquery.js" />
     <Content Include="Recursos\FontEnd\js\move-top.js" />
     <Content Include="Recursos\FontEnd\js\responsiveslides.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -263,12 +265,9 @@
     <Content Include="Views\AprobarTarea\Index.cshtml" />
     <Content Include="Views\AprobarTarea\DatosTarea.cshtml" />
     <Content Include="Views\Tareas\ListarTipoTarea.cshtml" />
-
     <Content Include="Views\Tareas\Index.cshtml" />
-
     <Content Include="Views\Tareas\TareaAceptSeleccionada.cshtml" />
     <Content Include="Views\PrincipalFE\Index.cshtml" />
-
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
