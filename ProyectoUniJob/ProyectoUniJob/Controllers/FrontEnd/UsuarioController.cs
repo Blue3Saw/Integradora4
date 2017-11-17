@@ -22,7 +22,15 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult IndexEstudiante()
         {
-            return View("IndexEstudiante");
+            if (Session["Codigo"] != null)
+            {
+                return View("IndexEstudiante");
+            }
+            else
+            {
+                return RedirectToAction("Index", "PrincipalFE");
+            }
+            
         }
 
         public ActionResult Redireccionar()

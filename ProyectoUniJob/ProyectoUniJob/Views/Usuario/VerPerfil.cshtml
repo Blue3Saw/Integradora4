@@ -12,34 +12,76 @@
             <div class="credit-card-wrapper">
                 <div class="first-row form-group">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <label class="control-label">Nombre</label>
-                            @Html.TextBoxFor(x => x.Nombre, new { Class = "form-control", PlaceHolder = "Nombre" })
+                        <div class="col-md-4">
+                            <div class="movie-ticket-book">
+                                <img src="~/Recursos/FontEnd/images/movie-show.jpg" alt="" />
+                            </div>
+                            <input type="file" />
                         </div>
-                        <div class="col-sm-6">
-                            <label class="control-label">Apellidos</label>
-                            @Html.TextBoxFor(x => x.Apellidos, new { Class = "form-control", PlaceHolder = "Apellidos" })
+                        <div class="col-md-8 movies-dates">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h1 style="color:black;">Mis datos</h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label class="control-label">Nombre</label>
+                                    @Html.TextBoxFor(x => x.Nombre, new { Class = "form-control", PlaceHolder = "Nombre" })
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="control-label">Apellidos</label>
+                                    @Html.TextBoxFor(x => x.Apellidos, new { Class = "form-control", PlaceHolder = "Apellidos" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label class="control-label">Fecha de nacimiento</label>
+                                    @Html.TextBoxFor(x => x.FechaNac, new { Class = "date form-control", Id = "datepicker", Type = "text" })
+                                    <link rel="stylesheet" href="~/Recursos/FontEnd/css/jquery-ui.css">
+                                    <script src="~/Recursos/FontEnd/js/jquery-ui.js"></script>
+                                    <script>
+                                        $(function () {
+                                            $("#datepicker").datepicker();
+                                        });
+                                    </script>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="control-label">Teléfono</label>
+                                    @Html.TextBoxFor(x => x.Telefono, new { Class = "form-control", PlaceHolder = "Teléfono" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label class="control-label">Dirección</label>
+                                    @Html.TextBoxFor(x => x.Direccion, new { Class = "form-control", PlaceHolder = "Dirección" })
+                                </div>
+                                <div></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label class="control-label">Correo electrónico</label>
+                                    @Html.TextBoxFor(x => x.Email, new { Class = "form-control", PlaceHolder = "Correo electrónico" })
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="control-label">Contraseña</label>
+                                    @Html.TextBoxFor(x => x.Contraseña, new { Class = "form-control", Type = "password" })
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label class="control-label">Fecha de nacimiento</label>
-                            @Html.TextBoxFor(x => x.FechaNac, new { Class = "form-control", Type = "date" })
-                        </div>
-                        <div class="col-sm-6">
-                            <label class="control-label">Teléfono</label>
-                            @Html.TextBoxFor(x => x.Telefono, new { Class = "form-control", PlaceHolder = "Teléfono" })
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <label class="control-label">Dirección</label>
-                            @Html.TextBoxFor(x => x.Direccion, new { Class = "form-control", PlaceHolder = "Dirección"})
-                        </div>
-                        <div></div>
                     </div>
                 </div>
             </div>
         </section>
     </div>
+    <div class="row">
+        <div class="col-sm-8"></div>
+        <div class="col-sm-4">
+            <button type="submit" class="form-control btn btn-primary">Actualizar</button>
+        </div>
+    </div>
+
+    @Html.TextBoxFor(x => x.Codigo, new { Style = "visibility:hidden" })
+    @Html.TextBoxFor(x => x.TipoUsuario, new { Style = "visibility:hidden" })
+    @Html.TextBoxFor(x => x.Imagen, new { Style = "visibility:hidden" })
 }

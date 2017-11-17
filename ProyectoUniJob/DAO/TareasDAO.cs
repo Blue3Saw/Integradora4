@@ -58,6 +58,15 @@ namespace DAO
             return Conex.EjecutarComando(SentenciaSQL);
         }
 
+        public int DejarTarea(object ObjT)
+        {
+            TareasBO Dato = (TareasBO)ObjT;
+            SqlCommand SentenciaSQL = new SqlCommand("UPDATE Tareas SET Estatus = 1 WHERE Codigo = @Codigo");
+            SentenciaSQL.Parameters.Add("@Codigo", SqlDbType.Int).Value = Dato.Codigo;
+            SentenciaSQL.CommandType = CommandType.Text;
+            return Conex.EjecutarComando(SentenciaSQL);
+        }
+
         public int ApRecTarea(object ObjT)
         {
             TareasBO Dato = (TareasBO)ObjT;
@@ -84,6 +93,15 @@ namespace DAO
             DataTable tablavirtual = new DataTable();
             mostar.Fill(tablavirtual);
             return tablavirtual;
+        }
+
+        public DataTable TareaSeleccionada(int Codigo)
+        {
+            TareasBO Datos = new TareasBO();
+            SqlCommand Com = new SqlCommand("SELECT T.Codigo, T.Titulo, T.Descripcion, T.Direccion, T.Longitud, T.Latitud, T.Fecha, T.HoraInicio, T.HoraFinal, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion FROM Tareas T INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo WHERE T.Codigo = @Codigo");
+            Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
+            Com.CommandType = CommandType.Text;
+            return Conex.EjecutarSentencia(Com).Tables[0];
         }
 
         public DataTable TareasAcepUsuario(int Codigo)

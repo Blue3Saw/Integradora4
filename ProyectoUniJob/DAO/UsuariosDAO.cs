@@ -24,7 +24,7 @@ namespace DAO
             SentenciaSQL.Parameters.Add("@FechaNac", SqlDbType.Date).Value = Dato.FechaNac;
             SentenciaSQL.Parameters.Add("@Telefono", SqlDbType.BigInt).Value = Dato.Telefono;
             SentenciaSQL.Parameters.Add("@Email", SqlDbType.VarChar).Value = Dato.Email;
-            SentenciaSQL.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Dato.Contraseña;
+            SentenciaSQL.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Dato.Encriptar(Dato.Contraseña);
             SentenciaSQL.Parameters.Add("@TipoUs", SqlDbType.Int).Value = Dato.TipoUsuario;
             SentenciaSQL.Parameters.Add("@Imagen", SqlDbType.VarChar).Value = Dato.Imagen;
             SentenciaSQL.CommandType = CommandType.Text;
@@ -42,9 +42,9 @@ namespace DAO
             SentenciaSQL.Parameters.Add("@FechaNac", SqlDbType.Date).Value = Dato.FechaNac;
             SentenciaSQL.Parameters.Add("@Telefono", SqlDbType.BigInt).Value = Dato.Telefono;
             SentenciaSQL.Parameters.Add("@Email", SqlDbType.VarChar).Value = Dato.Email;
-            SentenciaSQL.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Dato.Contraseña;
+            SentenciaSQL.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Dato.Encriptar(Dato.Contraseña);
             SentenciaSQL.Parameters.Add("@TipoUs", SqlDbType.Int).Value = Dato.TipoUsuario;
-            SentenciaSQL.Parameters.Add("@Imagen", SqlDbType.VarChar).Value = Dato.Imagen;
+            SentenciaSQL.Parameters.Add("@Imagen", SqlDbType.VarChar).Value = "Hola.jpg";
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
         }
@@ -82,7 +82,7 @@ namespace DAO
             UsuarioBO Datos = (UsuarioBO)ObjU;
             SqlCommand Com = new SqlCommand("SELECT * FROM Usuarios WHERE Email = @Email AND Contraseña = @Contraseña AND TipoUs = 1");
             Com.Parameters.Add("@Email", SqlDbType.VarChar).Value = Datos.Email;
-            Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Contraseña;
+            Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Encriptar(Datos.Contraseña);
             Com.CommandType = CommandType.Text;
             return Conex.EjecutarComando(Com);
         }
@@ -92,7 +92,7 @@ namespace DAO
             UsuarioBO Datos = (UsuarioBO)ObjU;
             SqlCommand Com = new SqlCommand("SELECT * FROM Usuarios WHERE Email = @Email AND Contraseña = @Contraseña AND TipoUs = 3");
             Com.Parameters.Add("@Email", SqlDbType.VarChar).Value = Datos.Email;
-            Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Contraseña;
+            Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Encriptar(Datos.Contraseña);
             Com.CommandType = CommandType.Text;
             return Conex.EjecutarComando(Com);
         }
@@ -102,7 +102,7 @@ namespace DAO
             UsuarioBO Datos = (UsuarioBO)ObjU;
             SqlCommand Com = new SqlCommand("SELECT * FROM Usuarios WHERE Email = @Email AND Contraseña = @Contraseña AND TipoUs = 2");
             Com.Parameters.Add("@Email", SqlDbType.VarChar).Value = Datos.Email;
-            Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Contraseña;
+            Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Encriptar(Datos.Contraseña);
             Com.CommandType = CommandType.Text;
             return Conex.EjecutarComando(Com);
         }
@@ -150,10 +150,14 @@ namespace DAO
 
             var _fila = Conex.EjecutarSentencia(Com).Tables[0].Rows[0];
             {
+                Datos.Codigo = int.Parse(_fila.ItemArray[0].ToString());
                 Datos.Nombre = _fila.ItemArray[1].ToString();
                 Datos.Apellidos = _fila.ItemArray[2].ToString();
                 Datos.FechaNac = DateTime.Parse(_fila.ItemArray[3].ToString());
+                Datos.Direccion = _fila.ItemArray[4].ToString();
                 Datos.Telefono = long.Parse(_fila.ItemArray[5].ToString());
+                Datos.Email = _fila.ItemArray[6].ToString();
+                Datos.Contraseña = _fila.ItemArray[7].ToString();
             }
             return Datos;
         }
