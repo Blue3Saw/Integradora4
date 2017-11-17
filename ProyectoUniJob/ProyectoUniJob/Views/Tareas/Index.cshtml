@@ -194,7 +194,7 @@
         </script>
 
 <script type="text/javascript" src='https://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyBSXxq36QGkz0tczm7l3soE77raxPCbDb8'></script>
-<script src="js/locationpicker.jquery.js"></script>
+<script src="~/Recursos/FontEnd/js/locationpicker.jquery.js"></script>
 <script>
 
                                 $('#ModalMapPreview').locationpicker({
@@ -204,8 +204,8 @@
                                         longitude: -89.61501516379462
                                     },
                                     inputBinding: {
-                                        latitudeInput: $('#<%= this.ModalMapLat.ClientID%>'),
-                                        longitudeInput: $('#<%= this.ModalMapLon.ClientID%>'),
+                                        latitudeInput: $('#Latitud'),
+                                        longitudeInput: $('#Longitud'),
                                         locationNameInput: $('#ModalMap-address')
                                     },
                                     enableAutoComplete: true,
