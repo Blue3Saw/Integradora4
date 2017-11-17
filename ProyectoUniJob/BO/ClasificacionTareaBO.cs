@@ -9,7 +9,8 @@ namespace BO
     public class ClasificacionTareaBO
     {
         public int Codigo { get; set; }
-        public string Clasificacion { get; set; }      
+        public string Clasificacion { get; set; }
+        public string Direccion { get; set; }
 
         public List<ClasificacionTareaBO> TipoTarea { get; set; }
     }

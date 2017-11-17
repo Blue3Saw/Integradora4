@@ -19,29 +19,24 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AgregarTarea(string agregar,string modificar,string eliminar, string IdTarea, string NombreUsu,string Titulo,string Direccion,
-            string Latitud,string Longitud,string FechaTarea,string HoraInicioTarea, string HoraFinTarea, string cmbClas, string Descripcion, string inputLabel)
+        public ActionResult AgregarTarea(string agregar,string modificar,string eliminar, string id, string idUsu, string fecha, string horaI, string horaF, string tipo,string descrip, string estatus)
         {
             TareasBO obj = new TareasBO();
             int A = Convert.ToInt32(agregar);
             int M = Convert.ToInt32(modificar);
             int E = Convert.ToInt32(eliminar);
 
-            if(IdTarea != "")
+            if(id != "")
             {
-                obj.Codigo = Convert.ToInt32(IdTarea);
+                obj.Codigo = Convert.ToInt32(id);
             }
-            obj.CodigoEmpleador = Convert.ToInt32(NombreUsu);
-            obj.Titulo = Titulo;
-            obj.Direccion = Direccion;
-            obj.Latitud = float.Parse(Latitud);
-            obj.Longitud = float.Parse(Longitud);
-            obj.Fecha = DateTime.Parse(FechaTarea);
-            obj.HoraInicio = DateTime.Parse(HoraInicioTarea);
-            obj.HoraFin = DateTime.Parse(HoraFinTarea);
-            obj.TipoTarea = Convert.ToInt32(cmbClas);
-            obj.Descripcion = Descripcion;
-            obj.CodigoEstatus = Convert.ToInt32(inputLabel);
+            obj.CodigoEmpleador = Convert.ToInt32(idUsu);
+            obj.Fecha = Convert.ToDateTime(fecha);
+            obj.HoraInicio = Convert.ToDateTime(horaI);
+            obj.HoraFin = Convert.ToDateTime(horaF);
+            obj.TipoTarea = Convert.ToInt32(tipo);
+            obj.Descripcion = descrip;
+            obj.CodigoEstatus = Convert.ToInt32(estatus);
             if(A > 0)
             {
                 ObjDAO.AgregarTarea(obj);
@@ -63,9 +58,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         public ActionResult ListarTipoTarea()
         {
             ClasificacionTareaDAO ObjCla = new ClasificacionTareaDAO();
-            var Tipo = new ClasificacionTareaBO();
-            Tipo.TipoTarea = ObjCla.ListaTipo();
-            return PartialView(Tipo);
+            return PartialView(ObjCla.ListaTipo());
         }
 
         public ActionResult TodasTareas()
