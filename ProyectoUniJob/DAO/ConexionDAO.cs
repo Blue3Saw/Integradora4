@@ -17,16 +17,9 @@ namespace DAO
 
         public SqlConnection ConectarBD()
         {
-<<<<<<< HEAD
             //string cad_con = "Data Source=LAPTOP-JNUSO21H\\SQLEXPRESS; Initial Catalog=Integrador3; Integrated Security=True";
-            string cad_con = "Data Source=ALFONSO-PC; Initial Catalog=Integrador3; Integrated Security=True"; 
+            string cad_con = "Data Source=DANIEL-PC; Initial Catalog=Integrador3; Integrated Security=True"; 
             //string cad_con = "Data Source=LAPTOP-80619S9J; Initial Catalog=Integrador3; Integrated Security=True";
-=======
-
-            string cad_con = "Data Source=LAPTOP-80619S9J; Initial Catalog=Integrador3; Integrated Security=True"; ;
-            //string cad_con = "Data Source=LAPTOP-80619S9J; Initial Catalog=Integrador3; Integrated Security=True";
-
->>>>>>> origin/master
             con = new SqlConnection(cad_con);
             return con;
         }
