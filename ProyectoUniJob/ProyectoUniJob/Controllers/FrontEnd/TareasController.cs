@@ -65,7 +65,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             ClasificacionTareaDAO ObjCla = new ClasificacionTareaDAO();
             var Tipo = new ClasificacionTareaBO();
             Tipo.TipoTarea = ObjCla.ListaTipo();
-            return PartialView(Tipo);
+            return PartialView(Tipo.TipoTarea);
         }
 
         public ActionResult TodasTareas()
