@@ -267,14 +267,11 @@
     <Content Include="Views\AprobarTarea\Index.cshtml" />
     <Content Include="Views\AprobarTarea\DatosTarea.cshtml" />
     <Content Include="Views\Tareas\ListarTipoTarea.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\MesajesAdm\Index.cshtml" />
     <Content Include="Views\MesajesAdm\lol.cshtml" />
-=======
     <Content Include="Views\Tareas\Index.cshtml" />
     <Content Include="Views\Tareas\TareaAceptSeleccionada.cshtml" />
     <Content Include="Views\PrincipalFE\Index.cshtml" />
->>>>>>> 9884196ba0376536752b027de982b69f320df8db
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

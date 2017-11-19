@@ -5,16 +5,9 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
 }
-<<<<<<< HEAD
-<div class="content" id="lol">
-    <div class="container-fluid card">
-        <h2>Agregar Usuarios</h2>
-=======
-
 <h2>Agregar Usuarios</h2>
 <div class="container-fluid">
     <div class="container card">
->>>>>>> 9884196ba0376536752b027de982b69f320df8db
         @using (Ajax.BeginForm("AgregarUsuario", "AgregarEstudiante", new AjaxOptions() { HttpMethod = "POST" }))
         {
             @Html.AntiForgeryToken()
