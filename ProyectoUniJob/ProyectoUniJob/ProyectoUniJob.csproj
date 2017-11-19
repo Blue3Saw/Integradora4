@@ -101,6 +101,7 @@
     <Content Include="Recursos\BackEnd\fonts\themify.svg" />
     <Content Include="Recursos\BackEnd\img\apple-icon.png" />
     <Content Include="Recursos\BackEnd\img\background.jpg" />
+    <Content Include="Recursos\BackEnd\img\descarga.jpg" />
     <Content Include="Recursos\BackEnd\img\faces\face-0.jpg" />
     <Content Include="Recursos\BackEnd\img\faces\face-1.jpg" />
     <Content Include="Recursos\BackEnd\img\faces\face-2.jpg" />
@@ -181,6 +182,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BackEnd\AgregarEstudianteController.cs" />
     <Compile Include="Controllers\BackEnd\AprobarTareaController.cs" />
+    <Compile Include="Controllers\BackEnd\MesajesAdmController.cs" />
     <Compile Include="Controllers\BackEnd\PerfilAdminController.cs" />
     <Compile Include="Controllers\EstatusController.cs" />
     <Compile Include="Controllers\FrontEnd\DateTable.cs" />
@@ -255,7 +257,6 @@
     <Content Include="Views\Tareas\TodasTareas.cshtml" />
     <Content Include="Views\Usuario\VerPerfil.cshtml" />
     <Content Include="Views\Tareas\TareasAcepUsuario.cshtml" />
-
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -265,9 +266,9 @@
     <Content Include="Views\AgregarEstudiante\EditarDatos.cshtml" />
     <Content Include="Views\AprobarTarea\Index.cshtml" />
     <Content Include="Views\AprobarTarea\DatosTarea.cshtml" />
-
     <Content Include="Views\Tareas\ListarTipoTarea.cshtml" />
-
+    <Content Include="Views\MesajesAdm\Index.cshtml" />
+    <Content Include="Views\MesajesAdm\lol.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

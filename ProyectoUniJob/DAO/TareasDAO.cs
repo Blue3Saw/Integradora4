@@ -117,5 +117,17 @@ namespace DAO
             }
             return Datos;
         }
+
+
+        public DataTable TablaTareas2(int id)
+        {
+            TareasBO Datos = new TareasBO();
+            Datos.Codigo = id;
+            string sentencia = "select t.Codigo,u.Nombre,u.Apellidos,t.Titulo,t.Fecha,t.HoraInicio,t.HoraFinal,c.Clasificacion,t.Descripcion from Tareas t,Usuarios U, ClasificacionTarea c where u.Codigo = t.UsuarioEmpleador and c.Codigo = t.Tipo and t.Codigo = '"+Datos.Codigo+"'";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
+        }
     }
 }
