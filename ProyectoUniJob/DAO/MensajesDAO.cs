@@ -25,5 +25,17 @@ namespace DAO
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
         }
+
+
+        public DataTable MOstarMensajes(int usuario)
+        {
+            MensajesBO Datos = new MensajesBO();
+            Datos.UsRecibe = usuario;
+            sentencia = "select u.Nombre,m.UsRecibe,m.FechaHora,m.Mensaje,m.Estatus,m.Titulo  from Usuarios u,Mensajes m where u.Codigo = m.UsEnvia and m.UsRecibe = '"+Datos.UsRecibe+"'";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
+        }
     }
 }

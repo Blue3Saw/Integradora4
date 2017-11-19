@@ -1,22 +1,98 @@
-﻿@using BO;
-@model TareasBO
-
+﻿@using System.Data;
+@model DataTable
 
 @{
     ViewBag.Title = "DatosTarea";
     Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
 }
-
-<h2>DatosTarea</h2>
-<div>
-    <div>
-        @Html.TextBoxFor(x => x.Codigo, new { @type = "text", @name = "ID", @class = "form-control" })
-    </div>
-    <div>
-        @Html.TextBoxFor(x => x.Titulo, new { @type = "text", @name = "ID", @class = "form-control" })
-    </div>
-    <div>
-        @Html.TextBoxFor(x => x.Descripcion, new { @type = "text", @name = "ID", @class = "form-control" })
+@foreach (DataRow row in Model.Rows)
+{
+<div class="content">
+    <div class="container-fluid card">
+        <div class="row">
+            <div class="col-lg-12" style="vertical-align:middle">
+                <h1>@row["Titulo"]</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12" style="vertical-align:middle">
+                <h4>Imagenes</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h4>Descripcion:</h4>
+                <div>
+                </div>
+                <div>
+                    @row["Descripcion"]
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <h4>Hora de Inicio:</h4>
+                </div>
+                <div>
+                    <div>@row["HoraInicio"]</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div>
+                    <h4>Hora de Fin:</h4>
+                </div>
+                <div>
+                    <div>@row["HoraFinal"]</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div>
+                    <h4>Clasificacion:</h4>
+                </div>
+                <div>
+                    <div>@row["Clasificacion"]</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div>
+                    <h4>Ubicacion :</h4>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <h4>Dirreccion :</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div>
+                    <h4>Creada por: @row["Nombre"] @row["Apellidos"]</h4>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div>
+                    <img src="~/Recursos/BackEnd/img/tim_80x80.png" class="img-circle img-responsive" width="50" height="50" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div>
+                    <button class="btn btn-success btn-lg">Aceptar tarea</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <button class="btn btn-danger btn-lg">Denegar Tarea</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+}
+
 

@@ -32,12 +32,12 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             }
             else if (ObjUsuario.LoginEmpleador(Datos) > 0)
             {
-                Session["Codigo"] = ObjUsuario.LoginAdministrador(Datos);
+                Session["Codigo"] = ObjUsuario.LoginEmpleador(Datos);
                 return RedirectToAction("IndexEmpleador", "Usuario");
             }
             else if (ObjUsuario.LoginEstudiante(Datos) > 0)
             {
-                Session["Codigo"] = ObjUsuario.LoginAdministrador(Datos);
+                Session["Codigo"] = ObjUsuario.LoginEstudiante(Datos);
                 return RedirectToAction("IndexEstudiante", "Usuario");
             }
             else
