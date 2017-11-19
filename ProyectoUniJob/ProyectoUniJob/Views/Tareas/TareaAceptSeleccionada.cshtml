@@ -1,0 +1,79 @@
+﻿@using System.Data;
+
+@{
+    ViewBag.Title = "TareaAceptSeleccionada";
+    Layout = "~/Views/FrontEnd/MasterPage/_layoutUsuarios.cshtml";
+}
+
+<div class="w3layouts-breadcrumbs text-center">
+    <div class="container">
+        <span class="agile-breadcrumbs"><i class="fa fa-home home_1"></i> / <span>Estudiante</span> / <span>Detalle tarea</span></span>
+    </div>
+</div>
+
+<div class="agile-pay w3layouts-content">
+    <div class="container">
+        @foreach (DataRow row in Model.Rows)
+        {
+            <div class="creditly-card-form agileinfo_form">
+                <section class="creditly-wrapper wthree, w3_agileits_wrapper">
+                    <div class="credit-card-wrapper">
+                        <div class="first-row form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="movie-ticket-book">
+                                        <img src="~/Recursos/FontEnd/images/movie-show.jpg" alt="" />
+                                    </div>
+                                </div>
+                                <div class="col-md-8 movies-dates">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h1 style="color: aquamarine;">@row["Titulo"]</h1>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label class="control-label">@row["Descripcion"]</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="control-label">Empleador: @row["Empleador"]</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="control-label">Fecha: @row["Fecha"]</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="control-label">Hora de inicio: @row["HoraInicio"]</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="control-label">Hora de término: @row["HoraFinal"]</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label class="control-label">Dirección: @row["Direccion"]</label>
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label class="control-label">Mapa</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        }
+
+        @using (Html.BeginForm("ActualizarPerfil", "Tareas", FormMethod.Post))
+        {
+
+        }
+    </div>
+</div>

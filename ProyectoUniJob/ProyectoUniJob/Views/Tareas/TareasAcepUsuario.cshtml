@@ -22,7 +22,7 @@
                             </div>
                             <div class="m-r-like">
                                 <!--Cambiar a actionLink-->
-                                <a href="#">Ver más</a>
+                                @Html.ActionLink("Ver más", "TareaAceptSeleccionada", "Tareas", new { Codigo = @row["Codigo"] }, null)
                             </div>
                             <div class="clearfix"></div>
                         </div>

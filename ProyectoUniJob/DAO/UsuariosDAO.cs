@@ -24,7 +24,7 @@ namespace DAO
             SentenciaSQL.Parameters.Add("@FechaNac", SqlDbType.Date).Value = Dato.FechaNac;
             SentenciaSQL.Parameters.Add("@Telefono", SqlDbType.BigInt).Value = Dato.Telefono;
             SentenciaSQL.Parameters.Add("@Email", SqlDbType.VarChar).Value = Dato.Email;
-            SentenciaSQL.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Dato.Contraseña;
+            SentenciaSQL.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Dato.Encriptar(Dato.Contraseña);
             SentenciaSQL.Parameters.Add("@TipoUs", SqlDbType.Int).Value = Dato.TipoUsuario;
             SentenciaSQL.Parameters.Add("@Imagen", SqlDbType.VarChar).Value = Dato.Imagen;
             SentenciaSQL.CommandType = CommandType.Text;
@@ -42,7 +42,7 @@ namespace DAO
             SentenciaSQL.Parameters.Add("@FechaNac", SqlDbType.Date).Value = Dato.FechaNac;
             SentenciaSQL.Parameters.Add("@Telefono", SqlDbType.BigInt).Value = Dato.Telefono;
             SentenciaSQL.Parameters.Add("@Email", SqlDbType.VarChar).Value = Dato.Email;
-            SentenciaSQL.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Dato.Contraseña;
+            SentenciaSQL.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Dato.Encriptar(Dato.Contraseña);
             SentenciaSQL.Parameters.Add("@TipoUs", SqlDbType.Int).Value = Dato.TipoUsuario;
             SentenciaSQL.Parameters.Add("@Imagen", SqlDbType.VarChar).Value = "Hola.jpg";
             SentenciaSQL.CommandType = CommandType.Text;
@@ -82,7 +82,7 @@ namespace DAO
             UsuarioBO Datos = (UsuarioBO)ObjU;
             SqlCommand Com = new SqlCommand("SELECT * FROM Usuarios WHERE Email = @Email AND Contraseña = @Contraseña AND TipoUs = 1");
             Com.Parameters.Add("@Email", SqlDbType.VarChar).Value = Datos.Email;
-            Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Contraseña;
+            Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Encriptar(Datos.Contraseña);
             Com.CommandType = CommandType.Text;
             return Conex.EjecutarComando(Com);
         }
@@ -92,7 +92,7 @@ namespace DAO
             UsuarioBO Datos = (UsuarioBO)ObjU;
             SqlCommand Com = new SqlCommand("SELECT * FROM Usuarios WHERE Email = @Email AND Contraseña = @Contraseña AND TipoUs = 3");
             Com.Parameters.Add("@Email", SqlDbType.VarChar).Value = Datos.Email;
-            Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Contraseña;
+            Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Encriptar(Datos.Contraseña);
             Com.CommandType = CommandType.Text;
             return Conex.EjecutarComando(Com);
         }
@@ -102,7 +102,7 @@ namespace DAO
             UsuarioBO Datos = (UsuarioBO)ObjU;
             SqlCommand Com = new SqlCommand("SELECT * FROM Usuarios WHERE Email = @Email AND Contraseña = @Contraseña AND TipoUs = 2");
             Com.Parameters.Add("@Email", SqlDbType.VarChar).Value = Datos.Email;
-            Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Contraseña;
+            Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Encriptar(Datos.Contraseña);
             Com.CommandType = CommandType.Text;
             return Conex.EjecutarComando(Com);
         }
