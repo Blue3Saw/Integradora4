@@ -82,7 +82,7 @@ namespace DAO
             UsuarioBO Datos = (UsuarioBO)ObjU;
             SqlCommand Com = new SqlCommand("SELECT * FROM Usuarios WHERE Email = @Email AND Contraseña = @Contraseña AND TipoUs = 1");
             Com.Parameters.Add("@Email", SqlDbType.VarChar).Value = Datos.Email;
-            Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Encriptar(Datos.Contraseña);
+            Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Contraseña;
             Com.CommandType = CommandType.Text;
             return Conex.EjecutarComando(Com);
         }
@@ -92,7 +92,7 @@ namespace DAO
             UsuarioBO Datos = (UsuarioBO)ObjU;
             SqlCommand Com = new SqlCommand("SELECT * FROM Usuarios WHERE Email = @Email AND Contraseña = @Contraseña AND TipoUs = 3");
             Com.Parameters.Add("@Email", SqlDbType.VarChar).Value = Datos.Email;
-            Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Encriptar(Datos.Contraseña);
+            Com.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Datos.Contraseña;
             Com.CommandType = CommandType.Text;
             return Conex.EjecutarComando(Com);
         }
