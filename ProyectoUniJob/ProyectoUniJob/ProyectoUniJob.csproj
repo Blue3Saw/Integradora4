@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -101,6 +102,7 @@
     <Content Include="Recursos\BackEnd\fonts\themify.svg" />
     <Content Include="Recursos\BackEnd\img\apple-icon.png" />
     <Content Include="Recursos\BackEnd\img\background.jpg" />
+    <Content Include="Recursos\BackEnd\img\descarga.jpg" />
     <Content Include="Recursos\BackEnd\img\faces\face-0.jpg" />
     <Content Include="Recursos\BackEnd\img\faces\face-1.jpg" />
     <Content Include="Recursos\BackEnd\img\faces\face-2.jpg" />
@@ -167,6 +169,7 @@
     <Content Include="Recursos\FontEnd\js\jquery-2.2.3.min.js" />
     <Content Include="Recursos\FontEnd\js\jquery-ui.js" />
     <Content Include="Recursos\FontEnd\js\jquery.seat-charts.js" />
+    <Content Include="Recursos\FontEnd\js\locationpicker.jquery.js" />
     <Content Include="Recursos\FontEnd\js\move-top.js" />
     <Content Include="Recursos\FontEnd\js\responsiveslides.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -181,6 +184,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BackEnd\AgregarEstudianteController.cs" />
     <Compile Include="Controllers\BackEnd\AprobarTareaController.cs" />
+    <Compile Include="Controllers\BackEnd\MesajesAdmController.cs" />
     <Compile Include="Controllers\BackEnd\PerfilAdminController.cs" />
     <Compile Include="Controllers\EstatusController.cs" />
     <Compile Include="Controllers\FrontEnd\DateTable.cs" />
@@ -247,7 +251,6 @@
     <Content Include="Recursos\FontEnd\fonts\Oxygen-Regular.ttf" />
     <Content Include="Views\AgregarEstudiante\Index.cshtml" />
     <Content Include="Views\Usuario\Redireccionar.cshtml" />
-    <Content Include="Views\Tareas\Index.cshtml" />
     <Content Include="Views\Usuario\IndexEmpleador.cshtml" />
     <Content Include="Views\Usuario\IndexEstudiante.cshtml" />
     <Content Include="Views\FrontEnd\MasterPage\_layoutUsuarios.cshtml" />
@@ -264,6 +267,9 @@
     <Content Include="Views\AprobarTarea\Index.cshtml" />
     <Content Include="Views\AprobarTarea\DatosTarea.cshtml" />
     <Content Include="Views\Tareas\ListarTipoTarea.cshtml" />
+    <Content Include="Views\MesajesAdm\Index.cshtml" />
+    <Content Include="Views\MesajesAdm\lol.cshtml" />
+    <Content Include="Views\Tareas\Index.cshtml" />
     <Content Include="Views\Tareas\TareaAceptSeleccionada.cshtml" />
     <Content Include="Views\PrincipalFE\Index.cshtml" />
     <None Include="Web.Debug.config">
