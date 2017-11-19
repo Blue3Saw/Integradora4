@@ -6,19 +6,15 @@
     Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
 }
 <<<<<<< HEAD
-=======
-<h2>Agregar Usuarios</h2>
-<div class="container-fluid">
-    <div class="container card">
-        
-@using (Ajax.BeginForm("AgregarUsuario", "AgregarEstudiante", new AjaxOptions() { HttpMethod = "POST" }))
-{
-    @Html.AntiForgeryToken()
->>>>>>> 2e1c98ea28edfe73aeec6a85a5617768cce0765b
-
 <div class="content" id="lol">
     <div class="container-fluid card">
         <h2>Agregar Usuarios</h2>
+=======
+
+<h2>Agregar Usuarios</h2>
+<div class="container-fluid">
+    <div class="container card">
+>>>>>>> 9884196ba0376536752b027de982b69f320df8db
         @using (Ajax.BeginForm("AgregarUsuario", "AgregarEstudiante", new AjaxOptions() { HttpMethod = "POST" }))
         {
             @Html.AntiForgeryToken()

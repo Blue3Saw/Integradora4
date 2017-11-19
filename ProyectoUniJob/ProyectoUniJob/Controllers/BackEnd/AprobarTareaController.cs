@@ -22,7 +22,7 @@ namespace ProyectoUniJob.Controllers.BackEnd
         public ActionResult DatosTarea(string boton)
         {
             int dato = int.Parse(boton);
-            return View(dao.DatosTareaAceptar(dato));
+            return View(dao.TablaTareas2(dato));
         }
     }
 }

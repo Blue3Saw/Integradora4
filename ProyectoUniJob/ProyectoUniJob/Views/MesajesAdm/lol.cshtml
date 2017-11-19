@@ -1,0 +1,12 @@
+﻿@using System.Data;
+@model DataTable
+@{
+    ViewBag.Title = "lol";
+    Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
+}
+
+@foreach (DataRow row in Model.Rows)
+{
+    <input type="text" class="form-control" name="ID" placeholder="prro" value="@row["Titulo"]" />
+}
+ 

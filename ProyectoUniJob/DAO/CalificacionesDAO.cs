@@ -12,7 +12,7 @@ namespace DAO
     public class CalificacionesDAO
     {
         ConexionDAO Conex = new ConexionDAO();
-        string sentencia;
+        //string sentencia;
 
         public int AgregarCalificacion(object ObjC)
         {
