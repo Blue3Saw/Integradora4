@@ -28,7 +28,7 @@ namespace DAO
             SentenciaSQL.Parameters.Add("@Estatus", SqlDbType.Int).Value = 1;
             SentenciaSQL.Parameters.Add("@Longitud", SqlDbType.Float).Value = Dato.Longitud;
             SentenciaSQL.Parameters.Add("@Latitud", SqlDbType.Float).Value = Dato.Latitud;
-            SentenciaSQL.Parameters.Add("@Direccion", SqlDbType.VarChar).Value = Dato.Direccion;
+            SentenciaSQL.Parameters.Add("@Direccion", SqlDbType.VarChar).Value = "";
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
         }
