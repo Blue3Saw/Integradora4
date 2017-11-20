@@ -63,7 +63,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult ActualizarPerfil(UsuarioBO Obj)
         {
-            ObjUsuario.ActualizarUsuario(Obj);
+            ObjUsuario.ActualizarPerfil(Obj);
             return View("IndexEstudiante");
         }
     }
