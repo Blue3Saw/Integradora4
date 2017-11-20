@@ -5,6 +5,12 @@
     Layout = "~/Views/FrontEnd/MasterPage/_layoutUsuarios.cshtml";
 }
 
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css" />
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyBN5HQEgifKCN5mq9cqkHQ7biWnKGusKok"></script>
+<script src="~/Recursos/FontEnd/js/locationpicker.jquery.js"></script>
+
 <div class="w3layouts-breadcrumbs text-center">
     <div class="container">
         <span class="agile-breadcrumbs"><i class="fa fa-home home_1"></i> / <span>Estudiante</span> / <span>Detalle tarea</span></span>
@@ -59,8 +65,18 @@
                                         <div></div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-12">
-                                            <label class="control-label">Mapa</label>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <div id="ModalMapPreview" style="width:100%; height: 400px;"></div>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <input type="text" id="txtLat" value=@row["Latitud"] class="control-label" style = "visibility:hidden">
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" id="txtLgt" value=@row["Longitud"] class="control-label" style = "visibility:hidden">
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -69,10 +85,26 @@
                     </div>
                 </section>
             </div>
-            @using (Html.BeginForm("ActualizarPerfil", "Tareas", FormMethod.Post))
+        }
+
+        @using (Html.BeginForm("ActualizarPerfil", "Tareas", FormMethod.Post))
             {
 
             }
-        }
     </div>
 </div>
+
+<script>
+        $("#ModalMapPreview").locationpicker({
+            radius: 0,
+            location: {
+                longitude: $("#txtLgt").val(),
+                latitude: $("#txtLat").val()
+            },
+            inputBinding: {
+                latitudeInput: $("#txtLat"),
+                longitudeInput: $("#txtLgt")
+            },
+            enableAutocomplete: true
+        });
+</script>
