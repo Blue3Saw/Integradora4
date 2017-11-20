@@ -28,7 +28,7 @@ namespace DAO
             SentenciaSQL.Parameters.Add("@Estatus", SqlDbType.Int).Value = 1;
             SentenciaSQL.Parameters.Add("@Longitud", SqlDbType.Float).Value = Dato.Longitud;
             SentenciaSQL.Parameters.Add("@Latitud", SqlDbType.Float).Value = Dato.Latitud;
-            SentenciaSQL.Parameters.Add("@Direccion", SqlDbType.VarChar).Value = Dato.Direccion;
+            SentenciaSQL.Parameters.Add("@Direccion", SqlDbType.VarChar).Value = "";
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
         }
@@ -135,6 +135,18 @@ namespace DAO
                 Datos.CodigoEstatus= int.Parse(_fila.ItemArray[8].ToString());
             }
             return Datos;
+        }
+
+
+        public DataTable TablaTareas2(int id)
+        {
+            TareasBO Datos = new TareasBO();
+            Datos.Codigo = id;
+            string sentencia = "select t.Codigo,u.Nombre,u.Apellidos,t.Titulo,t.Fecha,t.HoraInicio,t.HoraFinal,c.Clasificacion,t.Descripcion from Tareas t,Usuarios U, ClasificacionTarea c where u.Codigo = t.UsuarioEmpleador and c.Codigo = t.Tipo and t.Codigo = '"+Datos.Codigo+"'";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
         }
     }
 }

@@ -55,14 +55,15 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult VerPerfil()
         {
-            Session["Codigo"] = 2;
-            return View(ObjUsuario.PerfilUsuario(int.Parse(Session["Codigo"].ToString())));
+            UsuarioBO Datos = new UsuarioBO();
+            Datos.Codigo = int.Parse(Session["Codigo"].ToString());
+            return View(ObjUsuario.PerfilUsuario(Datos.Codigo));
 
         }
 
         public ActionResult ActualizarPerfil(UsuarioBO Obj)
         {
-            ObjUsuario.ActualizarUsuario(Obj);
+            ObjUsuario.ActualizarPerfil(Obj);
             return View("IndexEstudiante");
         }
     }

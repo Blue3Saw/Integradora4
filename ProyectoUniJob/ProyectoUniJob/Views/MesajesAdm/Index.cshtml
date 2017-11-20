@@ -1,0 +1,39 @@
+﻿@using System.Data;
+@model DataTable
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
+}
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<div class="content">
+    <div class="container-fluid">
+            <div class="row">
+                @foreach (DataRow row in Model.Rows)
+                {
+                    <div class="col-lg-12" onclick=""  style="cursor:pointer">
+                        <div class="thumbnail">
+                            <div class="message-preview">
+                                <div class="media">
+                                    <span class="pull-left">
+                                    </span>
+                                    <div class="media-body">
+                                    <h4 class="media-heading"> 
+                                        @row["Titulo"]</h4>
+                                        <h5 class="media-heading">
+                                            <strong></strong>
+                                        </h5>
+                                        <p class="small"><i class="fa fa-clock-o"></i>@row["FechaHora"]</p>
+                                        <p>@row["Mensaje"]</p>
+                                        <h6>Enviado por: @row["Nombre"]</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+    </div>
+</div>
+
+

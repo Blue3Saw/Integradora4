@@ -22,13 +22,18 @@ namespace BO
         public string Imagen { get; set; }
         public string Encriptar(string str)
         {
-            MD5 md5 = MD5CryptoServiceProvider.Create();
-            ASCIIEncoding encoding = new ASCIIEncoding();
-            byte[] stream = null;
-            StringBuilder sb = new StringBuilder();
-            stream = md5.ComputeHash(encoding.GetBytes(str));
-            for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
-            return sb.ToString();
+            string Resultado = string.Empty;
+            Byte[] Encriptado = System.Text.Encoding.Unicode.GetBytes(str);
+            Resultado = Convert.ToBase64String(Encriptado);
+            return Resultado;
+        }
+
+        public string Desencriptar(string str)
+        {
+            string Resultado = string.Empty;
+            Byte[] Desencriptado = Convert.FromBase64String(str);
+            Resultado = System.Text.Encoding.Unicode.GetString(Desencriptado);
+            return Resultado;
         }
     }
 }
