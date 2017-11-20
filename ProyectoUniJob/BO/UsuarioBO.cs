@@ -27,5 +27,13 @@ namespace BO
             Resultado = Convert.ToBase64String(Encriptado);
             return Resultado;
         }
+
+        public string Desencriptar(string str)
+        {
+            string Resultado = string.Empty;
+            Byte[] Desencriptado = Convert.FromBase64String(str);
+            Resultado = System.Text.Encoding.Unicode.GetString(Desencriptado);
+            return Resultado;
+        }
     }
 }
