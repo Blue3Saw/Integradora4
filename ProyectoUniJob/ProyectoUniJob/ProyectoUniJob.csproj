@@ -273,6 +273,7 @@
     <Content Include="Views\Tareas\TareaAceptSeleccionada.cshtml" />
     <Content Include="Views\PrincipalFE\Index.cshtml" />
     <Content Include="Views\Tareas\TareaSeleccionada.cshtml" />
+    <Content Include="Views\Tareas\VistaTarea.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
