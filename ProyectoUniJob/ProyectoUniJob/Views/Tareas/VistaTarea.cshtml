@@ -5,7 +5,7 @@
 <div class="col-md-2"></div>
 
 <div class="container-fluid">
-    <div class="container card">
+    <div class="container card" style="width: 109%;">
 
         @using (Ajax.BeginForm("AgregarTarea", "Tareas", new AjaxOptions() { HttpMethod = "POST" }))
         {
@@ -52,7 +52,7 @@
                         <div class="ban-top">
                             <div class="col-lg-4 ">
 
-                                <div class="ban-bottom">
+                                <div class="">
                                     <div class="bnr-right">
                                         <label class="inputLabel">Fecha de la tarea a realizar:</label>
                                         <input name="FechaTarea" class="date form-control" type="date" placeholder="dd-mm-yyyy" required="required" />
@@ -60,8 +60,8 @@
                                 </div>
 
                                 <div class="clearfix"></div>
+                                 <label class="control-label">Tipo de tarea:</label>
                                 <div class="bnr-left">
-                                    <label class="control-label">Tipo de tarea:</label>
                                     <div>
                                         <div id="cmbClas" required="required"></div>
                                     </div>
@@ -71,10 +71,7 @@
                                     <label class="inputLabel">Descripción:</label>
                                     <input name="Descripcion" class="form-control" type="text" required="required" />
                                 </div>
-                                <div class="clearfix"></div>
-                                <button type="button" data-toggle="modal" data-target="#Map" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-map-marker"></span> <span id="ubicacion">Seleccionar ubicación:</span>
-                                </button>
+                                
 
                             </div>
                         </div>
@@ -86,39 +83,38 @@
                                         z-index: 99999;
                                     }
                                 </style>
-
+                                <div class="clearfix"></div>
+                                <div class="bnr-left">
+                                    <label class="col-sm-2 control-label">Ubicación:</label>
+                                    <input type="text" class="form-control" name="Direccion" id="Direccion" />
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="bnr-left">
+                                    <div id="MapPreview" style="width:100%; height:300px;"></div>
+                                </div>
                                 <div class="container-fluid">
                                     <div class="modal-body">
                                         <div class="form-horizontal">
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label">Ubicación:</label>
+                                                
                                                 <div class="col-sm-1"></div>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" name="Direccion" id="Direccion" />
+                                                    
                                                 </div>
-                                                <div class="col-sm-1">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                </div>
+                                              
                                             </div>
-                                            <div id="MapPreview" style="width:100%; height:300px;"></div>
+                                            
                                             <div class="clearfix">&nbsp;</div>
-                                            <div class="m-t-small">
+                                            <div class="m-t-small" style="display:none;">
                                                 <label class="p-r-small col-sm-2 control-label">Lat.:</label>
-                                                <div class="col-sm-4">
-
-                                                    @*<input type="text"  Class="form-control" name="Latitud" />*@
-
+                                                <div class="col-sm-4">                                                 
                                                     <input type="text" Class="form-control" name="Latitud" ID="Latitud" />
                                                 </div>
                                             </div>
-                                            <div>
+                                            <div style="display:none;">
                                                 <label class="p-r-small col-sm-2 control-label">Long.:</label>
-                                                <div class="col-sm-4">
-
-                                                    @*<input type="text"  Class="form-control" name="Longitud" />*@
-
+                                                <div class="col-sm-4">                                                   
                                                     <input type="text" Class="form-control" name="Longitud" ID="Longitud" />
-
                                                 </div>
                                             </div>
                                             <div class="clearfix">&nbsp;</div>
@@ -129,7 +125,7 @@
                                 </div>
 
                             </div>
-                            <div class="clearfix">&nbsp;</div>
+                            
 
 
                             <div class="row">

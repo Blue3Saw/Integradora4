@@ -19,40 +19,40 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public ActionResult AgregarTarea(string agregar,string modificar,string eliminar, string IdTarea, string NombreUsu,string Titulo,string Direccion,
-        //    string Latitud,string Longitud,string FechaTarea,string HoraInicioTarea, string HoraFinTarea, string cmbClas, string Descripcion, string inputLabel)
-        //{
-        //    TareasBO obj = new TareasBO();
-        //    int A = Convert.ToInt32(agregar);
-        //    int M = Convert.ToInt32(modificar);
-        //    int E = Convert.ToInt32(eliminar);
+        public ActionResult AgregarTarea(string agregar, string modificar, string eliminar, string IdTarea, string NombreUsu, string Titulo, string Direccion,
+            string Latitud, string Longitud, string FechaTarea, string HoraInicioTarea, string HoraFinTarea, string cmbClas, string Descripcion, string inputLabel)
+        {
+            TareasBO obj = new TareasBO();
+            int A = Convert.ToInt32(agregar);
+            int M = Convert.ToInt32(modificar);
+            int E = Convert.ToInt32(eliminar);
 
-        //    if(IdTarea != "")
-        //    {
-        //        obj.Codigo = Convert.ToInt32(IdTarea);
-        //    }
-        //    obj.CodigoEmpleador = 1;//(int)Session["Codigo"]; //Convert.ToInt32(NombreUsu);
-        //    obj.Titulo = Titulo;
-        //    obj.Direccion = Direccion;
-        //    obj.Latitud = float.Parse(Latitud);
-        //    obj.Longitud = float.Parse(Longitud);
-        //    obj.Fecha = DateTime.Parse(FechaTarea);
-        //    obj.HoraInicio = DateTime.Parse(HoraInicioTarea);
-        //    obj.HoraFin = DateTime.Parse(HoraFinTarea);
-        //    obj.TipoTarea = Convert.ToInt32(cmbClas);
-        //    obj.Descripcion = Descripcion;
-        //    obj.CodigoEstatus = Convert.ToInt32(inputLabel);
-        //    if(A > 0)
-        //    {
-        //        ObjDAO.AgregarTarea(obj);
-        //        ViewBag.Script = "Agregado";
-        //    }
-        //    else if (M > 0)
-        //    {
-        //        ObjDAO.ActualizarTarea(obj);
-        //    }
-        //    return View("Index");
-        //}
+            if (IdTarea != "")
+            {
+                obj.Codigo = Convert.ToInt32(IdTarea);
+            }
+            obj.CodigoEmpleador = 1;//(int)Session["Codigo"]; //Convert.ToInt32(NombreUsu);
+            obj.Titulo = Titulo;
+            obj.Direccion = Direccion;
+            obj.Latitud = float.Parse(Latitud);
+            obj.Longitud = float.Parse(Longitud);
+            obj.Fecha = DateTime.Parse(FechaTarea);
+            obj.HoraInicio = DateTime.Parse(HoraInicioTarea);
+            obj.HoraFin = DateTime.Parse(HoraFinTarea);
+            obj.TipoTarea = Convert.ToInt32(cmbClas);
+            obj.Descripcion = Descripcion;
+            obj.CodigoEstatus = Convert.ToInt32(inputLabel);
+            if (A > 0)
+            {
+                ObjDAO.AgregarTarea(obj);
+                ViewBag.Script = "Agregado";
+            }
+            else if (M > 0)
+            {
+                ObjDAO.ActualizarTarea(obj);
+            }
+            return Redirect("/Usuario/IndexEmpleador#parentHorizontalTab2");
+        }
         public ActionResult EliminarTarea(string id)
         {
             TareasBO objBO = new TareasBO();
@@ -95,7 +95,8 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         [ChildActionOnly]
         public ActionResult VistaTarea()
         {
-            return PartialView();
+            
+            return PartialView("VistaTarea");
         }
     }
 }
