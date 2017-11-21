@@ -21,8 +21,7 @@
                                 <p>@row["Empleador"]</p>
                             </div>
                             <div class="m-r-like">
-                                <!--Cambiar a actionLink-->
-                                <a href="#">Ver más</a>                                
+                                @Html.ActionLink("Ver más", "TareaSeleccionada", "Tareas", new { Codigo = @row["Codigo"] }, null)                          
                             </div>
                             <div class="clearfix"></div>
                         </div>
