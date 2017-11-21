@@ -34,6 +34,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
                 return RedirectToAction("IndexEstudiante", "Usuario");
 
+                return RedirectToAction("Index", "AgregarEstudiante");
             }
             else if (ObjUsuario.LoginEmpleador(Datos) > 0)
             {
