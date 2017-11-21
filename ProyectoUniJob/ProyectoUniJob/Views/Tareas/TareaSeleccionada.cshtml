@@ -1,0 +1,110 @@
+﻿@using System.Data;
+
+@{
+    ViewBag.Title = "TareaSeleccionada";
+    Layout = "~/Views/FrontEnd/MasterPage/_layoutUsuarios.cshtml";
+}
+
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css" />
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyBN5HQEgifKCN5mq9cqkHQ7biWnKGusKok"></script>
+<script src="~/Recursos/FontEnd/js/locationpicker.jquery.js"></script>
+
+<div class="w3layouts-breadcrumbs text-center">
+    <div class="container">
+        <span class="agile-breadcrumbs"><i class="fa fa-home home_1"></i> / <span>Estudiante</span> / <span>Detalle tarea</span></span>
+    </div>
+</div>
+
+<div class="agile-pay w3layouts-content">
+    <div class="container">
+        @foreach (DataRow row in Model.Rows)
+        {
+            <div class="creditly-card-form agileinfo_form">
+                <section class="creditly-wrapper wthree, w3_agileits_wrapper">
+                    <div class="credit-card-wrapper">
+                        <div class="first-row form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="movie-ticket-book">
+                                        <img src="~/Recursos/FontEnd/images/movie-show.jpg" alt="" />
+                                    </div>
+                                </div>
+                                <div class="col-md-8 movies-dates">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h1 style="color: aquamarine;">@row["Titulo"]</h1>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label class="control-label">@row["Descripcion"]</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="control-label">Empleador: @row["Empleador"]</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="control-label">Fecha: @row["Fecha"]</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="control-label">Hora de inicio: @row["HoraInicio"]</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="control-label">Hora de término: @row["HoraFinal"]</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label class="control-label">Dirección: @row["Direccion"]</label>
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <div id="ModalMapPreview" style="width:100%; height: 400px;"></div>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <input type="text" id="txtLat" value=@row["Latitud"] class="control-label" style="visibility:hidden">
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" id="txtLgt" value=@row["Longitud"] class="control-label" style="visibility:hidden">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        }
+
+        @using (Html.BeginForm("ActualizarPerfil", "Tareas", FormMethod.Post))
+            {
+
+            }
+    </div>
+</div>
+
+<script>
+        $("#ModalMapPreview").locationpicker({
+            radius: 0,
+            location: {
+                longitude: $("#txtLgt").val(),
+                latitude: $("#txtLat").val()
+            },
+            inputBinding: {
+                latitudeInput: $("#txtLat"),
+                longitudeInput: $("#txtLgt")
+            },
+            enableAutocomplete: true
+        });
+</script>
