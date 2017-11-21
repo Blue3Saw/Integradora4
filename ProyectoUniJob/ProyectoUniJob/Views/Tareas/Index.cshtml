@@ -59,7 +59,7 @@
                                 <div class="ban-bottom">
                                     <div class="bnr-right">
                                         <label class="inputLabel">Fecha de la tarea a realizar:</label>
-                                        <input name="FechaTarea" class="date form-control" id="datepicker" type="text" placeholder="dd-mm-yyyy" required="required" />
+                                        <input name="FechaTarea" class="date form-control" type="date" placeholder="dd-mm-yyyy" required="required" />
                                     </div>
                                 </div>
 
@@ -98,7 +98,7 @@
                                                     <label class="col-sm-2 control-label">Ubicación:</label>
                                                     <div class="col-sm-1"></div>
                                                     <div class="col-sm-7">
-                                                        <input type="text" class="form-control" id="Direccion" />
+                                                        <input type="text" class="form-control"  name="Direccion" id="Direccion" />
                                                     </div>
                                                     <div class="col-sm-1">
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -210,12 +210,12 @@
                                         latitude: 20.938297181414647,
                                         longitude: -89.61501516379462
                                     },
+                                    enableAutoComplete: true,
                                     inputBinding: {
                                         latitudeInput: $('#Latitud'),
                                         longitudeInput: $('#Longitud'),
                                         locationNameInput: $('#Direccion')
                                     },
-                                    enableAutoComplete: true,
                                     onchanged: function (currentLocation, radius, isMarkerDropped) {
                                         $('#ubicacion').html($('#Direccion').val())
 
