@@ -58,13 +58,18 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             UsuarioBO Datos = new UsuarioBO();
             Datos.Codigo = int.Parse(Session["Codigo"].ToString());
             return View(ObjUsuario.PerfilUsuario(Datos.Codigo));
-
         }
 
         public ActionResult ActualizarPerfil(UsuarioBO Obj)
         {
             ObjUsuario.ActualizarPerfil(Obj);
             return View("IndexEstudiante");
+        }
+
+        public ActionResult CerrarSesion()
+        {
+            Session.Remove("Codigo");
+            return RedirectToAction("Index", "PrincipalFE");
         }
     }
 }
