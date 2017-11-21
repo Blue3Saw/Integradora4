@@ -1,25 +1,30 @@
-﻿@using BO;
-@model UsuarioBO
+﻿@using System.Data;
+@model DataTable
 
 @{
     ViewBag.Title = "DatosPerfil";
     Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
 }
-@using (Html.BeginForm("actualizar", "PerfilAdmin", FormMethod.Post))
+@using (Ajax.BeginForm("actualizar", "PerfilAdmin", new AjaxOptions() { HttpMethod = "POST" }, new { enctype = "multipart/form-data" }))
 {
+    @Html.AntiForgeryToken()
+
 <div class="content">
     <div class="container-fluid">
+@foreach (DataRow row in Model.Rows)
+{
         <div class="row">
             <div class="col-lg-4 col-md-5">
                 <div class="card card-user">
                     <div class="image">
-                        <img src="assets/img/background.jpg" alt="...">
+                        <img src="~/Recursos/BackEnd/img/fondo.jpg" alt="...">
                     </div>
                     <div class="content">
                         <div class="author">
-                            <img class="avatar border-white" src="assets/img/faces/face-2.jpg" alt="...">
+                            <img class="avatar border-white" src="~/Recursos/BackEnd/img/@row["Imagen"]" width="200" height="200">
                             <h4 class="title">
-                                Chet Faker<br>
+                                @row["Nombre"]<br>
+                                @row["Apellidos"]
                                 <a href="#"></a>
                             </h4>
                         </div>
@@ -43,19 +48,19 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>ID</label>
-                                        @Html.TextBoxFor(x => x.Codigo, new { @type = "text", @name = "Id", @class = "form-control border-input" })
+                                        <input type="text" class="form-control border-input" name="ID" placeholder="ID" value="@row["Codigo"]" readonly= "readonly" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Nombre</label>
-                                        @Html.TextBoxFor(x => x.Nombre, new { @type = "text", @name = "Nombre", @class = "form-control border-input" })
+                                        <input type="text" class="form-control border-input" name="Nombre" placeholder="Nombre" value="@row["Nombre"]" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Apellidos</label>
-                                        @Html.TextBoxFor(x => x.Apellidos, new { @type = "text", @name = "Apellidos", @class = "form-control border-input" })
+                                        <input type="text" class="form-control border-input" name="Apellidos" placeholder="Apellidos" value="@row["Apellidos"]" />
                                     </div>
                                 </div>
                             </div>
@@ -63,19 +68,19 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Correo</label>
-                                        @Html.TextBoxFor(x => x.Email, new { @type = "email", @name = "email", @class = "form-control border-input" })
+                                        <input type="text" class="form-control border-input" name="Correo" placeholder="Correo" value="@row["Email"]" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Contraseña</label>
-                                        @Html.TextBoxFor(x => x.Contraseña, new { @type = "text", @name = "Contraseña", @class = "form-control border-input" })
+                                        <input type="text" class="form-control border-input" name="Contraseña" placeholder="Contraseña" value="@row["Contraseña"]" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Fecha De Nacimiento</label>
-                                        @Html.TextBoxFor(x => x.FechaNac, new { @type = "date", @name = "Id", @class = "form-control border-input" })
+                                        <input type="text" class="form-control border-input" name="FechaNac" placeholder="FechaNac" value="@row["FechaNac"]"readonly= "readonly" />
                                     </div>
                                 </div>
                             </div>
@@ -83,45 +88,56 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Dirrecion</label>
-                                        <input class="form-control border-input" placeholder="City" value="Melbourne" type="text">
+                                        <input class="form-control border-input" placeholder="Dirreccion" value="Melbourne" type="text">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Telefono</label>
-                                        @Html.TextBoxFor(x => x.Telefono, new { @type = "tel", @name = "Telefono", @class = "form-control", @onkeypress = "return valida(event)", @maxlength = "10", @pattern = "[0-9]{10}" })
+                                        <input type="tel" class="form-control border-input" name="Telefono" placeholder="Telefono" value="@row["Telefono"]" onkeypress = "return valida(event)", maxlength = "10" pattern = "[0-9]{10}" />
                                     </div>
                                 </div>
+                               
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Imagen</label>
-                                        @Html.TextBoxFor(x => x.Telefono, new { @type = "file", @name = "Imagen", @class = "form-control" })
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>About Me</label>
-                                        <textarea rows="5" class="form-control border-input" placeholder="Here can be your description" value="Mike">
-                                            Oh so, your weak rhyme
-                                            You doubt I'll bother, reading into it
-                                            I'll probably won't, left to my own devices
-                                            But that's the difference in our opinions.
-                                        </textarea>
+                                        <input type="hidden" class="form-control border-input" name="img" placeholder="img" value="@row["Imagen"]" readonly="readonly" />
+                                        <input type="file" class="form-control border-input" name="Imagen" placeholder="Imagen" value="@row["Imagen"]" />
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-info btn-fill btn-wd">Actualizar</button>
+                                <button type="submit" class="btn btn-info btn-fill btn-wd" onclick="actualizar()">Actualizar</button>
                             </div>
                             <div class="clearfix"></div>
                         </form>
                     </div>
                 </div>
             </div>
-
         </div>
+}
     </div>
 </div>
 }
+
+<script>
+            function valida(e) {
+                tecla = (document.all) ? e.keyCode : e.which;
+
+                //Tecla de retroceso para borrar, siempre la permite
+                if (tecla == 8) {
+                    return true;
+                }
+
+                // Patron de entrada, en este caso solo acepta numeros
+                patron = /[0-9]/;
+                tecla_final = String.fromCharCode(tecla);
+                return patron.test(tecla_final);
+            }
+</script>
+
+<script>
+    function actualizar() {
+        alert("Se han actualizado los datos :V");
+    }
+</script>

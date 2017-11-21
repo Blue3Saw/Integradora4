@@ -1,0 +1,32 @@
+﻿@using System.Data;
+@model DataTable
+
+@{
+    ViewBag.Title = "tablacategorias";
+    //Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
+}
+
+<div class="content table-responsive table-full-width col-lg-6">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow row in Model.Rows)
+            {
+                <tr id="fila_@row["Codigo"]">
+                    <td>@row["Codigo"]</td>
+                    <td><input type="text" class="form-control  border-input" name="Tipo" placeholder="Tipo" value="@row["Clasificacion"]" /></td>
+                    <td>
+                        @Html.ActionLink("Eliminar", "Eliminar", "AgregarEstudiante", new { id = @row["Codigo"] }, null)
+                        @Html.ActionLink("Actualizar", "Eliminar", "AgregarEstudiante", new { id = @row["Codigo"] }, null)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

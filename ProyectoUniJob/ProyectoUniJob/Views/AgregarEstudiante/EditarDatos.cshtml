@@ -16,7 +16,7 @@
                         ID:
                     </label>
                     <div>
-                        @Html.TextBoxFor(x => x.Codigo, new { @type = "text", @name = "ID", @class = "form-control" })
+                        @Html.TextBoxFor(x => x.Codigo, new { @type = "text", @name = "ID", @class = "form-control  border-input" })
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                         Nombre:
                     </label>
                     <div>
-                        @Html.TextBoxFor(x => x.Nombre, new { @type = "text", @name = "Nombre", @class = "form-control" })
+                        @Html.TextBoxFor(x => x.Nombre, new { @type = "text", @name = "Nombre", @class = "form-control  border-input" })
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -34,7 +34,7 @@
                         Apellidos:
                     </label>
                     <div>
-                        @Html.TextBoxFor(x => x.Apellidos, new { @type = "text", @name = "Apellidos", @class = "form-control" })
+                        @Html.TextBoxFor(x => x.Apellidos, new { @type = "text", @name = "Apellidos", @class = "form-control  border-input" })
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -43,7 +43,7 @@
                     </label>
                     <div>
 
-                        @Html.TextBoxFor(x => x.FechaNac, new { @type = "text", @name = "FechaNac", @class = "form-control" })
+                        @Html.TextBoxFor(x => x.FechaNac, new { @type = "text", @name = "FechaNac", @class = "form-control  border-input" })
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                             Email:
                         </label>
                         <div>
-                            @Html.TextBoxFor(x => x.Email, new { @type = "email", @name = "Email", @class = "form-control" })
+                            @Html.TextBoxFor(x => x.Email, new { @type = "email", @name = "Email", @class = "form-control  border-input" })
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -62,7 +62,7 @@
                             Contraseña:
                         </label>
                         <div>
-                            @Html.TextBoxFor(x => x.Contraseña, new { @type = "text", @name = "Contraseña", @class = "form-control" })
+                            @Html.TextBoxFor(x => x.Contraseña, new { @type = "text", @name = "Contraseña", @class = "form-control  border-input" })
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -70,7 +70,7 @@
                             Imagen:
                         </label>
                         <div>
-                            @Html.TextBoxFor(x => x.Imagen, new { @type = "text", @name = "Imagen", @class = "form-control" })
+                            @Html.TextBoxFor(x => x.Imagen, new { @type = "text", @name = "Imagen", @class = "form-control  border-input" })
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                             Estado:
                         </label>
                         <div>
-                            <select name="Tipo" class="form-control">
+                            <select name="Tipo" class="form-control  border-input">
                                 <option value="1">Administrador</option>
                                 <option value="2">Empleador</option>
                                 <option value="3">Estudiante</option>
@@ -94,7 +94,7 @@
                             Dirreccion:
                         </label>
                         <div>
-                            <input type="text" class="form-control" name="dirreccion" placeholder="Dirreccion" required="required" />
+                            <input type="text" class="form-control  border-input" name="dirreccion" placeholder="Dirreccion" required="required" />
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -102,7 +102,7 @@
                             Telefono:
                         </label>
                         <div>
-                            @Html.TextBoxFor(x => x.Telefono, new { @type = "text", @name = "Telefono", @class = "form-control", @onkeypress = "return valida(event)", @maxlength = "10", @pattern = "[0-9]{10}" })
+                            @Html.TextBoxFor(x => x.Telefono, new { @type = "text", @name = "Telefono", @class = "form-control  border-input ", @onkeypress = "return valida(event)", @maxlength = "10", @pattern = "[0-9]{10}" })
                         </div>
                     </div>
                 </div>

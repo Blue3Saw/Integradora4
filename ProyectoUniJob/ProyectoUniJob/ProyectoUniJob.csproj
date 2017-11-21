@@ -108,6 +108,7 @@
     <Content Include="Recursos\BackEnd\img\faces\face-2.jpg" />
     <Content Include="Recursos\BackEnd\img\faces\face-3.jpg" />
     <Content Include="Recursos\BackEnd\img\favicon.png" />
+    <Content Include="Recursos\BackEnd\img\fondo.jpg" />
     <Content Include="Recursos\BackEnd\img\new_logo.png" />
     <Content Include="Recursos\BackEnd\img\tim_80x80.png" />
     <Content Include="Recursos\BackEnd\js\alertify.js" />
@@ -184,6 +185,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BackEnd\AgregarEstudianteController.cs" />
     <Compile Include="Controllers\BackEnd\AprobarTareaController.cs" />
+    <Compile Include="Controllers\BackEnd\CategoriasYTiposController.cs" />
     <Compile Include="Controllers\BackEnd\MesajesAdmController.cs" />
     <Compile Include="Controllers\BackEnd\PerfilAdminController.cs" />
     <Compile Include="Controllers\EstatusController.cs" />
@@ -272,6 +274,9 @@
     <Content Include="Views\Tareas\Index.cshtml" />
     <Content Include="Views\Tareas\TareaAceptSeleccionada.cshtml" />
     <Content Include="Views\PrincipalFE\Index.cshtml" />
+    <Content Include="Views\CategoriasYTipos\AgregarCategoria.cshtml" />
+    <Content Include="Views\CategoriasYTipos\tablacategorias.cshtml" />
+    <Content Include="Views\CategoriasYTipos\tablausuarios.cshtml" />
     <Content Include="Views\Tareas\TareaSeleccionada.cshtml" />
     <Content Include="Views\Tareas\VistaTarea.cshtml" />
     <None Include="Web.Debug.config">

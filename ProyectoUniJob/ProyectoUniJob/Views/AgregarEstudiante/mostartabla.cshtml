@@ -8,8 +8,8 @@
 
 @*<div class="content">
     <div class="container-fluid card">*@
-        <div class="content table-responsive table-full-width col-lg-12">
-            <table class="table table-striped">
+        <div class="table-responsive">
+            <table class="table-condensed" >
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -29,12 +29,11 @@
                 <tbody>
                     @foreach (DataRow row in Model.Rows)
                     {
-                        int count = 0;
                         <tr id="fila_@row["Codigo"]">
                             <td>@row["Codigo"]</td>
                             <td>@row["Nombre"]</td>
                             <td>@row["Apellidos"]</td>
-                            <td>@row["Ubicacion"]</td>
+                            <td>@row["Direccion"]</td>
                             <td>@row["FechaNac"]</td>
                             <td>@row["Telefono"]</td>
                             <td>@row["Email"]</td>
