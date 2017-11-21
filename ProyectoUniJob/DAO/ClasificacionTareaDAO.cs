@@ -17,7 +17,7 @@ namespace DAO
         public int AgregarClasificación(object ObjC)
         {
             ClasificacionTareaBO Dato = (ClasificacionTareaBO)ObjC;
-            SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO ClasificacionTarea (Clasificacion) VALUES (@Clasificacion/*,@Direccion*/)");
+            SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO ClasificacionTarea (Clasificacion) VALUES (@Clasificacion)");
             SentenciaSQL.Parameters.Add("@Clasificacion", SqlDbType.VarChar).Value = Dato.Clasificacion;
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
@@ -47,6 +47,15 @@ namespace DAO
             }
             return ListaT;
 
+        }
+
+        public DataTable TablaClasificacion()
+        {
+            string sentencia = "SELECT * FROM ClasificacionTarea";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
         }
     }
 }

@@ -28,6 +28,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             if (ObjUsuario.LoginAdministrador(Datos) > 0)
             {
                 Session["Codigo"] = ObjUsuario.LoginAdministrador(Datos);
+                Session["Nombre"] =ObjUsuario.Buscarnombre(Datos);
                 return RedirectToAction("Index", "Prueba");
             }
             else if (ObjUsuario.LoginEmpleador(Datos) > 0)

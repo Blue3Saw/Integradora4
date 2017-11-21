@@ -188,5 +188,46 @@ namespace DAO
             }
             return Datos;
         }
+
+        public DataTable TablaUsuarios3(int id)
+        {
+            UsuarioBO Datos = new UsuarioBO();
+            Datos.Codigo = id;
+            sentencia = "SELECT * FROM Usuarios where Codigo='" + Datos.Codigo + "'";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
+        }
+
+
+        public int ActualizarUsuario2(object ObjU)
+        {
+            UsuarioBO Dato = (UsuarioBO)ObjU;
+            SqlCommand SentenciaSQL = new SqlCommand("UPDATE Usuarios SET Nombre = @Nombre, Apellidos = @Apellidos, FechaNac = @FechaNac, Telefono = @Telefono, Email = @Email, Contraseña = @Contraseña,Estatus = 'En revisión', Imagen = @Imagen WHERE Codigo = @Codigo");
+            SentenciaSQL.Parameters.Add("@Codigo", SqlDbType.Int).Value = Dato.Codigo;
+            SentenciaSQL.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Dato.Nombre;
+            SentenciaSQL.Parameters.Add("@Apellidos", SqlDbType.VarChar).Value = Dato.Apellidos;
+            SentenciaSQL.Parameters.Add("@FechaNac", SqlDbType.Date).Value = Dato.FechaNac;
+            SentenciaSQL.Parameters.Add("@Telefono", SqlDbType.BigInt).Value = Dato.Telefono;
+            SentenciaSQL.Parameters.Add("@Email", SqlDbType.VarChar).Value = Dato.Email;
+            SentenciaSQL.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Dato.Encriptar(Dato.Contraseña);
+            SentenciaSQL.Parameters.Add("@Imagen", SqlDbType.VarChar).Value =Dato.Imagen;
+            SentenciaSQL.CommandType = CommandType.Text;
+            return Conex.EjecutarComando(SentenciaSQL);
+        }
+
+
+        public string Buscarnombre(UsuarioBO datos)
+        {
+            sentencia = "select (Nombre +''+Apellidos) as Nombre from Usuarios where Email='" + datos.Email+"'";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            DataRow lol = tablavirtual.Rows[0];
+            string valor = lol["Nombre"].ToString();
+
+            return valor;
+        }
     }
 }

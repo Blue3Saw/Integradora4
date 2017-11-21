@@ -13,8 +13,7 @@ namespace ProyectoUniJob.Controllers.BackEnd
         // GET: MesajesAdm
         public ActionResult Index()
         {
-            Session["idme"] = 2;
-            return View(objMensajes.MOstarMensajes(int.Parse(Session["idme"].ToString())));
+            return View(objMensajes.MOstarMensajes(int.Parse(Session["Codigo"].ToString())));
         }
 
 

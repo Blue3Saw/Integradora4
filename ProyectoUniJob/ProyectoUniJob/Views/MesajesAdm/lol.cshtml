@@ -5,8 +5,54 @@
     Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
 }
 
-@foreach (DataRow row in Model.Rows)
-{
-    <input type="text" class="form-control" name="ID" placeholder="prro" value="@row["Titulo"]" />
-}
- 
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<div class="content">
+    <div class="container-fluid">
+
+            @foreach (DataRow row in Model.Rows)
+            {
+                
+                <div class="row">
+                    <div class="col-lg-12" onclick="@row["Titulo"]+ocultar()" style="cursor:pointer" >
+                        <div class="thumbnail">
+                            <div class="message-preview">
+                                <div class="media">
+                                    <span class="pull-left">
+                                    </span>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">
+                                            @row["Titulo"]
+                                        </h4>
+                                        <h5 class="media-heading">
+                                            <strong></strong>
+                                        </h5>
+                                        <p class="small"><i class="fa fa-clock-o"></i>@row["FechaHora"]</p>
+                                        <p>@row["Mensaje"]</p>
+                                        <h6>Enviado por: @row["Nombre"]</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" >
+                    <div style="display:none;" id="lol">
+                        <h1>loll</h1>
+                    </div>
+                </div>
+                
+            }
+</div>
+    <input type="button" onclick="dame_una_a()"/>
+</div>
+<script type="text/javascript">
+                    function ocultar(){
+                        document.getElementById('lol').style.display = 'block';}
+</script>
+
+<script>
+    function dame_una_a() {
+        alert("¡AAAAAAAAAAAAAAAAA!");
+    }
+
+</script>

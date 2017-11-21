@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "AgregarCategoria";
+    Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
+}
+<div class="container-fluid">
+   <div class="container card">
+    <div onclick="mostar1()" style="cursor:pointer"><h2>Categorias</h2></div>
+    <div class="row" id="cat" style='display:none'>
+@using (Ajax.BeginForm("AgregarCate", "CategoriasYTipos", new AjaxOptions() { HttpMethod = "POST" }))
+{
+        <div class="col-md-4">
+            <div>
+                <input type="text" class="form-control  border-input" name="categoria" placeholder="Categoria" value="" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div>
+                <button type="submit" class="btn btn-success" name="agregar1" value="1" onclick="agregarca()">AGREGAR</button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div>
+                <input type="button" id="btn1" value="Mostar tabla" class="btn btn-success" onclick="tabla()" />
+            </div>
+        </div>
+}
+    </div>
+       <div class="row">
+            <div id="tablacategoria">
+
+            </div>
+       </div>
+       <div onclick="mostar2()" style="cursor:pointer"><h2>Tipos de Usuario</h2></div>
+       <div class="row" id="ti" style='display:none'>
+@using (Ajax.BeginForm("AgregarUsuario", "AgregarEstudiante", new AjaxOptions() { HttpMethod = "POST" }))
+{
+           <div class="col-md-4">
+               <div>
+                   <input type="text" class="form-control  border-input" name="Tipo" placeholder="Tipo" value="" />
+               </div>
+           </div>
+           <div class="col-md-4">
+               <div>
+                   <button type="submit" class="btn btn-success" name="agregar" value="1" onclick="Agregarti()">AGREGAR</button>
+               </div>
+           </div>
+           <div class="col-md-4">
+               <div>
+                   <input type="button" id="btn1" value="Mostar tabla" class="btn btn-success" onclick="tabla2()" />
+               </div>
+           </div>
+}
+       </div>
+       <div class="row">
+           <div id="tablatipo">
+
+           </div>
+       </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+            function tabla() {
+                $('#tablacategoria').load('/CategoriasYTipos/tablacategorias');
+            }
+            function tabla2() {
+                $('#tablatipo').load('/CategoriasYTipos/tablausuarios');
+            }
+</script>
+<script type="text/javascript">
+            function mostar1(){
+                document.getElementById('cat').style.display = 'block';
+            }
+
+            function mostar2() {
+                document.getElementById('ti').style.display = 'block';
+            }
+</script>
+<script>
+    function agregarca() {
+        alert("Se agrego una categoria");
+    }
+    function Agregarti() {
+        alert("Se agrego una Tipo de Usuario");
+    }
+
+</script>

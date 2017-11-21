@@ -5,9 +5,10 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
 }
-<h2>Agregar Usuarios</h2>
-<div class="container-fluid">
-    <div class="container card">
+
+<div class="content">
+    <div class="container-fluid card">
+        <h2>Agregar Usuarios</h2>
         @using (Ajax.BeginForm("AgregarUsuario", "AgregarEstudiante", new AjaxOptions() { HttpMethod = "POST" }))
         {
             @Html.AntiForgeryToken()
@@ -18,7 +19,7 @@
                         ID:
                     </label>
                     <div>
-                        <input type="text" class="form-control" name="ID" placeholder="ID" value="" />
+                        <input type="text" class="form-control  border-input" name="ID" placeholder="ID" value="" />
                     </div>
                 </div>
             </div>
@@ -28,7 +29,7 @@
                         Nombre:
                     </label>
                     <div>
-                        <input type="text" class="form-control" name="Nombre" placeholder="Nombre" required="required" />
+                        <input type="text" class="form-control  border-input" name="Nombre" placeholder="Nombre" required="required" />
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -36,7 +37,7 @@
                         Apellidos:
                     </label>
                     <div>
-                        <input type="text" class="form-control" name="Apellidos" placeholder="Apellidos" required="required" />
+                        <input type="text" class="form-control  border-input" name="Apellidos" placeholder="Apellidos" required="required" />
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -44,7 +45,7 @@
                         Fecha de Nacimiento:
                     </label>
                     <div>
-                        <input type="date" name="cumpleanios" step="1" min="1960-01-01" max="2013-12-31" class="form-control" required="required">
+                        <input type="date" name="cumpleanios" step="1" min="1960-01-01" max="2013-12-31" class="form-control  border-input" required="required">
                     </div>
                 </div>
             </div>
@@ -55,7 +56,7 @@
                             Email:
                         </label>
                         <div>
-                            <input type="email" class="form-control" name="Email" placeholder="Email" required="required" />
+                            <input type="email" class="form-control  border-input" name="Email" placeholder="Email" required="required" />
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -63,7 +64,7 @@
                             Contraseña:
                         </label>
                         <div>
-                            <input type="text" class="form-control" name="Contraseña" placeholder="Contraseña" required="required" />
+                            <input type="text" class="form-control  border-input" name="Contraseña" placeholder="Contraseña" required="required" />
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -71,7 +72,7 @@
                             Imagen:
                         </label>
                         <div>
-                            <input type="file" multiple class="form-control" name="imagen">
+                            <input type="file" multiple class="form-control  border-input" name="imagen">
                         </div>
                     </div>
                 </div>
@@ -83,7 +84,7 @@
                             Estado:
                         </label>
                         <div>
-                            <select name="Tipo" class="form-control">
+                            <select name="Tipo" class="form-control  border-input">
                                 <option value="1">Administrador</option>
                                 <option value="2">Empleador</option>
                                 <option value="3">Estudiante</option>
@@ -95,7 +96,7 @@
                             Dirreccion:
                         </label>
                         <div>
-                            <input type="text" class="form-control" name="dirreccion" placeholder="Contraseña" required="required" />
+                            <input type="text" class="form-control  border-input" name="dirreccion" placeholder="Contraseña" required="required" />
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -103,7 +104,7 @@
                             Telefono:
                         </label>
                         <div>
-                            <input type="tel" pattern="[0-9]{10}" class="form-control" name="Telefono" placeholder="Telefono" required="required" onkeypress="return valida(event)" maxlength="10" value="9" />
+                            <input type="tel" pattern="[0-9]{10}" class="form-control  border-input" name="Telefono" placeholder="Telefono" required="required" onkeypress="return valida(event)" maxlength="10" value="9" />
                         </div>
                     </div>
                 </div>
@@ -149,7 +150,7 @@
             <h2>Busvcar Datos del Usuario</h2>
             <div class="row">
                 <div class="col-lg-3">
-                    <input type="text" class="form-control" name="Buscar" placeholder="Buscar" />
+                    <input type="text" class="form-control  border-input" name="Buscar" placeholder="Buscar" />
                 </div>
                 <div class="col-lg-3">
                     <input type="submit" value="Buscar" />
@@ -159,7 +160,7 @@
                 </div>
             </div>
             <div class="row">
-                <div id="Tablausuarios" @*class="col-md-12"*@>
+                <div id="Tablausuarios" class="col-sm-12">
 
                 </div>
             </div>
@@ -176,33 +177,32 @@
         </div>
     </div>
 </div>
-
-
-        <script src="@Url.Content("~/Recursos/BackEnd/js/jquery-2.0.3.min.js")" type="text/javascript"></script>
-        <script type="text/javascript">
-            function tabla() {
-                $('#Tablausuarios').load('/AgregarEstudiante/mostartabla');
-            }
-            function datos() {
-                $('#dato').load('/AgregarEstudiante/EditarDatos');
-            }
-        </script>
+<script src="@Url.Content("~/Recursos/BackEnd/js/jquery-2.0.3.min.js")" type="text/javascript"></script>
 <script type="text/javascript">
-function ocultar(){
-document.getElementById('lol').style.display = 'none';}
+    function tabla() {
+        $('#Tablausuarios').load('/AgregarEstudiante/mostartabla');
+    }
+    function datos() {
+        $('#dato').load('/AgregarEstudiante/EditarDatos');
+    }
 </script>
-        <script>
-            function valida(e) {
-                tecla = (document.all) ? e.keyCode : e.which;
+<script type="text/javascript">
+    function ocultar() {
+        document.getElementById('lol').style.display = 'none';
+    }
+</script>
+<script>
+    function valida(e) {
+        tecla = (document.all) ? e.keyCode : e.which;
 
-                //Tecla de retroceso para borrar, siempre la permite
-                if (tecla == 8) {
-                    return true;
-                }
+        //Tecla de retroceso para borrar, siempre la permite
+        if (tecla == 8) {
+            return true;
+        }
 
-                // Patron de entrada, en este caso solo acepta numeros
-                patron = /[0-9]/;
-                tecla_final = String.fromCharCode(tecla);
-                return patron.test(tecla_final);
-            }
-        </script>
+        // Patron de entrada, en este caso solo acepta numeros
+        patron = /[0-9]/;
+        tecla_final = String.fromCharCode(tecla);
+        return patron.test(tecla_final);
+    }
+</script>
