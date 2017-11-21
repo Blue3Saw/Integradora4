@@ -20,11 +20,11 @@
                         <div class="ban-top">
 
                             <div class="col-lg-4 ">
-                                <div class="clearfix"></div>
+                                @*<div class="clearfix"></div>
                                 <div class="bnr-left">
                                     <label class="inputLabel">Nombre Usuario:</label>
                                     @Html.TextBoxFor(x => x.CodigoEmpleador)
-                                </div>
+                                </div>*@
                                 <div class="clearfix"></div>
                                 <div class="bnr-left">
                                     <label class="inputLabel">Título de la tarea:</label>
@@ -84,7 +84,7 @@
                         </div>
                         <div class="ban-top">
                             <div class="col-lg-4">
-                                <div class="clearfix">&nbsp;</div>
+                                @*<div class="clearfix">&nbsp;</div>*@
                                 <style>
                                     .pac-container {
                                         z-index: 99999;
@@ -104,13 +104,13 @@
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                     </div>
                                                 </div>
-                                                <div id="ModalMapPreview" style="width:100%; height:150px;"></div>
+                                                <div id="MapPreview" style="width:100%; height:300px;"></div>
                                                 <div class="clearfix">&nbsp;</div>
                                                 <div class="m-t-small">
                                                     <label class="p-r-small col-sm-2 control-label">Lat.:</label>                              
                                                     <div class="col-sm-4">
 
-                                                        <input type="text"  Class="form-control" name="Latitud" />
+                                                        @*<input type="text"  Class="form-control" name="Latitud" />*@
 
                                                         <input type="text"  Class="form-control" name="Latitud" ID="Latitud" />
                                                     </div>
@@ -119,7 +119,7 @@
                                                     <label class="p-r-small col-sm-2 control-label">Long.:</label>
                                                     <div class="col-sm-4">
 
-                                                        <input type="text"  Class="form-control" name="Longitud" />
+                                                        @*<input type="text"  Class="form-control" name="Longitud" />*@
 
                                                         <input type="text"  Class="form-control" name="Longitud" ID="Longitud" />
 
@@ -204,7 +204,7 @@
 <script src="~/Recursos/FontEnd/js/locationpicker.jquery.js"></script>
 <script>
 
-                                $('#ModalMapPreview').locationpicker({
+                                $('#MapPreview').locationpicker({
                                     radius: 0,
                                     location: {
                                         latitude: 20.938297181414647,
@@ -213,11 +213,11 @@
                                     inputBinding: {
                                         latitudeInput: $('#Latitud'),
                                         longitudeInput: $('#Longitud'),
-                                        locationNameInput: $('#ModalMap-address')
+                                        locationNameInput: $('#Direccion')
                                     },
                                     enableAutoComplete: true,
                                     onchanged: function (currentLocation, radius, isMarkerDropped) {
-                                        $('#ubicacion').html($('#ModalMap-address').val())
+                                        $('#ubicacion').html($('#Direccion').val())
 
                                     }
 
