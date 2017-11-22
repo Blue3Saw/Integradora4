@@ -38,13 +38,14 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             return View("Redireccionar");
         }
 
-        public ActionResult AgregarEmp(string Nombre, string Apellidos, DateTime FechaNac, long Telefono, string Email, string Contraseña)
+        public ActionResult AgregarEmp(string Nombre, string Apellidos, DateTime FechaNac, long Telefono, string Direccion, string Email, string Contraseña)
         {
             UsuarioBO Datos = new UsuarioBO();
             Datos.Nombre = Nombre;
             Datos.Apellidos = Apellidos;
             Datos.FechaNac = FechaNac;
             Datos.Telefono = Telefono;
+            Datos.Direccion = Direccion;
             Datos.Email = Email;
             Datos.Contraseña = Contraseña;
             Datos.TipoUsuario = 2;
