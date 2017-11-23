@@ -1,22 +1,24 @@
-﻿@using BO;
-@model UsuarioBO
-
+﻿@using System.Data;
+@model DataTable
 @{
     ViewBag.Title = "EditarDatos";
 }
 
-    <div class="container-fluid card">
-        @using (Html.BeginForm("Actualizar", "AgregarEstudiante", FormMethod.Post))
-        {
-            <h2>Editar Usuarios</h2>
+@using (Ajax.BeginForm("Actualizar", "AgregarEstudiante", new AjaxOptions() { HttpMethod = "POST" }, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
 
+    <div class="container-fluid card">
+@foreach (DataRow row in Model.Rows)
+{
+            <h2>Editar Usuarios</h2>
             <div class="row">
                 <div class="col-md-3">
-                    <label class="control-label">
+                 <label class="control-label">
                         ID:
                     </label>
                     <div>
-                        @Html.TextBoxFor(x => x.Codigo, new { @type = "text", @name = "ID", @class = "form-control  border-input" })
+                        <input type="text" class="form-control border-input" name="ID" placeholder="ID" value="@row["Codigo"]" readonly="readonly" />
                     </div>
                 </div>
             </div>
@@ -26,7 +28,7 @@
                         Nombre:
                     </label>
                     <div>
-                        @Html.TextBoxFor(x => x.Nombre, new { @type = "text", @name = "Nombre", @class = "form-control  border-input" })
+                        <input type="text" class="form-control border-input" name="Nombre" placeholder="Nombre" value="@row["Nombre"]" />
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -34,7 +36,7 @@
                         Apellidos:
                     </label>
                     <div>
-                        @Html.TextBoxFor(x => x.Apellidos, new { @type = "text", @name = "Apellidos", @class = "form-control  border-input" })
+                        <input type="text" class="form-control border-input" name="Apellidos" placeholder="Apellidos" value="@row["Apellidos"]" />
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -42,8 +44,7 @@
                         Fecha de Nacimiento:
                     </label>
                     <div>
-
-                        @Html.TextBoxFor(x => x.FechaNac, new { @type = "text", @name = "FechaNac", @class = "form-control  border-input" })
+                        <input type="text" class="form-control border-input" name="FechaNac" placeholder="FechaNac" value="@row["FechaNac"]" readonly="readonly" />
                     </div>
                 </div>
             </div>
@@ -54,7 +55,7 @@
                             Email:
                         </label>
                         <div>
-                            @Html.TextBoxFor(x => x.Email, new { @type = "email", @name = "Email", @class = "form-control  border-input" })
+                            <input type="text" class="form-control border-input" name="Correo" placeholder="Correo" value="@row["Email"]" />
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -62,7 +63,7 @@
                             Contraseña:
                         </label>
                         <div>
-                            @Html.TextBoxFor(x => x.Contraseña, new { @type = "text", @name = "Contraseña", @class = "form-control  border-input" })
+                            <input type="text" class="form-control border-input" name="Contraseña" placeholder="Contraseña" value="@row["Contraseña"]" />
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -70,7 +71,8 @@
                             Imagen:
                         </label>
                         <div>
-                            @Html.TextBoxFor(x => x.Imagen, new { @type = "text", @name = "Imagen", @class = "form-control  border-input" })
+                            <input type="hidden" class="form-control border-input" name="img" placeholder="img" value="@row["Imagen"]" readonly="readonly" />
+                            <input type="file" class="form-control border-input" name="Imagen" placeholder="Imagen" value="@row["Imagen"]" />
                         </div>
                     </div>
                 </div>
@@ -87,6 +89,7 @@
                                 <option value="2">Empleador</option>
                                 <option value="3">Estudiante</option>
                             </select>
+                            <input type="hidden" class="form-control border-input" name="Tipo2" placeholder="img" value="@row["TipoUs"]" readonly="readonly" />
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -102,7 +105,7 @@
                             Telefono:
                         </label>
                         <div>
-                            @Html.TextBoxFor(x => x.Telefono, new { @type = "text", @name = "Telefono", @class = "form-control  border-input ", @onkeypress = "return valida(event)", @maxlength = "10", @pattern = "[0-9]{10}" })
+                            <input type="tel" class="form-control border-input" name="Telefono" placeholder="Telefono" value="@row["Telefono"]" onkeypress="return valida(event)" , maxlength="10" pattern="[0-9]{10}" />
                         </div>
                     </div>
                 </div>
@@ -125,5 +128,6 @@
                     </div>
                 </div>
             </div>
-        }
+}
     </div>
+}

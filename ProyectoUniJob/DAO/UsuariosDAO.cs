@@ -17,7 +17,7 @@ namespace DAO
         public int AgregarUsuario(object ObjU)
         {
             UsuarioBO Dato = (UsuarioBO)ObjU;
-            SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO Usuarios (Nombre, Apellidos, Direccion, FechaNac, Telefono, Email, Contraseña, TipoUs, Estatus, Imagen) VALUES (@Nombre, @Apellidos, @Direccion, @FechaNac, @Telefono, @Email, @Contraseña, @TipoUs, 'En revisión', @Imagen)");
+            SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO Usuarios (Nombre, Apellidos, Direccion, FechaNac, Telefono, Email, Contraseña, TipoUs, Estatus, Imagen,QR) VALUES (@Nombre, @Apellidos, @Direccion, @FechaNac, @Telefono, @Email, @Contraseña, @TipoUs, 'En revisión', @Imagen, @QR)");
             SentenciaSQL.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Dato.Nombre;
             SentenciaSQL.Parameters.Add("@Apellidos", SqlDbType.VarChar).Value = Dato.Apellidos;
             SentenciaSQL.Parameters.Add("@Direccion", SqlDbType.VarChar).Value = Dato.Direccion;
@@ -27,6 +27,7 @@ namespace DAO
             SentenciaSQL.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Dato.Encriptar(Dato.Contraseña);
             SentenciaSQL.Parameters.Add("@TipoUs", SqlDbType.Int).Value = Dato.TipoUsuario;
             SentenciaSQL.Parameters.Add("@Imagen", SqlDbType.VarChar).Value = Dato.Imagen;
+            SentenciaSQL.Parameters.Add("@QR", SqlDbType.VarChar).Value = Dato.QR;
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
         }
@@ -221,10 +222,11 @@ namespace DAO
         public int ActualizarUsuario2(object ObjU)
         {
             UsuarioBO Dato = (UsuarioBO)ObjU;
-            SqlCommand SentenciaSQL = new SqlCommand("UPDATE Usuarios SET Nombre = @Nombre, Apellidos = @Apellidos, FechaNac = @FechaNac, Telefono = @Telefono, Email = @Email, Contraseña = @Contraseña,Estatus = 'En revisión', Imagen = @Imagen WHERE Codigo = @Codigo");
+            SqlCommand SentenciaSQL = new SqlCommand("UPDATE Usuarios SET Nombre = @Nombre, Apellidos = @Apellidos, FechaNac = @FechaNac, Telefono = @Telefono, Email = @Email, Contraseña = @Contraseña,Direccion= @Direccion,Estatus = 'Activo', Imagen = @Imagen WHERE Codigo = @Codigo");
             SentenciaSQL.Parameters.Add("@Codigo", SqlDbType.Int).Value = Dato.Codigo;
             SentenciaSQL.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Dato.Nombre;
             SentenciaSQL.Parameters.Add("@Apellidos", SqlDbType.VarChar).Value = Dato.Apellidos;
+            SentenciaSQL.Parameters.Add("@Direccion", SqlDbType.VarChar).Value = Dato.Direccion;
             SentenciaSQL.Parameters.Add("@FechaNac", SqlDbType.Date).Value = Dato.FechaNac;
             SentenciaSQL.Parameters.Add("@Telefono", SqlDbType.BigInt).Value = Dato.Telefono;
             SentenciaSQL.Parameters.Add("@Email", SqlDbType.VarChar).Value = Dato.Email;

@@ -20,6 +20,7 @@ namespace BO
         public int TipoUsuario { get; set; }
         public string Estatus { get; set; }
         public string Imagen { get; set; }
+        public string QR { get; set; }
         public string Encriptar(string str)
         {
             string Resultado = string.Empty;

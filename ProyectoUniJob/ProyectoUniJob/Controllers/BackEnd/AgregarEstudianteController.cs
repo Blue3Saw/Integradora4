@@ -1,4 +1,5 @@
 ﻿using System;
+using Gma.QrCodeNet.Encoding;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,6 +7,10 @@ using System.Web.Mvc;
 using BO;
 using DAO;
 using System.Web.UI;
+using Gma.QrCodeNet.Encoding.Windows.Render;
+using System.Drawing;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace ProyectoUniJob.Controllers.BackEnd
 {
@@ -34,13 +39,29 @@ namespace ProyectoUniJob.Controllers.BackEnd
                 BO.Codigo = int.Parse(ID);
             }
             BO.Apellidos = Apellidos;
+            BO.Direccion = dirreccion;
             BO.FechaNac = Convert.ToDateTime(cumpleanios);
             BO.Email = Email;
             BO.Contraseña = Contraseña;
-            BO.Imagen = Imagen;
+            BO.Imagen = "HOla.png";
             BO.TipoUsuario = int.Parse(Tipo);
             BO.Telefono = long.Parse(Telefono);
             BO.Estatus = "Activo";
+
+
+            QrEncoder qrencoder = new QrEncoder(ErrorCorrectionLevel.H);
+            QrCode qrcode = new QrCode();
+            string codigo = Nombre + cumpleanios+".png";
+            qrencoder.TryEncode(codigo,out qrcode);
+            GraphicsRenderer renderer = new GraphicsRenderer(new FixedCodeSize(400, QuietZoneModules.Zero), Brushes.Black, Brushes.White);
+            MemoryStream ms = new MemoryStream();
+
+            renderer.WriteToStream(qrcode.Matrix, ImageFormat.Png, ms);
+            var imagentemp = new Bitmap(ms);
+            var imagenlol = new Bitmap(imagentemp, new Size(new Point(200, 200)));
+            var path = Path.Combine(Server.MapPath("~/Recursos/BackEnd/img/"),codigo);
+            imagenlol.Save(path);
+            BO.QR = codigo;
 
             if (w > 0)
             {
@@ -72,13 +93,41 @@ namespace ProyectoUniJob.Controllers.BackEnd
 
         public ActionResult EditarDatos()
         {
-            return View(ObjUsuario.PerfilUsuario2(int.Parse(Session["IdEditar"].ToString())));
+            return View(ObjUsuario.TablaUsuarios3(int.Parse(Session["IdEditar"].ToString())));
         }
 
-
-        public ActionResult Actualizar(UsuarioBO BO)
+        [HttpPost]
+        public ActionResult Actualizar(string ID,string Tipo2,string Tipo, string Nombre, string Apellidos, string Correo, string Contraseña, string FechaNac, string Telefono, string dirreccion, string img, HttpPostedFileBase Imagen)
         {
-            ObjUsuario.ActualizarUsuario(BO);
+            UsuarioBO bo = new UsuarioBO();
+            if (Imagen != null)
+            {
+                var filename = Path.GetFileName(Imagen.FileName);
+                var path = Path.Combine(Server.MapPath("~/Recursos/BackEnd/img/"), filename);
+                Imagen.SaveAs(path);
+                bo.Imagen = filename;
+            }
+            else
+            {
+                bo.Imagen = img;
+            }
+            if (Tipo != null)
+            {
+                bo.TipoUsuario = int.Parse(Tipo);
+            }
+            else
+            {
+                bo.TipoUsuario = int.Parse(Tipo2);
+            }
+            bo.Codigo = int.Parse(ID);
+            bo.Nombre = Nombre;
+            bo.Direccion = dirreccion;
+            bo.Apellidos = Apellidos;
+            bo.Email = Correo;
+            bo.Contraseña = Contraseña;
+            bo.FechaNac = Convert.ToDateTime(FechaNac);
+            bo.Telefono = long.Parse(Telefono);
+            ObjUsuario.ActualizarUsuario2(bo);
             Index();
             return View("Index");
         }

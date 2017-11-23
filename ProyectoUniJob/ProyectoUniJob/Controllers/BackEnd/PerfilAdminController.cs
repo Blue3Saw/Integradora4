@@ -25,7 +25,7 @@ namespace ProyectoUniJob.Controllers.BackEnd
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult actualizar(string ID, string Nombre, string Apellidos, string Correo, string Contraseña, string FechaNac, string Telefono,string img, HttpPostedFileBase Imagen)
+        public ActionResult actualizar(string ID, string Nombre, string Apellidos, string Correo, string Contraseña, string FechaNac, string Telefono,string direccion,string img, HttpPostedFileBase Imagen)
         {
             UsuarioBO bo = new UsuarioBO();
             if (Imagen!=null)
