@@ -282,6 +282,7 @@
     <Content Include="Views\CategoriasYTipos\tablacategorias.cshtml" />
     <Content Include="Views\CategoriasYTipos\tablausuarios.cshtml" />
     <Content Include="Views\Tareas\TareaSeleccionada.cshtml" />
+    <Content Include="Views\Tareas\VistaTarea.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

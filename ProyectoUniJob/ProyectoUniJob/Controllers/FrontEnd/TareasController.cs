@@ -19,15 +19,15 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AgregarTarea(string agregar,string modificar,string eliminar, string IdTarea, string NombreUsu,string Titulo,string Direccion,
-            string Latitud,string Longitud,string FechaTarea,string HoraInicioTarea, string HoraFinTarea, string cmbClas, string Descripcion, string inputLabel)
+        public ActionResult AgregarTarea(string agregar, string modificar, string eliminar, string IdTarea, string NombreUsu, string Titulo, string Direccion,
+            string Latitud, string Longitud, string FechaTarea, string HoraInicioTarea, string HoraFinTarea, string cmbClas, string Descripcion, string inputLabel)
         {
             TareasBO obj = new TareasBO();
             int A = Convert.ToInt32(agregar);
             int M = Convert.ToInt32(modificar);
             int E = Convert.ToInt32(eliminar);
 
-            if(IdTarea != "")
+            if (IdTarea != "")
             {
                 obj.Codigo = Convert.ToInt32(IdTarea);
             }
@@ -42,7 +42,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             obj.TipoTarea = Convert.ToInt32(cmbClas);
             obj.Descripcion = Descripcion;
             obj.CodigoEstatus = Convert.ToInt32(inputLabel);
-            if(A > 0)
+            if (A > 0)
             {
                 ObjDAO.AgregarTarea(obj);
                 ViewBag.Script = "Agregado";
@@ -51,7 +51,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             {
                 ObjDAO.ActualizarTarea(obj);
             }
-            return View("Index");
+            return Redirect("/Usuario/IndexEmpleador#parentHorizontalTab2");
         }
         public ActionResult EliminarTarea(string id)
         {
@@ -91,6 +91,12 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         {
             int Clave = int.Parse(Codigo);
             return View(ObjDAO.TareaSeleccionada(Clave));
+        }
+        [ChildActionOnly]
+        public ActionResult VistaTarea()
+        {
+            
+            return PartialView("VistaTarea");
         }
     }
 }

@@ -43,7 +43,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <!--//logo-->
             <div class="w3layouts-login">
-                <a data-toggle="modal" data-target="#myModal" href="#"><i class="glyphicon glyphicon-user"> </i>Login</a>
+                <a data-toggle="modal" data-target="#myModal" href="#"><i class="glyphicon glyphicon-user"> </i>Login / Registrarme</a>
             </div>
             <div class="w3layouts-login">
                 <a href=@Url.Action("Redireccionar", "Usuario")><i class="glyphicon glyphicon-plus"></i> Registrarme</a>
@@ -68,6 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs">
                                         <li class="active"><a href="#Login" data-toggle="tab">Inicio de sesión</a></li>
+                                        <li><a href="#Registration" data-toggle="tab">Registro</a></li>
                                     </ul>
                                     <!-- Tab panes -->
                                     <div class="tab-content">
@@ -104,6 +105,96 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     </div>
                                                 }
                                             </div>
+                                        </div>
+                                        <div class="tab-pane" id="Registration">
+                                            @using (Ajax.BeginForm("AgregarEmp", "Usuario", new AjaxOptions() { HttpMethod = "POST" }))
+                                            {
+                                                <div class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">
+                                                            Nombre
+                                                        </label>
+                                                        <div class="col-sm-4">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="Nombre" class="form-control" placeholder="Nombre" required="required" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <label class="col-sm-2 control-label">
+                                                            Apellidos
+                                                        </label>
+                                                        <div class="col-sm-4">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="Apellidos" class="form-control" placeholder="Apellidos" required="required" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">
+                                                            Nacimiento
+                                                        </label>
+                                                        <div class="col-sm-4">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <input type="date" name="FechaNac" class="form-control" placeholder="dd/mm/yyyy" required="required" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <label class="col-sm-2 control-label">
+                                                            Teléfono
+                                                        </label>
+                                                        <div class="col-sm-4">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <input type="tel" name="Telefono" class="form-control" placeholder="Teléfono" required="required" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">
+                                                            Dirección
+                                                        </label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" name="Direccion" class="form-control" placeholder="Dirección" required="required" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">
+                                                            Email
+                                                        </label>
+                                                        <div class="col-sm-4">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <input type="email" name="Email" class="form-control" placeholder="ejemplo@mail.com" required="required" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <label class="col-sm-2 control-label">
+                                                            Contraseña
+                                                        </label>
+                                                        <div class="col-sm-4">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <input type="password" name="Contraseña" class="form-control" placeholder="Contraseña" required="required" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-2">
+                                                        </div>
+                                                        <div class="col-sm-10">
+                                                            <button type="submit" class="submit btn btn-primary btn-sm">
+                                                                Continuar
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
                                         </div>
                                     </div>
                                 </div>
