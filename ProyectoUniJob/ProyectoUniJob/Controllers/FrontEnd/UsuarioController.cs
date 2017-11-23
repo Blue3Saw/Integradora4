@@ -50,8 +50,10 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             Datos.Contraseña = Contraseña;
             Datos.TipoUsuario = 2;
             Datos.Imagen = "Hola.jpg";
-            ObjUsuario.AgregarUsuario(Datos);
-            return RedirectToAction("Index3", "Prueba");
+            ObjUsuario.AgregarEmpleador(Datos);
+
+            ObjUsuario.LoginEmpleador(Datos);
+            return RedirectToAction("IndexEmpleador", "Usuario");
         }
 
         public ActionResult VerPerfil()
