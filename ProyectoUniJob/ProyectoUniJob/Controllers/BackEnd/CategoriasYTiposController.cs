@@ -47,14 +47,9 @@ namespace ProyectoUniJob.Controllers.BackEnd
             return View(DAO.VerTipoUs());
         }
 
-        public ActionResult actualizarcategoria(string id,string categoria)
+        public ActionResult TablaActualizarCategoria(string id,string categoria)
         {
-            ClasificacionTareaBO bo = new ClasificacionTareaBO();
-            bo.Codigo = int.Parse(id);
-            bo.Clasificacion = categoria;
-            dao.ActualizarClasificaion(bo);
-            AgregarCategoria();
-            return View("AgregarCategoria");
+            return View();
         }
         public ActionResult Eliminar(string id)
         {
