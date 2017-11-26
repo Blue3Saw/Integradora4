@@ -76,8 +76,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         public ActionResult TareasAcepUsuario()
         {
             UsuarioBO dato = new UsuarioBO();
-            //Cambiar por el session
-            dato.Codigo = 3;
+            dato.Codigo = int.Parse(Session["Codigo"].ToString());
             return View(ObjDAO.TareasAcepUsuario(dato.Codigo));
         }
 
