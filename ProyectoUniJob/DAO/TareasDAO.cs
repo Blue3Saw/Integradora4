@@ -107,7 +107,7 @@ namespace DAO
         public DataTable TareasAcepUsuario(int Codigo)
         {
             UsuarioBO Datos = new UsuarioBO();
-            SqlCommand Com = new SqlCommand("SELECT T.Codigo, T.Titulo, T.Descripcion, T.Fecha, T.HoraInicio, T.HoraFinal, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion FROM Tareas T INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo INNER JOIN UsuariosTareas UT ON UT.CodigoEstudiante = U.Codigo WHERE T.Estatus = '1' AND UT.CodigoEstudiante = @Codigo");
+            SqlCommand Com = new SqlCommand("SELECT T.Codigo, T.Titulo, T.Descripcion, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion FROM UsuariosTareas UT INNER JOIN Tareas T ON T.Codigo = UT.CodigoTarea INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo WHERE T.Estatus = '1' AND UT.CodigoEstudiante = @Codigo");
             Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
             Com.CommandType = CommandType.Text;
             return Conex.EjecutarSentencia(Com).Tables[0];
