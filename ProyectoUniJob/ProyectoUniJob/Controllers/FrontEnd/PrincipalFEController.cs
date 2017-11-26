@@ -15,9 +15,10 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         // GET: PrincipalFE
         public ActionResult Index()
         {
-            return View("Index");
+            ViewBag.Codigo = Session["Codigo"];
+            return View();
         }
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(string Email, string Contraseña)
@@ -43,6 +44,8 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             }
             else
             {
+                Session["Codigo"] = "nulo";
+                ViewBag.Codigo = Session["Codigo"];
                 return RedirectToAction("Index", "PrincipalFE");
             }
         }
