@@ -46,5 +46,23 @@ namespace ProyectoUniJob.Controllers.BackEnd
         {
             return View(DAO.VerTipoUs());
         }
+
+        public ActionResult actualizarcategoria(string id,string categoria)
+        {
+            ClasificacionTareaBO bo = new ClasificacionTareaBO();
+            bo.Codigo = int.Parse(id);
+            bo.Clasificacion = categoria;
+            dao.ActualizarClasificaion(bo);
+            AgregarCategoria();
+            return View("AgregarCategoria");
+        }
+        public ActionResult Eliminar(string id)
+        {
+            ClasificacionTareaBO bo = new ClasificacionTareaBO();
+            bo.Codigo = int.Parse(id);
+            dao.Eliminar(bo);
+            AgregarCategoria();
+            return View("AgregarCategoria");
+        }
     }
 }

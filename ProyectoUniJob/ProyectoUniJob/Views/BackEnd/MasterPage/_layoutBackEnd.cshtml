@@ -41,24 +41,34 @@
                 </div>
                 <ul class="nav">
                     <li>
-                            <i class="ti-panel"></i>
-                            <p>@Html.ActionLink("Usuarios", "Index", "AgregarEstudiante")</p>
+                           <a  href="@Url.Action("Index", "AgregarEstudiante")" >
+                               <i class="ti-panel"></i>
+                               <p>Usuarios</p>
+                           </a>
                     </li>
                     <li>
-                            <i class="ti-user"></i>
-                            <p>@Html.ActionLink("Perfil ADM", "DatosPerfil", "PerfilAdmin")</p>
+                            <a href="@Url.Action( "DatosPerfil", "PerfilAdmin")" >
+                                <i class="ti-user"></i>
+                                <p>Perfil ADM</p>
+                            </a>
                     </li>
                     <li>
-                            <i class="ti-view-list-alt"></i>
-                            <p>@Html.ActionLink("Aprobar Tareas", "Index", "AprobarTarea")</p>
+                            <a href="@Url.Action( "Index", "AprobarTarea")">
+                                <i class="ti-view-list-alt"></i>
+                                <p>Aprobar Tareas</p>
+                            </a>
                     </li>
                     <li>
-                            <i class="ti-text"></i>
-                            <p>@Html.ActionLink("Mensajes", "Index", "MesajesAdm")</p>
+                            <a href="@Url.Action("Index", "MesajesAdm")" >
+                                <i class="ti-text"></i>
+                                <p>Mensajes</p>
+                            </a>
                     </li>
                     <li>
+                        <a href="@Url.Action("AgregarCategoria", "CategoriasYTipos")">
                             <i class="ti-map"></i>
-                            <p>@Html.ActionLink("Agregar", "AgregarCategoria", "CategoriasYTipos")</p>
+                            <p>Agregar</p>
+                            </a>
                     </li>
                     <li>
                         <a href="notifications.html">

@@ -28,7 +28,7 @@
                         Nombre:
                     </label>
                     <div>
-                        <input type="text" class="form-control border-input" name="Nombre" placeholder="Nombre" value="@row["Nombre"]" />
+                        <input type="text" class="form-control border-input" name="Nombre" placeholder="Nombre" value="@row["Nombre"]" required="required" />
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -36,7 +36,7 @@
                         Apellidos:
                     </label>
                     <div>
-                        <input type="text" class="form-control border-input" name="Apellidos" placeholder="Apellidos" value="@row["Apellidos"]" />
+                        <input type="text" class="form-control border-input" name="Apellidos" placeholder="Apellidos" value="@row["Apellidos"]" required="required" />
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -55,7 +55,7 @@
                             Email:
                         </label>
                         <div>
-                            <input type="text" class="form-control border-input" name="Correo" placeholder="Correo" value="@row["Email"]" />
+                            <input type="text" class="form-control border-input" name="Correo" placeholder="Correo" value="@row["Email"]" required="required" />
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -63,7 +63,7 @@
                             Contraseña:
                         </label>
                         <div>
-                            <input type="text" class="form-control border-input" name="Contraseña" placeholder="Contraseña" value="@row["Contraseña"]" />
+                            <input type="text" class="form-control border-input" name="Contraseña" placeholder="Contraseña" value="@row["Contraseña"]" required="required" />
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -105,7 +105,7 @@
                             Telefono:
                         </label>
                         <div>
-                            <input type="tel" class="form-control border-input" name="Telefono" placeholder="Telefono" value="@row["Telefono"]" onkeypress="return valida(event)" , maxlength="10" pattern="[0-9]{10}" />
+                            <input type="tel" class="form-control border-input" name="Telefono" placeholder="Telefono" value="@row["Telefono"]" onkeypress="return valida(event)" , maxlength="10" pattern="[0-9]{10}" required="required" />
                         </div>
                     </div>
                 </div>

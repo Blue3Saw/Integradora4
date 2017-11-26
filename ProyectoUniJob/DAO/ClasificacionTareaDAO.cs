@@ -26,7 +26,7 @@ namespace DAO
         public int ActualizarClasificaion(object ObjC)
         {
             ClasificacionTareaBO Dato = (ClasificacionTareaBO)ObjC;
-            SqlCommand SentenciaSQL = new SqlCommand("UPDATE TipoUsuario SET Clasificacion = @Clasificacion/*,x = @Direccion*/ WHERE Codigo = @Codigo");
+            SqlCommand SentenciaSQL = new SqlCommand("UPDATE ClasificacionTarea SET Clasificacion = @Clasificacion WHERE Codigo = @Codigo");
             SentenciaSQL.Parameters.Add("@Codigo", SqlDbType.Int).Value = Dato.Codigo;
             SentenciaSQL.Parameters.Add("@Clasificacion", SqlDbType.VarChar).Value = Dato.Clasificacion;
             SentenciaSQL.CommandType = CommandType.Text;
@@ -56,6 +56,15 @@ namespace DAO
             DataTable tablavirtual = new DataTable();
             mostar.Fill(tablavirtual);
             return tablavirtual;
+        }
+
+        public int Eliminar(object ObjC)
+        {
+            ClasificacionTareaBO Dato = (ClasificacionTareaBO)ObjC;
+            SqlCommand SentenciaSQL = new SqlCommand("Delete from ClasificacionTarea WHERE Codigo = @Codigo");
+            SentenciaSQL.Parameters.Add("@Codigo", SqlDbType.Int).Value = Dato.Codigo;
+            SentenciaSQL.CommandType = CommandType.Text;
+            return Conex.EjecutarComando(SentenciaSQL);
         }
     }
 }

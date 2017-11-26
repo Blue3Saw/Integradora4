@@ -15,18 +15,19 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (DataRow row in Model.Rows)
-            {
+        @foreach (DataRow row in Model.Rows)
+        {
                 <tr id="fila_@row["Codigo"]">
                     <td>@row["Codigo"]</td>
-                    <td><input type="text" class="form-control  border-input" name="Tipo" placeholder="Tipo" value="@row["Clasificacion"]" /></td>
+                    <td><input type="text" class="form-control  border-input" name="Tipo" id="Tipo" placeholder="Tipo" value="@row["Clasificacion"]" />
+                        <input type="hidden" class="form-control border-input" name="Codigo" placeholder="img" value="@row["Codigo"]" readonly="readonly" />
+                    </td>
                     <td>
-                        @Html.ActionLink("Eliminar", "Eliminar", "AgregarEstudiante", new { id = @row["Codigo"] }, null)
-                        @Html.ActionLink("Actualizar", "Eliminar", "AgregarEstudiante", new { id = @row["Codigo"] }, null)
+                        @Html.ActionLink("Eliminar", "Eliminar", "CategoriasYTipos", new { id = @row["Codigo"] }, null)
+                        @Html.ActionLink("Actualizar", "actualizarcategoria", "CategoriasYTipos", new { id = @row["Codigo"]}, null)
                     </td>
                 </tr>
-            }
+        }
         </tbody>
-    </table>
+     </table>
 </div>
-

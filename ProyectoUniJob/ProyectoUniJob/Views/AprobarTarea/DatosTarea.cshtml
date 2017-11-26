@@ -63,6 +63,7 @@
             <div class="col-md-6">
                 <div>
                     <h4>Ubicacion :</h4>
+                    <div id="MapPreview" style="width:100%; height:300px;"></div>
                 </div>
             </div>
             <div class="col-md-6">
@@ -99,5 +100,29 @@
     </div>
 </div>
 }
+<script type="text/javascript" src='https://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyBSXxq36QGkz0tczm7l3soE77raxPCbDb8'></script>
+<script src="~/Recursos/FontEnd/js/locationpicker.jquery.js"></script>
+<script>
+
+                                $('#MapPreview').locationpicker({
+                                    radius: 0,
+                                    location: {
+                                        latitude: 20.938297181414647,
+                                        longitude: -89.61501516379462
+                                    },
+                                    enableAutoComplete: true,
+                                    inputBinding: {
+                                        latitudeInput: $('#Latitud'),
+                                        longitudeInput: $('#Longitud'),
+                                        locationNameInput: $('#Direccion')
+                                    },
+                                    onchanged: function (currentLocation, radius, isMarkerDropped) {
+                                        $('#ubicacion').html($('#Direccion').val())
+
+                                    }
+
+                                })
+
+</script>
 
 

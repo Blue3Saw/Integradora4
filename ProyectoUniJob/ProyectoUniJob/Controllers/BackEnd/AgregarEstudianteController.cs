@@ -26,7 +26,7 @@ namespace ProyectoUniJob.Controllers.BackEnd
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AgregarUsuario(string agregar, string actualizar, string eliminar, string Nombre, string Apellidos, string cumpleanios, string Email, string Contraseña, string Imagen, string Tipo, string dirreccion, string Telefono,string ID)
+        public ActionResult AgregarUsuario(string agregar, string actualizar, string eliminar, string Nombre, string Apellidos, string cumpleanios, string Email, string Contraseña, string Tipo, string dirreccion, string Telefono,string ID, HttpPostedFileBase Imagen)
         {
             UsuarioBO BO = new UsuarioBO();
             int w = Convert.ToInt32(agregar);
@@ -43,11 +43,20 @@ namespace ProyectoUniJob.Controllers.BackEnd
             BO.FechaNac = Convert.ToDateTime(cumpleanios);
             BO.Email = Email;
             BO.Contraseña = Contraseña;
-            BO.Imagen = "HOla.png";
             BO.TipoUsuario = int.Parse(Tipo);
             BO.Telefono = long.Parse(Telefono);
             BO.Estatus = "Activo";
-
+            if (Imagen != null)
+            {
+                var filename = Path.GetFileName(Imagen.FileName);
+                var path2 = Path.Combine(Server.MapPath("~/Recursos/BackEnd/img/"), filename);
+                Imagen.SaveAs(path2);
+                BO.Imagen = filename;
+            }
+            else
+            {
+                BO.Imagen = "Ninguna";
+            }
 
             QrEncoder qrencoder = new QrEncoder(ErrorCorrectionLevel.H);
             QrCode qrcode = new QrCode();
