@@ -1,22 +1,29 @@
-﻿@using BO;
-@model UsuarioBO
+﻿@using System.Data;
+@model DataTable
 
 @{
     Layout = null;
 }
 
-@using (Html.BeginForm("ActualizarPerfil", "Usuario", FormMethod.Post))
+@using (Ajax.BeginForm("ActualizarPerfil", "Usuario", new AjaxOptions() { HttpMethod = "POST" }, new { enctype = "multipart/form-data" }))
 {
+
+
     <div class="creditly-card-form agileinfo_form">
+@foreach (DataRow row in Model.Rows)
+{
         <section class="creditly-wrapper wthree, w3_agileits_wrapper">
             <div class="credit-card-wrapper">
+
                 <div class="first-row form-group">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="movie-ticket-book">
-                                <img src="~/Recursos/FontEnd/images/movie-show.jpg" alt="" />
+                                <img src="~/Recursos/FontEnd/images/@row["Imagen"]" alt="" width="300" height="400"/>
+                                <input type="hidden" class="form-control border-input" name="ID" placeholder="ID" value="@row["Codigo"]" readonly="readonly" />
                             </div>
-                            <input type="file" />
+                            <input type="hidden" class="form-control border-input" name="img" placeholder="img" value="@row["Imagen"]" readonly="readonly" />
+                            <input type="file" class="form-control border-input" name="Imagen" placeholder="Imagen" value="@row["Imagen"]" />
                         </div>
                         <div class="col-md-8 movies-dates">
                             <div class="row">
@@ -27,17 +34,18 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label class="control-label">Nombre</label>
-                                    @Html.TextBoxFor(x => x.Nombre, new { Class = "form-control", PlaceHolder = "Nombre" })
+                                    <input type="text" class="form-control border-input" name="Nombre" placeholder="Nombre" value="@row["Nombre"]" />
                                 </div>
                                 <div class="col-sm-6">
                                     <label class="control-label">Apellidos</label>
-                                    @Html.TextBoxFor(x => x.Apellidos, new { Class = "form-control", PlaceHolder = "Apellidos" })
+                                    <input type="text" class="form-control border-input" name="Apellidos" placeholder="Apellidos" value="@row["Apellidos"]" />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label class="control-label">Fecha de nacimiento</label>
-                                    @Html.TextBoxFor(x => x.FechaNac, new { Class = "date form-control", Id = "datepicker", Type = "text" })
+                                    @*@Html.TextBoxFor(x => x.FechaNac, new { Class = "date form-control", Id = "datepicker", Type = "text" })*@
+                                    <input type="text" id="datepicker" class="form-control border-input" name="FechaNac" placeholder="FechaNac" value="@row["FechaNac"]" readonly="readonly" />
                                     <link rel="stylesheet" href="~/Recursos/FontEnd/css/jquery-ui.css">
                                     <script src="~/Recursos/FontEnd/js/jquery-ui.js"></script>
                                     <script>
@@ -48,24 +56,28 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <label class="control-label">Teléfono</label>
-                                    @Html.TextBoxFor(x => x.Telefono, new { Class = "form-control", PlaceHolder = "Teléfono" })
+                                    @*@Html.TextBoxFor(x => x.Telefono, new { Class = "form-control", PlaceHolder = "Teléfono" })*@
+                                    <input type="tel" class="form-control border-input" name="Telefono" placeholder="Telefono" value="@row["Telefono"]" onkeypress="return valida(event)" , maxlength="10" pattern="[0-9]{10}" />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <label class="control-label">Dirección</label>
-                                    @Html.TextBoxFor(x => x.Direccion, new { Class = "form-control", PlaceHolder = "Dirección" })
+                                    @*@Html.TextBoxFor(x => x.Direccion, new { Class = "form-control", PlaceHolder = "Dirección" })*@
+                                    <input class="form-control border-input" name="direccion" placeholder="Dirreccion" value="@row["Direccion"]" type="text">
                                 </div>
                                 <div></div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label class="control-label">Correo electrónico</label>
-                                    @Html.TextBoxFor(x => x.Email, new { Class = "form-control", PlaceHolder = "Correo electrónico" })
+                                    @*@Html.TextBoxFor(x => x.Email, new { Class = "form-control", PlaceHolder = "Correo electrónico" })*@
+                                    <input type="text" class="form-control border-input" name="Correo" placeholder="Correo" value="@row["Email"]" />
                                 </div>
                                 <div class="col-sm-6">
                                     <label class="control-label">Contraseña</label>
-                                    @Html.TextBoxFor(x => x.Contraseña, new { Class = "form-control", Type = "password" })
+                                    @*@Html.TextBoxFor(x => x.Contraseña, new { Class = "form-control", Type = "password" })*@
+                                    <input type="text" class="form-control border-input" name="Contraseña" placeholder="Contraseña" value="@row["Contraseña"]" />
                                 </div>
                             </div>
                         </div>
@@ -73,6 +85,7 @@
                 </div>
             </div>
         </section>
+}
     </div>
     <div class="row">
         <div class="col-sm-8"></div>
@@ -80,8 +93,4 @@
             <button type="submit" class="form-control btn btn-primary">Actualizar</button>
         </div>
     </div>
-
-    @Html.TextBoxFor(x => x.Codigo, new { Style = "visibility:hidden" })
-    @Html.TextBoxFor(x => x.TipoUsuario, new { Style = "visibility:hidden" })
-    @Html.TextBoxFor(x => x.Imagen, new { Style = "visibility:hidden" })
 }

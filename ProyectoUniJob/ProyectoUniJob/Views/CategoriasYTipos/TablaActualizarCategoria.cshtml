@@ -1,0 +1,17 @@
+﻿@using System.Data;
+@model DataTable
+
+@{
+    ViewBag.Title = "TablaActualizarCategoria";
+    //Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
+}
+
+@foreach (DataRow row in Model.Rows)
+{
+   <div>
+       <input type="text" class="form-control  border-input" name="Tipo" placeholder="Tipo" value="@row["Tipo"]" />
+   </div>
+}
+<div>
+    <input type="button" id="btn4" value="Actualizar" class="btn btn-success" onclick="" />
+</div>

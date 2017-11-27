@@ -7,6 +7,7 @@ using System.Data;
 using BO;
 using DAO;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace ProyectoUniJob.Controllers.FrontEnd
 {
@@ -58,14 +59,34 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult VerPerfil()
         {
-            UsuarioBO Datos = new UsuarioBO();
-            Datos.Codigo = int.Parse(Session["Codigo"].ToString());
-            return View(ObjUsuario.PerfilUsuario(Datos.Codigo));
+            return View(ObjUsuario.TablaUsuarios3(int.Parse(Session["Codigo"].ToString())));
         }
 
-        public ActionResult ActualizarPerfil(UsuarioBO Obj)
+        [HttpPost]
+        public ActionResult ActualizarPerfil(string ID, string Nombre, string Apellidos, string Correo, string Contraseña, string FechaNac, string Telefono, string direccion, string img, HttpPostedFileBase Imagen)
         {
-            ObjUsuario.ActualizarPerfil(Obj);
+            UsuarioBO bo = new UsuarioBO();
+            if (Imagen != null)
+            {
+                var filename = Path.GetFileName(Imagen.FileName);
+                var path = Path.Combine(Server.MapPath("~/Recursos/FontEnd/images/"), filename);
+                Imagen.SaveAs(path);
+                bo.Imagen = filename;
+            }
+            else
+            {
+                bo.Imagen = img;
+            }
+            bo.Codigo = int.Parse(ID);
+            bo.Nombre = Nombre;
+            bo.Apellidos = Apellidos;
+            bo.Email = Correo;
+            bo.Contraseña = Contraseña;
+            bo.Direccion = direccion;
+            bo.FechaNac = Convert.ToDateTime(FechaNac);
+            bo.Telefono = long.Parse(Telefono);
+            ObjUsuario.ActualizarUsuario2(bo);
+            IndexEstudiante();
             return View("IndexEstudiante");
         }
 

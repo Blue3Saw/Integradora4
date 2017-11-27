@@ -5,7 +5,7 @@
     ViewBag.Title = "tablausuarios";
     //Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
 }
-<div class="content table-responsive table-full-width col-lg-6">
+<div class="content table-responsive table-full-width">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -21,7 +21,8 @@
                     <td><input type="text" class="form-control  border-input" name="Tipo" placeholder="Tipo" value="@row["Tipo"]" /></td>
                     <td>
                         @Html.ActionLink("Eliminar", "Eliminar", "AgregarEstudiante", new { id = @row["Tipo"] }, null)
-                        @Html.ActionLink("Actualizar", "Eliminar", "AgregarEstudiante", new { id = @row["Codigo"] }, null)
+                        @Html.ActionLink("Actualizar", "TablaActualizarCate", "CategoriasYTipos", new { id = @row["Codigo"] },new { onclick = "actualizarcategoria()" })
+                        @*<input type="button" id="btn4" value="Actualizar" class="btn btn-success" onclick="actualizarcategoria()" />*@
                     </td>
                 </tr>
             }

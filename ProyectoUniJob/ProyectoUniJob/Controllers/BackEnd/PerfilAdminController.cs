@@ -24,7 +24,6 @@ namespace ProyectoUniJob.Controllers.BackEnd
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult actualizar(string ID, string Nombre, string Apellidos, string Correo, string Contraseña, string FechaNac, string Telefono,string direccion,string img, HttpPostedFileBase Imagen)
         {
             UsuarioBO bo = new UsuarioBO();
@@ -44,6 +43,7 @@ namespace ProyectoUniJob.Controllers.BackEnd
             bo.Apellidos = Apellidos;
             bo.Email = Correo;
             bo.Contraseña = Contraseña;
+            bo.Direccion = direccion;
             bo.FechaNac = Convert.ToDateTime(FechaNac);
             bo.Telefono = long.Parse(Telefono);
             objUsuario.ActualizarUsuario2(bo);

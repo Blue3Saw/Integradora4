@@ -46,10 +46,15 @@ namespace ProyectoUniJob.Controllers.BackEnd
         {
             return View(DAO.VerTipoUs());
         }
-
-        public ActionResult TablaActualizarCategoria(string id,string categoria)
+        public ActionResult TablaActualizarCate(string id)
         {
-            return View();
+            Session["TIpotabla"] = id;
+            return new EmptyResult();
+        }
+        public ActionResult TablaActualizarCategoria()
+        {
+            Session["TIpotabla"] = "2";
+            return View(DAO.buscarTipo(int.Parse(Session["TIpotabla"].ToString())));
         }
         public ActionResult Eliminar(string id)
         {
