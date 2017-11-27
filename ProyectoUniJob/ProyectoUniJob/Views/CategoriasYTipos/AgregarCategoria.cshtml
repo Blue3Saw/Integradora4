@@ -53,8 +53,14 @@
 }
        </div>
        <div class="row">
-           <div id="tablatipo">
+           <div id="tablatipo" class="col-md-6">
 
+           </div>
+           <div id="Actualizartabla" class="col-md-6">
+
+           </div>
+           <div>
+               <input type="button" id="btn4" value="Actualizar" class="btn btn-success" onclick="" />
            </div>
        </div>
   </div>
@@ -66,6 +72,9 @@
                 $('#tablacategoria').load('/CategoriasYTipos/tablacategorias');
             }
             function tabla2() {
+                $('#tablatipo').load('/CategoriasYTipos/tablausuarios');
+            }
+            function actualizarcategoria() {
                 $('#tablatipo').load('/CategoriasYTipos/tablausuarios');
             }
 </script>
