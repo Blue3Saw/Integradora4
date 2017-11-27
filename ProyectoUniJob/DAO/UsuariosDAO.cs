@@ -265,5 +265,14 @@ namespace DAO
 
             return valor;
         }
+
+        public DataTable UsuariosReporte()
+        {
+            sentencia = "SELECT * FROM Usuarios";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
+        }
     }
 }
