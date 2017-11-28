@@ -18,7 +18,7 @@ namespace DAO
         {
             TareasBO Dato = (TareasBO)ObjT;
             SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO Tareas (UsuarioEmpleador,Titulo, Fecha, HoraInicio, HoraFinal, Tipo, Descripcion, Estatus, Longitud, Latitud, Direccion) VALUES (@Empleador,@Titulo, @Fecha, @HoraInicio, @HoraFin, @Tipo, @Descripcion, @Estatus, @Longitud, @Latitud, @Direccion)");
-            SentenciaSQL.Parameters.Add("@Empleador", SqlDbType.Int).Value = 1;//Dato.CodigoEmpleador;
+            SentenciaSQL.Parameters.Add("@Empleador", SqlDbType.Int).Value = Dato.CodigoEmpleador;
             SentenciaSQL.Parameters.Add("@Titulo", SqlDbType.VarChar).Value = Dato.Titulo;
             SentenciaSQL.Parameters.Add("@Fecha", SqlDbType.Date).Value = Dato.Fecha.ToString("yyyy-MM-dd");
             SentenciaSQL.Parameters.Add("@HoraInicio", SqlDbType.Time).Value = Dato.HoraInicio.ToString("HH:mm");
