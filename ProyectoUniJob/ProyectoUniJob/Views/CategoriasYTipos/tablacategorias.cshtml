@@ -19,12 +19,10 @@
         {
                 <tr id="fila_@row["Codigo"]">
                     <td>@row["Codigo"]</td>
-                    <td><input type="text" class="form-control  border-input" name="Tipo" id="Tipo" placeholder="Tipo" value="@row["Clasificacion"]" />
-                        <input type="hidden" class="form-control border-input" name="Codigo" placeholder="img" value="@row["Codigo"]" readonly="readonly" />
-                    </td>
+                    <td>@row["Clasificacion"]</td>
                     <td>
                         @Html.ActionLink("Eliminar", "Eliminar", "CategoriasYTipos", new { id = @row["Codigo"] }, null)
-                        @Html.ActionLink("Actualizar", "actualizarcategoria", "CategoriasYTipos", new { id = @row["Codigo"]}, null)
+                       <div onclick = "categor()" style="cursor:pointer">Actualizar</div>
                     </td>
                 </tr>
         }

@@ -102,6 +102,7 @@
     <Content Include="Recursos\BackEnd\css\animate.min.css" />
     <Content Include="Recursos\BackEnd\css\bootstrap.min.css" />
     <Content Include="Recursos\BackEnd\css\demo.css" />
+    <Content Include="Recursos\BackEnd\css\estilospersonalesmaple.css" />
     <Content Include="Recursos\BackEnd\css\paper-dashboard.css" />
     <Content Include="Recursos\BackEnd\css\themify-icons.css" />
     <Content Include="Recursos\BackEnd\fonts\themify.svg" />
@@ -220,6 +221,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AlumnosDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="TipoUsuarioDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -302,6 +304,7 @@
     <Content Include="Views\Tareas\TareaSeleccionada.cshtml" />
     <Content Include="Views\Tareas\VistaTarea.cshtml" />
     <Content Include="Views\CategoriasYTipos\TablaActualizarCategoria.cshtml" />
+    <Content Include="Views\CategoriasYTipos\actualizarcategoria.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

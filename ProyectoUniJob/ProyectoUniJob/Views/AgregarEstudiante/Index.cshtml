@@ -6,44 +6,36 @@
     Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
 }
 
-<div class="content">
+<div class="content letrasindexusuarios">
     <div class="container-fluid card">
         <h2>Agregar Usuarios</h2>
         @using (Ajax.BeginForm("AgregarUsuario", "AgregarEstudiante", new AjaxOptions() { HttpMethod = "POST" },new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
-            <div class="row">
+            @*<div class="row">
                 <div class="col-md-3">
-                    <label class="control-label">
-                        ID:
-                    </label>
+                    <h5>ID</h5>
                     <div>
                         <input type="text" class="form-control  border-input" name="ID" placeholder="ID" value="" />
                     </div>
                 </div>
-            </div>
+            </div>*@
             <div class="row">
-                <div class="col-md-3">
-                    <label class="control-label">
-                        Nombre:
-                    </label>
+                <div class="col-md-4">
+                    <h5>Nombre:</h5>
                     <div>
                         <input type="text" class="form-control  border-input" name="Nombre" placeholder="Nombre" required="required" />
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <label class="control-label">
-                        Apellidos:
-                    </label>
+                <div class="col-md-4">
+                    <h5>Apellidos:</h5>
                     <div>
                         <input type="text" class="form-control  border-input" name="Apellidos" placeholder="Apellidos" required="required" />
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <label class="control-label">
-                        Fecha de Nacimiento:
-                    </label>
+                <div class="col-md-4">
+                    <h5>Fecha de Nacimiento:</h5>
                     <div>
                         <input type="date" name="cumpleanios" step="1" min="1960-01-01" max="2013-12-31" class="form-control  border-input" required="required">
                     </div>
@@ -51,38 +43,30 @@
             </div>
             <div class="row">
                 <div>
-                    <div class="col-md-3">
-                        <label class="control-label">
-                            Email:
-                        </label>
+                    <div class="col-md-4">
+                        <h5>Correo Electronico:</h5>
                         <div>
                             <input type="email" class="form-control  border-input" name="Email" placeholder="Email" required="required" />
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <label class="control-label">
-                            Contraseña:
-                        </label>
+                    <div class="col-md-4">
+                        <h5>Contraseña:</h5>
                         <div>
                             <input type="text" class="form-control  border-input" name="Contraseña" placeholder="Contraseña" required="required" />
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <label class="control-label">
-                            Imagen:
-                        </label>
+                    <div class="col-md-4">
+                        <h5>Imagen:</h5>
                         <div>
-                            <input type="file" multiple class="form-control  border-input" name="Imagen">
+                            <input type="file" multiple class="form-control  border-input" name="Imagen" accept=".png, .jpg, .jpeg" />
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div>
-                    <div class="col-md-3">
-                        <label class="control-label">
-                            Estado:
-                        </label>
+                    <div class="col-md-4">
+                        <h5>Tipo:</h5>
                         <div>
                             <select name="Tipo" class="form-control  border-input">
                                 <option value="1">Administrador</option>
@@ -91,18 +75,14 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <label class="control-label">
-                            Dirreccion:
-                        </label>
+                    <div class="col-md-4">
+                        <h5>Dirreccion:</h5>
                         <div>
                             <input type="text" class="form-control  border-input" name="dirreccion" placeholder="Contraseña" required="required" />
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <label class="control-label">
-                            Telefono:
-                        </label>
+                    <div class="col-md-4">
+                        <h5>Telefono:</h5>
                         <div>
                             <input type="tel" pattern="[0-9]{10}" class="form-control  border-input" name="Telefono" placeholder="Telefono" required="required" onkeypress="return valida(event)" maxlength="10" />
                         </div>
@@ -114,16 +94,14 @@
 
                 </div>
             </div>
-            <div class="row">
+            <div class="row centrar">
                 <div>
-                    <div class="col-md-3">
-                    </div>
-                    <div class="col-md-3">
+                    <div class="col-md-8">
                         <div>
                             <button type="submit" class="btn btn-success" name="agregar" value="1" onclick="alerta()">AGREGAR</button>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div>
                             <button type="submit" class="btn btn-success">Reportes</button>
                         </div>
@@ -131,14 +109,14 @@
                 </div>
             </div>
         }
-        <div class="row">
+        @*<div class="row">
             <div class="col-lg-12">
                 <div>
                     <input type="button" id="btn1" value="tabla" onclick="tabla()" />
                 </div>
             </div>
         </div>
-        @ViewBag.Script
+        @ViewBag.Script*@
     </div>
 </div>
 
@@ -151,15 +129,15 @@
             @Html.AntiForgeryToken()
 
             <h2>Buscar Datos del Usuario</h2>
-            <div class="row">
-                <div class="col-lg-3">
-                    <input type="text" class="form-control  border-input" name="Buscar" placeholder="Buscar" />
+            <div class="row centrar">
+                <div class="col-lg-4">
+                    <input type="text" class="form-control  border-input" name="Buscar" placeholder="Buscar" required="required" />
                 </div>
-                <div class="col-lg-3">
-                    <input type="submit" value="Buscar" />
+                <div class="col-lg-4">
+                    <input type="submit" value="Buscar" class="btn btn-success" />
                 </div>
-                <div class="col-lg-3">
-                    <input type="button" id="btn1" value="Mostar tabla" onclick="tabla()" />
+                <div class="col-lg-4">
+                    <input type="button" id="btn1" class="btn btn-success" value="Mostar tabla" onclick="tabla()" />
                 </div>
             </div>
             <div class="row">
@@ -173,7 +151,7 @@
 </div>
 
 
-<div class="content">
+<div class="content letrasindexusuarios">
     <div @*class="container-fluid card"*@>
         <div class="row">
             <div id="dato"></div>

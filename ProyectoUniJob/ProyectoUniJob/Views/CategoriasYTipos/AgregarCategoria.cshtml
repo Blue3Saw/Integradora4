@@ -11,7 +11,7 @@
 {
         <div class="col-md-4">
             <div>
-                <input type="text" class="form-control  border-input" name="categoria" placeholder="Categoria" value="" />
+                <input type="text" class="form-control  border-input" name="categoria" placeholder="Categoria" value="" required="required" />
             </div>
         </div>
         <div class="col-md-4">
@@ -27,9 +27,12 @@
 }
     </div>
        <div class="row">
-            <div id="tablacategoria">
+            <div id="tablacategoria" class="col-md-4">
 
             </div>
+           <div id="categoria" class="col-md-4">
+
+           </div>
        </div>
        <div onclick="mostar2()" style="cursor:pointer"><h2>Tipos de Usuario</h2></div>
        <div class="row" id="ti" style='display:none'>
@@ -37,7 +40,7 @@
 {
            <div class="col-md-4">
                <div>
-                   <input type="text" class="form-control  border-input" name="Tipo" placeholder="Tipo" value="" />
+                   <input type="text" class="form-control  border-input" name="Tipo" placeholder="Tipo" value="" required="required" />
                </div>
            </div>
            <div class="col-md-4">
@@ -73,6 +76,9 @@
             }
             function actualizarcategoria() {
                 $('#Actualizartabla').load('/CategoriasYTipos/TablaActualizarCategoria');
+            }
+            function categor() {
+                $('#categoria').load('/CategoriasYTipos/actualizarcategoria');
             }
 </script>
 <script type="text/javascript">

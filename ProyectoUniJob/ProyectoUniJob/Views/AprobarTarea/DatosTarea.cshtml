@@ -21,7 +21,7 @@
     @Html.AntiForgeryToken()
         <div class="row">
             <div class="col-lg-12" style="vertical-align:middle">
-                <h1>@row["Titulo"]</h1>
+                <h1 class="mayusculas">@row["Titulo"]</h1>
                 <input type="text" class="form-control border-input" name="codigo" placeholder="Nombre" value="@row["Codigo"]" style="visibility:hidden" />
             </div>
         </div>
@@ -40,9 +40,9 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row centrar">
             <div class="col-md-4">
-                <div>
+                <div class="centrar">
                     <h4>Hora de Inicio:</h4>
                 </div>
                 <div>
@@ -57,7 +57,7 @@
                     <div>@row["HoraFinal"]</div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" >
                 <div>
                     <h4>Clasificacion:</h4>
                 </div>

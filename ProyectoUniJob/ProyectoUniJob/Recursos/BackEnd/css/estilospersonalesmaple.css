@@ -1,0 +1,20 @@
+﻿body {
+    
+}
+
+.centrar{
+    text-align:center;
+}
+.mayusculas{
+    text-transform:uppercase;
+    font-family: "Tahoma", "Geneva", sans-serif;
+}
+.textotareas{
+overflow:hidden; /* Escondemos la parte sobrante */
+white-space:nowrap; /* Indicamos que no realice salto de linea si no cabe en la anchura indicada */
+text-overflow: ellipsis
+}
+
+.letrasindexusuarios{
+    font-weight:bold;
+}

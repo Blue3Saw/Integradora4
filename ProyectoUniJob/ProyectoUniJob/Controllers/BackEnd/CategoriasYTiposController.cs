@@ -46,15 +46,35 @@ namespace ProyectoUniJob.Controllers.BackEnd
         {
             return View(DAO.VerTipoUs());
         }
-        public ActionResult TablaActualizarCate(string id)
+
+        [HttpPost]
+        public ActionResult TablaActualizarCate(string Tipo, string Tiposelect)
         {
-            Session["TIpotabla"] = id;
-            return new EmptyResult();
+            TipoUsuarioBO bo = new TipoUsuarioBO();
+            bo.TipoUsuario = Tipo;
+            bo.Codigo = int.Parse(Tiposelect);
+            DAO.ActualizarTipoUsuario(bo);
+            return View("AgregarCategoria");
+        }
+
+        [HttpPost]
+        public ActionResult actcate(string Tipo, string Tiposelect)
+        {
+            ClasificacionTareaBO bo = new ClasificacionTareaBO();
+            bo.Clasificacion = Tipo;
+            bo.Codigo = int.Parse(Tiposelect);
+            dao.ActualizarClasificaion(bo);
+            return View("AgregarCategoria");
+        }
+
+
+        public ActionResult actualizarcategoria()
+        {
+            return View(dao.TablaClasificacion());
         }
         public ActionResult TablaActualizarCategoria()
         {
-            Session["TIpotabla"] = "2";
-            return View(DAO.buscarTipo(int.Parse(Session["TIpotabla"].ToString())));
+            return View(DAO.buscarTipo());
         }
         public ActionResult Eliminar(string id)
         {
@@ -64,5 +84,7 @@ namespace ProyectoUniJob.Controllers.BackEnd
             AgregarCategoria();
             return View("AgregarCategoria");
         }
+
+
     }
 }
