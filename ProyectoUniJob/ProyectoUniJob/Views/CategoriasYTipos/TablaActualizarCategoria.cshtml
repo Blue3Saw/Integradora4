@@ -6,12 +6,22 @@
     //Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
 }
 
+@using (Ajax.BeginForm("TablaActualizarCate", "CategoriasYTipos", new AjaxOptions() { HttpMethod = "POST" }))
+{
+    <div>
+        <div>Seleccione un Tipo de Usuario</div>
+        <select name="Tiposelect" class="form-control  border-input">
 @foreach (DataRow row in Model.Rows)
 {
-   <div>
-       <input type="text" class="form-control  border-input" name="Tipo" placeholder="Tipo" value="@row["Tipo"]" />
-   </div>
+            <option value="@row["Codigo"]">@row["Tipo"]</option>
 }
+        </select>
+    </div>
+    <div>
+        <div>Nuevo Tipo de Usuario</div>
+        <input type="text" class="form-control  border-input" name="Tipo" placeholder="TIpo" required="required" />
+    </div>
 <div>
-    <input type="button" id="btn4" value="Actualizar" class="btn btn-success" onclick="" />
+    <input type="submit" id="btn4" value="Actualizar" class="btn btn-success" onclick="" />
 </div>
+}

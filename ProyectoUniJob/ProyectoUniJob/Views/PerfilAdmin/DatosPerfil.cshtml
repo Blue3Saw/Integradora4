@@ -9,7 +9,7 @@
 {
     @Html.AntiForgeryToken()
 
-<div class="content">
+<div class="content letrasindexusuarios">
     <div class="container-fluid">
 @foreach (DataRow row in Model.Rows)
 {
@@ -102,7 +102,7 @@
                                     <div class="form-group">
                                         <label>Imagen</label>
                                         <input type="hidden" class="form-control border-input" name="img" placeholder="img" value="@row["Imagen"]" readonly="readonly" />
-                                        <input type="file" class="form-control border-input" name="Imagen" placeholder="Imagen" value="@row["Imagen"]" />
+                                        <input type="file" class="form-control border-input" name="Imagen" placeholder="Imagen" value="@row["Imagen"]" accept=".png, .jpg, .jpeg" />
                                     </div>
                                 </div>
                             </div>

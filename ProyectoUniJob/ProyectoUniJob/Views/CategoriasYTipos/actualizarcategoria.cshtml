@@ -1,0 +1,28 @@
+﻿@using System.Data;
+@model DataTable
+
+@{
+    ViewBag.Title = "actualizarcategoria";
+    //Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
+}
+@using (Ajax.BeginForm("actcate", "CategoriasYTipos", new AjaxOptions() { HttpMethod = "POST" }))
+{
+    <div>
+        <div>Seleccione un Tipo de Usuario</div>
+        <select name="Tiposelect" class="form-control  border-input">
+            @foreach (DataRow row in Model.Rows)
+            {
+                <option value="@row["Codigo"]">@row["Clasificacion"]</option>
+            }
+        </select>
+    </div>
+    <div>
+        <div>Nuevo Tipo de Usuario</div>
+        <input type="text" class="form-control  border-input" name="Tipo" placeholder="TIpo" required="required" />
+    </div>
+    <div>
+        <input type="submit" id="btn4" value="Actualizar" class="btn btn-success" onclick="" />
+    </div>
+}
+
+

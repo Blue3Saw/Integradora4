@@ -41,9 +41,9 @@ namespace DAO
             Mostar.Fill(TablaVirtual);
             return TablaVirtual;
         }
-        public DataTable buscarTipo(int id)
+        public DataTable buscarTipo()
         {
-            sentencia = "SELECT * FROM TipoUsuario where Codigo='"+id+"'";
+            sentencia = "SELECT * FROM TipoUsuario";
             SqlDataAdapter Mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
             DataTable TablaVirtual = new DataTable();
             Mostar.Fill(TablaVirtual);

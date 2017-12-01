@@ -106,6 +106,7 @@
     <Content Include="Recursos\BackEnd\css\animate.min.css" />
     <Content Include="Recursos\BackEnd\css\bootstrap.min.css" />
     <Content Include="Recursos\BackEnd\css\demo.css" />
+    <Content Include="Recursos\BackEnd\css\estilospersonalesmaple.css" />
     <Content Include="Recursos\BackEnd\css\paper-dashboard.css" />
     <Content Include="Recursos\BackEnd\css\themify-icons.css" />
     <Content Include="Recursos\BackEnd\fonts\themify.svg" />
@@ -159,7 +160,11 @@
     <Content Include="Recursos\FontEnd\images\lg7.png" />
     <Content Include="Recursos\FontEnd\images\lg8.png" />
     <Content Include="Recursos\FontEnd\images\lg9.png" />
+    <Content Include="Recursos\FontEnd\images\logo verde.png" />
+    <Content Include="Recursos\FontEnd\images\logopr.jpeg" />
     <Content Include="Recursos\FontEnd\images\m1.jpg" />
+    <Content Include="Recursos\FontEnd\images\Mision.png" />
+    <Content Include="Recursos\FontEnd\images\Mision1.jpg" />
     <Content Include="Recursos\FontEnd\images\mobile.png" />
     <Content Include="Recursos\FontEnd\images\movie-poster.jpg" />
     <Content Include="Recursos\FontEnd\images\movie-show.jpg" />
@@ -168,7 +173,10 @@
     <Content Include="Recursos\FontEnd\images\ph1.png" />
     <Content Include="Recursos\FontEnd\images\seat2.jpg" />
     <Content Include="Recursos\FontEnd\images\top-arrow.png" />
-    <Content Include="Recursos\FontEnd\images\wallpaper.jpg" />
+    <Content Include="Recursos\FontEnd\images\universitarios.jpg" />
+    <Content Include="Recursos\FontEnd\images\universitarios2.jpg" />
+    <Content Include="Recursos\FontEnd\images\universitarios3.jpg" />
+    <Content Include="Recursos\FontEnd\images\universitarios4.jpg" />
     <Content Include="Recursos\FontEnd\js\bootstrap-select.js" />
     <Content Include="Recursos\FontEnd\js\bootstrap.js" />
     <Content Include="Recursos\FontEnd\js\clockpicker.js" />
@@ -196,16 +204,16 @@
     <Content Include="Reportes\DataSets\AlumnosDS.xss">
       <DependentUpon>AlumnosDS.xsd</DependentUpon>
     </Content>
-    <Content Include="Reportes\DataSets\TareasDS.xsc">
-      <DependentUpon>TareasDS.xsd</DependentUpon>
+    <Content Include="Reportes\DataSets\DataSet_Usuarios.xsc">
+      <DependentUpon>DataSet_Usuarios.xsd</DependentUpon>
     </Content>
-    <None Include="Reportes\DataSets\TareasDS.xsd">
+    <None Include="Reportes\DataSets\DataSet_Usuarios.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TareasDS.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSet_Usuarios.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Reportes\DataSets\TareasDS.xss">
-      <DependentUpon>TareasDS.xsd</DependentUpon>
+    <Content Include="Reportes\DataSets\DataSet_Usuarios.xss">
+      <DependentUpon>DataSet_Usuarios.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -218,6 +226,7 @@
     <Compile Include="Controllers\BackEnd\AgregarEstudianteController.cs" />
     <Compile Include="Controllers\BackEnd\AprobarTareaController.cs" />
     <Compile Include="Controllers\BackEnd\CategoriasYTiposController.cs" />
+    <Compile Include="Controllers\BackEnd\InformacionController.cs" />
     <Compile Include="Controllers\BackEnd\MesajesAdmController.cs" />
     <Compile Include="Controllers\BackEnd\PerfilAdminController.cs" />
     <Compile Include="Controllers\EstatusController.cs" />
@@ -236,16 +245,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AlumnosDS.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\DataSets\TareasDS.Designer.cs">
+    <Compile Include="TipoUsuarioDAO.cs" />
+    <Compile Include="Reportes\DataSets\DataSet_Usuarios.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TareasDS.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes\Viewers\TareasReport.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TareasReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
+      <DependentUpon>DataSet_Usuarios.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reportes\Viewers\UsuarioReport.cs">
       <AutoGen>True</AutoGen>
@@ -335,6 +339,8 @@
     <Content Include="Views\Tareas\TareaSeleccionada.cshtml" />
     <Content Include="Views\Tareas\VistaTarea.cshtml" />
     <Content Include="Views\CategoriasYTipos\TablaActualizarCategoria.cshtml" />
+    <Content Include="Views\CategoriasYTipos\actualizarcategoria.cshtml" />
+    <Content Include="Views\Informacion\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -345,6 +351,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Reportes\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="Views\TipoUsuario\" />
   </ItemGroup>
@@ -359,10 +366,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reportes\Viewers\TareasReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>TareasReport.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Viewers\UsuarioReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>UsuarioReport.cs</LastGenOutput>
