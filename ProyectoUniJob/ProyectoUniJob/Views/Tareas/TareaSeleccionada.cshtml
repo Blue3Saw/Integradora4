@@ -79,6 +79,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @Html.ActionLink("Hacer tarea", "TareaSeleccionada", "Tareas", new { Codigo = @row["Codigo"] }, null)
                                 </div>
                             </div>
                         </div>
@@ -86,13 +87,17 @@
                 </section>
             </div>
         }
-
-        @using (Html.BeginForm("ActualizarPerfil", "Tareas", FormMethod.Post))
-            {
-
-            }
     </div>
 </div>
+
+@if (ViewBag.Variable != null)
+{
+    <script>
+        window.onload = function () {
+            swal('Correcto', 'Haz aceptado la tarea.', 'success')
+        }
+    </script>
+}
 
 <script>
         $("#ModalMapPreview").locationpicker({

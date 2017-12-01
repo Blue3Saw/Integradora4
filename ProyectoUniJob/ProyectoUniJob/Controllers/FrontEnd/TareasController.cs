@@ -97,5 +97,13 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             
             return PartialView("VistaTarea");
         }
+
+        public ActionResult HacerTarea(string Codigo)
+        {
+            int Clave = int.Parse(Codigo);
+            ObjDAO.AceptarTarea(Clave);
+            ViewBag.Variable = Codigo;
+            return View(ObjDAO.TareaSeleccionada(Clave));
+        }
     }
 }

@@ -95,5 +95,6 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             Session.Remove("Codigo");
             return RedirectToAction("Index", "PrincipalFE");
         }
+        
     }
 }

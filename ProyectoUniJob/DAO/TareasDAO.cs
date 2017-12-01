@@ -58,9 +58,18 @@ namespace DAO
             return Conex.EjecutarComando(SentenciaSQL);
         }
 
-        public int DejarTarea(object ObjT)
+        public int AceptarTarea(int Codigo)
         {
-            TareasBO Dato = (TareasBO)ObjT;
+            TareasBO Dato = new TareasBO();
+            SqlCommand SentenciaSQL = new SqlCommand("UPDATE Tareas SET Estatus = 5 WHERE Codigo = @Codigo");
+            SentenciaSQL.Parameters.Add("@Codigo", SqlDbType.Int).Value = Dato.Codigo;
+            SentenciaSQL.CommandType = CommandType.Text;
+            return Conex.EjecutarComando(SentenciaSQL);
+        }
+
+        public int DejarTarea(int Codigo)
+        {
+            TareasBO Dato = new TareasBO();
             SqlCommand SentenciaSQL = new SqlCommand("UPDATE Tareas SET Estatus = 1 WHERE Codigo = @Codigo");
             SentenciaSQL.Parameters.Add("@Codigo", SqlDbType.Int).Value = Dato.Codigo;
             SentenciaSQL.CommandType = CommandType.Text;

@@ -204,16 +204,16 @@
     <Content Include="Reportes\DataSets\AlumnosDS.xss">
       <DependentUpon>AlumnosDS.xsd</DependentUpon>
     </Content>
-    <Content Include="Reportes\DataSets\DataSet_Usuarios.xsc">
-      <DependentUpon>DataSet_Usuarios.xsd</DependentUpon>
+    <Content Include="Reportes\DataSets\TareasDS.xsc">
+      <DependentUpon>TareasDS.xsd</DependentUpon>
     </Content>
-    <None Include="Reportes\DataSets\DataSet_Usuarios.xsd">
-      <SubType>Designer</SubType>
+    <None Include="Reportes\DataSets\TareasDS.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet_Usuarios.Designer.cs</LastGenOutput>
+      <LastGenOutput>TareasDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
-    <Content Include="Reportes\DataSets\DataSet_Usuarios.xss">
-      <DependentUpon>DataSet_Usuarios.xsd</DependentUpon>
+    <Content Include="Reportes\DataSets\TareasDS.xss">
+      <DependentUpon>TareasDS.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -245,12 +245,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AlumnosDS.xsd</DependentUpon>
     </Compile>
-    <Compile Include="TipoUsuarioDAO.cs" />
-    <Compile Include="Reportes\DataSets\DataSet_Usuarios.Designer.cs">
+    <Compile Include="Reportes\DataSets\TareasDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet_Usuarios.xsd</DependentUpon>
+      <DependentUpon>TareasDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\Viewers\TareasReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TareasReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TipoUsuarioDAO.cs" />
     <Compile Include="Reportes\Viewers\UsuarioReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -366,6 +372,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reportes\Viewers\TareasReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TareasReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Viewers\UsuarioReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>UsuarioReport.cs</LastGenOutput>

@@ -24,6 +24,7 @@ namespace DAO
             Cmd.Parameters.Add("@ImgV", SqlDbType.VarChar).Value = obj.ImagenV;
             return Conexion.EjecutarComando(Cmd);
         }
+
         public int Modificar(InformacionBO obj)
         {
             SqlCommand Cmd = new SqlCommand("update Informacion set QuienesSomos = @Quines,Mision = @Mision,Vision = @Vision,ImagenQ = @ImgQ,ImagenM = @ImgM,ImagenV = @ImgV");
@@ -35,6 +36,7 @@ namespace DAO
             Cmd.Parameters.Add("@ImgV", SqlDbType.VarChar).Value = obj.ImagenV;
             return Conexion.EjecutarComando(Cmd);
         }
+
         public InformacionBO Datos()
         {
             SqlCommand Comando = new SqlCommand("select * from Informacion");
