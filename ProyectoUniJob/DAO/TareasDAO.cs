@@ -148,5 +148,14 @@ namespace DAO
             mostar.Fill(tablavirtual);
             return tablavirtual;
         }
+
+        public DataTable TareasReporte()
+        {
+            Sentencia = "SELECT T.Codigo, T.Titulo, T.Direccion, CT.Clasificacion, T.Fecha, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', E.Estatus FROM Tareas T INNER JOIN ClasificacionTarea CT ON T.Estatus = CT.Codigo INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN EstatusTarea E ON T.Estatus = E.Codigo";
+            SqlDataAdapter mostar = new SqlDataAdapter(Sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
+        }
     }
 }

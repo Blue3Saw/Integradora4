@@ -256,7 +256,7 @@ namespace DAO
 
         public string Buscarnombre(UsuarioBO datos)
         {
-            sentencia = "select (Nombre +''+Apellidos) as Nombre from Usuarios where Email='" + datos.Email+"'";
+            sentencia = "select (Nombre + ' ' + Apellidos) as Nombre from Usuarios where Email='" + datos.Email+"'";
             SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
             DataTable tablavirtual = new DataTable();
             mostar.Fill(tablavirtual);
@@ -274,5 +274,6 @@ namespace DAO
             mostar.Fill(tablavirtual);
             return tablavirtual;
         }
+
     }
 }

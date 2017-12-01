@@ -14,7 +14,9 @@ namespace ProyectoUniJob.Controllers
 {
     public class ReportesController : Controller
     {
-        UsuariosDAO ObjDAO = new UsuariosDAO();
+        UsuariosDAO ObjUsuario = new UsuariosDAO();
+        TareasDAO ObjTarea = new TareasDAO();
+
         // GET: Reportes
         public ActionResult Index()
         {
@@ -26,7 +28,7 @@ namespace ProyectoUniJob.Controllers
             ReportDocument rd = new ReportDocument();
             rd.Load(Path.Combine(Server.MapPath("~/Reportes/Viewers/"), "UsuarioReport.rpt"));
 
-            rd.SetDataSource(ObjDAO.UsuariosReporte());
+            rd.SetDataSource(ObjUsuario.UsuariosReporte());
 
             Response.Buffer = false;
             Response.ClearContent();
@@ -36,6 +38,23 @@ namespace ProyectoUniJob.Controllers
             Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
             stream.Seek(0, SeekOrigin.Begin);
             return File(stream, "application/pdf", "UsuariosReport.pdf");
+        }
+
+        public ActionResult ReporteTareas()
+        {
+            ReportDocument rd = new ReportDocument();
+            rd.Load(Path.Combine(Server.MapPath("~/Reportes/Viewers/"), "TareasReport.rpt"));
+
+            rd.SetDataSource(ObjTarea.TareasReporte());
+
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
+
+
+            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+            stream.Seek(0, SeekOrigin.Begin);
+            return File(stream, "application/pdf", "TareasReporte.pdf");
         }
     }
 }

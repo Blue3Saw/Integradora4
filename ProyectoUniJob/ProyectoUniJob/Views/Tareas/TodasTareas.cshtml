@@ -9,24 +9,25 @@
     <section class="creditly-wrapper wthree, w3_agileits_wrapper">
         <div class="credit-card-wrapper">
             <div class="first-row form-group">
-
-                @foreach (DataRow row in Model.Rows)
-                {
-                    <div class="col-md-12 movie-preview">
-                        <div class="m-movie-title">
-                            <h5 class="m-movie-link" style="color:black;">@row["Titulo"]</h5>
-                            <div class="clearfix"></div>
-                            <div class="m-r-date">
-                                <p>@row["Descripcion"]</p>
-                                <p>@row["Empleador"]</p>
+                <div class="row">
+                    @foreach (DataRow row in Model.Rows)
+                    {
+                        <div class="col-md-4 movie-preview">
+                            <div class="m-movie-title">
+                                <h4 class="m-movie-link" style="color:black;">@row["Titulo"]</h4>
+                                <div class="clearfix"></div>
+                                <div class="m-r-date">
+                                    <p>@row["Empleador"]</p>
+                                    <p>@row["Clasificacion"]</p>
+                                </div>
+                                <div class="m-r-like">
+                                    @Html.ActionLink("Ver más", "TareaSeleccionada", "Tareas", new { Codigo = @row["Codigo"] }, null)
+                                </div>
+                                <div class="clearfix"></div>
                             </div>
-                            <div class="m-r-like">
-                                @Html.ActionLink("Ver más", "TareaSeleccionada", "Tareas", new { Codigo = @row["Codigo"] }, null)                          
-                            </div>
-                            <div class="clearfix"></div>
                         </div>
-                    </div>
-                }
+                    }
+                </div>                
             </div>
         </div>
     </section>
