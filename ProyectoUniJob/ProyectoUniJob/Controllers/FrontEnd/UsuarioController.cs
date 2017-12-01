@@ -18,14 +18,14 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         // GET: Usuario
         public ActionResult IndexEmpleador()
         {
-            return View("IndexEmpleador");
+            return View();
         }
 
         public ActionResult IndexEstudiante()
         {
             if (Session["Codigo"] != null)
             {
-                return View("IndexEstudiante");
+                return View();
             }
             else
             {
@@ -59,7 +59,18 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult VerPerfil()
         {
-            return View(ObjUsuario.TablaUsuarios3(int.Parse(Session["Codigo"].ToString())));
+            UsuarioBO ObjBO = new UsuarioBO();
+            DataTable Tabla = ObjUsuario.TablaUsuarios3(int.Parse(Session["Codigo"].ToString()));
+
+            var _fila = Tabla.Rows[0];
+            {
+                string Contraseña = ObjBO.Desencriptar(_fila.ItemArray[0].ToString());
+                _fila.ItemArray[0] = Contraseña;
+            }
+
+            //string Contraseña = ObjBO.Desencriptar(Tabla.Rows[0].ItemArray[7].ToString());
+            //Tabla.Rows[0].ItemArray[7] = Contraseña;
+            return View(Tabla);
         }
 
         [HttpPost]

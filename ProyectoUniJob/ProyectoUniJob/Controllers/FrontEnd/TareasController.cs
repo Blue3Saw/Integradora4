@@ -100,10 +100,12 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult HacerTarea(string Codigo)
         {
+            int Estudiante = int.Parse(Session["Codigo"].ToString());
             int Clave = int.Parse(Codigo);
             ObjDAO.AceptarTarea(Clave);
+            ObjDAO.AceptarTarea2(Estudiante, Clave);
             ViewBag.Variable = Codigo;
-            return View(ObjDAO.TareaSeleccionada(Clave));
+            return View("IndexEstudiante");
         }
     }
 }
