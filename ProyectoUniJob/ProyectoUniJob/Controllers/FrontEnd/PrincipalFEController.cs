@@ -12,10 +12,13 @@ namespace ProyectoUniJob.Controllers.FrontEnd
     {
         UsuariosDAO ObjUsuario = new UsuariosDAO();
 
+
         // GET: PrincipalFE
         public ActionResult Index()
         {
+            InformacionDAO Info = new InformacionDAO();                      
             ViewBag.Codigo = Session["Codigo"];
+            ViewBag.Informacion = Info.Datos();
             return View();
         }
         

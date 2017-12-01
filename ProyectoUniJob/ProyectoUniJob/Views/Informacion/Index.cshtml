@@ -1,0 +1,223 @@
+﻿@using BO
+@model InformacionBO
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
+}
+
+<style>
+    .oculto{
+        display:none
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="container card">
+        <div onclick="mostar1()" style="cursor:pointer"><h2>Información de la página</h2></div>
+            @using (Ajax.BeginForm("AgregarInformacion", "Informacion", new AjaxOptions() { HttpMethod = "POST" }, new { enctype = "multipart/form-data" }))
+            {
+        <div class="row" id="Info" style='display:none'>           
+                <div class="col-md-4">
+                    <div>
+                        <label>Quiénes somos?</label>
+                        <textarea class="form-control  border-input" name="Quienes" placeholder="Quiénes">
+                            @Model.Quienes
+                        </textarea>
+                    </div>
+                    <div class="clearfix">&nbsp;</div>
+                    <div>
+                        <label>Misión</label>
+                        <textarea class="form-control  border-input" name="Mision" placeholder="Misión">
+                            @Model.Mision
+                        </textarea>
+                    </div>
+                    <div class="clearfix">&nbsp;</div>
+                    <div>
+                        <label>Visión</label>
+                        <textarea class="form-control  border-input" name="Vision" placeholder="Visión">
+                            @Model.Vision
+                        </textarea>                        
+                    </div>                        
+                </div>
+            <div>
+                <div class="col-md-2 col-md-offset-3">
+                    <div>
+                        <button type="submit" class="btn btn-success" name="agregar1" value="1">GUARDAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="tablaInfo">
+
+            </div>
+        </div>
+
+        <div onclick="mostar2()" style="cursor:pointer"><h2>Imágenes</h2></div>
+        <div class="row" id="Img" style='display:none'>
+                
+                    <div class="col-md-4">
+                        <label class="control-label">
+                            Imagen Quiénes somos?:
+                        </label>
+                        <div>
+                            <a href="javascript:Mostrar('#imgq','#verq', '#ocultarq')" id="verq">Ver imagen</a>
+                            <a href="javascript:Ocultar('#imgq','#ocultarq', '#verq')" class="oculto" id="ocultarq">Ocultar imagen</a>
+                            <img id="imgq" class="oculto" width="100px"/>
+                            <input type="file" id="ImgQ"  class="form-control  border-input" name="ImgQ">
+                            <input type="text" value="@Model.ImagenQ" name="IQ" class="oculto" />
+                        </div>
+                        <label class="control-label">
+                            Imagen Misión:
+                        </label>
+                        <div>
+                            <a href="javascript:Mostrar('#imgm','#verm', '#ocultarm')" id="verm">Ver imagen</a>
+                            <a href="javascript:Ocultar('#imgm','#ocultarm', '#verm')" class="oculto" id="ocultarm">Ocultar imagen</a>
+                            <img id="imgm" class="oculto" width="100px" />
+                            <input type="file" id="ImgM"  class="form-control  border-input" name="ImgM">
+                            <input type="text" value="@Model.ImagenM" name="IM" class="oculto" />
+                        </div>
+                        <label class="control-label">
+                            Imagen Visión:
+                        </label>
+                        <div>
+                            <a href="javascript:Mostrar('#imgv','#verv', '#ocultarv')" id="verv">Ver imagen</a>
+                            <a href="javascript:Ocultar('#imgv','#ocultarv', '#verv')" class="oculto" id="ocultarv">Ocultar imagen</a>
+                            <img id="imgv" class="oculto" width="100px" />
+                            <input type="file" id="ImgV"  class="form-control  border-input" name="ImgV">
+                            <input type="text" value="@Model.ImagenV" name="IV" class="oculto" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        @*<label class="control-label">
+                            Imagen 1:
+                        </label>
+                        <div>
+                            <a href="javascript:Mostrar('#img1','#ver1', '#ocultar1')" id="ver1">Ver imagen</a>
+                            <a href="javascript:Ocultar('#img1','#ocultar1', '#ver1')" class="oculto" id="ocultar1">Ocultar imagen</a>
+                            <img id="img1" class="oculto" width="100px" />
+                            <input type="file" id="Img1" multiple class="form-control  border-input" name="Img1">
+                        </div>
+                        <label class="control-label">
+                            Imagen 2:
+                        </label>
+                        <div>
+                            <a href="javascript:Mostrar('#img2','#ver2', '#ocultar2')" id="ver2">Ver imagen</a>
+                            <a href="javascript:Ocultar('#img2','#ocultar2', '#ver2')" class="oculto" id="ocultar2">Ocultar imagen</a>
+                            <img id="img2" class="oculto" width="100px" />
+                            <input type="file" id="Img2"  class="form-control  border-input" name="Img2">
+                        </div>
+
+                        <label class="control-label">
+                            Imagen 3:
+                        </label>
+                        <div>
+                            <a href="javascript:Mostrar('#img3','#ver3', '#ocultar3')" id="ver3">Ver imagen</a>
+                            <a href="javascript:Ocultar('#img3','#ocultar3', '#ver3')" class="oculto" id="ocultar3">Ocultar imagen</a>
+                            <img id="img3" class="oculto" width="100px"/>
+                            <input type="file" id="Img3"  class="form-control  border-input"  name="Img3">
+                        </div>
+                        <label class="control-label">
+                            Imagen 4:
+                        </label>
+                        <div>
+                            <a href="javascript:Mostrar('#img4','#ver4', '#ocultar4')" id="ver4">Ver imagen</a>
+                            <a href="javascript:Ocultar('#img4','#ocultar4', '#ver4')" class="oculto" id="ocultar4">Ocultar imagen</a>
+                            <img id="img4" class="oculto" width="100px" />
+                            <input type="file" id="Img4"  class="form-control  border-input" name="Img4">
+                        </div>*@
+                    </div>
+                  
+                    <div class="col-md-2 col-md-offset-3">
+                        <div>
+                            <button type="submit" class="btn btn-success" name="agregar" value="1" onclick="Agregarti()">GUARDAR</button>
+                        </div>                   
+                </div>
+        </div>
+            }
+        <div class="row">
+            <div id="tablaImgenes" class="col-md-4">
+
+            </div>
+            <div id="Actualizartabla" class="col-md-4">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+            function tabla() {
+                $('#tablaInfo').load('/Informacion/TablaInformacionPag');
+            }
+            function tabla2() {
+                $('#tablaImagenes').load('/Informacion/TablaImagenes');
+            }
+            function actualizarcategoria() {
+                $('#Actualizartabla').load('/CategoriasYTipos/TablaActualizarCategoria');
+            }
+</script>
+<script src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+<script type="text/javascript">
+    function mostar1() {
+        if (!(document.getElementById('Info').style.display == 'block'))
+        {
+                document.getElementById('Info').style.display = 'block';
+
+        }
+        else
+        {
+            document.getElementById('Info').style.display = 'none'
+        }
+            }
+
+    function mostar2() {
+        if (!(document.getElementById('Img').style.display == 'block'))
+        {
+            document.getElementById('Img').style.display = 'block';
+        }
+        else
+        {
+            document.getElementById('Img').style.display = 'none'
+        }
+            }
+
+            function readURL(input, IdImg) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $(IdImg).attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $("#ImgQ").change(function () {
+                readURL(this, '#imgq');
+            });
+            $("#ImgM").change(function () {
+                readURL(this, '#imgm');
+            });
+            $("#ImgV").change(function () {
+                readURL(this, '#imgv');
+            });                        
+            function Mostrar(id,id1,id2)
+            {
+                $(id).removeClass("oculto");
+                $(id1).addClass("oculto");
+                $(id2).removeClass("oculto");
+            }
+
+            function Ocultar(id,id1, id2) {
+                $(id).addClass("oculto");
+                $(id1).addClass("oculto");
+                $(id2).removeClass("oculto");
+            }
+
+           
+</script>

@@ -44,6 +44,7 @@
     <Compile Include="ClasificacionTareaBO.cs" />
     <Compile Include="EstatusBO.cs" />
     <Compile Include="FotosBO.cs" />
+    <Compile Include="InformacionBO.cs" />
     <Compile Include="MensajesBO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PruebaBO.cs" />

@@ -159,7 +159,11 @@
     <Content Include="Recursos\FontEnd\images\lg7.png" />
     <Content Include="Recursos\FontEnd\images\lg8.png" />
     <Content Include="Recursos\FontEnd\images\lg9.png" />
+    <Content Include="Recursos\FontEnd\images\logo verde.png" />
+    <Content Include="Recursos\FontEnd\images\logopr.jpeg" />
     <Content Include="Recursos\FontEnd\images\m1.jpg" />
+    <Content Include="Recursos\FontEnd\images\Mision.png" />
+    <Content Include="Recursos\FontEnd\images\Mision1.jpg" />
     <Content Include="Recursos\FontEnd\images\mobile.png" />
     <Content Include="Recursos\FontEnd\images\movie-poster.jpg" />
     <Content Include="Recursos\FontEnd\images\movie-show.jpg" />
@@ -168,6 +172,10 @@
     <Content Include="Recursos\FontEnd\images\ph1.png" />
     <Content Include="Recursos\FontEnd\images\seat2.jpg" />
     <Content Include="Recursos\FontEnd\images\top-arrow.png" />
+    <Content Include="Recursos\FontEnd\images\universitarios.jpg" />
+    <Content Include="Recursos\FontEnd\images\universitarios2.jpg" />
+    <Content Include="Recursos\FontEnd\images\universitarios3.jpg" />
+    <Content Include="Recursos\FontEnd\images\universitarios4.jpg" />
     <Content Include="Recursos\FontEnd\js\bootstrap-select.js" />
     <Content Include="Recursos\FontEnd\js\bootstrap.js" />
     <Content Include="Recursos\FontEnd\js\clockpicker.js" />
@@ -217,6 +225,7 @@
     <Compile Include="Controllers\BackEnd\AgregarEstudianteController.cs" />
     <Compile Include="Controllers\BackEnd\AprobarTareaController.cs" />
     <Compile Include="Controllers\BackEnd\CategoriasYTiposController.cs" />
+    <Compile Include="Controllers\BackEnd\InformacionController.cs" />
     <Compile Include="Controllers\BackEnd\MesajesAdmController.cs" />
     <Compile Include="Controllers\BackEnd\PerfilAdminController.cs" />
     <Compile Include="Controllers\EstatusController.cs" />
@@ -328,6 +337,7 @@
     <Content Include="Views\Tareas\TareaSeleccionada.cshtml" />
     <Content Include="Views\Tareas\VistaTarea.cshtml" />
     <Content Include="Views\CategoriasYTipos\TablaActualizarCategoria.cshtml" />
+    <Content Include="Views\Informacion\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
