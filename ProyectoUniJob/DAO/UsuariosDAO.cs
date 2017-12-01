@@ -265,5 +265,14 @@ namespace DAO
 
             return valor;
         }
+
+        public DataTable UsuariosReporte()
+        {
+            sentencia = "SELECT U.Codigo, (U.Nombre + ' ' + U.Apellidos) AS 'Nombre', U.FechaNac, U.Direccion, U.Telefono, U.Email, TU.Tipo, U.Estatus FROM Usuarios U INNER JOIN TipoUsuario TU ON U.TipoUs = TU.Codigo";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
+        }
     }
 }

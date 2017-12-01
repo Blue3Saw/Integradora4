@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\QrCode.Net.0.4.0.0\lib\net45\Gma.QrCodeNet.Encoding.dll</HintPath>
       <Private>True</Private>
@@ -53,6 +56,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -156,7 +160,11 @@
     <Content Include="Recursos\FontEnd\images\lg7.png" />
     <Content Include="Recursos\FontEnd\images\lg8.png" />
     <Content Include="Recursos\FontEnd\images\lg9.png" />
+    <Content Include="Recursos\FontEnd\images\logo verde.png" />
+    <Content Include="Recursos\FontEnd\images\logopr.jpeg" />
     <Content Include="Recursos\FontEnd\images\m1.jpg" />
+    <Content Include="Recursos\FontEnd\images\Mision.png" />
+    <Content Include="Recursos\FontEnd\images\Mision1.jpg" />
     <Content Include="Recursos\FontEnd\images\mobile.png" />
     <Content Include="Recursos\FontEnd\images\movie-poster.jpg" />
     <Content Include="Recursos\FontEnd\images\movie-show.jpg" />
@@ -165,6 +173,10 @@
     <Content Include="Recursos\FontEnd\images\ph1.png" />
     <Content Include="Recursos\FontEnd\images\seat2.jpg" />
     <Content Include="Recursos\FontEnd\images\top-arrow.png" />
+    <Content Include="Recursos\FontEnd\images\universitarios.jpg" />
+    <Content Include="Recursos\FontEnd\images\universitarios2.jpg" />
+    <Content Include="Recursos\FontEnd\images\universitarios3.jpg" />
+    <Content Include="Recursos\FontEnd\images\universitarios4.jpg" />
     <Content Include="Recursos\FontEnd\js\bootstrap-select.js" />
     <Content Include="Recursos\FontEnd\js\bootstrap.js" />
     <Content Include="Recursos\FontEnd\js\clockpicker.js" />
@@ -192,6 +204,17 @@
     <Content Include="Reportes\DataSets\AlumnosDS.xss">
       <DependentUpon>AlumnosDS.xsd</DependentUpon>
     </Content>
+    <Content Include="Reportes\DataSets\DataSet_Usuarios.xsc">
+      <DependentUpon>DataSet_Usuarios.xsd</DependentUpon>
+    </Content>
+    <None Include="Reportes\DataSets\DataSet_Usuarios.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet_Usuarios.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reportes\DataSets\DataSet_Usuarios.xss">
+      <DependentUpon>DataSet_Usuarios.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -203,6 +226,7 @@
     <Compile Include="Controllers\BackEnd\AgregarEstudianteController.cs" />
     <Compile Include="Controllers\BackEnd\AprobarTareaController.cs" />
     <Compile Include="Controllers\BackEnd\CategoriasYTiposController.cs" />
+    <Compile Include="Controllers\BackEnd\InformacionController.cs" />
     <Compile Include="Controllers\BackEnd\MesajesAdmController.cs" />
     <Compile Include="Controllers\BackEnd\PerfilAdminController.cs" />
     <Compile Include="Controllers\EstatusController.cs" />
@@ -222,6 +246,17 @@
       <DependentUpon>AlumnosDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="TipoUsuarioDAO.cs" />
+    <Compile Include="Reportes\DataSets\DataSet_Usuarios.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet_Usuarios.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Viewers\UsuarioReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UsuarioReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -305,6 +340,7 @@
     <Content Include="Views\Tareas\VistaTarea.cshtml" />
     <Content Include="Views\CategoriasYTipos\TablaActualizarCategoria.cshtml" />
     <Content Include="Views\CategoriasYTipos\actualizarcategoria.cshtml" />
+    <Content Include="Views\Informacion\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -315,7 +351,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Reportes\Viewers\" />
     <Folder Include="Views\Reportes\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="Views\TipoUsuario\" />
@@ -329,6 +364,15 @@
       <Project>{e18ef0d7-2b0b-47b9-b9fa-433346c67503}</Project>
       <Name>DAO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reportes\Viewers\UsuarioReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>UsuarioReport.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

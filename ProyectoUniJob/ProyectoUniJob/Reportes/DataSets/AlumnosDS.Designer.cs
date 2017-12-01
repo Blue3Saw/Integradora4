@@ -289,7 +289,7 @@ namespace ProyectoUniJob.Reportes.DataSets {
             
             private global::System.Data.DataColumn columnEmail;
             
-            private global::System.Data.DataColumn columnTipoUs;
+            private global::System.Data.DataColumn columnTipo;
             
             private global::System.Data.DataColumn columnEstatus;
             
@@ -368,9 +368,9 @@ namespace ProyectoUniJob.Reportes.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TipoUsColumn {
+            public global::System.Data.DataColumn TipoColumn {
                 get {
-                    return this.columnTipoUs;
+                    return this.columnTipo;
                 }
             }
             
@@ -419,7 +419,7 @@ namespace ProyectoUniJob.Reportes.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UsuariosRow AddUsuariosRow(string Nombre, string FechaNac, string Direccion, string Telefono, string Email, string TipoUs, string Estatus) {
+            public UsuariosRow AddUsuariosRow(string Nombre, string FechaNac, string Direccion, string Telefono, string Email, string Tipo, string Estatus) {
                 UsuariosRow rowUsuariosRow = ((UsuariosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Nombre,
@@ -427,7 +427,7 @@ namespace ProyectoUniJob.Reportes.DataSets {
                         Direccion,
                         Telefono,
                         Email,
-                        TipoUs,
+                        Tipo,
                         Estatus};
                 rowUsuariosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowUsuariosRow);
@@ -456,7 +456,7 @@ namespace ProyectoUniJob.Reportes.DataSets {
                 this.columnDireccion = base.Columns["Direccion"];
                 this.columnTelefono = base.Columns["Telefono"];
                 this.columnEmail = base.Columns["Email"];
-                this.columnTipoUs = base.Columns["TipoUs"];
+                this.columnTipo = base.Columns["Tipo"];
                 this.columnEstatus = base.Columns["Estatus"];
             }
             
@@ -473,8 +473,8 @@ namespace ProyectoUniJob.Reportes.DataSets {
                 base.Columns.Add(this.columnTelefono);
                 this.columnEmail = new global::System.Data.DataColumn("Email", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmail);
-                this.columnTipoUs = new global::System.Data.DataColumn("TipoUs", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTipoUs);
+                this.columnTipo = new global::System.Data.DataColumn("Tipo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTipo);
                 this.columnEstatus = new global::System.Data.DataColumn("Estatus", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEstatus);
             }
@@ -699,17 +699,17 @@ namespace ProyectoUniJob.Reportes.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TipoUs {
+            public string Tipo {
                 get {
                     try {
-                        return ((string)(this[this.tableUsuarios.TipoUsColumn]));
+                        return ((string)(this[this.tableUsuarios.TipoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TipoUs\' de la tabla \'Usuarios\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Tipo\' de la tabla \'Usuarios\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableUsuarios.TipoUsColumn] = value;
+                    this[this.tableUsuarios.TipoColumn] = value;
                 }
             }
             
@@ -791,14 +791,14 @@ namespace ProyectoUniJob.Reportes.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTipoUsNull() {
-                return this.IsNull(this.tableUsuarios.TipoUsColumn);
+            public bool IsTipoNull() {
+                return this.IsNull(this.tableUsuarios.TipoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTipoUsNull() {
-                this[this.tableUsuarios.TipoUsColumn] = global::System.Convert.DBNull;
+            public void SetTipoNull() {
+                this[this.tableUsuarios.TipoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
