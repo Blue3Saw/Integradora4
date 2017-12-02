@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data;
 using BO;
 using DAO;
+using ProyectoUniJob.Controllers;
 using System.Data.SqlClient;
 using System.IO;
 
@@ -14,6 +15,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
     public class UsuarioController : Controller
     {
         UsuariosDAO ObjUsuario = new UsuariosDAO();
+        TareasController ObjControl = new TareasController();
 
         // GET: Usuario
         public ActionResult IndexEmpleador()
@@ -23,6 +25,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult IndexEstudiante()
         {
+            ViewBag.Tarea = Session["Tarea"];
             if (Session["Codigo"] != null)
             {
                 return View();

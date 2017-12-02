@@ -104,7 +104,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             int Clave = int.Parse(Codigo);
             ObjDAO.AceptarTarea(Clave);
             ObjDAO.AceptarTarea2(Estudiante, Clave);
-            ViewBag.Variable = Codigo;
+            Session["Tarea"] = Codigo;
             return RedirectToAction("IndexEstudiante", "Usuario");
         }
     }
