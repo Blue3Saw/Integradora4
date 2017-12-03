@@ -99,7 +99,9 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             bo.Direccion = direccion;
             bo.FechaNac = Convert.ToDateTime(FechaNac);
             bo.Telefono = long.Parse(Telefono);
-            ObjUsuario.ActualizarUsuario2(bo);
+            int ActPerf = ObjUsuario.ActualizarUsuario2(bo);
+            Session["ActPerf"] = ActPerf;
+            ViewBag.ActPerf = Session["ActPerf"];
             IndexEstudiante();
             return View("IndexEstudiante");
         }

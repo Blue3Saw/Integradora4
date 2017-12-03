@@ -106,6 +106,15 @@
     </script>
 }
 
+@if (ViewBag.ActPerf != null)
+{
+    <script>
+        window.onload = function () {
+            swal('Correcto', 'Se actualizó la información de tu perfil', 'success')
+        }
+    </script>
+}
+
 <script src="@Url.Content("~/Recursos/BackEnd/js/jquery-2.0.3.min.js")" type="text/javascript"></script>
 
 <script>
