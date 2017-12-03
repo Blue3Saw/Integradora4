@@ -25,7 +25,7 @@
                 <li id="pestPerfil">Perfil</li>
             </ul>
             <div class="resp-tabs-container hor_1">
-                <div>
+                <div id="Inicio">
 
                 </div>
 
@@ -107,6 +107,15 @@
 }
 
 <script src="@Url.Content("~/Recursos/BackEnd/js/jquery-2.0.3.min.js")" type="text/javascript"></script>
+
+<script>
+    $(document).ready(function (e) {
+        $('#Inicio').load('/Tareas/TodasTareas', function (data) {
+            $(this).html(data);
+        })
+    })
+</script>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('#tdispo').click(function () {
