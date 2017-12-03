@@ -31,7 +31,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             {
                 obj.Codigo = Convert.ToInt32(IdTarea);
             }
-            obj.CodigoEmpleador = 1; //(int)Session["Codigo"]; //Convert.ToInt32(NombreUsu);
+            obj.CodigoEmpleador = (int)Session["Codigo"]; //Convert.ToInt32(NombreUsu);
             obj.Titulo = Titulo;
             obj.Direccion = Direccion;
             obj.Latitud = float.Parse(Latitud);
