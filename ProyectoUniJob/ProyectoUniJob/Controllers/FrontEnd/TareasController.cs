@@ -111,5 +111,10 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             Session["Tarea"] = Codigo;
             return RedirectToAction("IndexEstudiante", "Usuario");
         }
+        public ActionResult FinalizarTarea()
+        {
+            return View();
+        }
+
     }
 }
