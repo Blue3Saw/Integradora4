@@ -1,8 +1,8 @@
 ﻿@using System.Data;
 @model DataTable
+
 @{
-    ViewBag.Title = "lol";
-    Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
+    Layout = null;
 }
 <link href="~/Recursos/BackEnd/css/estilospersonalesmaple.css" rel="stylesheet" />
 <div class="content">
@@ -12,7 +12,7 @@
         {
 
             <div class="row">
-                <div class="col-lg-12" data-toggle="modal" data-target="#@row["id"]" data-backdrop="false" style="cursor:pointer">
+                <div class="col-lg-12" data-toggle="modal" data-target="#@row["id"]" @*data-backdrop="false"*@ style="cursor:pointer">
                     <div class="thumbnail">
                         <div class="message-preview">
                             <div class="media">
@@ -53,11 +53,11 @@
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="Login">
                                             <div class="form-horizontal">
-                                                @using (Ajax.BeginForm("enviar", "MesajesAdm", new AjaxOptions() { HttpMethod = "POST" }))
+                                                @using (Ajax.BeginForm("enviar", "Usuario", new AjaxOptions() { HttpMethod = "POST" }))
                                                 {
                                                     <div class="form-group">
                                                         <div class="col-sm-6">
-                                                           <h4>Titulo</h4>
+                                                            <h4>Titulo</h4>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <h5>Para: @row["Nombre"]</h5>
@@ -77,8 +77,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="col-sm-12">
-                                                            <textarea class="form-control  border-input" name="Mensaje" placeholder="Mensaje" required="required">
-                                                            </textarea>
+                                                            <textarea class="form-control  border-input" name="Mensaje" placeholder="Mensaje" required="required"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="row centrar">
@@ -89,7 +88,7 @@
                                                 }
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -100,10 +99,3 @@
         }
     </div>
 </div>
-
-<script type="text/javascript">
-    function ocultar() {
-        document.getElementById('lol').style.display = 'block';
-    }
-</script>
-

@@ -34,13 +34,17 @@ namespace ProyectoUniJob.Controllers.BackEnd
             {
                 bo.CodigoEstatus = 1;
                 bo.Codigo = int.Parse(codigo);
-                dao.EliminarTarea(bo);
+                int TarAcep = dao.EliminarTarea(bo);
+                Session["TarAcep"] = TarAcep;
+                ViewBag.TarAcep = Session["TarAcep"];
             }
             if (boton2=="2")
             {
                 bo.CodigoEstatus = 2;
                 bo.Codigo = int.Parse(codigo);
-                dao.EliminarTarea(bo);
+                int TarElim = dao.EliminarTarea(bo);
+                Session["TarElim"] = TarElim;
+                ViewBag.TarElim = Session["TarElim"];
             }
             Index();
             return View("Index");

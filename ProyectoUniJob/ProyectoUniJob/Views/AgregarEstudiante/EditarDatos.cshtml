@@ -4,6 +4,8 @@
     ViewBag.Title = "EditarDatos";
 }
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.all.js"></script>
+
 @using (Ajax.BeginForm("Actualizar", "AgregarEstudiante", new AjaxOptions() { HttpMethod = "POST" }, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -110,4 +112,13 @@
             </div>
 }
     </div>
+}
+
+@if (ViewBag.Actualizar != null)
+{
+    <script>
+        window.onload = function () {
+            swal('Correcto', 'Datos actualizados correctamente.', 'success')
+        }
+    </script>
 }

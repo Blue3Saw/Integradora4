@@ -379,7 +379,11 @@
     <Content Include="Views\CategoriasYTipos\TablaActualizarCategoria.cshtml" />
     <Content Include="Views\CategoriasYTipos\actualizarcategoria.cshtml" />
     <Content Include="Views\Informacion\Index.cshtml" />
+
     <Content Include="Views\Tareas\FinalizarTarea.cshtml" />
+
+    <Content Include="Views\Usuario\mesajesusuarios.cshtml" />
+
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

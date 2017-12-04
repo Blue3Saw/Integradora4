@@ -11,6 +11,7 @@ using Gma.QrCodeNet.Encoding.Windows.Render;
 using System.Drawing;
 using System.IO;
 using System.Drawing.Imaging;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace ProyectoUniJob.Controllers.BackEnd
 {
@@ -26,18 +27,15 @@ namespace ProyectoUniJob.Controllers.BackEnd
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AgregarUsuario(string agregar, string actualizar, string eliminar, string Nombre, string Apellidos, string cumpleanios, string Email, string Contraseña, string Tipo, string dirreccion, string Telefono,string ID, HttpPostedFileBase Imagen)
+        public ActionResult AgregarUsuario(string agregar, string actualizar, string eliminar, string reporte, string Nombre, string Apellidos, string cumpleanios, string Email, string Contraseña, string Tipo, string dirreccion, string Telefono, HttpPostedFileBase Imagen)
         {
             UsuarioBO BO = new UsuarioBO();
             int w = Convert.ToInt32(agregar);
             int r = Convert.ToInt32(actualizar);
             int e = Convert.ToInt32(eliminar);
+            int rep = Convert.ToInt32(reporte);
             //datos BO de Alumno
             BO.Nombre = Nombre;
-            if(ID != "")
-            {
-                BO.Codigo = int.Parse(ID);
-            }
             BO.Apellidos = Apellidos;
             BO.Direccion = dirreccion;
             BO.FechaNac = Convert.ToDateTime(cumpleanios);
@@ -74,9 +72,12 @@ namespace ProyectoUniJob.Controllers.BackEnd
 
             if (w > 0)
             {
-                ObjUsuario.AgregarUsuario(BO);
+                int CodAgregar = ObjUsuario.AgregarUsuario(BO);
+                Session["Agregar"] = CodAgregar;
+                ViewBag.Agregar = Session["Agregar"];
                 ViewBag.Script = "SE AGREGO CORRECTAMENTE EL USUARIO";
             }
+
             //else if (r > 0)
             //{
             //    ObjUsuario.ActualizarUsuario(BO);
@@ -136,7 +137,9 @@ namespace ProyectoUniJob.Controllers.BackEnd
             bo.Contraseña = Contraseña;
             bo.FechaNac = Convert.ToDateTime(FechaNac);
             bo.Telefono = long.Parse(Telefono);
-            ObjUsuario.ActualizarUsuario2(bo);
+            int CodAct = ObjUsuario.ActualizarUsuario2(bo);
+            Session["Actualizar"] = CodAct;
+            ViewBag.Actualizar = CodAct;
             Index();
             return View("Index");
         }

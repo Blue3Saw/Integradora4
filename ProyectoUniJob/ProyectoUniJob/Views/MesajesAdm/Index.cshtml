@@ -5,35 +5,107 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
 }
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<link href="~/Recursos/BackEnd/css/estilospersonalesmaple.css" rel="stylesheet" />
 <div class="content">
     <div class="container-fluid">
+
+        @foreach (DataRow row in Model.Rows)
+        {
+
             <div class="row">
-                @foreach (DataRow row in Model.Rows)
-                {
-                    <div class="col-lg-12" onclick=""  style="cursor:pointer">
-                        <div class="thumbnail">
-                            <div class="message-preview">
-                                <div class="media">
-                                    <span class="pull-left">
-                                    </span>
-                                    <div class="media-body">
-                                    <h4 class="media-heading"> 
-                                        @row["Titulo"]</h4>
-                                        <h5 class="media-heading">
-                                            <strong></strong>
-                                        </h5>
-                                        <p class="small"><i class="fa fa-clock-o"></i>@row["FechaHora"]</p>
-                                        <p>@row["Mensaje"]</p>
-                                        <h6>Enviado por: @row["Nombre"]</h6>
+                <div class="col-lg-12" data-toggle="modal" data-target="#@row["id"]" data-backdrop="false" style="cursor:pointer">
+                    <div class="thumbnail">
+                        <div class="message-preview">
+                            <div class="media">
+                                <span class="pull-left">
+                                </span>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        @row["Titulo"]
+                                    </h4>
+                                    <h5 class="media-heading">
+                                        <strong></strong>
+                                    </h5>
+                                    <p class="small"><i class="fa fa-clock-o"></i>@row["FechaHora"]</p>
+                                    <p>@row["Mensaje"]</p>
+                                    <h6>Enviado por: @row["Nombre"]</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="@row["id"]" tabindex="-1" role="dialog"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                @row["Titulo"]
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12 extra-w3layouts" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="Login">
+                                            <div class="form-horizontal">
+                                                @using (Ajax.BeginForm("enviar", "MesajesAdm", new AjaxOptions() { HttpMethod = "POST" }))
+                                                {
+                                                    <div class="form-group">
+                                                        <div class="col-sm-6">
+                                                            <h4>Titulo</h4>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <h5>Para: @row["Nombre"]</h5>
+                                                            <input type="hidden" class="form-control" name="nombre" placeholder="nombre" required="required" value="@row["Codigo"]" />
+                                                            <input type="hidden" class="form-control" name="id" placeholder="id" required="required" value="@row["id"]" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control border-input" name="Titulo" placeholder="Titulo" required="required" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12">
+                                                            <h4>Mensaje</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12">
+                                                            <textarea class="form-control  border-input" name="Mensaje" placeholder="Mensaje" required="required"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row centrar">
+                                                        <div class="col-sm-12">
+                                                            <button type="submit" class="btn btn-success" name="agregar" value="1">Enviar</button>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                }
+                </div>
             </div>
+        }
     </div>
 </div>
+
+<script type="text/javascript">
+    function ocultar() {
+        document.getElementById('lol').style.display = 'block';
+    }
+</script>
+
 
 
