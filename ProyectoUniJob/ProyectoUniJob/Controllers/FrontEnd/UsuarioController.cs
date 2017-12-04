@@ -14,6 +14,8 @@ namespace ProyectoUniJob.Controllers.FrontEnd
     public class UsuarioController : Controller
     {
         UsuariosDAO ObjUsuario = new UsuariosDAO();
+        MensajesDAO ObjMensajes = new MensajesDAO();
+        MensajesBO bo = new MensajesBO();
 
         // GET: Usuario
         public ActionResult IndexEmpleador()
@@ -95,5 +97,51 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             Session.Remove("Codigo");
             return RedirectToAction("Index", "PrincipalFE");
         }
+
+
+        public ActionResult mesajesusuarios()
+        {
+            //Session["Codigo"] = 1012;
+            return View(ObjMensajes.MOstarMensajes(int.Parse(Session["Codigo"].ToString())));
+        }
+
+        [HttpPost]
+        public ActionResult enviar(string nombre, string Titulo, string Mensaje, string id)
+        {
+            bo.HoraFecha = DateTime.Now;
+            bo.Mensaje = Mensaje;
+            bo.UsRecibe = int.Parse(nombre);
+            bo.UsEnvia = int.Parse(Session["Codigo"].ToString());
+            bo.idmensaje = int.Parse(id);
+            bo.Titulo = Titulo;
+            ObjMensajes.actualizarestatus(bo);
+            ObjMensajes.AgregarMensaje(bo);
+            IndexEstudiante();
+            return View("IndexEstudiante");
+
+        }
+        public ActionResult enviaradm(string nombre, string Titulo, string Mensaje, string id)
+        {
+            bo.HoraFecha = DateTime.Now;
+            bo.Mensaje = Mensaje;
+            bo.UsRecibe = int.Parse(nombre);
+            bo.UsEnvia = int.Parse(Session["Codigo"].ToString());
+            bo.idmensaje = int.Parse(id);
+            bo.Titulo = Titulo;
+            ObjMensajes.AgregarMensaje(bo);
+            if (Convert.ToInt32(Session["msgadm"].ToString()) == 1)
+            {
+                IndexEmpleador();
+                return View("IndexEmpleador");
+            }
+            else
+            {
+                IndexEstudiante();
+                return View("IndexEstudiante");
+            }
+
+        }
+
+
     }
 }

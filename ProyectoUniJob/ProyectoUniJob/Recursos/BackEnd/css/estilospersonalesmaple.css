@@ -18,3 +18,10 @@ text-overflow: ellipsis
 .letrasindexusuarios{
     font-weight:bold;
 }
+.mostar{
+        visibility: hidden !important;
+}
+.modal-backdrop {
+    visibility: hidden !important;
+  z-index: -1;
+}

@@ -13,5 +13,7 @@ namespace BO
         public DateTime HoraFecha { get; set; }
         public string Mensaje { get; set; }
         public string Estatus { get; set; }
+        public string Titulo { get; set; }
+        public int idmensaje { get; set; }
     }
 }

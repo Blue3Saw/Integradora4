@@ -96,12 +96,69 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
             </div>
             <div class="col-md-6 w3-agile-subscribe-right">
-                <h3 class="w3ls-title">Subscribe to Our <br><span>Newsletter</span></h3>
-                <form action="#" method="post">
-                    <input type="email" name="email" placeholder="Enter your Email..." required="">
-                    <input type="submit" value="Subscribe">
-                    <div class="clearfix"> </div>
-                </form>
+                <h3 class="w3ls-title">Manda un mensaje al<br><span>Administrador</span></h3>
+                <h3 class="w3ls-title btn btn-success right" data-toggle="modal" data-target="#1">Mensaje</h3>
+                <div class="modal fade" id="1" tabindex="-1" role="dialog"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    Mensaje para administrador
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-12 extra-w3layouts" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="Login">
+                                                <div class="form-horizontal">
+                                                    @using (Ajax.BeginForm("enviaradm", "Usuario", new AjaxOptions() { HttpMethod = "POST" }))
+                                                    {
+                                                        <div class="form-group">
+                                                            <div class="col-sm-6">
+                                                                <h4>Titulo</h4>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <h5>Para: Administrador</h5>
+                                                                <input type="hidden" class="form-control" name="nombre" placeholder="nombre" required="required" value="1012" />
+                                                                <input type="hidden" class="form-control" name="id" placeholder="id" required="required" value="1" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <input type="text" class="form-control border-input" name="Titulo" placeholder="Titulo" required="required" />
+                                                            </div>
+                                                        </div>
+                                                            <div class="form-group">
+                                                                <div class="col-sm-12">
+                                                                    <h4>Mensaje</h4>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col-sm-12">
+                                                                    <textarea class="form-control  border-input" name="Mensaje" placeholder="Mensaje" required="required"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row centrar">
+                                                                <div class="col-sm-12">
+                                                                    <button type="submit" class="btn btn-success" name="agregar" value="1">Enviar</button>
+                                                                </div>
+                                                            </div>
+                                                    }
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="clearfix"> </div>
         </div>
