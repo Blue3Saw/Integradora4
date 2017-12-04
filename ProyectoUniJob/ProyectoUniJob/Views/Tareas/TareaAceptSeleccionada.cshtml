@@ -81,9 +81,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <button class="btn btn-success" id="Fin" >Finalizar tarea</button>
-                            </div>
+                            
+                            <button class="btn btn-success right" data-toggle="modal" data-target="#ModalCalif">Finalizar tarea</button>                                                               
+                             @{ Html.RenderAction("FinalizarTarea", "Tareas");}                                       
                         </div>
                     </div>
                 </section>

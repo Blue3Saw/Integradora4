@@ -170,6 +170,7 @@
     <Content Include="Recursos\FontEnd\css\jquery.seat-charts.css" />
     <Content Include="Recursos\FontEnd\css\standalone.css" />
     <Content Include="Recursos\FontEnd\css\star-rating.min.css" />
+    <Content Include="Recursos\FontEnd\css\starrr.css" />
     <Content Include="Recursos\FontEnd\css\style.css" />
     <Content Include="Recursos\FontEnd\fonts\fontawesome-webfont.svg" />
     <Content Include="Recursos\FontEnd\fonts\glyphicons-halflings-regular.svg" />
@@ -222,7 +223,7 @@
     <Content Include="Recursos\FontEnd\js\locationpicker.jquery.js" />
     <Content Include="Recursos\FontEnd\js\move-top.js" />
     <Content Include="Recursos\FontEnd\js\responsiveslides.min.js" />
-    <Content Include="Recursos\FontEnd\js\star-rating.min.js" />
+    <Content Include="Recursos\FontEnd\js\starrr.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Reportes\DataSets\AlumnosDS.xsc">
@@ -379,11 +380,8 @@
     <Content Include="Views\CategoriasYTipos\TablaActualizarCategoria.cshtml" />
     <Content Include="Views\CategoriasYTipos\actualizarcategoria.cshtml" />
     <Content Include="Views\Informacion\Index.cshtml" />
-
     <Content Include="Views\Tareas\FinalizarTarea.cshtml" />
-
     <Content Include="Views\Usuario\mesajesusuarios.cshtml" />
-
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

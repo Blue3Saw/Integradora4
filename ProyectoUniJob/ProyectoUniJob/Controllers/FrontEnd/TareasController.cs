@@ -113,7 +113,23 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         }
         public ActionResult FinalizarTarea()
         {
-            return View();
+            
+            return PartialView("FinalizarTarea");
+        }
+        public ActionResult AgregarCalif(string calif, string comentario)
+        {
+            CalificacionesBO OBO = new CalificacionesBO();
+            CalificacionesDAO obj = new CalificacionesDAO();
+            ///int Tarea = int.Parse(Session["TareaCodigo"].ToString());
+            //int Clave = int.Parse(codigo);
+            //OBO.CodigoTarea = Clave;
+            OBO.UsCalifica = int.Parse(Session["codigo"].ToString());
+            OBO.UsCalificado = int.Parse(Session["codigo"].ToString());
+            OBO.Calificacion = int.Parse(calif);
+            OBO.Comentario = comentario;
+            //obj.AgregarCalificacion(Clave);
+            //Session["Tarea"] = codigo;
+            return RedirectToAction("IndexEstudiante", "Usuario");
         }
 
     }
