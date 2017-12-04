@@ -26,14 +26,18 @@ namespace ProyectoUniJob.Controllers.BackEnd
         {
             ClasificacionTareaBO bo = new ClasificacionTareaBO();
             bo.Clasificacion = categoria;
-            dao.AgregarClasificación(bo);
+            int CodAgreCat = dao.AgregarClasificación(bo);
+            Session["CodAgreCat"] = CodAgreCat;
+            ViewBag.CodAgreCat = Session["CodAgreCat"];
             return View("AgregarCategoria");
         }
         public ActionResult Agregartipo(string Tipo)
         {
             TipoUsuarioBO bo = new TipoUsuarioBO();
             bo.TipoUsuario = Tipo;
-            DAO.AgregarTipoUsuario(bo);
+            int CodAgreTip = DAO.AgregarTipoUsuario(bo);
+            Session["CodAgreTip"] = CodAgreTip;
+            ViewBag.CodAgreTip = Session["CodAgreTip"];
             return View("AgregarCategoria");
         }
 
@@ -53,7 +57,9 @@ namespace ProyectoUniJob.Controllers.BackEnd
             TipoUsuarioBO bo = new TipoUsuarioBO();
             bo.TipoUsuario = Tipo;
             bo.Codigo = int.Parse(Tiposelect);
-            DAO.ActualizarTipoUsuario(bo);
+            int CodActTip = DAO.ActualizarTipoUsuario(bo);
+            Session["CodActTip"] = CodActTip;
+            ViewBag.CodActTip = Session["CodActTip"];
             return View("AgregarCategoria");
         }
 
@@ -63,7 +69,9 @@ namespace ProyectoUniJob.Controllers.BackEnd
             ClasificacionTareaBO bo = new ClasificacionTareaBO();
             bo.Clasificacion = Tipo;
             bo.Codigo = int.Parse(Tiposelect);
-            dao.ActualizarClasificaion(bo);
+            int CodActClas = dao.ActualizarClasificaion(bo);
+            Session["CodActClas"] = CodActClas;
+            ViewBag.CodActClas = Session["CodActClas"];
             return View("AgregarCategoria");
         }
 
@@ -80,7 +88,9 @@ namespace ProyectoUniJob.Controllers.BackEnd
         {
             ClasificacionTareaBO bo = new ClasificacionTareaBO();
             bo.Codigo = int.Parse(id);
-            dao.Eliminar(bo);
+            int CodElClas = dao.Eliminar(bo);
+            Session["CodElClas"] = CodElClas;
+            ViewBag.CodElClas = Session["CodElClas"];
             AgregarCategoria();
             return View("AgregarCategoria");
         }

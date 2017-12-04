@@ -46,7 +46,9 @@ namespace ProyectoUniJob.Controllers.BackEnd
             bo.Direccion = direccion;
             bo.FechaNac = Convert.ToDateTime(FechaNac);
             bo.Telefono = long.Parse(Telefono);
-            objUsuario.ActualizarUsuario2(bo);
+            int PerfAd = objUsuario.ActualizarUsuario2(bo);
+            Session["PerfAd"] = PerfAd;
+            ViewBag.PerfAd = Session["PerfAd"];
             DatosPerfil();
             return View("DatosPerfil");
         }
