@@ -5,6 +5,9 @@
     ViewBag.Title = "DatosPerfil";
     Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
 }
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.all.js"></script>
+
 @using (Ajax.BeginForm("actualizar", "PerfilAdmin", new AjaxOptions() { HttpMethod = "POST" }, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -136,8 +139,11 @@
             }
 </script>
 
-<script>
-    function actualizar() {
-        alert("Se han actualizado los datos :V");
-    }
-</script>
+@if (ViewBag.PerfAd != null)
+{
+    <script>
+        window.onload = function () {
+            swal('Correcto', 'Se ha actualizado la información de tu perfil', 'success')
+        }
+    </script>
+}

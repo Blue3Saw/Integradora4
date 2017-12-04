@@ -13,7 +13,7 @@
 
 <div class="w3layouts-breadcrumbs text-center">
     <div class="container">
-        <span class="agile-breadcrumbs"><i class="fa fa-home home_1"></i> / <span>Estudiante</span> / <span>Detalle tarea</span></span>
+        <span class="agile-breadcrumbs"><a href=@Url.Action("IndexEstudiante", "Usuario")><i class="fa fa-home home_1"></i></a> / <span>Estudiante</span> / <span>Detalle tarea</span></span>
     </div>
 </div>
 
@@ -79,6 +79,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @Html.ActionLink("Hacer tarea", "HacerTarea", "Tareas", new { Codigo = @row["Codigo"] }, null)
                                 </div>
                             </div>
                         </div>
@@ -86,11 +87,6 @@
                 </section>
             </div>
         }
-
-        @using (Html.BeginForm("ActualizarPerfil", "Tareas", FormMethod.Post))
-            {
-
-            }
     </div>
 </div>
 

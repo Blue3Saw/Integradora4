@@ -6,6 +6,8 @@
     Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
 }
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.all.js"></script>
+
 <div class="content">
     <div class="container-fluid">
 @using (Ajax.BeginForm("DatosTarea", "AprobarTarea", new AjaxOptions() { HttpMethod = "POST" }))
@@ -35,5 +37,28 @@
             }
         </div>
 }
+        <div class="container-fluid">
+            <div class="row">
+                <button type="submit" class="btn btn-success">@Html.ActionLink("Reportes", "ReporteTareas", "Reportes")</button>
+            </div>
+        </div>
     </div>
 </div>
+
+@if (ViewBag.TarAcep != null)
+{
+    <script>
+        window.onload = function () {
+            swal('Correcto', 'Haz aprobado la tarea.', 'success')
+        }
+    </script>
+}
+
+@if (ViewBag.TarElim != null)
+{
+    <script>
+        window.onload = function () {
+            swal('Denegado', 'Haz denegado la tarea', 'error')
+        }
+    </script>
+}

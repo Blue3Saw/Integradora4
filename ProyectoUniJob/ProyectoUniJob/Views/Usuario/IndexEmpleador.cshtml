@@ -5,13 +5,13 @@
 
 <div class="w3layouts-breadcrumbs text-center">
     <div class="container">
-        <span class="agile-breadcrumbs"><a href="index.html"><i class="fa fa-home home_1"></i></a> / <span>Empleador</span></span>
+        <span class="agile-breadcrumbs"><a href=@Url.Action("IndexEmpleador", "PrincipalFE")><i class="fa fa-home home_1"></i></a> / <span>Empleador</span></span>
     </div>
 </div>
 
 <div class="agile-pay w3layouts-content">
     <div class="container">
-        <h3 class="w3-head">Bienvenido empleador</h3>
+        <h3 class="w3-head">Bienvenid&#64;: @Session["Nombre"]</h3>
         <!--Horizontal Tab-->
         <div id="parentHorizontalTab">
             <ul class="resp-tabs-list hor_1">

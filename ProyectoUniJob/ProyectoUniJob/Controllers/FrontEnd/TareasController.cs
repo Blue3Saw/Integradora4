@@ -31,7 +31,11 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             {
                 obj.Codigo = Convert.ToInt32(IdTarea);
             }
-            obj.CodigoEmpleador = 1; //(int)Session["Codigo"]; //Convert.ToInt32(NombreUsu);
+
+            obj.CodigoEmpleador = (int)Session["Codigo"]; //Convert.ToInt32(NombreUsu);
+
+            obj.CodigoEmpleador = int.Parse(Session["Codigo"].ToString()); //Convert.ToInt32(NombreUsu);
+
             obj.Titulo = Titulo;
             obj.Direccion = Direccion;
             obj.Latitud = float.Parse(Latitud);
@@ -96,6 +100,16 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         {
             
             return PartialView("VistaTarea");
+        }
+
+        public ActionResult HacerTarea(string Codigo)
+        {
+            int Estudiante = int.Parse(Session["Codigo"].ToString());
+            int Clave = int.Parse(Codigo);
+            ObjDAO.AceptarTarea(Clave);
+            ObjDAO.AceptarTarea2(Estudiante, Clave);
+            Session["Tarea"] = Codigo;
+            return RedirectToAction("IndexEstudiante", "Usuario");
         }
     }
 }

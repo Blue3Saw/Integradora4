@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data;
 using BO;
 using DAO;
+using ProyectoUniJob.Controllers;
 using System.Data.SqlClient;
 using System.IO;
 
@@ -16,18 +17,20 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         UsuariosDAO ObjUsuario = new UsuariosDAO();
         MensajesDAO ObjMensajes = new MensajesDAO();
         MensajesBO bo = new MensajesBO();
+        TareasController ObjControl = new TareasController();
 
         // GET: Usuario
         public ActionResult IndexEmpleador()
         {
-            return View("IndexEmpleador");
+            return View();
         }
 
         public ActionResult IndexEstudiante()
         {
+            ViewBag.Tarea = Session["Tarea"];
             if (Session["Codigo"] != null)
             {
-                return View("IndexEstudiante");
+                return View();
             }
             else
             {
@@ -61,7 +64,18 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult VerPerfil()
         {
-            return View(ObjUsuario.TablaUsuarios3(int.Parse(Session["Codigo"].ToString())));
+            UsuarioBO ObjBO = new UsuarioBO();
+            DataTable Tabla = ObjUsuario.TablaUsuarios3(int.Parse(Session["Codigo"].ToString()));
+
+            var _fila = Tabla.Rows[0];
+            {
+                string Contraseña = ObjBO.Desencriptar(_fila.ItemArray[0].ToString());
+                _fila.ItemArray[0] = Contraseña;
+            }
+
+            //string Contraseña = ObjBO.Desencriptar(Tabla.Rows[0].ItemArray[7].ToString());
+            //Tabla.Rows[0].ItemArray[7] = Contraseña;
+            return View(Tabla);
         }
 
         [HttpPost]
@@ -87,7 +101,9 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             bo.Direccion = direccion;
             bo.FechaNac = Convert.ToDateTime(FechaNac);
             bo.Telefono = long.Parse(Telefono);
-            ObjUsuario.ActualizarUsuario2(bo);
+            int ActPerf = ObjUsuario.ActualizarUsuario2(bo);
+            Session["ActPerf"] = ActPerf;
+            ViewBag.ActPerf = Session["ActPerf"];
             IndexEstudiante();
             return View("IndexEstudiante");
         }
@@ -97,7 +113,6 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             Session.Remove("Codigo");
             return RedirectToAction("Index", "PrincipalFE");
         }
-
 
         public ActionResult mesajesusuarios()
         {
@@ -141,7 +156,6 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             }
 
         }
-
 
     }
 }

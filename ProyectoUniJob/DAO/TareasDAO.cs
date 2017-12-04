@@ -58,9 +58,29 @@ namespace DAO
             return Conex.EjecutarComando(SentenciaSQL);
         }
 
-        public int DejarTarea(object ObjT)
+        public int AceptarTarea(int Codigo)
         {
-            TareasBO Dato = (TareasBO)ObjT;
+            TareasBO Dato = new TareasBO();
+            SqlCommand SentenciaSQL = new SqlCommand("UPDATE Tareas SET Estatus = 5 WHERE Codigo = @Codigo");
+            SentenciaSQL.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
+            SentenciaSQL.CommandType = CommandType.Text;
+            return Conex.EjecutarComando(SentenciaSQL);
+        }
+
+        public int AceptarTarea2(int CodigoE, int CodigoT)
+        {
+            TareasBO Dato = new TareasBO();
+            SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO UsuariosTareas (CodigoEstudiante, CodigoTarea, Fecha) VALUES (@CodigoE, @CodigoT, @Fecha)");
+            SentenciaSQL.Parameters.Add("@CodigoE", SqlDbType.Int).Value = CodigoE;
+            SentenciaSQL.Parameters.Add("@CodigoT", SqlDbType.Int).Value = CodigoT;
+            SentenciaSQL.Parameters.Add("@Fecha", SqlDbType.Date).Value = DateTime.Now.ToShortDateString();
+            SentenciaSQL.CommandType = CommandType.Text;
+            return Conex.EjecutarComando(SentenciaSQL);
+        }
+
+        public int DejarTarea(int Codigo)
+        {
+            TareasBO Dato = new TareasBO();
             SqlCommand SentenciaSQL = new SqlCommand("UPDATE Tareas SET Estatus = 1 WHERE Codigo = @Codigo");
             SentenciaSQL.Parameters.Add("@Codigo", SqlDbType.Int).Value = Dato.Codigo;
             SentenciaSQL.CommandType = CommandType.Text;
@@ -107,7 +127,7 @@ namespace DAO
         public DataTable TareasAcepUsuario(int Codigo)
         {
             UsuarioBO Datos = new UsuarioBO();
-            SqlCommand Com = new SqlCommand("SELECT T.Codigo, T.Titulo, T.Descripcion, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion FROM UsuariosTareas UT INNER JOIN Tareas T ON T.Codigo = UT.CodigoTarea INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo WHERE T.Estatus = '1' AND UT.CodigoEstudiante = @Codigo");
+            SqlCommand Com = new SqlCommand("SELECT T.Codigo, T.Titulo, T.Descripcion, T.Fecha, T.HoraInicio, T.HoraFinal, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion FROM Tareas T INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo INNER JOIN UsuariosTareas UT ON T.Codigo = UT.CodigoTarea WHERE UT.CodigoEstudiante = @Codigo");
             Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
             Com.CommandType = CommandType.Text;
             return Conex.EjecutarSentencia(Com).Tables[0];
@@ -144,6 +164,15 @@ namespace DAO
             Datos.Codigo = id;
             string sentencia = "select t.Codigo,u.Nombre,u.Imagen,u.Apellidos,t.Titulo,t.Fecha,t.HoraInicio,t.HoraFinal,c.Clasificacion,t.Descripcion,t.Longitud,t.Latitud,t.Direccion from Tareas t,Usuarios U, ClasificacionTarea c where u.Codigo = t.UsuarioEmpleador and c.Codigo = t.Tipo and t.Codigo = '" + Datos.Codigo+"'";
             SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
+        }
+
+        public DataTable TareasReporte()
+        {
+            Sentencia = "SELECT T.Codigo, T.Titulo, T.Direccion, CT.Clasificacion, T.Fecha, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', E.Estatus FROM Tareas T INNER JOIN ClasificacionTarea CT ON T.Estatus = CT.Codigo INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN EstatusTarea E ON T.Estatus = E.Codigo";
+            SqlDataAdapter mostar = new SqlDataAdapter(Sentencia, Conex.ConectarBD());
             DataTable tablavirtual = new DataTable();
             mostar.Fill(tablavirtual);
             return tablavirtual;
