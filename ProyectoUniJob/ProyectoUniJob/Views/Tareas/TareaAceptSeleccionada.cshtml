@@ -81,11 +81,15 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            <button class="btn btn-success right" data-toggle="modal" data-target="#ModalCalif">Finalizar tarea</button>                                                               
+                             @{ Html.RenderAction("FinalizarTarea", "Tareas");}                                       
                         </div>
                     </div>
                 </section>
             </div>
         }
+        
 
         @using (Html.BeginForm("ActualizarPerfil", "Tareas", FormMethod.Post))
             {
