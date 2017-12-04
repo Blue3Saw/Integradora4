@@ -1,0 +1,57 @@
+﻿@using System.Data;
+@model DataTable
+
+@{
+    Layout = null;
+}
+
+<div class="creditly-card-form agileinfo_form">
+    <section class="creditly-wrapper wthree, w3_agileits_wrapper">
+        <div class="credit-card-wrapper">
+            <div class="first-row form-group">
+                <div class="row">
+                    @foreach (DataRow row in Model.Rows)
+                    {
+                        <div class="col-md-4 movie-preview">
+                            <div class="m-movie-title">
+                                <h4 class="m-movie-link" style="color:black;">@row["Titulo"]</h4>
+                                <div class="clearfix"></div>
+                                <div class="m-r-date">
+                                    <p>@row["Estatus"]</p>
+                                    <p>@row["Clasificacion"]</p>
+                                </div>
+                                <div class="m-r-like">
+                                    @Html.ActionLink("Ver más", "TareaSeleccionada", "Tareas", new { Codigo = @row["Codigo"] }, null)
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- credit-card -->
+<script type="text/javascript" src="~/Recursos/FontEnd/js/creditly.js"></script>
+<link rel="stylesheet" href="~/Recursos/FontEnd/css/creditly.css" type="text/css" media="all" />
+
+<script type="text/javascript">
+			$(function() {
+			  var creditly = Creditly.initialize(
+				  '.creditly-wrapper .expiration-month-and-year',
+				  '.creditly-wrapper .credit-card-number',
+				  '.creditly-wrapper .security-code',
+				  '.creditly-wrapper .card-type');
+
+			  $(".creditly-card-form .submit").click(function(e) {
+				e.preventDefault();
+				var output = creditly.validate();
+				if (output) {
+				  // Your validated credit card output
+				  console.log(output);
+				}
+			  });
+			});
+</script>
+<!-- //credit-card -->

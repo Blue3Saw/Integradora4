@@ -18,9 +18,8 @@
         <!--Horizontal Tab-->
         <div id="parentHorizontalTab">
             <ul class="resp-tabs-list hor_1">
-                <li>Inicio</li>
+                <li>Mis tareas</li>
                 <li id="tdispo">Tareas disponibles</li>
-                <li id="pestmtareas">Mis tareas</li>
                 <li id="pestMensajes">Mensajes</li>
                 <li id="pestPerfil">Perfil</li>
             </ul>
@@ -34,14 +33,7 @@
                     
 
                 </div>
-                <!--Fin Tareas-->
-
-                <!--Pestaña Mis tareas-->
-                <div id="mistareas">
-
-                </div>
-                <!--Fin Mis tareas-->
-                
+                <!--Fin Tareas-->                
 
                 <!--Pestaña mensajes-->
                 <div id="mismensajes">
@@ -81,7 +73,7 @@
 
 <script>
     $(document).ready(function (e) {
-        $('#Inicio').load('/Tareas/TodasTareas', function (data) {
+        $('#Inicio').load('/Tareas/TareasAcepUsuario', function (data) {
             $(this).html(data);
         })
     })
@@ -91,14 +83,6 @@
     $(document).ready(function () {
         $('#tdispo').click(function () {
             $('#alltareas').load('/Tareas/TodasTareas');
-        })
-    })
-</script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#pestmtareas').click(function () {
-            $('#mistareas').load('/Tareas/TareasAcepUsuario');
         })
     })
 </script>

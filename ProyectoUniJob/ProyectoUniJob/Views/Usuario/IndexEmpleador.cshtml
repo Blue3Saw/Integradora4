@@ -16,85 +16,49 @@
         <div id="parentHorizontalTab">
             <ul class="resp-tabs-list hor_1">
                 <li>Mis tareas</li>
-                <li>Publicar una tarea</li>
+                <li id="pubTarea">Publicar una tarea</li>
                 <li id="pestMensajes">Mensajes</li>
                 <li id="pestPerfil">Perfil</li>
             </ul>
             <div class="resp-tabs-container hor_1">
-
-                <!--Mis tareas-->
-                <div>
-                    <div class="creditly-card-form agileinfo_form">
-                        <section class="creditly-wrapper wthree, w3_agileits_wrapper">
-                            <div class="credit-card-wrapper">
-                                <div class="first-row form-group">
-                                    <!--Poner un "repeater"-->
-                                    <!--Fin repeater-->
-                                </div>
-
-                            </div>
-
-
-
-
-                        </section>
-                    </div>
-                    <!-- credit-card -->
-                    <script type="text/javascript" src="~/Recursos/FontEnd/js/creditly.js"></script>
-                    <link rel="stylesheet" href="~/Recursos/FontEnd/css/creditly.css" type="text/css" media="all" />
-
-                    <script type="text/javascript">
-                        $(function () {
-                            var creditly = Creditly.initialize(
-                                '.creditly-wrapper .expiration-month-and-year',
-                                '.creditly-wrapper .credit-card-number',
-                                '.creditly-wrapper .security-code',
-                                '.creditly-wrapper .card-type');
-
-                            $(".creditly-card-form .submit").click(function (e) {
-                                e.preventDefault();
-                                var output = creditly.validate();
-                                if (output) {
-                                    // Your validated credit card output
-                                    console.log(output);
-                                }
-                            });
-                        });
-                    </script>
-                    <!-- //credit-card -->
+                <div id="MisTareas" class="creditly-card-form agileinfo_form">
 
                 </div>
                 <!--Fin mis tareas-->
-
                 <!--Publicar tarea-->
-                <div id="subirtareas" >
-                    
+                <div id="subirtareas">
+
                     @{ Html.RenderAction("VistaTarea", "Tareas");}
                 </div>
 
 
-                        <!--Fin Publicar tarea-->
-                        <!--Mensajes-->
+                <!--Fin Publicar tarea-->
+                <!--Mensajes-->
                 <div id="mismensajes">
-                    
-                </div>
-                        <!--Fin mensajes-->
-                        <!--Perfil-->
-                        <div id="perfil">
-                        </div>
-                        <!--Fin perfil-->
 
-                    </div>
+                </div>
+                <!--Fin mensajes-->
+                <!--Perfil-->
+                <div id="perfil">
+                </div>
+                <!--Fin perfil-->
                 </div>
             </div>
 </div>
 
 <script src="@Url.Content("~/Recursos/FrontEnd/js/jquery-2.0.3.min.js")" type="text/javascript"></script>
 
+    <script>
+    $(document).ready(function (e) {
+        $('#MisTareas').load('/Tareas/TareasEmpleador', function (data) {
+            $(this).html(data);
+        })
+    })
+    </script>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('#pestmtareas').click(function () {
-            $('#TodasTareas').load('/Tareas/TodasTareas');
             $('#subirtareas').load('/Tareas/Index');
         })
     })

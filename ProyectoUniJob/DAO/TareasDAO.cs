@@ -133,6 +133,15 @@ namespace DAO
             return Conex.EjecutarSentencia(Com).Tables[0];
         }
 
+        public DataTable TareasEmpleador(int Codigo)
+        {
+            UsuarioBO Datos = new UsuarioBO();
+            SqlCommand Com = new SqlCommand("SELECT T.Codigo, T.Titulo, T.Descripcion, T.Direccion, T.Fecha, T.HoraInicio, T.HoraFinal, T.Latitud, T.Longitud, CT.Clasificacion, ET.Estatus FROM Tareas T INNER JOIN EstatusTarea ET ON T.Estatus = ET.Codigo INNER JOIN Usuarios U ON U.Codigo = T.UsuarioEmpleador INNER JOIN ClasificacionTarea CT ON CT.Codigo = T.Tipo WHERE T.UsuarioEmpleador = @Codigo");
+            Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
+            Com.CommandType = CommandType.Text;
+            return Conex.EjecutarSentencia(Com).Tables[0];
+        }
+
         public TareasBO DatosTareaAceptar(int Codigo)
         {
             TareasBO Datos = new TareasBO();

@@ -111,5 +111,12 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             Session["Tarea"] = Codigo;
             return RedirectToAction("IndexEstudiante", "Usuario");
         }
+
+        public ActionResult TareasEmpleador()
+        {
+            UsuarioBO Dato = new UsuarioBO();
+            Dato.Codigo = int.Parse(Session["Codigo"].ToString());
+            return View(ObjDAO.TareasEmpleador(Dato.Codigo));
+        }
     }
 }

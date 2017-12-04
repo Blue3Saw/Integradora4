@@ -65,17 +65,17 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         public ActionResult VerPerfil()
         {
             UsuarioBO ObjBO = new UsuarioBO();
-            DataTable Tabla = ObjUsuario.TablaUsuarios3(int.Parse(Session["Codigo"].ToString()));
+            return View(ObjUsuario.TablaUsuarios3(int.Parse(Session["Codigo"].ToString())));
 
-            var _fila = Tabla.Rows[0];
-            {
-                string Contraseña = ObjBO.Desencriptar(_fila.ItemArray[0].ToString());
-                _fila.ItemArray[0] = Contraseña;
-            }
+            //var _fila = Tabla.Rows[0];
+            //{
+            //    string Contraseña = ObjBO.Desencriptar(_fila.ItemArray[0].ToString());
+            //    _fila.ItemArray[7] = Contraseña;
+            //}
 
-            //string Contraseña = ObjBO.Desencriptar(Tabla.Rows[0].ItemArray[7].ToString());
-            //Tabla.Rows[0].ItemArray[7] = Contraseña;
-            return View(Tabla);
+            ////string Contraseña = ObjBO.Desencriptar(Tabla.Rows[0].ItemArray[7].ToString());
+            ////Tabla.Rows[0].ItemArray[7] = Contraseña;
+            //return View(Tabla);
         }
 
         [HttpPost]
