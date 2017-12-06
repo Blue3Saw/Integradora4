@@ -19,8 +19,10 @@
                         <hr />
                         Calificar: <div id="Estrellas"></div>
                         <input id="ValEst" name="calif" type="text" style="display:none"/>
+                        <input id="tareaid" name="tarea" type="text" style="display:none" />
+                        <input id="empleadorid" name="empleador" type="text" style="display:none" />
                             <label>Comentario</label>
-                         <input name="comentarios" type="text" class="form-control"/>
+                         <input name="comentario" type="text" class="form-control"/>
                         <div class="row centrar">
                         <button class="btn btn-success" name="Enviar" type="submit" value="2" >Enviar</button>
                         </div>  
@@ -39,12 +41,11 @@
         <script src="~/Recursos/FontEnd/js/starrr.js"></script>
         <link href="~/Recursos/FontEnd/css/starrr.css" rel="stylesheet" />
         <script>
-            $('#Estrellas').starrr({});
-           $('#ValESt').val(valor)
+            $('#Estrellas').starrr({
+                change: function(e,valor) {$('#ValEst').val(valor)}
+                });
+           
             //$(function () { $("#Estrellas").starrr() });
-            $(document).ready(function () {
-                $('#ModalCalif').modal('show');
-            });
 
         </script>
 

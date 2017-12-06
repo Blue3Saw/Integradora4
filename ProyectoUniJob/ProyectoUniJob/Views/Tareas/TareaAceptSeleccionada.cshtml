@@ -1,5 +1,5 @@
 ﻿@using System.Data;
-
+@model DataTable
 @{
     ViewBag.Title = "TareaAceptSeleccionada";
     Layout = "~/Views/FrontEnd/MasterPage/_layoutUsuarios.cshtml";
@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <button class="btn btn-success right" data-toggle="modal" data-target="#ModalCalif">Finalizar tarea</button>                                                               
                              @{ Html.RenderAction("FinalizarTarea", "Tareas");}                                       
                         </div>
@@ -110,5 +110,19 @@
                 longitudeInput: $("#txtLgt")
             },
             enableAutocomplete: true
-        });
+        });                           
+
 </script>
+@foreach (DataRow row in Model.Rows)
+{
+    <script>
+
+        $(document).ready(function () {
+            $("#tareaid").val('@row["Codigo"]');
+            console.log($("#tareaid").val());
+            $("#empleadorid").val('@row["Cod"]');
+            console.log($("#empleadorid").val());
+
+        });
+    </script>
+}   
