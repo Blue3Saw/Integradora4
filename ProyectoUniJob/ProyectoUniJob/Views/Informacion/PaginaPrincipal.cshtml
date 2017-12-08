@@ -1,0 +1,161 @@
+﻿
+@{
+    ViewBag.Title = "PaginaPrincipal";
+    Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-4 col-sm-6" onclick="location.href = '/AgregarEstudiante/Index'" style="cursor:pointer">
+        <div class="card">
+            <div class="content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="icon-big icon-warning text-center">
+                            <i class="ti-user"></i>
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            <p>Empleadores</p>
+                            @ViewData["Empleador"]
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <hr>
+                    <div class="stats">
+                        <i class="ti-arrow-right"></i> Ir a Usuarios
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-6" onclick="location.href = '/AgregarEstudiante/Index'" style="cursor:pointer">
+        <div class="card">
+            <div class="content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="icon-big icon-success text-center">
+                            <i class="ti-user"></i>
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            <p>Estudiantes</p>
+                            @ViewData["Estudiante"]
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <hr>
+                    <div class="stats">
+                        <i class="ti-arrow-right"></i> ir a Usuarios
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-6 centrar" onclick="location.href='/MesajesAdm/Index'" style="cursor:pointer">
+        <div class="card">
+            <div class="content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="icon-big icon-danger text-center">
+                            <i class="ti-email"></i>
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            <p>Mensajes Nuevos</p>
+                            @ViewData["Mensajes"]
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <hr>
+                    <div class="stats">
+                        <i class="ti-arrow-right"></i> ir a Tareas
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-sm-6" onclick="location.href = '/AprobarTarea/Index'" style="cursor:pointer">
+        <div class="card">
+            <div class="content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="icon-big icon-warning text-center">
+                            <i class="ti-stamp"></i>
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            <p>Tareas por Aprobar</p>
+                            @ViewData["TareasPorAceptar"]
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <hr>
+                    <div class="stats">
+                        <i class="ti-arrow-right"></i> Ir a Usuarios
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-6" onclick="location.href = '/AprobarTarea/Index'" style="cursor:pointer">
+        <div class="card">
+            <div class="content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="icon-big icon-success text-center">
+                            <i class="ti-timer"></i>
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            <p>Tareas en Ejecución</p>
+                            @ViewData["TareasEjecucion"]
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <hr>
+                    <div class="stats">
+                        <i class="ti-arrow-right"></i> ir a Tareas
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-6 centrar" onclick="location.href = '/AprobarTarea/Index'" style="cursor:pointer">
+        <div class="card">
+            <div class="content">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="icon-big icon-danger text-center">
+                            <i class="ti-close"></i>
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="numbers">
+                            <p>Tareas Rechazadas</p>
+                            @ViewData["TareasRechazadas"]
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <hr>
+                    <div class="stats">
+                        <i class="ti-arrow-right"></i> ir a Tareas
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

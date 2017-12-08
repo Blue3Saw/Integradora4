@@ -38,7 +38,7 @@ namespace ProyectoUniJob.Controllers.BackEnd
             {
                 bo.Imagen = img;
             }
-            bo.Codigo = int.Parse(ID);
+            bo.Codigo = int.Parse(Session["Codigo"].ToString());
             bo.Nombre = Nombre;
             bo.Apellidos = Apellidos;
             bo.Email = Correo;
