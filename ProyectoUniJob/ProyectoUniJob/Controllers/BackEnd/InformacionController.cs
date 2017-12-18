@@ -15,6 +15,7 @@ namespace ProyectoUniJob.Controllers.BackEnd
     public class InformacionController : Controller
     {
         InformacionDAO ObjDAO = new InformacionDAO();
+        UsuariosDAO usuarios = new UsuariosDAO();
         // GET: Informacion
         public ActionResult Index()
         {
@@ -72,6 +73,18 @@ namespace ProyectoUniJob.Controllers.BackEnd
             var path2 = Path.Combine(Server.MapPath("~/Recursos/BackEnd/img/"), filename);
             Variable.SaveAs(path2);
             return filename;
+        }
+
+
+        public ActionResult PaginaPrincipal()
+        {
+            ViewData["Empleador"] = usuarios.Empleadores();
+            ViewData["Estudiante"] = usuarios.Estudiantes();
+            ViewData["Mensajes"] = usuarios.MensajesSinleer(int.Parse(Session["Codigo"].ToString()));
+            ViewData["TareasEjecucion"] = usuarios.tareasEnjecucion();
+            ViewData["TareasPorAceptar"] = usuarios.tareasverificar();
+            ViewData["TareasRechazadas"] = usuarios.tareasRechazadas();
+            return View();
         }
 
     }

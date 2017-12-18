@@ -13,6 +13,7 @@ namespace DAO
     {
         ConexionDAO Conex = new ConexionDAO();
         string sentencia;
+        int valor = 0;
 
         public int AgregarUsuario(object ObjU)
         {
@@ -171,7 +172,7 @@ namespace DAO
             DataTable tablavirtual = new DataTable();
             mostar.Fill(tablavirtual);
             DataRow lol = tablavirtual.Rows[0];
-            int valor = int.Parse(lol["Codigo"].ToString());
+            valor = int.Parse(lol["Codigo"].ToString());
 
             return valor;
         }
@@ -275,5 +276,64 @@ namespace DAO
             return tablavirtual;
         }
 
+        //datos para la pagina principal (mas especifico la parte del index del administrador)
+
+        public int Empleadores()
+        {
+            sentencia = "SELECT COUNT(TipoUs)AS Empleadores FROM Usuarios where TipoUs=2";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+             valor = int.Parse(tablavirtual.Rows[0][0].ToString());
+            return valor;
+        }
+
+        public int Estudiantes()
+        {
+            sentencia = "SELECT COUNT(TipoUs)AS Estudiantes FROM Usuarios where TipoUs=3";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            valor = int.Parse(tablavirtual.Rows[0][0].ToString());
+            return valor;
+        }
+
+        public int MensajesSinleer(int codigoadm)
+        {
+            sentencia = "SELECT COUNT(Estatus)AS Mensajes FROM Mensajes where Estatus=1 and UsRecibe='"+codigoadm+"'";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            valor = int.Parse(tablavirtual.Rows[0][0].ToString());
+            return valor;
+        }
+
+        public int tareasverificar()
+        {
+            sentencia = "SELECT COUNT(Estatus)AS Estudiantes FROM Tareas where Estatus=3";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            valor = int.Parse(tablavirtual.Rows[0][0].ToString());
+            return valor;
+        }
+        public int tareasEnjecucion()
+        {
+            sentencia = "SELECT COUNT(Estatus)AS Estudiantes FROM Tareas where Estatus=5";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            valor = int.Parse(tablavirtual.Rows[0][0].ToString());
+            return valor;
+        }
+        public int tareasRechazadas()
+        {
+            sentencia = "SELECT COUNT(Estatus)AS Estudiantes FROM Tareas where Estatus=2";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            valor = int.Parse(tablavirtual.Rows[0][0].ToString());
+            return valor;
+        }
     }
 }
