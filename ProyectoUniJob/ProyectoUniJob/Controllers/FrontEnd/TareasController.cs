@@ -17,6 +17,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         {      
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AgregarTarea(string agregar, string modificar, string eliminar, string IdTarea, string NombreUsu, string Titulo, string Direccion,
@@ -57,6 +58,18 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             }
             return Redirect("/Usuario/IndexEmpleador#parentHorizontalTab2");
         }
+
+        public ActionResult BuscarTarea(string Codigo)
+        {
+            int Clave = int.Parse(Codigo);
+            return View(ObjDAO.BuscarTarea(Clave));
+        }
+
+        public ActionResult ActualizarTarea()
+        {
+            return View();
+        }
+
         public ActionResult EliminarTarea(string id)
         {
             TareasBO objBO = new TareasBO();
@@ -77,6 +90,12 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             return View(ObjDAO.TodasTareas());
         }
 
+        public ActionResult TodasTareasEmpleador()
+        {
+            int Codigo = int.Parse(Session["Codigo"].ToString());
+            return View(ObjDAO.TodasTareasEmpleador(Codigo));
+        }
+
         public ActionResult TareasAcepUsuario()
         {
             UsuarioBO dato = new UsuarioBO();
@@ -95,6 +114,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             int Clave = int.Parse(Codigo);
             return View(ObjDAO.TareaSeleccionada(Clave));
         }
+
         [ChildActionOnly]
         public ActionResult VistaTarea()
         {

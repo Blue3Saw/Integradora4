@@ -58,6 +58,15 @@ namespace DAO
             return Conex.EjecutarComando(SentenciaSQL);
         }
 
+        public DataTable BuscarTarea(int Codigo)
+        {
+            TareasBO Datos = new TareasBO();
+            SqlCommand Com = new SqlCommand("SELECT * FROM Tareas WHERE Codigo = @Codigo");
+            Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
+            Com.CommandType = CommandType.Text;
+            return Conex.EjecutarSentencia(Com).Tables[0];
+        }
+
         public int AceptarTarea(int Codigo)
         {
             TareasBO Dato = new TareasBO();
@@ -95,6 +104,14 @@ namespace DAO
             SentenciaSQL.Parameters.Add("@Estatus", SqlDbType.Int).Value = Dato.CodigoEstatus;
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
+        }
+
+        public DataTable TodasTareasEmpleador(int Codigo)
+        {
+            SqlCommand Com = new SqlCommand("SELECT T.Codigo, T.Titulo, T.Descripcion, T.Direccion, T.Longitud, T.Latitud, T.Fecha, T.HoraInicio, T.HoraFinal, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion,U.Codigo as Cod FROM Tareas T INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo WHERE T.Codigo = @Codigo");
+            Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
+            Com.CommandType = CommandType.Text;
+            return Conex.EjecutarSentencia(Com).Tables[0];
         }
 
         public DataTable TodasTareas()

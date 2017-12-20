@@ -33,7 +33,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             {
                 Session["Codigo"] = ObjUsuario.LoginAdministrador(Datos);
                 Session["Nombre"] = ObjUsuario.Buscarnombre(Datos);
-                return RedirectToAction("Index", "AgregarEstudiante");
+                return RedirectToAction("PaginaPrincipal", "Informacion");
             }
             else if (ObjUsuario.LoginEmpleador(Datos) > 0)
             {

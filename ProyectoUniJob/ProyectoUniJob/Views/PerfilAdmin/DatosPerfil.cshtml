@@ -32,9 +32,8 @@
                             </h4>
                         </div>
                         <p class="description text-center">
-                            "I like the way you work it <br>
-                            No diggity <br>
-                            I wanna bag it up"
+                            @row["Email"] <br>
+                             @row["Telefono"]<br>
                         </p>
                     </div>
                     <hr>
@@ -91,7 +90,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Dirrecion</label>
-                                        <input class="form-control border-input" placeholder="Dirreccion" value="@row["Direccion"]" type="text">
+                                        <input class="form-control border-input" placeholder="Dirreccion" value="@row["Direccion"]" type="text" name="direccion">
                                     </div>
                                 </div>
                                 <div class="col-md-4">

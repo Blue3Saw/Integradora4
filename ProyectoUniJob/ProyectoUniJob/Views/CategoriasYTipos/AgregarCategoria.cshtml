@@ -49,7 +49,7 @@
                </div>
            </div>
            <div class="col-md-4">
-               <div>
+               <div id="cat2">
                    <input type="button" id="btn1" value="Mostar tabla" class="btn btn-success" onclick="tabla2()" />
                </div>
            </div>
@@ -82,13 +82,26 @@
             }
 </script>
 <script type="text/javascript">
-            function mostar1(){
-                document.getElementById('cat').style.display = 'block';
-            }
+    function mostar1(){
+                        if (!(document.getElementById('cat').style.display == 'block'))
+                            {
+                            document.getElementById('cat').style.display = 'block';
+                        }
+                        else
+                            {
+                            document.getElementById('cat').style.display = 'none'
+                            }
+                        }
 
-            function mostar2() {
-                document.getElementById('ti').style.display = 'block';
-            }
+    function mostar2() {
+        if (!(document.getElementById('ti').style.display == 'block')) {
+            document.getElementById('ti').style.display = 'block';
+
+        }
+        else {
+            document.getElementById('ti').style.display = 'none'
+        }
+    }
 </script>
 <script>
     function agregarca() {

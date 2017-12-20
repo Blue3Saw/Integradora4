@@ -21,8 +21,19 @@
                 <li id="pestPerfil">Perfil</li>
             </ul>
             <div class="resp-tabs-container hor_1">
-                <div id="MisTareas" class="creditly-card-form agileinfo_form">
+                <div class="creditly-card-form agileinfo_form">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <select class="selectpicker show-menu-arrow">
+                                <option>Todos</option>
+                                <option>Aprobados</option>
+                                <option>Rechazados</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="MisTareas">
 
+                    </div>
                 </div>
                 <!--Fin mis tareas-->
                 <!--Publicar tarea-->
@@ -50,7 +61,7 @@
 
     <script>
     $(document).ready(function (e) {
-        $('#MisTareas').load('/Tareas/TareasEmpleador', function (data) {
+        $('#MisTareas').load('/Tareas/TodasTareasEmpleador', function (data) {
             $(this).html(data);
         })
     })
