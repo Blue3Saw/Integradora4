@@ -7,14 +7,18 @@
 <div class="row">
     @foreach (DataRow row in Model.Rows)
     {
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="..." alt="...">
-                <div class="caption">
-                    <h3>@row["Titulo"]</h3>
-                    <p>...</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <div class="col-md-4 movie-preview">
+            <img src="images/m1.jpg" class="img-responsive zoom-img" alt="Source not found" />
+            <div class="m-movie-title">
+                <a class="m-movie-link" href="select-show.html">@row["Titulo"]</a>
+                <div class="clearfix"></div>
+                <div class="m-r-date">
+                    <p><i class="fa fa-calendar-o"></i>Date here</p>
                 </div>
+                <div class="m-r-like">
+                    <a href="select-show.html">Ver más</a>
+                </div>
+                <div class="clearfix"></div>
             </div>
         </div>
     }
