@@ -96,6 +96,22 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             return View(ObjDAO.TodasTareasEmpleador(Codigo));
         }
 
+        public ActionResult FiltroTareas(string Filtro)
+        {
+            int Codigo = int.Parse(Session["Codigo"].ToString());
+            
+            if(Filtro == "2")
+            {
+                ViewBag.Aprobadas = 2;
+                return View(ObjDAO.TareasAprobadas(Codigo));
+            }
+            else
+            {
+                ViewBag.Aprobadas = 3;
+                return View(ObjDAO.TareasRechazadas(Codigo));
+            }
+        }
+
         public ActionResult TareasAcepUsuario()
         {
             UsuarioBO dato = new UsuarioBO();

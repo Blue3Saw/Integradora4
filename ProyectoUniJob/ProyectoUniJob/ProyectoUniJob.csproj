@@ -385,6 +385,7 @@
     <Content Include="Views\Tareas\TareasEmpleador.cshtml" />
     <Content Include="Views\Informacion\PaginaPrincipal.cshtml" />
     <Content Include="Views\Tareas\TodasTareasEmpleador.cshtml" />
+    <Content Include="Views\Tareas\FiltroTareas.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
