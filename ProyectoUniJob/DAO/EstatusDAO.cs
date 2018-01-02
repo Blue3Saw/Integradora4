@@ -41,5 +41,26 @@ namespace DAO
             mostar.Fill(tablavirtual);
             return tablavirtual;
         }
+
+
+        // son las tablas para obtener los mapas
+
+
+        public DataTable buscardirrecciones()
+        {
+            sentencia = "select T.Titulo,T.Descripcion,c.Clasificacion,t.Longitud,t.Latitud,t.Codigo from Tareas T,ClasificacionTarea C where t.Tipo=c.Codigo";
+            SqlDataAdapter Mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable TablaVirtual = new DataTable();
+            Mostar.Fill(TablaVirtual);
+            return TablaVirtual;
+        }
+        public DataTable buscarclasificaciones()
+        {
+            sentencia = "select *from ClasificacionTarea";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
+        }
     }
 }

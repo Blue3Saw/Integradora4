@@ -1,27 +1,97 @@
-﻿@using System.Data;
+﻿@model List<string>
+
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
+    //Layout = "~/Views/BackEnd/MasterPage/_layoutBackEnd.cshtml";
+    //Layout = "~/Views/FrontEnd/MasterPage/_layoutUsuarios.cshtml";
 }
+<style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+</style>
+<h3>My Google Maps Demo</h3>
+<div id="geolocation-test"></div>
+<div id="map"></div>
+<script type="text/javascript" charset="utf-16">
+    function initMap() {
 
-<h2>Index</h2>
+        var content = document.getElementById("geolocation-test");
 
-<label>Ejemplo de página maestra</label>
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (objPosition) {
+                var lon = objPosition.coords.longitude;
+                var lat = objPosition.coords.latitude;
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Codigo</th>
-            <th>Estatus</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (DataRow row in Model.Rows)
-        {
-            <tr id="fila_@row["Codigo"]">
-                <td>@row["Codigo"]</td>
-                <td>@row["Estatus"]</td>
-            </tr>
+
+                var myLatlng = new google.maps.LatLng(lat,lon);
+                var mapOptions = {
+                    zoom: 15,
+                    center: myLatlng
+                }
+                var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    title:'Te encuentras aqui',
+                    map: map
+                });
+
+        @foreach (string item in Model)
+            {
+            @Html.Raw(item);
+            }
+
+                content.innerHTML = "<p><strong>Latitud:</strong> " + lat + "</p><p><strong>Longitud:</strong> " + lon + "</p>";
+
+            }, function (objPositionError) {
+                switch (objPositionError.code) {
+                    case objPositionError.PERMISSION_DENIED:
+                        content.innerHTML = "No se ha permitido el acceso a la posición del usuario.";
+                        var myLatlng = new google.maps.LatLng(20.938297181414647, -89.61501516379462);
+                        var mapOptions = {
+                            zoom: 15,
+                            center: myLatlng
+                        }
+                        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                        @foreach (string item in Model)
+                         {
+                            @Html.Raw(item);
+                          }
+                        break;
+                    case objPositionError.POSITION_UNAVAILABLE:
+                        content.innerHTML = "No se ha podido acceder a la información de su posición.";
+                        break;
+                    case objPositionError.TIMEOUT:
+                        content.innerHTML = "El servicio ha tardado demasiado tiempo en responder.";
+                        break;
+                    default:
+                        content.innerHTML = "Error desconocido.";
+                }
+            }, {
+                maximumAge: 75000,
+                timeout: 15000
+            });
         }
-    </tbody>
-</table>
+        else {
+            content.innerHTML = "Su navegador no soporta la API de geolocalización.";
+        }
+
+        @*//20.938297181414647, -89.61501516379462
+        var myLatlng = new google.maps.LatLng(20.938297181414647, -89.61501516379462);
+        var mapOptions = {
+            zoom: 15,
+            center: myLatlng
+        }
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        @*foreach (string item in Model)
+        {
+            @Html.Raw(item);
+        }*@
+
+
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMQH1D6-iDnL3zzh8QFuO2nX_CujOx-dc&callback=initMap">
+</script>
