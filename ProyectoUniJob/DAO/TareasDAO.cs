@@ -29,6 +29,8 @@ namespace DAO
             SentenciaSQL.Parameters.Add("@Longitud", SqlDbType.Float).Value = Dato.Longitud;
             SentenciaSQL.Parameters.Add("@Latitud", SqlDbType.Float).Value = Dato.Latitud;
             SentenciaSQL.Parameters.Add("@Direccion", SqlDbType.VarChar).Value = Dato.Direccion;
+            SentenciaSQL.Parameters.Add("@CanPer", SqlDbType.Int).Value = Dato.CantPersonas;
+            SentenciaSQL.Parameters.Add("@Pago", SqlDbType.Float).Value = Dato.Pago;
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
         }
@@ -44,6 +46,8 @@ namespace DAO
             SentenciaSQL.Parameters.Add("@Tipo", SqlDbType.Int).Value = Dato.TipoTarea;
             SentenciaSQL.Parameters.Add("@Descripcion", SqlDbType.Text).Value = Dato.Descripcion;
             SentenciaSQL.Parameters.Add("@Estatus", SqlDbType.Int).Value = Dato.CodigoEstatus;
+            SentenciaSQL.Parameters.Add("@CanPer", SqlDbType.Int).Value = Dato.CantPersonas;
+            SentenciaSQL.Parameters.Add("@Pago", SqlDbType.Float).Value = Dato.Pago;
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
         }
