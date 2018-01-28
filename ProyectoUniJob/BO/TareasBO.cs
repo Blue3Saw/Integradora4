@@ -20,5 +20,7 @@ namespace BO
         public float Longitud { get; set; }
         public float Latitud { get; set; }
         public string Direccion { get; set; }
+        public int CantPersonas { get; set; }
+        public double Pago { get; set; }
     }
 }

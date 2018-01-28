@@ -133,7 +133,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             return View(ObjDAO.TareaSeleccionada(Clave));
         }
 
-        [ChildActionOnly]
+        
         public ActionResult VistaTarea()
         {
             
