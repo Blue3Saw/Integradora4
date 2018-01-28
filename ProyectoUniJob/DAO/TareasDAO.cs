@@ -12,7 +12,7 @@ namespace DAO
     public class TareasDAO
     {
         ConexionDAO Conex = new ConexionDAO();
-        string Sentencia;
+        string Sentencia, Sentencia2, Sentencia3, Sentencia4, Sentencia5;
 
         public int AgregarTarea(object ObjT)
         {
@@ -106,12 +106,63 @@ namespace DAO
             return Conex.EjecutarComando(SentenciaSQL);
         }
 
-        public DataTable TodasTareasEmpleador(int Codigo)
+        public DataTable TodasTareasEmpleador(int Codigo, int filtro)
         {
-            SqlCommand Com = new SqlCommand("SELECT T.Codigo, T.Titulo, T.Descripcion, T.Direccion, T.Longitud, T.Latitud, T.Fecha, T.HoraInicio, T.HoraFinal, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion, (SELECT F.Imagen FROM Fotos F WHERE T.Codigo = F.TareaID) AS 'Imagen' FROM Tareas T INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo WHERE T.Codigo = @Codigo");
-            Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
-            Com.CommandType = CommandType.Text;
-            return Conex.EjecutarSentencia(Com).Tables[0];
+            DataTable lol = new DataTable();
+            //cambie a lo ultimo Una T por una U
+            if (filtro == 0)
+            {
+                SqlCommand Com = new SqlCommand("SELECT T.Codigo, T.Titulo, T.Descripcion, T.Direccion, T.Longitud, T.Latitud, T.Fecha, T.HoraInicio, T.HoraFinal, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion, (SELECT F.Imagen FROM Fotos F WHERE T.Codigo = F.TareaID) AS 'Imagen' FROM Tareas T INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo WHERE U.Codigo = @Codigo");
+                Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
+                Com.CommandType = CommandType.Text;
+                lol= Conex.EjecutarSentencia(Com).Tables[0];
+
+            }
+            if (filtro == 1)
+            {
+                SqlCommand Com = new SqlCommand("SELECT T.Codigo, T.Titulo, T.Descripcion, T.Direccion, T.Longitud, T.Latitud, T.Fecha, T.HoraInicio, T.HoraFinal, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion, (SELECT F.Imagen FROM Fotos F WHERE T.Codigo = F.TareaID) AS 'Imagen' FROM Tareas T INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo WHERE U.Codigo = @Codigo and T.Tipo=@Filtro");
+                Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
+                Com.Parameters.Add("@Filtro", SqlDbType.Int).Value = filtro;
+                Com.CommandType = CommandType.Text;
+                lol = Conex.EjecutarSentencia(Com).Tables[0];
+
+            }
+            if (filtro == 2)
+            {
+                SqlCommand Com = new SqlCommand("SELECT T.Codigo, T.Titulo, T.Descripcion, T.Direccion, T.Longitud, T.Latitud, T.Fecha, T.HoraInicio, T.HoraFinal, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion, (SELECT F.Imagen FROM Fotos F WHERE T.Codigo = F.TareaID) AS 'Imagen' FROM Tareas T INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo WHERE U.Codigo = @Codigo and T.Tipo=@Filtro");
+                Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
+                Com.Parameters.Add("@Filtro", SqlDbType.Int).Value = filtro;
+                Com.CommandType = CommandType.Text;
+                lol = Conex.EjecutarSentencia(Com).Tables[0];
+            }
+            if (filtro == 3)
+            {
+                SqlCommand Com = new SqlCommand("SELECT T.Codigo, T.Titulo, T.Descripcion, T.Direccion, T.Longitud, T.Latitud, T.Fecha, T.HoraInicio, T.HoraFinal, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion, (SELECT F.Imagen FROM Fotos F WHERE T.Codigo = F.TareaID) AS 'Imagen' FROM Tareas T INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo WHERE U.Codigo = @Codigo and T.Tipo=@Filtro");
+                Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
+                Com.Parameters.Add("@Filtro", SqlDbType.Int).Value = filtro;
+                Com.CommandType = CommandType.Text;
+                lol = Conex.EjecutarSentencia(Com).Tables[0];
+            }
+            if (filtro == 4)
+            {
+                SqlCommand Com = new SqlCommand("SELECT T.Codigo, T.Titulo, T.Descripcion, T.Direccion, T.Longitud, T.Latitud, T.Fecha, T.HoraInicio, T.HoraFinal, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion, (SELECT F.Imagen FROM Fotos F WHERE T.Codigo = F.TareaID) AS 'Imagen' FROM Tareas T INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo WHERE U.Codigo = @Codigo and T.Tipo=@Filtro");
+                Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
+                Com.Parameters.Add("@Filtro", SqlDbType.Int).Value = filtro;
+                Com.CommandType = CommandType.Text;
+                lol = Conex.EjecutarSentencia(Com).Tables[0];
+
+            }
+            if (filtro == 5)
+            {
+                SqlCommand Com = new SqlCommand("SELECT T.Codigo, T.Titulo, T.Descripcion, T.Direccion, T.Longitud, T.Latitud, T.Fecha, T.HoraInicio, T.HoraFinal, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion, (SELECT F.Imagen FROM Fotos F WHERE T.Codigo = F.TareaID) AS 'Imagen' FROM Tareas T INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo WHERE U.Codigo = @Codigo and T.Tipo=@Filtro");
+                Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
+                Com.Parameters.Add("@Filtro", SqlDbType.Int).Value = filtro;
+                Com.CommandType = CommandType.Text;
+                lol = Conex.EjecutarSentencia(Com).Tables[0];
+
+            }
+            return lol;
+
         }
 
         public DataTable TareasAprobadas(int Codigo)
@@ -189,12 +240,12 @@ namespace DAO
                 Datos.Codigo = int.Parse(_fila.ItemArray[0].ToString());
                 Datos.CodigoEmpleador = int.Parse(_fila.ItemArray[1].ToString());
                 Datos.Titulo = _fila.ItemArray[2].ToString();
-                Datos.Fecha= Convert.ToDateTime(_fila.ItemArray[3].ToString());
+                Datos.Fecha = Convert.ToDateTime(_fila.ItemArray[3].ToString());
                 Datos.HoraInicio = DateTime.Parse(_fila.ItemArray[4].ToString());
                 Datos.HoraFin = DateTime.Parse(_fila.ItemArray[5].ToString());
                 Datos.TipoTarea = int.Parse(_fila.ItemArray[6].ToString());
                 Datos.Descripcion = _fila.ItemArray[7].ToString();
-                Datos.CodigoEstatus= int.Parse(_fila.ItemArray[8].ToString());
+                Datos.CodigoEstatus = int.Parse(_fila.ItemArray[8].ToString());
             }
             return Datos;
         }
@@ -204,7 +255,7 @@ namespace DAO
         {
             TareasBO Datos = new TareasBO();
             Datos.Codigo = id;
-            string sentencia = "select t.Codigo,u.Nombre,u.Imagen,u.Apellidos,t.Titulo,t.Fecha,t.HoraInicio,t.HoraFinal,c.Clasificacion,t.Descripcion,t.Longitud,t.Latitud,t.Direccion from Tareas t,Usuarios U, ClasificacionTarea c where u.Codigo = t.UsuarioEmpleador and c.Codigo = t.Tipo and t.Codigo = '" + Datos.Codigo+"'";
+            string sentencia = "select t.Codigo,u.Nombre,u.Imagen,u.Apellidos,t.Titulo,t.Fecha,t.HoraInicio,t.HoraFinal,c.Clasificacion,t.Descripcion,t.Longitud,t.Latitud,t.Direccion from Tareas t,Usuarios U, ClasificacionTarea c where u.Codigo = t.UsuarioEmpleador and c.Codigo = t.Tipo and t.Codigo = '" + Datos.Codigo + "'";
             SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
             DataTable tablavirtual = new DataTable();
             mostar.Fill(tablavirtual);
@@ -219,5 +270,74 @@ namespace DAO
             mostar.Fill(tablavirtual);
             return tablavirtual;
         }
+        public DataTable cordenadastareas()
+        {
+            Sentencia = "select T.Titulo,T.Descripcion,c.Clasificacion,t.Longitud,t.Latitud,t.Codigo,u.Nombre,u.Apellidos from Tareas T,ClasificacionTarea C ,Usuarios u where t.Tipo=c.Codigo and t.Estatus=1 and t.UsuarioEmpleador=u.Codigo";
+            SqlDataAdapter mostar = new SqlDataAdapter(Sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
+        }
+
+
+        public DataTable categorias()
+        {
+            Sentencia = "select c.Clasificacion from ClasificacionTarea c";
+            SqlDataAdapter mostar = new SqlDataAdapter(Sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
+        }
+
+
+
+        //metodos para la vista de ver perfil usuario por parte del empleador 
+
+        public DataTable PromedioEstrellas(int codigo)
+        {
+            Sentencia = "select avg(Calificacion) from Calificaciones where CodigoCalificado='"+codigo+"'";
+            SqlDataAdapter mostar = new SqlDataAdapter(Sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
+        }
+        public DataTable Estrellas(int codigo)
+        {
+            DataTable resultado = new DataTable();
+            DataTable tablavirtual = new DataTable();
+            tablavirtual.Columns.Add("Estrellas1");
+            tablavirtual.Columns.Add("Estrellas2");
+            tablavirtual.Columns.Add("Estrellas3");
+            tablavirtual.Columns.Add("Estrellas4");
+            tablavirtual.Columns.Add("Estrellas5");
+
+            DataRow fila = tablavirtual.NewRow();
+
+            for (int i = 1; i < 6; i++)
+            {
+                Sentencia = "select count(Calificacion)as estrellas from Calificaciones c where c.CodigoCalificado='"+codigo+"' and c.Calificacion='"+i+"'";
+                SqlDataAdapter mostar = new SqlDataAdapter(Sentencia, Conex.ConectarBD());
+                mostar.Fill(resultado);
+                foreach (DataRow lol in resultado.Rows)
+                {
+                    fila["Estrellas" + i] =lol["estrellas"].ToString();
+                }
+                
+            }
+            tablavirtual.Rows.Add(fila);
+
+            return tablavirtual;
+        }
+
+        public DataTable comentariodetareas(int codigo)
+        {
+            Sentencia = "select top(6) (u.Nombre+' '+u.Apellidos)as Nombre,u.Imagen,c.Calificacion, c.Comentario from Calificaciones c,Usuarios u where u.Codigo=c.CodigoCalificante and c.CodigoCalificado='"+codigo+"' order by c.Fecha desc";
+            SqlDataAdapter mostar = new SqlDataAdapter(Sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
+        }
+
+
     }
 }

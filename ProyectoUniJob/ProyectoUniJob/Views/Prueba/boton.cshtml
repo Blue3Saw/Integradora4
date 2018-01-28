@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "boton";
+}
+
+<h2>boton</h2>
+@using (Ajax.BeginForm("sessioncoordenadas", "Prueba", new AjaxOptions() { HttpMethod = "POST" }, new { enctype = "multipart/form-data" }))
+{
+<div id="geolocation-test"></div>
+<div id="map">
+    <div>
+        Latitud:<input type="text" id="txtLatitud" name="txtLatitud" />
+    </div>
+    <div>
+        Longitud:<input type="text" id="txtLongitud" name="txtLongitud" />
+    </div>
+</div>
+
+
+<div id="botonlol">
+    <button type="submit" >Actualizar</button>
+    @Html.ActionLink("lol", "pruebadistancias", "Prueba")
+</div>
+}
+<button type="submit" onclick="enviarcoordenadas()">Actualizar</button>
+
+<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+<script src="~/Recursos/FontEnd/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+			$(document).on("ready", function(){
+				var options = {
+					enableHighAccuracy: true,
+					timeout: 45000
+				};
+				navigator.geolocation.getCurrentPosition(GetPosition,funcionError, options);
+				function GetPosition(posicion)
+				{
+					var latitud = posicion.coords.latitude;
+					var longitud = posicion.coords.longitude;
+					$("#txtLatitud").val(latitud);
+					$("#txtLongitud").val(longitud);
+					GetMap(latitud,longitud);
+				}
+				function funcionError(error)
+				{
+					alert(error.message);
+				}
+
+			})
+</script>
+<script type="text/javascript">
+    function enviarcoordenadas()
+    {
+        var url=@Url.Action("sessioncoordenadas2", "Prueba");
+        //var latitud=posicion.coords.latitud;
+        //var longitud=posicion.coords.longitud;
+        var latitud=$("#txtLatitud").val();
+        var longitud=$("#txtLongitud").val();
+        var datos={latitud:latitud, longitud:longitud};
+        $.post(url,datos);
+    }
+</script>

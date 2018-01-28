@@ -1,41 +1,14 @@
-﻿@*@using System.Data;
-
-@{
-    Layout = null;
-}
-
-<div class="row">
-    @foreach (DataRow row in Model.Rows)
-    {
-        <div class="col-md-4 movie-preview">
-            <img src="~/Recursos/FontEnd/images/@row["Imagen"]" class="img-responsive zoom-img" alt="Source not found" />
-            <div class="m-movie-title">
-                <a class="m-movie-link" href="select-show.html">@row["Titulo"]</a>
-                <div class="clearfix"></div>
-                <div class="m-r-date">
-                    <p><i class="fa fa-calendar-o"></i>Date here</p>
-                </div>
-                <div class="m-r-like">
-                    <a href="select-show.html">Ver más</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    }
-</div>*@
-
-
-@using System.Data;
+﻿@using System.Data;
 @model DataTable
-
 @{
-    Layout = null;
+    ViewBag.Title = "pruebadistancias";
 }
 
 <div class="creditly-card-form agileinfo_form">
     <section class="creditly-wrapper wthree, w3_agileits_wrapper">
         <div class="credit-card-wrapper">
             <div class="first-row form-group">
+                Se encontaron : @ViewData["ResultadoBusqueda"] publicaciones.
                 <div class="row">
                     @foreach (DataRow row in Model.Rows)
                     {
@@ -44,8 +17,9 @@
                                 <h4 class="m-movie-link" style="color:black;">@row["Titulo"]</h4>
                                 <div class="clearfix"></div>
                                 <div class="m-r-date">
-                                    <p>@row["Empleador"]</p>
+                                    <p>@row["Nombre"]</p>
                                     <p>@row["Clasificacion"]</p>
+                                    <p>@row["distanciaskm"] Km Aproximadamente</p>
                                 </div>
                                 <div class="m-r-like">
                                     @Html.ActionLink("Ver más", "TareaSeleccionada", "Tareas", new { Codigo = @row["Codigo"] }, null)

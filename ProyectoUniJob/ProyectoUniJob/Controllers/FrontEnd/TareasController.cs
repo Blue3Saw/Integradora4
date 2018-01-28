@@ -10,7 +10,9 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 {
     public class TareasController : Controller
     {
+        
         TareasDAO ObjDAO = new TareasDAO();
+        
 
         // GET: Tareas
         public ActionResult Index()
@@ -84,7 +86,6 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             Tipo.TipoTarea = ObjCla.ListaTipo();
             return PartialView(Tipo.TipoTarea);
         }
-
         public ActionResult TodasTareas()
         {
             return View(ObjDAO.TodasTareas());
@@ -92,24 +93,25 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult TodasTareasEmpleador()
         {
+            int filtro = 0;
             int Codigo = int.Parse(Session["Codigo"].ToString());
-            return View(ObjDAO.TodasTareasEmpleador(Codigo));
-        }
-
-        public ActionResult FiltroTareas(string Filtro)
-        {
-            int Codigo = int.Parse(Session["Codigo"].ToString());
-            
-            if(Filtro == "2")
+            if (Session["Filtro"].ToString()==null)
             {
-                ViewBag.Aprobadas = 2;
-                return View(ObjDAO.TareasAprobadas(Codigo));
+                filtro = 0;
             }
             else
             {
-                ViewBag.Aprobadas = 3;
-                return View(ObjDAO.TareasRechazadas(Codigo));
+                 filtro = int.Parse(Session["Filtro"].ToString());
             }
+            return View(ObjDAO.TodasTareasEmpleador(Codigo,filtro));
+        }
+
+        [HttpPost]
+        public ActionResult FiltroTareas(string Filtro)
+        {
+            int entrada = int.Parse(Filtro);
+            Session["Filtro"] = entrada;
+            return Redirect("~/Usuario/IndexEmpleador");
         }
 
         public ActionResult TareasAcepUsuario()
@@ -167,6 +169,11 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             //Session["Tarea"] = codigo;
             return RedirectToAction("IndexEstudiante", "Usuario");
         }
+
+
+        //metodos para la vista de ver perfil usuario por parte del empleador 
+
+        
 
     }
 }
