@@ -55,10 +55,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <header>
         <div class="container">
             <!--logo-->
-            <div class="logo">                
+            <div class="logo">
                 <img width="67px" src="~/Recursos/FontEnd/images/logo verde.png" />
                 <h1 style="display: inline;"><a href="index.html">CollegeJob</a></h1>
             </div>
+            <a class="navbar-brand" style="color:cyan" href="#quienes">Quiénes somos?</a>
+            <a class="navbar-brand" style="color:cyan" href="#mision">Misión</a>
+            <a class="navbar-brand" style="color:cyan" href="#vision">Visión</a>
             <!--//logo-->
             <div class="w3layouts-login">
                 <a data-toggle="modal" data-target="#myModal" href="#"><i class="glyphicon glyphicon-user"> </i>Login / Registrarme</a>
@@ -90,126 +93,126 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="tab-pane active" id="Login">
                                             <div class="form-horizontal">
                                                 @using (Ajax.BeginForm("Login", "PrincipalFE", new AjaxOptions() { HttpMethod = "POST" }))
-                                                {
-                                                    @Html.AntiForgeryToken()
-                                                    <div class="form-group">
-                                                        <label for="email" class="col-sm-2 control-label">
-                                                            Email
-                                                        </label>
-                                                        <div class="col-sm-10">
-                                                            <input type="email" class="form-control" name="Email" placeholder="Email" required="required" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputPassword1" class="col-sm-2 control-label">
-                                                            Contraseña
-                                                        </label>
-                                                        <div class="col-sm-10">
-                                                            <input type="password" class="form-control" name="Contraseña" placeholder="password" required="required" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-sm-2">
-                                                        </div>
-                                                        <div class="col-sm-10">
-                                                            <button type="submit" class="submit btn btn-primary btn-sm">
-                                                                Ingresar
-                                                            </button>
-                                                            <a href="javascript:;" class="agileits-forgot">Olvide mi contraseña</a>
-                                                        </div>
-                                                    </div>
-                                                }
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div class="form-group">
+                                                <label for="email" class="col-sm-2 control-label">
+                                                    Email
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <input type="email" class="form-control" name="Email" placeholder="Email" required="required" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1" class="col-sm-2 control-label">
+                                                    Contraseña
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <input type="password" class="form-control" name="Contraseña" placeholder="password" required="required" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <button type="submit" class="submit btn btn-primary btn-sm">
+                                                        Ingresar
+                                                    </button>
+                                                    <a href="javascript:;" class="agileits-forgot">Olvide mi contraseña</a>
+                                                </div>
+                                            </div>
+                                }
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="Registration">
                                             @using (Ajax.BeginForm("AgregarEmp", "Usuario", new AjaxOptions() { HttpMethod = "POST" }))
-                                            {
-                                                <div class="form-horizontal">
-                                                    <div class="form-group">
-                                                        <label class="col-sm-2 control-label">
-                                                            Nombre
-                                                        </label>
-                                                        <div class="col-sm-4">
-                                                            <div class="row">
-                                                                <div class="col-sm-12">
-                                                                    <input type="text" name="Nombre" class="form-control" placeholder="Nombre" required="required" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <label class="col-sm-2 control-label">
-                                                            Apellidos
-                                                        </label>
-                                                        <div class="col-sm-4">
-                                                            <div class="row">
-                                                                <div class="col-sm-12">
-                                                                    <input type="text" name="Apellidos" class="form-control" placeholder="Apellidos" required="required" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-2 control-label">
-                                                            Nacimiento
-                                                        </label>
-                                                        <div class="col-sm-4">
-                                                            <div class="row">
-                                                                <div class="col-sm-12">
-                                                                    <input type="date" name="FechaNac" class="form-control" placeholder="dd/mm/yyyy" required="required" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <label class="col-sm-2 control-label">
-                                                            Teléfono
-                                                        </label>
-                                                        <div class="col-sm-4">
-                                                            <div class="row">
-                                                                <div class="col-sm-12">
-                                                                    <input type="tel" name="Telefono" class="form-control" placeholder="Teléfono" required="required" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-2 control-label">
-                                                            Dirección
-                                                        </label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" name="Direccion" class="form-control" placeholder="Dirección" required="required" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-2 control-label">
-                                                            Email
-                                                        </label>
-                                                        <div class="col-sm-4">
-                                                            <div class="row">
-                                                                <div class="col-sm-12">
-                                                                    <input type="email" name="Email" class="form-control" placeholder="ejemplo@mail.com" required="required" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <label class="col-sm-2 control-label">
-                                                            Contraseña
-                                                        </label>
-                                                        <div class="col-sm-4">
-                                                            <div class="row">
-                                                                <div class="col-sm-12">
-                                                                    <input type="password" name="Contraseña" class="form-control" placeholder="Contraseña" required="required" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                    {
+                                        <div class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">
+                                                    Nombre
+                                                </label>
+                                                <div class="col-sm-4">
                                                     <div class="row">
-                                                        <div class="col-sm-2">
-                                                        </div>
-                                                        <div class="col-sm-10">
-                                                            <button type="submit" class="submit btn btn-primary btn-sm">
-                                                                Continuar
-                                                            </button>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" name="Nombre" class="form-control" placeholder="Nombre" required="required" />
                                                         </div>
                                                     </div>
                                                 </div>
-                                            }
+                                                <label class="col-sm-2 control-label">
+                                                    Apellidos
+                                                </label>
+                                                <div class="col-sm-4">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input type="text" name="Apellidos" class="form-control" placeholder="Apellidos" required="required" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">
+                                                    Nacimiento
+                                                </label>
+                                                <div class="col-sm-4">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input type="date" name="FechaNac" class="form-control" placeholder="dd/mm/yyyy" required="required" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <label class="col-sm-2 control-label">
+                                                    Teléfono
+                                                </label>
+                                                <div class="col-sm-4">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input type="tel" name="Telefono" class="form-control" placeholder="Teléfono" required="required" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">
+                                                    Dirección
+                                                </label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="Direccion" class="form-control" placeholder="Dirección" required="required" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">
+                                                    Email
+                                                </label>
+                                                <div class="col-sm-4">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input type="email" name="Email" class="form-control" placeholder="ejemplo@mail.com" required="required" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <label class="col-sm-2 control-label">
+                                                    Contraseña
+                                                </label>
+                                                <div class="col-sm-4">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input type="password" name="Contraseña" class="form-control" placeholder="Contraseña" required="required" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <button type="submit" class="submit btn btn-primary btn-sm">
+                                                        Continuar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                            }
                                         </div>
                                     </div>
                                 </div>
@@ -837,26 +840,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     });
     </script>
     <!-- //Categories -->
-    <!-- Support content ----- QUIENES SOMOS-->
+    <!-- Support content -----Top-->
     <div class="w3l-support">
         <div class="container">
             <div class="col-md-5 w3_agile_support_left">
-                <img src="~/Recursos/BackEnd/img/@ViewBag.Informacion.ImagenQ" alt=" " class="img-responsive" />
+                @*<img src="~/Recursos/BackEnd/img/" alt=" " class="img-responsive" />*@
             </div>
             <div class="col-md-7 w3_agile_support_right">
-                <h1><u>¿Quiénes somos?</u></h1>
-                @*<h3>Quiénes somos?</h3>*@
+                <h1><u>Top </u></h1>               
                 <p>
-                    @ViewBag.Informacion.Quienes
+                   
                 </p>
                 <div class="agile_more">
-                    <a href="support.html" class="type-4">
-                        @*<span> Support </span>
-                        <span> Support  </span>
-                        <span> Support  </span>
-                        <span> Support  </span>
-                        <span> Support  </span>
-                        <span> Support  </span>*@
+                    <a href="support.html" class="type-4">          
                     </a>
                 </div>
             </div>
@@ -864,26 +860,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
     <!-- //Support content -->
-    <!--phone      ------MISIÖN------>
-    <div class="phone" id="mobileappagileits">
+    <!--phone      ------QUIÉNES SOMOS?------>
+    <div class="phone" id="quienes">
         <div class="container">
             <div class="col-md-5">
-                <img src="~/Recursos/BackEnd/img/@ViewBag.Informacion.ImagenM" class="img-responsive" alt="" />
+                <img src="~/Recursos/BackEnd/img/@ViewBag.Informacion.ImagenQ" class="img-responsive" alt="" />
             </div>
             <div class="col-md-7 w3_agile_support_right">
-                <h1 style="color:white"><u>Misión</u></h1>
-                @*<h3>24/7 Customer Service Support</h3>*@
-                <p style="color: white; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;">
-                   @ViewBag.Informacion.Mision
+                <h1 style="color:white"><u>Quiénes somos?</u></h1>
+                <p style="color: white; font-family: " Helvetica Neue", Helvetica, Arial, sans-serif;">
+                    @ViewBag.Informacion.Quienes
                 </p>
                 <div class="agile_more">
-                    <a href="support.html" class="type-4">
-                        @*<span> Support </span>
-                        <span> Support  </span>
-                        <span> Support  </span>
-                        <span> Support  </span>
-                        <span> Support  </span>
-                        <span> Support  </span>*@
+                    <a href="support.html" class="type-4">                     
                     </a>
                 </div>
             </div>
@@ -892,27 +881,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
     <!--//phone-->
-    <!-- Support content .-----VISIÓN -->
-    <div class="w3l-support">
+    <!-- Support content .-----MISIÓN -->
+    <div class="w3l-support" id="mision">
         <div class="container">
             <div class="col-md-5 w3_agile_support_left">
-                <img src="~/Recursos/BackEnd/img/@ViewBag.Informacion.ImagenV" alt="" class="img-responsive" />
+                <img src="~/Recursos/BackEnd/img/@ViewBag.Informacion.ImagenM" alt="" class="img-responsive" />
             </div>
             <div class="col-md-7 w3_agile_support_right">
-                <h1><u>Visión</u></h1>
-                @*<h3>24/7 Customer Service Support</h3>*@
+                <h1><u>Misión</u></h1>              
                 <p>
-                   @ViewBag.Informacion.Vision
+                    @ViewBag.Informacion.Mision
                 </p>
                 <div>
                 <div class="agile_more">
-                    <a href="support.html" class="type-4">
-                        @*<span> Support </span>
-                        <span> Support  </span>
-                        <span> Support  </span>
-                        <span> Support  </span>
-                        <span> Support  </span>
-                        <span> Support  </span>*@
+                    <a href="support.html" class="type-4">           
                     </a>
                 </div>
                 </div>
@@ -921,26 +903,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
     <!-- //Support content -->
-    <!--phone      ------MISIÖN------>
-    <div class="phone" id="mobileappagileits">
+    <!--phone      ------VISIÓn------>
+    <div class="phone " id="vision">
         <div class="container">
             <div class="col-md-5">
-                <img src="~/Recursos/BackEnd/img/@ViewBag.Informacion.ImagenM" class="img-responsive" alt="" />
+                <img src="~/Recursos/BackEnd/img/@ViewBag.Informacion.ImagenV" class="img-responsive" alt="" />
             </div>
             <div class="col-md-7 w3_agile_support_right">
-                <h1 style="color:white"><u>Estudiantes</u></h1>
-                @*<h3>24/7 Customer Service Support</h3>*@
+                <h1 style="color:white"><u>Visión</u></h1>
                 <p style="color: white; font-family: " Helvetica Neue", Helvetica, Arial, sans-serif;">
-                   En este apartado habrá info para los estudiantes...
+                    @ViewBag.Informacion.Vision
                 </p>
                 <div class="agile_more">
                     <a href="support.html" class="type-4">
-                        @*<span> Support </span>
-                            <span> Support  </span>
-                            <span> Support  </span>
-                            <span> Support  </span>
-                            <span> Support  </span>
-                            <span> Support  </span>*@
                     </a>
                 </div>
             </div>
@@ -962,25 +937,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <!--//offers-->
     <!--partners-->
-    <div class="w3layouts-partners">
-        @*<h3>We are accepted at</h3>*@
+    @*<div class="w3layouts-partners">
+        @*<h3>Información para el estudiante</h3>
         <div class="container">
-            <ul>
-                @*<li><a href="#"><img class="img-responsive" src="~/Recursos/FontEnd/images/lg.png" alt=""></a></li>
-                <li><a href="#"><img class="img-responsive" src="~/Recursos/FontEnd/images/lg1.png" alt=""></a></li>
-                <li><a href="#"><img class="img-responsive" src="~/Recursos/FontEnd/images/lg2.png" alt=""></a></li>
-                <li><a href="#"><img class="img-responsive" src="~/Recursos/FontEnd/images/lg3.png" alt=""></a></li>
-                <li><a href="#"><img class="img-responsive" src="~/Recursos/FontEnd/images/lg4.png" alt=""></a></li>
-            </ul>
-            <ul>
-                <li><a href="#"><img class="img-responsive" src="~/Recursos/FontEnd/images/lg5.png" alt=""></a></li>
-                <li><a href="#"><img class="img-responsive" src="~/Recursos/FontEnd/images/lg6.png" alt=""></a></li>
-                <li><a href="#"><img class="img-responsive" src="~/Recursos/FontEnd/images/lg7.png" alt=""></a></li>
-                <li><a href="#"><img class="img-responsive" src="~/Recursos/FontEnd/images/lg8.png" alt=""></a></li>
-                <li><a href="#"><img class="img-responsive" src="~/Recursos/FontEnd/images/lg9.png" alt=""></a></li>*@
-            </ul>
+            
         </div>
-    </div>
+    </div>*@
     <!--//partners-->
     <!-- subscribe -->
     <div class="w3-subscribe agileits-w3layouts">
@@ -991,8 +953,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li><a href="#" class="fa fa-facebook sicon facebook"> </a></li>
                     <li><a href="#" class="fa fa-twitter sicon twitter"> </a></li>
                     <li><a href="#" class="fa fa-google-plus sicon googleplus"> </a></li>
-                    @*<li><a href="#" class="fa fa-dribbble sicon dribbble"> </a></li>
-                    <li><a href="#" class="fa fa-rss sicon rss"> </a></li>*@
                 </ul>
             </div>
             <div class="col-md-6 w3-agile-subscribe-right">

@@ -3,11 +3,30 @@
 @{
     Layout = null;
 }
+<div class="creditly-card-form agileinfo_form">
+    @*@using (Ajax.BeginForm("FiltroTareas", "Tareas", new AjaxOptions() { HttpMethod = "POST" }))
+    {*@
+        <div class="row">
+            <div class="col-lg-3">
+                <select name="Filtro" id="Filtro" class="form-control show-menu-arrow">
+                    <option value="1">Todos</option>
+                    <option value="2">Aprobados</option>
+                    <option value="3">Rechazados</option>
+                </select>
+            </div>
+            <div class="col-lg-3">
+                <button id="btnAceptar" class="btn btn-success">Aceptar</button>
+            </div>
+        </div>
+    @* } *@
+</div>
 
-<div class="row">
-    @foreach (DataRow row in Model.Rows)
-    {
-        <div class="col-md-4 movie-preview">
+
+
+<div class="row" id="vistaDatos">
+    
+    @*@foreach (DataRow row in Model.Rows)
+    {       
             <img src="~/Recursos/FontEnd/images/@row["Imagen"]" class="img-responsive zoom-img" alt="Source not found" />
             <div class="m-movie-title">
                 <a class="m-movie-link" href="select-show.html">@row["Titulo"]</a>
@@ -21,5 +40,20 @@
                 <div class="clearfix"></div>
             </div>
         </div>
-    }
+    }*@
+    /**/
 </div>
+
+<script src="~/Recursos/FontEnd/js/jquery-2.2.3.min.js"></script>
+<script>
+    $("#btnAceptar").click(function () {
+        $.ajax({
+            url: "/Tareas/Filtro",
+            data: { data: $("#Filtro").val() },
+            success: function (data) {
+                $("#vistaDatos").html(data)
+            }
+        })
+    })
+
+</script>

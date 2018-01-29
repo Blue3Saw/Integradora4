@@ -16,8 +16,9 @@ namespace DAO
 
         public int AgregarTarea(object ObjT)
         {
-            TareasBO Dato = (TareasBO)ObjT;
-            SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO Tareas (UsuarioEmpleador,Titulo, Fecha, HoraInicio, HoraFinal, Tipo, Descripcion, Estatus, Longitud, Latitud, Direccion) VALUES (@Empleador,@Titulo, @Fecha, @HoraInicio, @HoraFin, @Tipo, @Descripcion, @Estatus, @Longitud, @Latitud, @Direccion)");
+            TareasBO Dato = (TareasBO)ObjT; 
+            SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO Tareas (UsuarioEmpleador,Titulo, Fecha, HoraInicio, HoraFinal, Tipo, Descripcion, Estatus, Longitud, Latitud, Direccion) output inserted.Codigo VALUES (@Empleador,@Titulo, @Fecha, @HoraInicio, @HoraFin, @Tipo, @Descripcion, @Estatus, @Longitud, @Latitud, @Direccion)");
+            int id; int.TryParse(Dato.Codigo.ToString(), out id);
             SentenciaSQL.Parameters.Add("@Empleador", SqlDbType.Int).Value = Dato.CodigoEmpleador;
             SentenciaSQL.Parameters.Add("@Titulo", SqlDbType.VarChar).Value = Dato.Titulo;
             SentenciaSQL.Parameters.Add("@Fecha", SqlDbType.Date).Value = Dato.Fecha.ToString("yyyy-MM-dd");
@@ -30,7 +31,6 @@ namespace DAO
             SentenciaSQL.Parameters.Add("@Latitud", SqlDbType.Float).Value = Dato.Latitud;
             SentenciaSQL.Parameters.Add("@Direccion", SqlDbType.VarChar).Value = Dato.Direccion;
             SentenciaSQL.Parameters.Add("@CanPer", SqlDbType.Int).Value = Dato.CantPersonas;
-            SentenciaSQL.Parameters.Add("@Pago", SqlDbType.Float).Value = Dato.Pago;
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
         }
@@ -38,7 +38,7 @@ namespace DAO
         public int ActualizarTarea(object ObjT)
         {
             TareasBO Dato = (TareasBO)ObjT;
-            SqlCommand SentenciaSQL = new SqlCommand("UPDATE Tareas SET Fecha = @Fecha, HoraInicio = @HoraInicio, HoraFin = @HoraFin, Tipo = @Tipo, Descripcion = @Descripcion, Estatus = @Estatus WHERE Codigo = @Codigo");
+            SqlCommand SentenciaSQL = new SqlCommand("UPDATE Tareas SET Fecha = @Fecha, HoraInicio = @HoraInicio, HoraFin = @HoraFin, Tipo = @Tipo, Descripcion = @Descripcion, Estatus = @Estatus,CantPer = @CanPer,Imagen = @Imagen WHERE Codigo = @Codigo");
             SentenciaSQL.Parameters.Add("@Codigo", SqlDbType.Int).Value = Dato.Codigo;
             SentenciaSQL.Parameters.Add("@Fecha", SqlDbType.Date).Value = Dato.Fecha;
             SentenciaSQL.Parameters.Add("@HoraInicio", SqlDbType.Time).Value = Dato.HoraInicio.ToString("HH:mm");
@@ -47,7 +47,7 @@ namespace DAO
             SentenciaSQL.Parameters.Add("@Descripcion", SqlDbType.Text).Value = Dato.Descripcion;
             SentenciaSQL.Parameters.Add("@Estatus", SqlDbType.Int).Value = Dato.CodigoEstatus;
             SentenciaSQL.Parameters.Add("@CanPer", SqlDbType.Int).Value = Dato.CantPersonas;
-            SentenciaSQL.Parameters.Add("@Pago", SqlDbType.Float).Value = Dato.Pago;
+            SentenciaSQL.Parameters.Add("@Imagen", SqlDbType.VarChar).Value = Dato.Imagen; ;
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
         }

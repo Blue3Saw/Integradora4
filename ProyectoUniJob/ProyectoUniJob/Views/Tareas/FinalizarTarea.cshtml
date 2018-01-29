@@ -2,51 +2,76 @@
 @model DataTable
 
 <div class="content">
-    <div class="container-fluid">        
-        <div class="modal fade" id="ModalCalif" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-sm modal-dialog">
-                <div class="modal-content">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <div class="modal-header">Califica</div>
-        
-                    @using (Ajax.BeginForm("AgregarCalif", "Tareas", new AjaxOptions() { HttpMethod = "POST" }))
-                    {           
-                    
-                         @Html.AntiForgeryToken()
-                        <div class="modal-body">
-                        <hr />
-                        Calificar: <div id="Estrellas"></div>
-                        <input id="ValEst" name="calif" type="text" style="display:none"/>
-                        <input id="tareaid" name="tarea" type="text" style="display:none" />
-                        <input id="empleadorid" name="empleador" type="text" style="display:none" />
-                            <label>Comentario</label>
-                         <input name="comentario" type="text" class="form-control"/>
-                        <div class="row centrar">
-                        <button class="btn btn-success" name="Enviar" type="submit" value="2" >Enviar</button>
-                        </div>  
-                                              
+    <div class="container-fluid">
+        @*@using (Ajax.BeginForm("AgregarCalif", "Tareas", new AjaxOptions() { HttpMethod = "POST" }))
+    {
+        <div class="col-md-12 bann-info">
+            <div class="col-lg-4 ">
+                <div class="bnr-left">
+                    @Html.AntiForgeryToken()
+                    <hr />
+                    Calificar: <div id="Estrellas"></div>
+                    <input id="ValEst" name="calif" type="text" style="display:none" />
+                    <input id="tareaid" name="tarea" type="text" style="display:none" />
+                    <input id="empleadorid" name="empleador" type="text" style="display:none" />
+                    <label>Comentario</label>
+                    <input name="comentario" type="text" class="form-control" />
+                    <div class="row centrar">
+                        <button class="btn btn-success" name="Enviar" type="submit" value="2">Enviar</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+                    }*@
+
+
+
+                    <div class="modal fade" id="ModalCalif" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-sm modal-dialog">
+                            <div class="modal-content">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <div class="modal-header">Califica</div>
+
+                                @using (Ajax.BeginForm("AgregarCalif", "Tareas", new AjaxOptions() { HttpMethod = "POST" }))
+                                {
+
+                                     @Html.AntiForgeryToken()
+                                    <div class="modal-body">
+                                    <hr />
+                                    Calificar: <div id="Estrellas"></div>
+                                    <input id="ValEst" name="calif" type="text" style="display:none"/>
+                                    <input id="tareaid" name="tarea" type="text" style="display:none" />
+                                    <input id="empleadorid" name="empleador" type="text" style="display:none" />
+                                        <label>Comentario</label>
+                                     <input name="comentario" type="text" class="form-control"/>
+                                    <div class="row centrar">
+                                    <button class="btn btn-success" name="Enviar" type="submit" value="2" >Enviar</button>
+                                    </div>
+
+                                    </div>
+                                }
+                            </div>
                         </div>
-                    }
+                    </div>
+
                 </div>
             </div>
-        </div>
-
-    </div>
-</div>
 
 
 
-        <script src="~/Recursos/FontEnd/js/starrr.js"></script>
-        <link href="~/Recursos/FontEnd/css/starrr.css" rel="stylesheet" />
-        <script>
-            $('#Estrellas').starrr({
-                change: function(e,valor) {$('#ValEst').val(valor)}
+            <script src="~/Recursos/FontEnd/js/starrr.js"></script>
+            <link href="~/Recursos/FontEnd/css/starrr.css" rel="stylesheet" />
+            <script>
+                $('#Estrellas').starrr({
+                    change: function (e, valor) { $('#ValEst').val(valor) }
                 });
-           
-            //$(function () { $("#Estrellas").starrr() });
 
-        </script>
+                        //$(function () { $("#Estrellas").starrr() });
+
+            </script>
 
 

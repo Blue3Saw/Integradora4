@@ -26,8 +26,9 @@ namespace DAO
 
         public int ActualizarFoto(object ObjF)
         {
-            FotosBO Dato = (FotosBO)ObjF;
-            SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO Fotos (Imagen, TareaID) VALUES (@Imagen, @TareaID)");
+            FotosBO Dato = (FotosBO)ObjF;  
+            SqlCommand SentenciaSQL = new SqlCommand("update  Fotos set Imagen = @Imagen, TareaID = @TareaID where Codigo = @Cod");
+            SentenciaSQL.Parameters.Add("@Cod", SqlDbType.Int).Value = Dato.Codigo;
             SentenciaSQL.Parameters.Add("@Imagen", SqlDbType.VarChar).Value = Dato.Imagen;
             SentenciaSQL.Parameters.Add("@TareaID", SqlDbType.Int).Value = Dato.CodigoTarea;
             SentenciaSQL.CommandType = CommandType.Text;

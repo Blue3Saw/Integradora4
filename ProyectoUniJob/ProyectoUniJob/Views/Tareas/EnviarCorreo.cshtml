@@ -1,0 +1,18 @@
+﻿@using BO
+@model TareasBO
+
+<h2>Fin</h2>
+<div class="col-md-2"></div>
+<div class="clearfix">&nbsp;</div>
+<div class="container-fluid">
+    <div class="container card" style="width:109%;">
+        @using (Ajax.BeginForm("EnviarCorreo", "Tareas", new AjaxOptions() { HttpMethod = "POST" }))
+    {        
+        <div class="col-md-12 bann-info">
+            <div class="row">
+                <button class="btn btn-success right" type="submit">Finalizar tarea</button>
+            </div>
+        </div>
+            }
+        </div>        
+    </div>

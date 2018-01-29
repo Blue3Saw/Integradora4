@@ -5,12 +5,18 @@ using System.Web;
 using System.Web.Mvc;
 using DAO;
 using BO;
+using System.Net.Mail;
+using System.Net;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 
 namespace ProyectoUniJob.Controllers.FrontEnd
 {
     public class TareasController : Controller
     {
         TareasDAO ObjDAO = new TareasDAO();
+        FotosDAO DAOFoto = new FotosDAO();
 
         // GET: Tareas
         public ActionResult Index()
@@ -21,7 +27,8 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AgregarTarea(string agregar, string modificar, string eliminar, string IdTarea, string NombreUsu, string Titulo, string Direccion,
-            string Latitud, string Longitud, string FechaTarea, string HoraInicioTarea, string HoraFinTarea, string cmbClas, string Descripcion, string inputLabel)
+            string Latitud, string Longitud, string FechaTarea, string HoraInicioTarea, string HoraFinTarea, string cmbClas, string Descripcion, string inputLabel,
+            string CantPersonas, IEnumerable<HttpPostedFileBase> Imagen)
         {
             TareasBO obj = new TareasBO();
             int A = Convert.ToInt32(agregar);
@@ -33,9 +40,9 @@ namespace ProyectoUniJob.Controllers.FrontEnd
                 obj.Codigo = Convert.ToInt32(IdTarea);
             }
 
-            obj.CodigoEmpleador = (int)Session["Codigo"]; //Convert.ToInt32(NombreUsu);
+            //obj.CodigoEmpleador = 3;// (int)Session["Codigo"]; //Convert.ToInt32(NombreUsu);
 
-            obj.CodigoEmpleador = int.Parse(Session["Codigo"].ToString()); //Convert.ToInt32(NombreUsu);
+           obj.CodigoEmpleador = 3;//int.Parse(Session["Codigo"].ToString()); //Convert.ToInt32(NombreUsu);
 
             obj.Titulo = Titulo;
             obj.Direccion = Direccion;
@@ -47,9 +54,12 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             obj.TipoTarea = Convert.ToInt32(cmbClas);
             obj.Descripcion = Descripcion;
             obj.CodigoEstatus = Convert.ToInt32(inputLabel);
+            obj.CantPersonas = Convert.ToInt32(CantPersonas);
+           
             if (A > 0)
-            {
-                ObjDAO.AgregarTarea(obj);
+            {               
+                obj.Codigo = ObjDAO.AgregarTarea(obj);
+                AgregarImagenTarea(Imagen, obj.Codigo);
                 ViewBag.Script = "Agregado";
             }
             else if (M > 0)
@@ -57,6 +67,32 @@ namespace ProyectoUniJob.Controllers.FrontEnd
                 ObjDAO.ActualizarTarea(obj);
             }
             return Redirect("/Usuario/IndexEmpleador#parentHorizontalTab2");
+        }
+        public void AgregarImagenTarea(IEnumerable<HttpPostedFileBase> Imagen, int IdTarea)
+        {
+            FotosBO FotBO = new FotosBO();
+            FotosDAO DAOFotos = new FotosDAO();
+            FotBO.CodigoTarea = IdTarea;
+            if (Imagen != null)
+            {
+                foreach (var item in Imagen)
+                {
+                    var filename = Path.GetFileName(item.FileName);
+                    var path2 = Path.Combine(Server.MapPath("~/Recursos/FontEnd/images/"), filename);
+                    item.SaveAs(path2);
+                    FotBO.Imagen = filename;
+                    DAOFotos.AgregarFoto(FotBO);
+                }
+            }
+            else
+            {
+                FotBO.Imagen = "Ninguna";
+            }           
+        }
+
+        public ActionResult Upload(IEnumerable<HttpPostedFileBase> Imagen)
+        {
+            return new EmptyResult();
         }
 
         public ActionResult BuscarTarea(string Codigo)
@@ -92,24 +128,30 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult TodasTareasEmpleador()
         {
-            int Codigo = int.Parse(Session["Codigo"].ToString());
+            int Codigo = 1;//int.Parse(Session["Codigo"].ToString());
             return View(ObjDAO.TodasTareasEmpleador(Codigo));
         }
 
-        public ActionResult FiltroTareas(string Filtro)
+        public ActionResult Filtro(string Filtro)
         {
-            int Codigo = int.Parse(Session["Codigo"].ToString());
+            int Codigo = 1;//int.Parse(Session["Codigo"].ToString());
             
             if(Filtro == "2")
             {
                 ViewBag.Aprobadas = 2;
-                return View(ObjDAO.TareasAprobadas(Codigo));
+                return PartialView(ObjDAO.TareasAprobadas(Codigo));
+                //return View(ObjDAO.TareasAprobadas(Codigo));
             }
             else
             {
                 ViewBag.Aprobadas = 3;
-                return View(ObjDAO.TareasRechazadas(Codigo));
+                return PartialView(model:"3");
+                //return View(ObjDAO.TareasRechazadas(Codigo));
             }
+        }
+        public ActionResult FiltroTareasView()
+        {
+            return View("FiltroTareas");
         }
 
         public ActionResult TareasAcepUsuario()
@@ -127,7 +169,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult TareaSeleccionada(string Codigo)
         {
-            int Clave = int.Parse(Codigo);
+            int Clave = 1;//int.Parse(Codigo);
             return View(ObjDAO.TareaSeleccionada(Clave));
         }
 
@@ -150,7 +192,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         public ActionResult FinalizarTarea()
         {
             
-            return PartialView("FinalizarTarea");
+            return Redirect("/Usuario/IndexEmpleador#parentHorizontalTab2");
         }
         public ActionResult AgregarCalif(string calif, string comentario, int tarea, int empleador)
         {
@@ -159,13 +201,50 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             int Tarea = tarea;
             
             OBO.CodigoTarea = Tarea;
-            OBO.UsCalifica = int.Parse(Session["codigo"].ToString());
+            OBO.UsCalifica = 1;//int.Parse(Session["codigo"].ToString());
             OBO.UsCalificado =empleador;
             OBO.Calificacion = int.Parse(calif);
             OBO.Comentario = comentario;
             obj.AgregarCalificacion(OBO);
             //Session["Tarea"] = codigo;
             return RedirectToAction("IndexEstudiante", "Usuario");
+        }
+        [HttpGet]
+        public ActionResult EnviarCorreoView()
+        {
+            return View("EnviarCorreo");
+        }
+
+        [HttpPost]
+        public ActionResult EnviarCorreo()
+        {
+            string CorreoRemitente = "";
+            string CorreoDestinatario = "";
+            MailMessage Correo = new MailMessage();
+            Correo.To.Add(new MailAddress(CorreoDestinatario));
+            Correo.From = new MailAddress(CorreoRemitente);
+            Correo.Subject = "Mensajes de prueba..";
+            Correo.Body = "Prueba 1";
+            Correo.IsBodyHtml = true;
+            Correo.Priority = MailPriority.Normal;
+            SmtpClient Cliente = new SmtpClient();
+            Cliente.Host = "smtp.gmail.com";
+            Cliente.Port = 587;
+            Cliente.EnableSsl = true;
+            Cliente.Credentials = new NetworkCredential("","");
+            try
+            {
+                Cliente.Send(Correo);
+                return Redirect("/Usuario/IndexEmpleador#parentHorizontalTab3");
+            }
+            catch 
+            {
+                return Content("Error");
+            }
+        }
+        public ActionResult VistaCAlif()
+        {
+            return View();
         }
 
     }

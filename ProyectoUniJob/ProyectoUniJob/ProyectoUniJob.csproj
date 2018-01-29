@@ -99,6 +99,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Recursos\BackEnd\css\alertify.core.css" />
@@ -165,6 +166,7 @@
     <Content Include="Recursos\FontEnd\css\clockpicker.css" />
     <Content Include="Recursos\FontEnd\css\creditly.css" />
     <Content Include="Recursos\FontEnd\css\easy-responsive-tabs.css" />
+    <Content Include="Recursos\FontEnd\css\fileinput.min.css" />
     <Content Include="Recursos\FontEnd\css\font-awesome.css" />
     <Content Include="Recursos\FontEnd\css\jquery-ui.css" />
     <Content Include="Recursos\FontEnd\css\jquery.seat-charts.css" />
@@ -216,6 +218,7 @@
     <Content Include="Recursos\FontEnd\js\creditly.js" />
     <Content Include="Recursos\FontEnd\js\easing.js" />
     <Content Include="Recursos\FontEnd\js\easyResponsiveTabs.js" />
+    <Content Include="Recursos\FontEnd\js\fileinput.min.js" />
     <Content Include="Recursos\FontEnd\js\jqBootstrapValidation.js" />
     <Content Include="Recursos\FontEnd\js\jquery-2.2.3.min.js" />
     <Content Include="Recursos\FontEnd\js\jquery-ui.js" />
@@ -226,28 +229,6 @@
     <Content Include="Recursos\FontEnd\js\starrr.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Reportes\DataSets\AlumnosDS.xsc">
-      <DependentUpon>AlumnosDS.xsd</DependentUpon>
-    </Content>
-    <None Include="Reportes\DataSets\AlumnosDS.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>AlumnosDS.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="Reportes\DataSets\AlumnosDS.xss">
-      <DependentUpon>AlumnosDS.xsd</DependentUpon>
-    </Content>
-    <Content Include="Reportes\DataSets\TareasDS.xsc">
-      <DependentUpon>TareasDS.xsd</DependentUpon>
-    </Content>
-    <None Include="Reportes\DataSets\TareasDS.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TareasDS.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Reportes\DataSets\TareasDS.xss">
-      <DependentUpon>TareasDS.xsd</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -273,29 +254,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reportes\DataSets\AlumnosDS.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AlumnosDS.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes\DataSets\TareasDS.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TareasDS.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes\Viewers\TareasReport.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TareasReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="TipoUsuarioDAO.cs" />
-    <Compile Include="Reportes\Viewers\UsuarioReport.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UsuarioReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -386,6 +345,11 @@
     <Content Include="Views\Informacion\PaginaPrincipal.cshtml" />
     <Content Include="Views\Tareas\TodasTareasEmpleador.cshtml" />
     <Content Include="Views\Tareas\FiltroTareas.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Tareas\EnviarCorreo.cshtml" />
+    <Content Include="Views\Tareas\Filtro.cshtml" />
+    <Content Include="Views\Tareas\VistaCAlif.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -396,8 +360,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Reportes\DataSets\" />
+    <Folder Include="Reportes\Viewers\" />
     <Folder Include="Views\Reportes\" />
-    <Folder Include="Views\Shared\" />
     <Folder Include="Views\TipoUsuario\" />
   </ItemGroup>
   <ItemGroup>
@@ -409,16 +374,6 @@
       <Project>{e18ef0d7-2b0b-47b9-b9fa-433346c67503}</Project>
       <Name>DAO</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Reportes\Viewers\TareasReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>TareasReport.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\Viewers\UsuarioReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>UsuarioReport.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
