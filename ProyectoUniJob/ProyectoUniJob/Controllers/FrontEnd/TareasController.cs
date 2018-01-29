@@ -14,10 +14,9 @@ using System.IO;
 namespace ProyectoUniJob.Controllers.FrontEnd
 {
     public class TareasController : Controller
-    {
+    {        
         TareasDAO ObjDAO = new TareasDAO();
-        FotosDAO DAOFoto = new FotosDAO();
-
+        FotosDAO DAOFoto = new FotosDAO();        
         // GET: Tareas
         public ActionResult Index()
         {      
@@ -120,7 +119,6 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             Tipo.TipoTarea = ObjCla.ListaTipo();
             return PartialView(Tipo.TipoTarea);
         }
-
         public ActionResult TodasTareas()
         {
             return View(ObjDAO.TodasTareas());
@@ -135,8 +133,8 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         public ActionResult Filtro(string Filtro)
         {
             int Codigo = 1;//int.Parse(Session["Codigo"].ToString());
-            
-            if(Filtro == "2")
+
+            if (Filtro == "2")
             {
                 ViewBag.Aprobadas = 2;
                 return PartialView(ObjDAO.TareasAprobadas(Codigo));
@@ -145,9 +143,28 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             else
             {
                 ViewBag.Aprobadas = 3;
-                return PartialView(model:"3");
+                return PartialView(model: "3");
                 //return View(ObjDAO.TareasRechazadas(Codigo));
+                int filtro = 0;
+                int Codigo = int.Parse(Session["Codigo"].ToString());
+                if (Session["Filtro"].ToString() == null)
+                {
+                    filtro = 0;
+                }
+                else
+                {
+                    filtro = int.Parse(Session["Filtro"].ToString());
+                }
+                return View(ObjDAO.TodasTareasEmpleador(Codigo, filtro));
             }
+        }
+
+        [HttpPost]
+        public ActionResult FiltroTareas(string Filtro)
+        {
+            int entrada = int.Parse(Filtro);
+            Session["Filtro"] = entrada;
+            return Redirect("~/Usuario/IndexEmpleador");
         }
         public ActionResult FiltroTareasView()
         {
@@ -246,6 +263,6 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         {
             return View();
         }
-
+        //metodos para la vista de ver perfil usuario por parte del empleador        
     }
 }

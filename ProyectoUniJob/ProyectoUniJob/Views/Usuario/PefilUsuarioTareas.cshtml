@@ -1,0 +1,157 @@
+﻿@using System.Data;
+@model DataTable
+@{
+    ViewBag.Title = "PefilUsuarioTareas";
+    Layout = "~/Views/FrontEnd/MasterPage/_layoutUsuarios.cshtml";
+}
+<link href="~/Recursos/FontEnd/css/subasta.css" rel="stylesheet" />
+<div class="agile-pay w3layouts-content">
+    <div class="container">
+        @{ 
+            DataTable datos = ViewData["Datos"] as DataTable;
+            foreach (DataRow item in datos.Rows)
+            {
+        <div class="row">
+            <div class="col-md-4 centar">
+                <div>
+                    <img class="imagenredonda" src="~/Recursos/BackEnd/img/kindred-shadowfire.jpg" />
+                </div>
+            </div>
+            <div class="col-md-4 centar tama">
+                <div>
+                    <h2>@item["Nombre"] @item["Apellidos"]</h2>
+                </div>
+            </div>
+            <div>
+                <div class="col-md-4 centar tama">
+                    <img src="~/Recursos/FontEnd/images/1calif.png" width="100" /> <h2>Puntaje:@ViewData["Promedio"]</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="tamañodiv"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+               <div class="centar"><h3>Correo Electronico: </h3></div>
+                <div class="centar"><h4>@item["Email"]</h4></div>
+            </div>
+            <div class="col-md-4">
+                <div class="centar"><h3>Telefono</h3></div>
+                <div class="centar"><h4>@item["Telefono"]</h4></div>
+            </div>
+            <div class="col-md-4">
+              <div class="centar"><h3>Fecha Nacimiento:</h3></div>
+              <div class="centar"><h4>@item["FechaNac"]</h4></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="tamañodiv"></div>
+        </div>
+        <div class="row">
+            <div class="tamañodiv"><h2>Datos sobre las tareas realizadas:</h2></div>
+            <div class="col-md-6">
+                <div>
+                    <h3>
+                        calificaciones por tarea:
+                    </h3>
+                </div>
+                  @foreach (DataRow row in Model.Rows)
+                  {
+                      for (int i = 5; i > 0; i--)
+                      {
+                          if (i == 5)
+                          {
+                            <div class="centar">
+                                <img src="~/Recursos/FontEnd/images/5.png" width="100" height="25" /><h4> @row["Estrellas" + i]</h4>
+                            </div>
+                          }
+                          if (i == 4)
+                          {
+                            <div class="centar">
+                                <img src="~/Recursos/FontEnd/images/4.png" width="100" height="25" /><h4> @row["Estrellas" + i]</h4>
+                            </div>
+                          }
+                          if (i == 3)
+                          {
+                            <div class="centar">
+                                <img src="~/Recursos/FontEnd/images/3.png" width="100" height="25" /> <h4> @row["Estrellas" + i]</h4>
+                            </div>
+                          }
+                          if (i == 2)
+                          {
+                            <div class="centar">
+                                <img src="~/Recursos/FontEnd/images/2.png" width="100" height="25" /> <h4> @row["Estrellas" + i]</h4>
+                            </div>
+                          }
+                          if (i == 1)
+                          {
+                            <div class="centar">
+                                <img src="~/Recursos/FontEnd/images/1.png" width="100" height="25" /> <h4> @row["Estrellas" + i]</h4>
+                            </div>
+                          }
+
+                      }
+                  }
+            </div>
+            <div class="col-md-6">
+                <div class="centar"><h3> Num. Tareas Realizadas</h3> <br /></div>
+                <div class="centar"><h4>58</h4></div>
+            </div>
+        </div>
+            }
+            }
+        <div class="row">
+            <div class="tamañodiv"></div>
+        </div>
+        <div class="row">
+            <div>
+                <div class="tamañodiv"><h2>Ultimos comentarios:</h2></div>
+            </div>
+            <div class="creditly-card-form agileinfo_form">
+                <section class="creditly-wrapper wthree, w3_agileits_wrapper">
+                    <div class="credit-card-wrapper">
+                        <div class="first-row form-group">
+                            <div class="row">
+                                @{ DataTable comentarios = ViewData["comentarios"] as DataTable;
+                                    foreach (DataRow row in comentarios.Rows)
+                                    {
+                                    <div class="col-md-4 movie-preview">
+                                        <div class="m-movie-title">
+                                            <div class="centar">
+                                                <h3 class="m-movie-link" style="color:black;">@row["nombre"]</h3>
+                                            </div>
+                                            <div class="centar">
+                                                <img class="imagenredonda" src="~/Recursos/BackEnd/img/@row["Comentario"]" height="10" width="10" />
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="m-r-date">
+                                                <div>
+                                                    <h4>
+                                                        Calificación:
+                                                        @row["Calificacion"]<img width="75" src="~/Recursos/FontEnd/images/1.png" />
+                                                    </h4>
+                                                </div>
+                                                <div>
+                                                    <h4>
+                                                        Comentario:
+                                                        @row["Comentario"]
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                            <div class="m-r-like">
+                                   
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                        }
+                                    }
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

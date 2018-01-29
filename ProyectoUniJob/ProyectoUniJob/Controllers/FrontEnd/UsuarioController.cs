@@ -17,6 +17,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         UsuariosDAO ObjUsuario = new UsuariosDAO();
         MensajesDAO ObjMensajes = new MensajesDAO();
         MensajesBO bo = new MensajesBO();
+        TareasDAO tareas = new TareasDAO();
         TareasController ObjControl = new TareasController();
 
         // GET: Usuario
@@ -30,6 +31,14 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             ViewBag.Tarea = Session["Tarea"];
             if (Session["Codigo"] != null)
             {
+                DataTable categorias = tareas.categorias();
+                List<string> cate = new List<string>();
+                foreach (DataRow item in categorias.Rows)
+                {
+                    cate.Add(item["Clasificacion"].ToString());
+                }
+
+                ViewData["categoria"] = new SelectList(cate);
                 return View();
             }
             else
@@ -156,6 +165,136 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             }
 
         }
+
+        [HttpPost]
+        public ActionResult VariablesTareaBusqueda(string categoria,string Rango,string txtLatitud,string txtLongitud)
+        {
+            Session["LatitudUsuario"] = txtLatitud;
+            Session["longitudUsuario"] = txtLongitud;
+            Session["Rango"] = Rango;
+            Session["Categoria"] = categoria;
+
+            return Redirect("~/Usuario/IndexEstudiante#parentHorizontalTab2");
+        }
+
+        //[HttpPost]
+        public ActionResult PefilUsuarioTareas()
+        {
+            int codigo= 1011;
+
+            //este es el datatable que contine la cantidad de estrellas por alumno
+            DataTable lol= tareas.Estrellas(codigo);
+
+            //este es el contiene el promedio de la calificacion
+            DataTable prom= tareas.PromedioEstrellas(codigo);
+            double promediocalif= double.Parse(prom.Rows[0][0].ToString());
+            ViewData["Promedio"] =Math.Round(promediocalif,1);
+
+
+            //lista con los datos a mostar
+            List<string> ejemplo = new List<string>();
+            ejemplo.Add("perro");
+
+            ViewData["Datos"] = ObjUsuario.TablaUsuarios3(codigo);
+
+            ViewData["lol"] = "5";
+            ViewData["lista"] = ejemplo;
+
+
+            //datatable de comentarios
+            ViewData["comentarios"] = tareas.comentariodetareas(codigo);
+
+            return View(lol);
+        }
+
+
+
+
+
+        //seccion de metodos para obtener la distancia de las tareas (ojo leer bien, entender o pregubtar antes de modificar
+
+        public DataTable calculardistanciatareas(double logitud, double latitud)
+        {
+            //variables de la consulta
+            var constante = 6378;//radio ecuatorial de la tierra
+            double latitudtarea, diferencialongitud;
+            double longitudtarea, diferencialatitud;
+            double q;
+            double final;
+
+            //este es datatable para que quede ordenado de mayor a menor en distancias
+            DataTable ordenacion = new DataTable();
+
+
+            //este es el datatable que tiene las coordenadas de las tareas con estatus 1
+            DataTable coordenadas = tareas.cordenadastareas();
+
+            //el que se creara cuando se calculen las distancias
+            DataTable distancias = new DataTable();
+
+            //creamos las columnas del datatable
+            distancias.Columns.Add("Codigo");
+            distancias.Columns.Add("latitud");
+            distancias.Columns.Add("longitud");
+            distancias.Columns.Add("distanciaskm");
+            distancias.Columns.Add("Titulo");
+            distancias.Columns.Add("Descripcion");
+            distancias.Columns.Add("Clasificacion");
+            distancias.Columns.Add("Nombre");
+
+
+            foreach (DataRow row in coordenadas.Rows)
+            {
+                //creamos un datarow para rellanar el nuevo datatable
+                DataRow fila = distancias.NewRow();
+
+                //asignamos los datos del anterior datatable
+                latitudtarea = double.Parse(row[4].ToString());
+                longitudtarea = double.Parse(row[3].ToString());
+
+                //proceso para optener la distancia relativa
+
+                diferencialatitud = radianes(latitudtarea - latitud);
+                diferencialongitud = radianes(longitudtarea - logitud);
+                var a = Math.Sin(diferencialatitud / 2) * Math.Sin(diferencialatitud / 2) + Math.Sin(diferencialongitud / 2) * Math.Sin(diferencialongitud / 2) * Math.Cos(latitud) * Math.Cos(latitudtarea);
+                var c = 2 * Math.Asin(Math.Sqrt(a));
+
+                //distancia final
+                final = constante * 2 * Math.Asin(Math.Sqrt(a));
+                    //creamos la fila del nuevo datatable
+                    //fila["Codigo"] = row[0].ToString();
+                    //fila["latitud"] = row[1].ToString();
+                    //fila["logitud"] = row[2].ToString();
+                    fila["Titulo"] = row[0].ToString();
+                    fila["Descripcion"] = row[1].ToString();
+                    fila["Clasificacion"] = row[2].ToString();
+                    fila["longitud"] = row[3].ToString();
+                    fila["latitud"] = row[4].ToString();
+                    fila["Codigo"] = row[5].ToString();
+                    fila["Nombre"] = row[6].ToString() + " " + row[7].ToString();
+
+                    fila["distanciaskm"] = Math.Round(final * 100) / 100;
+
+                    //agregamos la fila
+                    distancias.Rows.Add(fila);
+                int rows = distancias.Rows.Count;
+                ViewData["ResultadoBusqueda"] = rows;
+
+            }
+            //ordenado los datos
+            distancias.DefaultView.Sort = "distanciaskm";
+            // se lo pasamos al datatable que creamos de ordenacion
+
+            ordenacion = distancias.DefaultView.ToTable();
+
+            //retornamos el datatable
+            return ordenacion;
+        }
+        public static double radianes(double angle)
+        {
+            return Math.PI * angle / 180.0;
+        }
+
 
     }
 }

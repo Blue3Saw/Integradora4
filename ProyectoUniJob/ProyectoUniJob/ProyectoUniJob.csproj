@@ -57,6 +57,7 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -174,12 +175,19 @@
     <Content Include="Recursos\FontEnd\css\star-rating.min.css" />
     <Content Include="Recursos\FontEnd\css\starrr.css" />
     <Content Include="Recursos\FontEnd\css\style.css" />
+    <Content Include="Recursos\FontEnd\css\subasta.css" />
     <Content Include="Recursos\FontEnd\fonts\fontawesome-webfont.svg" />
     <Content Include="Recursos\FontEnd\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Recursos\FontEnd\images\1.jpg" />
+    <Content Include="Recursos\FontEnd\images\1.png" />
+    <Content Include="Recursos\FontEnd\images\1calif.png" />
     <Content Include="Recursos\FontEnd\images\2.jpg" />
+    <Content Include="Recursos\FontEnd\images\2.png" />
+    <Content Include="Recursos\FontEnd\images\3.png" />
     <Content Include="Recursos\FontEnd\images\4.jpg" />
+    <Content Include="Recursos\FontEnd\images\4.png" />
     <Content Include="Recursos\FontEnd\images\5.jpg" />
+    <Content Include="Recursos\FontEnd\images\5.png" />
     <Content Include="Recursos\FontEnd\images\buttonA_off.jpg" />
     <Content Include="Recursos\FontEnd\images\buttonA_on.jpg" />
     <Content Include="Recursos\FontEnd\images\cal.png" />
@@ -205,6 +213,7 @@
     <Content Include="Recursos\FontEnd\images\offer-bg.jpg" />
     <Content Include="Recursos\FontEnd\images\paypal.png" />
     <Content Include="Recursos\FontEnd\images\ph1.png" />
+    <Content Include="Recursos\FontEnd\images\rating-153125_1280.png" />
     <Content Include="Recursos\FontEnd\images\seat2.jpg" />
     <Content Include="Recursos\FontEnd\images\top-arrow.png" />
     <Content Include="Recursos\FontEnd\images\universitarios.jpg" />
@@ -220,6 +229,7 @@
     <Content Include="Recursos\FontEnd\js\easyResponsiveTabs.js" />
     <Content Include="Recursos\FontEnd\js\fileinput.min.js" />
     <Content Include="Recursos\FontEnd\js\jqBootstrapValidation.js" />
+    <Content Include="Recursos\FontEnd\js\jquery-1.7.1.min.js" />
     <Content Include="Recursos\FontEnd\js\jquery-2.2.3.min.js" />
     <Content Include="Recursos\FontEnd\js\jquery-ui.js" />
     <Content Include="Recursos\FontEnd\js\jquery.seat-charts.js" />
@@ -350,6 +360,11 @@
     <Content Include="Views\Tareas\EnviarCorreo.cshtml" />
     <Content Include="Views\Tareas\Filtro.cshtml" />
     <Content Include="Views\Tareas\VistaCAlif.cshtml" />
+    <Content Include="Views\Prueba\pruebaPostulados.cshtml" />
+    <Content Include="Views\Prueba\pruebadistancias.cshtml" />
+    <Content Include="Views\Prueba\boton.cshtml" />
+    <Content Include="Views\Prueba\sessioncoordenadas.cshtml" />
+    <Content Include="Views\Usuario\PefilUsuarioTareas.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

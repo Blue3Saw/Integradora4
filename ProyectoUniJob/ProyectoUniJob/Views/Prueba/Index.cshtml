@@ -23,8 +23,6 @@
             navigator.geolocation.getCurrentPosition(function (objPosition) {
                 var lon = objPosition.coords.longitude;
                 var lat = objPosition.coords.latitude;
-
-
                 var myLatlng = new google.maps.LatLng(lat,lon);
                 var mapOptions = {
                     zoom: 15,
@@ -76,6 +74,7 @@
         else {
             content.innerHTML = "Su navegador no soporta la API de geolocalización.";
         }
+        
 
         @*//20.938297181414647, -89.61501516379462
         var myLatlng = new google.maps.LatLng(20.938297181414647, -89.61501516379462);

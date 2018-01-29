@@ -39,6 +39,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             {
                 Session["Codigo"] = ObjUsuario.LoginEmpleador(Datos);
                 Session["msgadm"] = 1;
+                Session["Filtro"] = 0;
                 Session["Nombre"] = ObjUsuario.Buscarnombre(Datos);
                 return RedirectToAction("IndexEmpleador", "Usuario");
             }

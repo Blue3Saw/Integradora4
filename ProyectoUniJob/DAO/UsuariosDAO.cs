@@ -224,7 +224,7 @@ namespace DAO
             }
             return Datos;
         }
-
+        //contine los datos de los estudiantes
         public DataTable TablaUsuarios3(int id)
         {
             UsuarioBO Datos = new UsuarioBO();
@@ -335,5 +335,10 @@ namespace DAO
             valor = int.Parse(tablavirtual.Rows[0][0].ToString());
             return valor;
         }
+
+
+        //metodos para la vista donde el empleador ve el perfil del alumno
+
+
     }
 }
