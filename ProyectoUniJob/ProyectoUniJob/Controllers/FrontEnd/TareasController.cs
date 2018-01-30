@@ -126,6 +126,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult TodasTareasEmpleador(int filtro)
         {
+
             int Codigo = int.Parse(Session["Codigo"].ToString());
             int f = filtro;
             return View(ObjDAO.TodasTareasEmpleador(Codigo,f));
@@ -136,13 +137,17 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             int Codigo = int.Parse(Session["Codigo"].ToString());
 
             if (Filtro == "2")
+
+            int filtro = 0;
+            int Codigo = int.Parse(Session["Codigo"].ToString());
+            if (Session["Filtro"].ToString() == null)
+
             {
-                ViewBag.Aprobadas = 2;
-                return PartialView(ObjDAO.TareasAprobadas(Codigo));
-                //return View(ObjDAO.TareasAprobadas(Codigo));
+                filtro = 0;
             }
             else
             {
+
                 ViewBag.Aprobadas = 3;
                 return PartialView(model: "3");
                 //return View(ObjDAO.TareasRechazadas(Codigo));
@@ -157,8 +162,13 @@ namespace ProyectoUniJob.Controllers.FrontEnd
                     filtro = int.Parse(Session["Filtro"].ToString());
                 }
                 return View(ObjDAO.TodasTareasEmpleador(Cod, filtro));
+
+                filtro = int.Parse(Session["Filtro"].ToString());
+
             }
+            return View(ObjDAO.TodasTareasEmpleador(Codigo, filtro));
         }
+
 
         [HttpPost]
         public ActionResult FiltroTareas(string Filtro)
@@ -187,7 +197,12 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult TareaSeleccionada(string Codigo)
         {
+
             int Clave = int.Parse(Codigo);
+
+            int Clave=int.Parse(Codigo);
+            ViewData["Postulados"] = ObjDAO.postulados(Clave);
+
             return View(ObjDAO.TareaSeleccionada(Clave));
         }
 
