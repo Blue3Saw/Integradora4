@@ -41,7 +41,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
             //obj.CodigoEmpleador = 3;// (int)Session["Codigo"]; //Convert.ToInt32(NombreUsu);
 
-           obj.CodigoEmpleador = 3;//int.Parse(Session["Codigo"].ToString()); //Convert.ToInt32(NombreUsu);
+           obj.CodigoEmpleador = int.Parse(Session["Codigo"].ToString()); //Convert.ToInt32(NombreUsu);
 
             obj.Titulo = Titulo;
             obj.Direccion = Direccion;
@@ -124,15 +124,16 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             return View(ObjDAO.TodasTareas());
         }
 
-        public ActionResult TodasTareasEmpleador()
+        public ActionResult TodasTareasEmpleador(int filtro)
         {
-            int Codigo = 1;//int.Parse(Session["Codigo"].ToString());
-            return View(ObjDAO.TodasTareasEmpleador(Codigo));
+            int Codigo = int.Parse(Session["Codigo"].ToString());
+            int f = filtro;
+            return View(ObjDAO.TodasTareasEmpleador(Codigo,f));
         }
 
         public ActionResult Filtro(string Filtro)
         {
-            int Codigo = 1;//int.Parse(Session["Codigo"].ToString());
+            int Codigo = int.Parse(Session["Codigo"].ToString());
 
             if (Filtro == "2")
             {
@@ -146,7 +147,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
                 return PartialView(model: "3");
                 //return View(ObjDAO.TareasRechazadas(Codigo));
                 int filtro = 0;
-                int Codigo = int.Parse(Session["Codigo"].ToString());
+                int Cod = int.Parse(Session["Codigo"].ToString());
                 if (Session["Filtro"].ToString() == null)
                 {
                     filtro = 0;
@@ -155,7 +156,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
                 {
                     filtro = int.Parse(Session["Filtro"].ToString());
                 }
-                return View(ObjDAO.TodasTareasEmpleador(Codigo, filtro));
+                return View(ObjDAO.TodasTareasEmpleador(Cod, filtro));
             }
         }
 
@@ -175,7 +176,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         {
             UsuarioBO dato = new UsuarioBO();
             dato.Codigo = int.Parse(Session["Codigo"].ToString());
-            return View(ObjDAO.TareasAcepUsuario(dato.Codigo));
+            return View(ObjDAO.TareasAcepUsuario(dato.Codigo));           
         }
 
         public ActionResult TareaAceptSeleccionada(string Codigo)
@@ -186,7 +187,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult TareaSeleccionada(string Codigo)
         {
-            int Clave = 1;//int.Parse(Codigo);
+            int Clave = int.Parse(Codigo);
             return View(ObjDAO.TareaSeleccionada(Clave));
         }
 
@@ -209,7 +210,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         public ActionResult FinalizarTarea()
         {
             
-            return Redirect("/Usuario/IndexEmpleador#parentHorizontalTab2");
+            return Redirect("/Usuario/IndexEmpleador#parentHorizontalTab5");
         }
         public ActionResult AgregarCalif(string calif, string comentario, int tarea, int empleador)
         {
@@ -218,7 +219,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             int Tarea = tarea;
             
             OBO.CodigoTarea = Tarea;
-            OBO.UsCalifica = 1;//int.Parse(Session["codigo"].ToString());
+            OBO.UsCalifica = int.Parse(Session["codigo"].ToString());
             OBO.UsCalificado =empleador;
             OBO.Calificacion = int.Parse(calif);
             OBO.Comentario = comentario;
@@ -234,25 +235,27 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         [HttpPost]
         public ActionResult EnviarCorreo()
-        {
-            string CorreoRemitente = "";
-            string CorreoDestinatario = "";
+        {             
+            DAO.UsuariosDAO User = new UsuariosDAO();           
+            UsuarioBO Usuario = User.PerfilUsuario(int.Parse(Session["codigo"].ToString()));
+            string CorreoRemitente = "collegeJobSGM@gmail.com";             
+            string CorreoDestinatario = Usuario.Email; 
             MailMessage Correo = new MailMessage();
             Correo.To.Add(new MailAddress(CorreoDestinatario));
             Correo.From = new MailAddress(CorreoRemitente);
             Correo.Subject = "Mensajes de prueba..";
-            Correo.Body = "Prueba 1";
+            Correo.Body = "Prueba 1 <a href='http://localhost:59538/Tareas/VistaCAlif'><img src='http://noeliareginelli.com/wp-content/uploads/2017/10/boton-clic-aqui.png' width='120px'/></a>";
             Correo.IsBodyHtml = true;
             Correo.Priority = MailPriority.Normal;
             SmtpClient Cliente = new SmtpClient();
             Cliente.Host = "smtp.gmail.com";
             Cliente.Port = 587;
             Cliente.EnableSsl = true;
-            Cliente.Credentials = new NetworkCredential("","");
+            Cliente.Credentials = new NetworkCredential("collegeJobSGM@gmail.com", "SGM123456");
             try
             {
                 Cliente.Send(Correo);
-                return Redirect("/Usuario/IndexEmpleador#parentHorizontalTab3");
+                return Redirect("/Usuario/IndexEmpleador#parentHorizontalTab5");
             }
             catch 
             {

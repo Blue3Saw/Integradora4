@@ -1,37 +1,48 @@
 ﻿@using BO
 @model TareasBO
-
-<h1>Calificar</h1>
-
-<button class="btn btn-success right" data-toggle="modal" data-target="#ModalCalif">Finalizar tarea</button>
-<div class="modal fade" id="ModalCalif" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-sm modal-dialog">
-        <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                &times;
-            </button>
-            <div class="modal-header">Califica</div>
-            <div class="modal-body">
+@{              
+                ViewBag.Title = "Index";
+                Layout = "~/Views/FrontEnd/MasterPage/_layoutUsuarios.cshtml";
+}
+<div class="w3layouts-breadcrumbs text-center">
+    <div class="container">
+        <span class="agile-breadcrumbs"><a href=@Url.Action("IndexEmpleador", "PrincipalFE")><i class="fa fa-home home_1"></i></a> / <span>Empleador</span></span>
+    </div>
+</div>
+<div class="agile-pay w3layouts-content">
+    <div class="container">
+        <h1>Calificar</h1>
+        <h3 class="w3-head">Bienvenid&#64;: @Session["Nombre"]</h3>            
+            <div class="">
                 <hr />
                 Calificar: <div id="Estrellas"></div>
             </div>
-        </div>
     </div>
+
 </div>
 
-<script src="~/Recursos/FontEnd/js/starrr.js"></script>
-<link href="~/Recursos/FontEnd/css/starrr.css" rel="stylesheet" />
-<script>
-    $('#Estrellas').starrr({
-        rating: 3,
-        change: function (e, valor) {
-            alert(valor);
-        }
 
-    });
-    //$(function () { $("#Estrellas").starrr() });
-    $(document).ready(function () {
-        $('#ModalCalif').modal('show');
-    });
 
-</script>
+        
+
+
+       
+        
+
+
+        <script src="~/Recursos/FontEnd/js/starrr.js"></script>
+        <link href="~/Recursos/FontEnd/css/starrr.css" rel="stylesheet" />
+        <script>
+            $('#Estrellas').starrr({
+                rating: 3,
+                change: function (e, valor) {
+                    alert(valor);
+                }
+
+            });
+            //$(function () { $("#Estrellas").starrr() });
+            //$(document).ready(function () {
+            //    $('#ModalCalif').modal('show');
+            //});
+
+        </script>
