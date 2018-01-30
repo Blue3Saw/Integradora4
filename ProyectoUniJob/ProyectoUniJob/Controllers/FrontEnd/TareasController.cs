@@ -126,38 +126,19 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult TodasTareasEmpleador()
         {
-            int Codigo = 1;//int.Parse(Session["Codigo"].ToString());
-            return View(ObjDAO.TodasTareasEmpleador(Codigo));
-        }
-
-        public ActionResult Filtro(string Filtro)
-        {
-            int Codigo = 1;//int.Parse(Session["Codigo"].ToString());
-
-            if (Filtro == "2")
+            int filtro = 0;
+            int Codigo = int.Parse(Session["Codigo"].ToString());
+            if (Session["Filtro"].ToString() == null)
             {
-                ViewBag.Aprobadas = 2;
-                return PartialView(ObjDAO.TareasAprobadas(Codigo));
-                //return View(ObjDAO.TareasAprobadas(Codigo));
+                filtro = 0;
             }
             else
             {
-                ViewBag.Aprobadas = 3;
-                return PartialView(model: "3");
-                //return View(ObjDAO.TareasRechazadas(Codigo));
-                int filtro = 0;
-                int Codigo = int.Parse(Session["Codigo"].ToString());
-                if (Session["Filtro"].ToString() == null)
-                {
-                    filtro = 0;
-                }
-                else
-                {
-                    filtro = int.Parse(Session["Filtro"].ToString());
-                }
-                return View(ObjDAO.TodasTareasEmpleador(Codigo, filtro));
+                filtro = int.Parse(Session["Filtro"].ToString());
             }
+            return View(ObjDAO.TodasTareasEmpleador(Codigo, filtro));
         }
+
 
         [HttpPost]
         public ActionResult FiltroTareas(string Filtro)
@@ -186,7 +167,8 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult TareaSeleccionada(string Codigo)
         {
-            int Clave = 1;//int.Parse(Codigo);
+            int Clave=int.Parse(Codigo);
+            ViewData["Postulados"] = ObjDAO.postulados(Clave);
             return View(ObjDAO.TareaSeleccionada(Clave));
         }
 

@@ -178,16 +178,19 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         }
 
         //[HttpPost]
-        public ActionResult PefilUsuarioTareas()
+        public ActionResult PefilUsuarioTareas(string Clave)
         {
-            int codigo= 1011;
+
+             int codigo= int.Parse(Clave);
 
             //este es el datatable que contine la cantidad de estrellas por alumno
             DataTable lol= tareas.Estrellas(codigo);
-
             //este es el contiene el promedio de la calificacion
-            DataTable prom= tareas.PromedioEstrellas(codigo);
-            double promediocalif= double.Parse(prom.Rows[0][0].ToString());
+
+            //DataTable prom= tareas.PromedioEstrellas(codigo);
+            //double promediocalif = double.Parse(prom.Rows[0][0].ToString());
+            double promediocalif = tareas.PromedioEstrellas(codigo);
+
             ViewData["Promedio"] =Math.Round(promediocalif,1);
 
 

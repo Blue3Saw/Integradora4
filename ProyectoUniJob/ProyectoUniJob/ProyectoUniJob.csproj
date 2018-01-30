@@ -356,7 +356,6 @@
     <Content Include="Views\Tareas\TodasTareasEmpleador.cshtml" />
     <Content Include="Views\Tareas\FiltroTareas.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Tareas\EnviarCorreo.cshtml" />
     <Content Include="Views\Tareas\Filtro.cshtml" />
     <Content Include="Views\Tareas\VistaCAlif.cshtml" />
@@ -378,6 +377,7 @@
     <Folder Include="Reportes\DataSets\" />
     <Folder Include="Reportes\Viewers\" />
     <Folder Include="Views\Reportes\" />
+    <Folder Include="Views\Shared\" />
     <Folder Include="Views\TipoUsuario\" />
   </ItemGroup>
   <ItemGroup>

@@ -297,13 +297,22 @@ namespace DAO
 
         //metodos para la vista de ver perfil usuario por parte del empleador 
 
-        public DataTable PromedioEstrellas(int codigo)
+        public double PromedioEstrellas(int codigo)
         {
+            double dato = 0;
             Sentencia = "select avg(Calificacion) from Calificaciones where CodigoCalificado='"+codigo+"'";
             SqlDataAdapter mostar = new SqlDataAdapter(Sentencia, Conex.ConectarBD());
             DataTable tablavirtual = new DataTable();
             mostar.Fill(tablavirtual);
-            return tablavirtual;
+            try
+            {
+                 dato = double.Parse(tablavirtual.Rows[0][0].ToString());
+            }
+            catch
+            {
+                dato = 0;
+            }
+            return dato;
         }
         public DataTable Estrellas(int codigo)
         {
@@ -342,6 +351,14 @@ namespace DAO
             return tablavirtual;
         }
 
-
+        //datatable que devuelve los alumnos postulados a una tarea especifica
+        public DataTable postulados(int codigo)
+        {
+            Sentencia = "select u.Codigo,ut.CodigoTarea,(u.Nombre+' '+u.Apellidos) as Nombre, ut.Precio from UsuariosTareas ut, Usuarios u where ut.CodigoEstudiante=u.Codigo and ut.CodigoTarea='"+codigo+"'";
+            SqlDataAdapter mostar = new SqlDataAdapter(Sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
+        }
     }
 }
